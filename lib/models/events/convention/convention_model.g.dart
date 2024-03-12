@@ -1,0 +1,35 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'convention_model.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$_ConventionModel _$$_ConventionModelFromJson(Map<String, dynamic> json) =>
+    _$_ConventionModel(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      startDate: DateTime.parse(json['startDate'] as String),
+      fullAddress: json['fullAddress'] as String?,
+      displayCity: json['displayCity'] as String?,
+      displayState: json['displayState'] as String?,
+      endDate: json['endDate'] == null
+          ? null
+          : DateTime.parse(json['endDate'] as String),
+      lonlat: json['lonlat'] as String?,
+      website: json['website'] as String?,
+    );
+
+Map<String, dynamic> _$$_ConventionModelToJson(_$_ConventionModel instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'startDate': instance.startDate.toIso8601String(),
+      'fullAddress': instance.fullAddress,
+      'displayCity': instance.displayCity,
+      'displayState': instance.displayState,
+      'endDate': instance.endDate?.toIso8601String(),
+      'lonlat': instance.lonlat,
+      'website': instance.website,
+    };
