@@ -6,8 +6,9 @@ part of 'convention_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ConventionModel _$$_ConventionModelFromJson(Map<String, dynamic> json) =>
-    _$_ConventionModel(
+_$ConventionModelImpl _$$ConventionModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ConventionModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
       startDate: DateTime.parse(json['startDate'] as String),
@@ -22,7 +23,8 @@ _$_ConventionModel _$$_ConventionModelFromJson(Map<String, dynamic> json) =>
       website: json['website'] as String?,
     );
 
-Map<String, dynamic> _$$_ConventionModelToJson(_$_ConventionModel instance) =>
+Map<String, dynamic> _$$ConventionModelImplToJson(
+        _$ConventionModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
