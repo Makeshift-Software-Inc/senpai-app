@@ -1,0 +1,24 @@
+query fetchConventions($params: SearchEventInput!) {
+  fetchConventions(params: $params) {
+    id
+    title
+    startDate
+    endDate
+    lonlat
+    website
+    fullAddress
+    displayCity
+    displayState
+    coverImageUrl
+    events {
+      id
+      title
+      party {
+        id
+        members {
+          id
+        }
+      }
+    }
+  }
+}
