@@ -2882,6 +2882,7 @@ FetchConventions$Query$FetchConventions
           ..fullAddress = json['fullAddress'] as String
           ..displayCity = json['displayCity'] as String?
           ..displayState = json['displayState'] as String?
+          ..coverImageUrl = json['coverImageUrl'] as String?
           ..events = (json['events'] as List<dynamic>?)
               ?.map((e) =>
                   FetchConventions$Query$FetchConventions$Events.fromJson(
@@ -2901,6 +2902,7 @@ Map<String, dynamic> _$FetchConventions$Query$FetchConventionsToJson(
       'fullAddress': instance.fullAddress,
       'displayCity': instance.displayCity,
       'displayState': instance.displayState,
+      'coverImageUrl': instance.coverImageUrl,
       'events': instance.events?.map((e) => e.toJson()).toList(),
     };
 

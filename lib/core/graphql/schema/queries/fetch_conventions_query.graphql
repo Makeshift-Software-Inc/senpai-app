@@ -9,6 +9,7 @@ query fetchConventions($params: SearchEventInput!) {
     fullAddress
     displayCity
     displayState
+    coverImageUrl
     events {
       id
       title
