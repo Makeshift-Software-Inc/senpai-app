@@ -6,8 +6,8 @@ part of 'new_event_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_NewEventModel _$$_NewEventModelFromJson(Map<String, dynamic> json) =>
-    _$_NewEventModel(
+_$NewEventModelImpl _$$NewEventModelImplFromJson(Map<String, dynamic> json) =>
+    _$NewEventModelImpl(
       title: json['title'] as String,
       userId: json['userId'] as String,
       venue: json['venue'] as String,
@@ -23,7 +23,7 @@ _$_NewEventModel _$$_NewEventModelFromJson(Map<String, dynamic> json) =>
       conventionId: json['conventionId'] as int?,
     );
 
-Map<String, dynamic> _$$_NewEventModelToJson(_$_NewEventModel instance) =>
+Map<String, dynamic> _$$NewEventModelImplToJson(_$NewEventModelImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'userId': instance.userId,
