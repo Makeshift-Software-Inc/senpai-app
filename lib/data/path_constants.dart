@@ -104,4 +104,5 @@ class PathConstants {
       'assets/images/events/event_button_icon.svg';
   static const String newEventImage =
       'assets/images/events/event_image_icon.svg';
+  static const String arrowsForward = 'assets/icons/arrows_forward.svg';
 }

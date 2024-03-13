@@ -1020,4 +1020,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidMaxPartySizeError => 'Invalid max party size. Please try again';
+
+  @override
+  String get normalEvents => 'Normal Events';
+
+  @override
+  String get conventionsText => 'Conventions';
+
+  @override
+  String get yourEvents => 'Your Events';
 }

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:senpai/core/widgets/senpai_app_bar.dart';
 import 'package:senpai/l10n/resources.dart';
+import 'package:senpai/screens/events_list/widgets/events_list_content.dart';
 
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
@@ -36,9 +37,7 @@ class EventsListPage extends StatelessWidget {
       // Just a note: until Events & Conventions are fully complete,
       // let's leave the Events tab as "To be Implemented"
       // body: const EventsListContent(),
-      body: const Center(
-        child: Text("To be implemented"),
-      ),
+      body: const EventsListContent(),
     );
   }
 }
