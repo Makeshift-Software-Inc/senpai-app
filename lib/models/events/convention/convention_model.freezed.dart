@@ -12,7 +12,7 @@ part of 'convention_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ConventionModel _$ConventionModelFromJson(Map<String, dynamic> json) {
   return _ConventionModel.fromJson(json);
@@ -126,11 +126,11 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
 }
 
 /// @nodoc
-abstract class _$$_ConventionModelCopyWith<$Res>
+abstract class _$$ConventionModelImplCopyWith<$Res>
     implements $ConventionModelCopyWith<$Res> {
-  factory _$$_ConventionModelCopyWith(
-          _$_ConventionModel value, $Res Function(_$_ConventionModel) then) =
-      __$$_ConventionModelCopyWithImpl<$Res>;
+  factory _$$ConventionModelImplCopyWith(_$ConventionModelImpl value,
+          $Res Function(_$ConventionModelImpl) then) =
+      __$$ConventionModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -147,11 +147,11 @@ abstract class _$$_ConventionModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ConventionModelCopyWithImpl<$Res>
-    extends _$ConventionModelCopyWithImpl<$Res, _$_ConventionModel>
-    implements _$$_ConventionModelCopyWith<$Res> {
-  __$$_ConventionModelCopyWithImpl(
-      _$_ConventionModel _value, $Res Function(_$_ConventionModel) _then)
+class __$$ConventionModelImplCopyWithImpl<$Res>
+    extends _$ConventionModelCopyWithImpl<$Res, _$ConventionModelImpl>
+    implements _$$ConventionModelImplCopyWith<$Res> {
+  __$$ConventionModelImplCopyWithImpl(
+      _$ConventionModelImpl _value, $Res Function(_$ConventionModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -168,7 +168,7 @@ class __$$_ConventionModelCopyWithImpl<$Res>
     Object? lonlat = freezed,
     Object? website = freezed,
   }) {
-    return _then(_$_ConventionModel(
+    return _then(_$ConventionModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -215,8 +215,8 @@ class __$$_ConventionModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ConventionModel implements _ConventionModel {
-  const _$_ConventionModel(
+class _$ConventionModelImpl implements _ConventionModel {
+  const _$ConventionModelImpl(
       {required this.id,
       required this.title,
       required this.startDate,
@@ -228,8 +228,8 @@ class _$_ConventionModel implements _ConventionModel {
       this.lonlat,
       this.website});
 
-  factory _$_ConventionModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ConventionModelFromJson(json);
+  factory _$ConventionModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ConventionModelImplFromJson(json);
 
   @override
   final String id;
@@ -258,10 +258,10 @@ class _$_ConventionModel implements _ConventionModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ConventionModel &&
+            other is _$ConventionModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.startDate, startDate) ||
@@ -297,12 +297,13 @@ class _$_ConventionModel implements _ConventionModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ConventionModelCopyWith<_$_ConventionModel> get copyWith =>
-      __$$_ConventionModelCopyWithImpl<_$_ConventionModel>(this, _$identity);
+  _$$ConventionModelImplCopyWith<_$ConventionModelImpl> get copyWith =>
+      __$$ConventionModelImplCopyWithImpl<_$ConventionModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ConventionModelToJson(
+    return _$$ConventionModelImplToJson(
       this,
     );
   }
@@ -319,10 +320,10 @@ abstract class _ConventionModel implements ConventionModel {
       final String? displayState,
       final DateTime? endDate,
       final String? lonlat,
-      final String? website}) = _$_ConventionModel;
+      final String? website}) = _$ConventionModelImpl;
 
   factory _ConventionModel.fromJson(Map<String, dynamic> json) =
-      _$_ConventionModel.fromJson;
+      _$ConventionModelImpl.fromJson;
 
   @override
   String get id;
@@ -346,6 +347,6 @@ abstract class _ConventionModel implements ConventionModel {
   String? get website;
   @override
   @JsonKey(ignore: true)
-  _$$_ConventionModelCopyWith<_$_ConventionModel> get copyWith =>
+  _$$ConventionModelImplCopyWith<_$ConventionModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

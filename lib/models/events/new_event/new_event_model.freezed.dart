@@ -12,7 +12,7 @@ part of 'new_event_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 NewEventModel _$NewEventModelFromJson(Map<String, dynamic> json) {
   return _NewEventModel.fromJson(json);
@@ -133,11 +133,11 @@ class _$NewEventModelCopyWithImpl<$Res, $Val extends NewEventModel>
 }
 
 /// @nodoc
-abstract class _$$_NewEventModelCopyWith<$Res>
+abstract class _$$NewEventModelImplCopyWith<$Res>
     implements $NewEventModelCopyWith<$Res> {
-  factory _$$_NewEventModelCopyWith(
-          _$_NewEventModel value, $Res Function(_$_NewEventModel) then) =
-      __$$_NewEventModelCopyWithImpl<$Res>;
+  factory _$$NewEventModelImplCopyWith(
+          _$NewEventModelImpl value, $Res Function(_$NewEventModelImpl) then) =
+      __$$NewEventModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -155,11 +155,11 @@ abstract class _$$_NewEventModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_NewEventModelCopyWithImpl<$Res>
-    extends _$NewEventModelCopyWithImpl<$Res, _$_NewEventModel>
-    implements _$$_NewEventModelCopyWith<$Res> {
-  __$$_NewEventModelCopyWithImpl(
-      _$_NewEventModel _value, $Res Function(_$_NewEventModel) _then)
+class __$$NewEventModelImplCopyWithImpl<$Res>
+    extends _$NewEventModelCopyWithImpl<$Res, _$NewEventModelImpl>
+    implements _$$NewEventModelImplCopyWith<$Res> {
+  __$$NewEventModelImplCopyWithImpl(
+      _$NewEventModelImpl _value, $Res Function(_$NewEventModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -177,7 +177,7 @@ class __$$_NewEventModelCopyWithImpl<$Res>
     Object? paymentRequired = freezed,
     Object? conventionId = freezed,
   }) {
-    return _then(_$_NewEventModel(
+    return _then(_$NewEventModelImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -228,8 +228,8 @@ class __$$_NewEventModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_NewEventModel implements _NewEventModel {
-  const _$_NewEventModel(
+class _$NewEventModelImpl implements _NewEventModel {
+  const _$NewEventModelImpl(
       {required this.title,
       required this.userId,
       required this.venue,
@@ -242,8 +242,8 @@ class _$_NewEventModel implements _NewEventModel {
       this.paymentRequired,
       this.conventionId});
 
-  factory _$_NewEventModel.fromJson(Map<String, dynamic> json) =>
-      _$$_NewEventModelFromJson(json);
+  factory _$NewEventModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NewEventModelImplFromJson(json);
 
   @override
   final String title;
@@ -274,10 +274,10 @@ class _$_NewEventModel implements _NewEventModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NewEventModel &&
+            other is _$NewEventModelImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.venue, venue) || other.venue == venue) &&
@@ -317,12 +317,12 @@ class _$_NewEventModel implements _NewEventModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NewEventModelCopyWith<_$_NewEventModel> get copyWith =>
-      __$$_NewEventModelCopyWithImpl<_$_NewEventModel>(this, _$identity);
+  _$$NewEventModelImplCopyWith<_$NewEventModelImpl> get copyWith =>
+      __$$NewEventModelImplCopyWithImpl<_$NewEventModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NewEventModelToJson(
+    return _$$NewEventModelImplToJson(
       this,
     );
   }
@@ -340,10 +340,10 @@ abstract class _NewEventModel implements NewEventModel {
       final DateTime? endDate,
       final String? cosplayRequired,
       final bool? paymentRequired,
-      final int? conventionId}) = _$_NewEventModel;
+      final int? conventionId}) = _$NewEventModelImpl;
 
   factory _NewEventModel.fromJson(Map<String, dynamic> json) =
-      _$_NewEventModel.fromJson;
+      _$NewEventModelImpl.fromJson;
 
   @override
   String get title;
@@ -369,6 +369,6 @@ abstract class _NewEventModel implements NewEventModel {
   int? get conventionId;
   @override
   @JsonKey(ignore: true)
-  _$$_NewEventModelCopyWith<_$_NewEventModel> get copyWith =>
+  _$$NewEventModelImplCopyWith<_$NewEventModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
