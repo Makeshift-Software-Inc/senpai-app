@@ -23,6 +23,7 @@ mixin _$ConventionModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   DateTime get startDate => throw _privateConstructorUsedError;
+  String get coverImageUrl => throw _privateConstructorUsedError;
   String? get fullAddress => throw _privateConstructorUsedError;
   String? get displayCity => throw _privateConstructorUsedError;
   String? get displayState => throw _privateConstructorUsedError;
@@ -46,6 +47,7 @@ abstract class $ConventionModelCopyWith<$Res> {
       {String id,
       String title,
       DateTime startDate,
+      String coverImageUrl,
       String? fullAddress,
       String? displayCity,
       String? displayState,
@@ -70,6 +72,7 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
     Object? id = null,
     Object? title = null,
     Object? startDate = null,
+    Object? coverImageUrl = null,
     Object? fullAddress = freezed,
     Object? displayCity = freezed,
     Object? displayState = freezed,
@@ -90,6 +93,10 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      coverImageUrl: null == coverImageUrl
+          ? _value.coverImageUrl
+          : coverImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       fullAddress: freezed == fullAddress
           ? _value.fullAddress
           : fullAddress // ignore: cast_nullable_to_non_nullable
@@ -130,6 +137,7 @@ abstract class _$$_ConventionModelCopyWith<$Res>
       {String id,
       String title,
       DateTime startDate,
+      String coverImageUrl,
       String? fullAddress,
       String? displayCity,
       String? displayState,
@@ -152,6 +160,7 @@ class __$$_ConventionModelCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? startDate = null,
+    Object? coverImageUrl = null,
     Object? fullAddress = freezed,
     Object? displayCity = freezed,
     Object? displayState = freezed,
@@ -172,6 +181,10 @@ class __$$_ConventionModelCopyWithImpl<$Res>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      coverImageUrl: null == coverImageUrl
+          ? _value.coverImageUrl
+          : coverImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       fullAddress: freezed == fullAddress
           ? _value.fullAddress
           : fullAddress // ignore: cast_nullable_to_non_nullable
@@ -207,6 +220,7 @@ class _$_ConventionModel implements _ConventionModel {
       {required this.id,
       required this.title,
       required this.startDate,
+      required this.coverImageUrl,
       this.fullAddress,
       this.displayCity,
       this.displayState,
@@ -224,6 +238,8 @@ class _$_ConventionModel implements _ConventionModel {
   @override
   final DateTime startDate;
   @override
+  final String coverImageUrl;
+  @override
   final String? fullAddress;
   @override
   final String? displayCity;
@@ -238,7 +254,7 @@ class _$_ConventionModel implements _ConventionModel {
 
   @override
   String toString() {
-    return 'ConventionModel(id: $id, title: $title, startDate: $startDate, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, website: $website)';
+    return 'ConventionModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, website: $website)';
   }
 
   @override
@@ -250,6 +266,8 @@ class _$_ConventionModel implements _ConventionModel {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
+            (identical(other.coverImageUrl, coverImageUrl) ||
+                other.coverImageUrl == coverImageUrl) &&
             (identical(other.fullAddress, fullAddress) ||
                 other.fullAddress == fullAddress) &&
             (identical(other.displayCity, displayCity) ||
@@ -263,8 +281,18 @@ class _$_ConventionModel implements _ConventionModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, startDate,
-      fullAddress, displayCity, displayState, endDate, lonlat, website);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      startDate,
+      coverImageUrl,
+      fullAddress,
+      displayCity,
+      displayState,
+      endDate,
+      lonlat,
+      website);
 
   @JsonKey(ignore: true)
   @override
@@ -285,6 +313,7 @@ abstract class _ConventionModel implements ConventionModel {
       {required final String id,
       required final String title,
       required final DateTime startDate,
+      required final String coverImageUrl,
       final String? fullAddress,
       final String? displayCity,
       final String? displayState,
@@ -301,6 +330,8 @@ abstract class _ConventionModel implements ConventionModel {
   String get title;
   @override
   DateTime get startDate;
+  @override
+  String get coverImageUrl;
   @override
   String? get fullAddress;
   @override
