@@ -9,6 +9,7 @@ class ConventionModel with _$ConventionModel {
     required String id,
     required String title,
     required DateTime startDate,
+    required String coverImageUrl,
     String? fullAddress,
     String? displayCity,
     String? displayState,
@@ -17,11 +18,12 @@ class ConventionModel with _$ConventionModel {
     String? website,
     //add another parameters
   }) = _ConventionModel;
-  
+
   factory ConventionModel.initial() => ConventionModel(
         id: '',
         title: '',
         startDate: DateTime.now(),
+        coverImageUrl: '',
         endDate: null,
         lonlat: '',
         fullAddress: '',
