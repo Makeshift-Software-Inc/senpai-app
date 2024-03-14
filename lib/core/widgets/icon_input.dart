@@ -14,6 +14,7 @@ class SenpaiIconInput extends StatelessWidget {
     this.onTapSuffix,
     this.onTapInput,
     this.focusNode,
+    this.borderRadius,
   });
 
   final String iconPath;
@@ -23,6 +24,7 @@ class SenpaiIconInput extends StatelessWidget {
   final VoidCallback? onTapSuffix;
   final VoidCallback? onTapInput;
   final FocusNode? focusNode;
+  final double? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,9 @@ class SenpaiIconInput extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular($constants.corners.md),
+        borderRadius: BorderRadius.circular(
+          borderRadius ?? $constants.corners.md,
+        ),
         border: Border.all(
           color: $constants.palette.buttonBorder,
           width: 1,
@@ -40,6 +44,9 @@ class SenpaiIconInput extends StatelessWidget {
       child: TextFormField(
         readOnly: onTapInput != null,
         onTap: onTapInput,
+        onTapOutside: (_) {
+          focusNode?.unfocus();
+        },
         focusNode: focusNode,
         decoration: InputDecoration(
           prefixIcon: Padding(
@@ -55,14 +62,14 @@ class SenpaiIconInput extends StatelessWidget {
             maxWidth: 28,
             maxHeight: 20,
           ),
-          suffix: onTapSuffix != null
+          suffixIcon: onTapSuffix != null
               ? SearchSuffixIcon(
                   onTap: onTapSuffix!,
                 )
               : null,
           suffixIconConstraints: const BoxConstraints(
             maxWidth: 28,
-            maxHeight: 20,
+            maxHeight: 24,
           ),
           hintText: hintText,
           hintStyle: getTextTheme(context).bodyMedium!.copyWith(
