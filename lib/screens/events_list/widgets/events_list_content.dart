@@ -69,7 +69,7 @@ class EventsListContent extends StatelessWidget {
                           shape: BoxShape.circle),
                       child: Icon(
                         Icons.tune,
-                        size: 30,
+                        size: $constants.corners.xl,
                         color: $constants.palette.white,
                       ),
                     ),
@@ -151,11 +151,11 @@ class EventsListContent extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: $constants.insets.xl),
                     itemBuilder: (_, i) {
                       return SizedBox(
-                        height: 235,
+                        height: $constants.events.eventListItemHeight,
                         child: Stack(
                           children: [
                             Container(
-                                height: 206,
+                                height: $constants.events.eventListImageHeight,
                                 margin: EdgeInsets.all($constants.insets.sm),
                                 decoration: BoxDecoration(
                                   color: $constants.palette.white,
@@ -200,7 +200,7 @@ class EventsListContent extends StatelessWidget {
                                         shape: BoxShape.circle),
                                     child: Icon(
                                       Icons.calendar_month,
-                                      size: 16,
+                                      size: $constants.insets.sm,
                                       color: $constants.palette.white,
                                     ),
                                   ),
@@ -234,16 +234,18 @@ class EventsListContent extends StatelessWidget {
                               bottom: 35,
                               left: 57,
                               child: Container(
-                                width: 50,
-                                height: 50,
+                                width: $constants
+                                    .events.eventListRoundContainerSize,
+                                height: $constants
+                                    .events.eventListRoundContainerSize,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                   gradient: $constants.palette.mainGradient,
                                   shape: BoxShape.circle,
                                 ),
                                 child: Container(
-                                    width: 48,
-                                    height: 48,
+                                    width: $constants.insets.xl,
+                                    height: $constants.insets.xl,
                                     alignment: Alignment.center,
                                     decoration: BoxDecoration(
                                       color: $constants.palette.black,

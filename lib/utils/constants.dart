@@ -49,6 +49,9 @@ class Constants {
   /// Map constants
   late final map = _MapConstants();
 
+  /// Events constants
+  late final events = _EventsConstants();
+
   /// API keys
   late final apiKeys = _ApiKeys();
 }
@@ -281,6 +284,14 @@ class _Sizes {
 class _MapConstants {
   late final zoom = 15.0;
   late final markerId = 'event';
+}
+
+@immutable
+class _EventsConstants {
+  late final double eventListItemHeight = 235;
+  late final double eventListImageHeight = 206;
+  late final double eventListNotchedContainerHeight = 63;
+  late final double eventListRoundContainerSize = 50;
 }
 
 @immutable

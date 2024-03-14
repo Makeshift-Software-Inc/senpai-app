@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:senpai/data/path_constants.dart';
+import 'package:senpai/screens/events_list/widgets/senpai_custom_clipper.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
@@ -17,10 +18,10 @@ class NotchedContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipPath(
-      clipper: MyCustomClipper(),
+      clipper: SenpaiCustomClipper(),
       child: Container(
         width: MediaQuery.of(context).size.width - $constants.insets.lg * 2,
-        height: 63,
+        height: $constants.events.eventListNotchedContainerHeight,
         padding: EdgeInsets.symmetric(
             horizontal: $constants.insets.md, vertical: $constants.insets.xs),
         decoration: BoxDecoration(
@@ -41,7 +42,7 @@ class NotchedContainerWidget extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.location_pin,
-                      size: 8,
+                      size: $constants.insets.xs,
                       color: $constants.palette.white,
                     ),
                     SizedBox(
@@ -60,8 +61,8 @@ class NotchedContainerWidget extends StatelessWidget {
             ),
             SvgPicture.asset(
               PathConstants.arrowsForward,
-              width: 10,
-              height: 10,
+              width: $constants.corners.sm,
+              height: $constants.corners.sm,
               fit: BoxFit.contain,
             ),
             SizedBox(
@@ -72,31 +73,4 @@ class NotchedContainerWidget extends StatelessWidget {
       ),
     );
   }
-}
-
-class MyCustomClipper extends CustomClipper<Path> {
-  MyCustomClipper();
-
-  @override
-  Path getClip(Size size) {
-    final path = Path()
-      ..moveTo(0, 0)
-      ..lineTo(20, 0.0)
-      ..arcToPoint(
-        const Offset(80, 0),
-        clockwise: false,
-        radius: const Radius.circular(4),
-      )
-      ..lineTo(size.width, 0.0)
-      ..lineTo(size.width, size.height)
-      ..lineTo(130, size.height);
-
-    path.lineTo(0.0, size.height);
-
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(MyCustomClipper oldClipper) => true;
 }
