@@ -24,7 +24,6 @@ class UploadPhotosManagerContent extends StatelessWidget {
             bloc.albumList.isEmpty) {
           bloc.add(OnFetchAlbumsListEvent());
         }
-        if (bloc.step == PhotoManagerStep.galleryPhotos) {}
       },
       builder: (context, state) {
         return SafeArea(

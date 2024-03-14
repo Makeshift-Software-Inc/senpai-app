@@ -132,7 +132,7 @@ class NewEventBloc extends Bloc<NewEventEvent, NewEventState> {
         day: event.eventDate.day,
       );
 
-      endTimeEvent = startTimeEvent.copyWith(
+      endTimeEvent = endTimeEvent.copyWith(
         year: event.eventDate.year,
         month: event.eventDate.month,
         day: event.eventDate.day,
