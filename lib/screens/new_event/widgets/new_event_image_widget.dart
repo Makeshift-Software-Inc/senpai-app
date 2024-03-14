@@ -16,11 +16,11 @@ class NewEventImageWidget extends StatelessWidget {
   const NewEventImageWidget({super.key});
 
   void _onSelectImage(BuildContext context) {
-    // context.router.push(
-    //   NewEventPhotoManagerRoute(
-    //     bloc: BlocProvider.of<NewEventBloc>(context),
-    //   ),
-    // );
+    context.router.push(
+      NewEventPhotoManagerRoute(
+        bloc: BlocProvider.of<NewEventBloc>(context),
+      ),
+    );
   }
 
   @override
