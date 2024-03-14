@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:senpai/core/widgets/loading.dart';
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/l10n/resources.dart';
+import 'package:senpai/routes/app_router.dart';
 import 'package:senpai/screens/events_list/widgets/empty_events_widget.dart';
 import 'package:senpai/screens/events_list/widgets/notched_container_widget.dart';
 import 'package:senpai/utils/constants.dart';
@@ -289,10 +291,9 @@ class EventsListContent extends StatelessWidget {
   Widget _buildCreateEventButton(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // change after add NewEventRoute
-        // context.router.push(
-        //   const NewEventRoute(),
-        // );
+        context.router.push(
+          const NewEventRoute(),
+        );
       },
       child: Stack(
         alignment: AlignmentDirectional.center,
