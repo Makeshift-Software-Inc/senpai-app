@@ -1020,4 +1020,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get invalidMaxPartySizeError => '';
+
+  @override
+  String get normalEvents => '';
+
+  @override
+  String get conventionsText => '';
+
+  @override
+  String get yourEvents => '';
 }

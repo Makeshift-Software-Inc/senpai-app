@@ -49,6 +49,9 @@ class Constants {
   /// Map constants
   late final map = _MapConstants();
 
+  /// Events constants
+  late final events = _EventsConstants();
+
   /// API keys
   late final apiKeys = _ApiKeys();
 }
@@ -81,6 +84,7 @@ class _Corners {
   late final double sm = 10;
   late final double md = 12;
   late final double lg = 16;
+  late final double xlg = 20;
   late final double xl = 30;
   late final double xxl = 40;
   late final double rounded = 100;
@@ -110,6 +114,7 @@ class _Palette {
   final grey = const Color(0xFFA9AFC2);
   final grey2 = const Color(0xFF98A1BB);
   final darkGrey = const Color(0xFF5B6277);
+  final darkGrey2 = const Color(0xFF2E3A62);
   final yellow = const Color(0xFFFFB200);
   final gold = const Color(0xFFE39F04);
   final green = const Color(0xFF67B527);
@@ -279,6 +284,14 @@ class _Sizes {
 class _MapConstants {
   late final zoom = 15.0;
   late final markerId = 'event';
+}
+
+@immutable
+class _EventsConstants {
+  late final double eventListItemHeight = 235;
+  late final double eventListImageHeight = 206;
+  late final double eventListNotchedContainerHeight = 63;
+  late final double eventListRoundContainerSize = 50;
 }
 
 @immutable

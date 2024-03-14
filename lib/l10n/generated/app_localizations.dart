@@ -2128,6 +2128,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid max party size. Please try again'**
   String get invalidMaxPartySizeError;
+
+  /// No description provided for @normalEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal Events'**
+  String get normalEvents;
+
+  /// No description provided for @conventionsText.
+  ///
+  /// In en, this message translates to:
+  /// **'Conventions'**
+  String get conventionsText;
+
+  /// No description provided for @yourEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Events'**
+  String get yourEvents;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
