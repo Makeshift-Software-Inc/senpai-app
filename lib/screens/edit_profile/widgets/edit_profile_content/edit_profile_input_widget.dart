@@ -9,6 +9,9 @@ class EditProfileInputWidget extends StatefulWidget {
   final TextEditingController controller;
   final Function(String) onTextChanged;
   final int maxLines;
+  final bool showHintText;
+  final TextInputType? keyboardType;
+  final String description;
 
   const EditProfileInputWidget({
     super.key,
@@ -18,6 +21,9 @@ class EditProfileInputWidget extends StatefulWidget {
     required this.onTextChanged,
     required this.errorText,
     this.maxLines = 1,
+    this.showHintText = true,
+    this.keyboardType = TextInputType.text,
+    this.description = '',
   });
 
   @override
@@ -84,6 +90,7 @@ class _EditProfileInputWidgetState extends State<EditProfileInputWidget> {
                             focusNode: _focusNode,
                             decoration: _getDecoration(),
                             controller: widget.controller,
+                            keyboardType: widget.keyboardType,
                             style: getTextTheme(context)
                                 .bodyMedium!
                                 .copyWith(color: $constants.palette.grey),
@@ -103,7 +110,10 @@ class _EditProfileInputWidgetState extends State<EditProfileInputWidget> {
 
   InputDecoration _getDecoration() {
     return InputDecoration(
-      hintText: widget.placeholder,
+      hintText: widget.showHintText ? widget.placeholder : '',
+      hintStyle: getTextTheme(context)
+          .bodyMedium!
+          .copyWith(color: $constants.palette.darkGrey),
       contentPadding: EdgeInsets.all($constants.insets.sm),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular($constants.corners.md)),
@@ -118,12 +128,24 @@ class _EditProfileInputWidgetState extends State<EditProfileInputWidget> {
         right: $constants.insets.sm,
         left: $constants.insets.sm,
       ),
-      child: Text(
-        widget.placeholder,
-        style: getTextTheme(context).bodyMedium!.copyWith(
-              color: $constants.palette.white,
-              fontWeight: FontWeight.w600,
+      child: Row(
+        children: [
+          Text(
+            widget.placeholder,
+            style: getTextTheme(context).bodyMedium!.copyWith(
+                  color: $constants.palette.white,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+          if (widget.description.isNotEmpty)
+            Text(
+              ' (${widget.description})',
+              style: getTextTheme(context).bodyMedium?.copyWith(
+                    fontSize: 14,
+                    color: $constants.palette.white,
+                  ),
             ),
+        ],
       ),
     );
   }
