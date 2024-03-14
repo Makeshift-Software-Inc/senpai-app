@@ -34,14 +34,7 @@ class NewEventItemButton extends StatelessWidget {
               style: getTextTheme(context).bodyMedium?.copyWith(
                   color: $constants.palette.white, fontWeight: FontWeight.w600),
             ),
-            if (description.isNotEmpty)
-              Text(
-                ' ($description)',
-                style: getTextTheme(context).bodyMedium?.copyWith(
-                      fontSize: 14,
-                      color: $constants.palette.white,
-                    ),
-              ),
+            _tryBuildingDescripionWidget(context),
             Expanded(
               child: Align(
                 alignment: Alignment.centerRight,
@@ -51,6 +44,19 @@ class NewEventItemButton extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _tryBuildingDescripionWidget(BuildContext context) {
+    if (description.isEmpty) {
+      return const SizedBox.shrink();
+    }
+    return Text(
+      ' ($description)',
+      style: getTextTheme(context).bodyMedium?.copyWith(
+            fontSize: 14,
+            color: $constants.palette.white,
+          ),
     );
   }
 }
