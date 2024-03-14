@@ -317,3 +317,8 @@ bool isVideo(XFile file) {
   // Check if the mime type starts with 'video/'
   return mimeType != null && mimeType.startsWith('video/');
 }
+
+bool isValidMaxPartySize(String partySize) {
+  final RegExp digitOneToTenRegex = RegExp(r'^(10|[1-9])$');
+  return partySize.isNotEmpty && digitOneToTenRegex.hasMatch(partySize);
+}
