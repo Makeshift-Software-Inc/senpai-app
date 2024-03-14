@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:senpai/screens/profile_fill/photos/bloc/photos_bloc.dart';
 
 import 'package:senpai/screens/profile_fill/photos/upload_photos/gallery/bloc/upload_photos_bloc.dart';
 import 'package:senpai/screens/profile_fill/photos/upload_photos/gallery/pages/gallery_albums_page.dart';
@@ -43,15 +45,25 @@ class UploadPhotosManagerContent extends StatelessWidget {
 
   Widget _buildProfileFillContent(BuildContext context) {
     final bloc = BlocProvider.of<UploadPhotosBloc>(context);
-
-    if (bloc.step == PhotoManagerStep.photoManager) {
-      return const PhotosManagerContent();
-    } else if (bloc.step == PhotoManagerStep.galleryAlbums) {
-      return const GalleryAlbumsPage();
-    } else if (bloc.step == PhotoManagerStep.galleryPhotos) {
-      return const GalleryPhotosPage();
-    } else {
-      return const PhotosManagerContent();
-    }
+    return BlocBuilder<PhotosBloc, PhotosState>(
+      builder: (context, state) {
+        if (bloc.step == PhotoManagerStep.galleryAlbums) {
+          return const GalleryAlbumsPage();
+        } else if (bloc.step == PhotoManagerStep.galleryPhotos) {
+          return GalleryPhotosPage(onSelectPhotos: (photos) {
+            final blocPhotos = BlocProvider.of<PhotosBloc>(context);
+            blocPhotos
+                .add(OnUploadPhotosEvent(photos: bloc.selectedAssetsList));
+            context.router.pop();
+          });
+        } else {
+          return PhotosManagerContent(onSelectPhoto: (photo) {
+            final blocPhotos = BlocProvider.of<PhotosBloc>(context);
+            blocPhotos.add(OnChangedPhotoByCameraEvent(photo: photo));
+            context.router.pop();
+          });
+        }
+      },
+    );
   }
 }

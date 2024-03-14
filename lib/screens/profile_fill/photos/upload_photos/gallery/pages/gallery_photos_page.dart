@@ -1,9 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:photo_manager/photo_manager.dart';
 import 'package:senpai/core/widgets/senpai_app_bar.dart';
 import 'package:senpai/l10n/resources.dart';
-import 'package:senpai/screens/profile_fill/photos/bloc/photos_bloc.dart';
 import 'package:senpai/screens/profile_fill/photos/upload_photos/gallery/bloc/upload_photos_bloc.dart';
 import 'package:senpai/screens/profile_fill/photos/upload_photos/gallery/widgets/gallery_photos_content.dart';
 import 'package:senpai/screens/profile_fill/photos/upload_photos/widgets/photos_app_bar_leading.dart';
@@ -11,8 +10,11 @@ import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
 class GalleryPhotosPage extends StatelessWidget {
+  final ValueChanged<List<AssetEntity>> onSelectPhotos;
+
   const GalleryPhotosPage({
     super.key,
+    required this.onSelectPhotos,
   });
 
   String _appBarTitle(BuildContext context) {
@@ -61,9 +63,7 @@ class GalleryPhotosPage extends StatelessWidget {
     }
     return GestureDetector(
       onTap: () {
-        final blocPhotos = BlocProvider.of<PhotosBloc>(context);
-        blocPhotos.add(OnUploadPhotosEvent(photos: bloc.selectedAssetsList));
-        context.router.pop();
+        onSelectPhotos(bloc.selectedAssetsList);
       },
       child: Center(
         child: Padding(
