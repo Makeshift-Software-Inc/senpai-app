@@ -21,6 +21,9 @@ import 'package:senpai/screens/home/page/home_page.dart';
 import 'package:senpai/screens/license/page/license_page.dart';
 import 'package:senpai/screens/match/page/match_page.dart';
 import 'package:senpai/screens/match_users/page/match_users_page.dart';
+import 'package:senpai/screens/new_event/bloc/new_event_bloc.dart';
+import 'package:senpai/screens/new_event/new_event_image/page/new_event_photo_manager_page.dart';
+import 'package:senpai/screens/new_event/page/new_event_page.dart';
 import 'package:senpai/screens/onboarding/page/onboarding_page.dart';
 import 'package:senpai/screens/premium_screen/page/premium_page.dart';
 import 'package:senpai/screens/preview_profile/page/preview_profile_page.dart';
@@ -94,5 +97,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: MatchUsersRoute.page, path: '/match_users'),
         AutoRoute(page: ReportUserRoute.page, path: '/report_user'),
         AutoRoute(page: VideoViewerRoute.page, path: '/video_viewer'),
+
+        AutoRoute(page: NewEventRoute.page, path: '/new_event'),
+        AutoRoute(
+            page: NewEventPhotoManagerRoute.page,
+            path: '/new_event_photo_manager'),
       ];
 }

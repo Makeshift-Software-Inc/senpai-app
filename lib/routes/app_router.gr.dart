@@ -111,6 +111,22 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    NewEventRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NewEventPage(),
+      );
+    },
+    NewEventPhotoManagerRoute.name: (routeData) {
+      final args = routeData.argsAs<NewEventPhotoManagerRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: NewEventPhotoManagerPage(
+          key: args.key,
+          bloc: args.bloc,
+        ),
+      );
+    },
     OnboardingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -618,6 +634,59 @@ class MatchUsersRouteArgs {
   @override
   String toString() {
     return 'MatchUsersRouteArgs{key: $key, likeUserModel: $likeUserModel}';
+  }
+}
+
+/// generated route for
+/// [NewEventPage]
+class NewEventRoute extends PageRouteInfo<void> {
+  const NewEventRoute({List<PageRouteInfo>? children})
+      : super(
+          NewEventRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NewEventRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NewEventPhotoManagerPage]
+class NewEventPhotoManagerRoute
+    extends PageRouteInfo<NewEventPhotoManagerRouteArgs> {
+  NewEventPhotoManagerRoute({
+    Key? key,
+    required NewEventBloc bloc,
+    List<PageRouteInfo>? children,
+  }) : super(
+          NewEventPhotoManagerRoute.name,
+          args: NewEventPhotoManagerRouteArgs(
+            key: key,
+            bloc: bloc,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'NewEventPhotoManagerRoute';
+
+  static const PageInfo<NewEventPhotoManagerRouteArgs> page =
+      PageInfo<NewEventPhotoManagerRouteArgs>(name);
+}
+
+class NewEventPhotoManagerRouteArgs {
+  const NewEventPhotoManagerRouteArgs({
+    this.key,
+    required this.bloc,
+  });
+
+  final Key? key;
+
+  final NewEventBloc bloc;
+
+  @override
+  String toString() {
+    return 'NewEventPhotoManagerRouteArgs{key: $key, bloc: $bloc}';
   }
 }
 
