@@ -1,0 +1,16 @@
+query fetchEvents($params: SearchEventInput!) {
+	fetchEvents(params: $params) {
+	id
+	title
+	country
+	displayCity
+	displayState
+	fullAddress
+	startDate
+	endDate
+	coverImageUrl
+	paymentRequired
+	cosplayRequired
+	lonlat
+	}
+}
