@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:senpai/core/widgets/senpai_app_bar.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/screens/events_list/widgets/events_list_content.dart';
-
 import 'package:senpai/utils/constants.dart';
-import 'package:senpai/utils/methods/utils.dart';
 
 @RoutePage()
 class EventsListPage extends StatelessWidget {
@@ -18,20 +16,6 @@ class EventsListPage extends StatelessWidget {
       appBar: SenpaiAppBar(
         title: R.strings.eventsConventionsTitle,
         hasLeading: false,
-        actions: [
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: EdgeInsets.only(right: $constants.insets.sm),
-              child: Text(
-                R.strings.filterTitle,
-                style: getTextTheme(context).bodySmall!.copyWith(
-                      letterSpacing: 0,
-                    ),
-              ),
-            ),
-          ),
-        ],
       ),
       // Herbert Joseph 11.03
       // Just a note: until Events & Conventions are fully complete,

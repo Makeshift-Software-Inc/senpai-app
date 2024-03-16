@@ -28,45 +28,48 @@ class NotchedContainerWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular($constants.corners.xlg),
           color: $constants.palette.darkGrey2.withOpacity(0.8),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+        child: Stack(
           children: [
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  title,
-                  style: getTextTheme(context).headlineSmall!,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Column(
                   children: [
-                    Icon(
-                      Icons.location_pin,
-                      size: $constants.insets.xs,
-                      color: $constants.palette.white,
-                    ),
-                    SizedBox(
-                      width: $constants.insets.xxs,
-                    ),
                     Text(
-                      subtitle,
-                      style: getTextTheme(context).labelMedium!,
+                      title,
+                      style: getTextTheme(context).headlineSmall!,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.location_pin,
+                          size: $constants.insets.xs,
+                          color: $constants.palette.white,
+                        ),
+                        SizedBox(
+                          width: $constants.insets.xxs,
+                        ),
+                        Text(
+                          subtitle,
+                          style: getTextTheme(context).labelMedium!,
+                        ),
+                      ],
                     ),
                   ],
                 ),
+                SizedBox(
+                  width: $constants.insets.sm,
+                ),
               ],
             ),
-            SizedBox(
-              width: $constants.insets.xl,
-            ),
-            SvgPicture.asset(
-              PathConstants.arrowsForward,
-              width: $constants.corners.sm,
-              height: $constants.corners.sm,
-              fit: BoxFit.contain,
-            ),
-            SizedBox(
-              width: $constants.insets.sm,
+            Align(alignment: Alignment.centerRight,
+              child: SvgPicture.asset(
+                PathConstants.arrowsForward,
+                width: $constants.corners.sm,
+                height: $constants.corners.sm,
+                fit: BoxFit.contain,
+              ),
             ),
           ],
         ),
