@@ -88,43 +88,39 @@ class _EventsListContentState extends State<EventsListContent> {
           child: ValueListenableBuilder(
             valueListenable: bloc.eventsListType,
             builder: (context, type, child) {
-              return SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  // return Wrap(
-                  //   runSpacing: $constants.insets.xs,
-                  children: [
-                    _buildItemEventType(
-                      title: R.strings.normalEvents,
-                      type: EventsListType.normal,
-                      selectedType: type,
-                      onTap: () {
-                        if (type == EventsListType.normal) return;
-                        onNormalEventsTapped(context);
-                      },
-                    ),
-                    SizedBox(width: $constants.insets.xs),
-                    _buildItemEventType(
-                      title: R.strings.conventionsText,
-                      type: EventsListType.conventions,
-                      selectedType: type,
-                      onTap: () {
-                        if (type == EventsListType.conventions) return;
-                        onConventionsTapped(context);
-                      },
-                    ),
-                    SizedBox(width: $constants.insets.xs),
-                    _buildItemEventType(
-                      title: R.strings.yourEvents,
-                      type: EventsListType.yourEvents,
-                      selectedType: type,
-                      onTap: () {
-                        if (type == EventsListType.yourEvents) return;
-                        onYourEventsTapped(context);
-                      },
-                    ),
-                  ],
-                ),
+              return Wrap(
+                runSpacing: $constants.insets.xs,
+                children: [
+                  _buildItemEventType(
+                    title: R.strings.normalEvents,
+                    type: EventsListType.normal,
+                    selectedType: type,
+                    onTap: () {
+                      if (type == EventsListType.normal) return;
+                      onNormalEventsTapped(context);
+                    },
+                  ),
+                  SizedBox(width: $constants.insets.xs),
+                  _buildItemEventType(
+                    title: R.strings.conventionsText,
+                    type: EventsListType.conventions,
+                    selectedType: type,
+                    onTap: () {
+                      if (type == EventsListType.conventions) return;
+                      onConventionsTapped(context);
+                    },
+                  ),
+                  SizedBox(width: $constants.insets.xs),
+                  _buildItemEventType(
+                    title: R.strings.yourEvents,
+                    type: EventsListType.yourEvents,
+                    selectedType: type,
+                    onTap: () {
+                      if (type == EventsListType.yourEvents) return;
+                      onYourEventsTapped(context);
+                    },
+                  ),
+                ],
               );
             },
           ),
