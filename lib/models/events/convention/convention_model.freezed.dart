@@ -30,6 +30,7 @@ mixin _$ConventionModel {
   DateTime? get endDate => throw _privateConstructorUsedError;
   String? get lonlat => throw _privateConstructorUsedError;
   String? get website => throw _privateConstructorUsedError;
+  bool? get paymentRequired => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +54,8 @@ abstract class $ConventionModelCopyWith<$Res> {
       String? displayState,
       DateTime? endDate,
       String? lonlat,
-      String? website});
+      String? website,
+      bool? paymentRequired});
 }
 
 /// @nodoc
@@ -79,6 +81,7 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
     Object? endDate = freezed,
     Object? lonlat = freezed,
     Object? website = freezed,
+    Object? paymentRequired = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -121,6 +124,10 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
           ? _value.website
           : website // ignore: cast_nullable_to_non_nullable
               as String?,
+      paymentRequired: freezed == paymentRequired
+          ? _value.paymentRequired
+          : paymentRequired // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -143,7 +150,8 @@ abstract class _$$ConventionModelImplCopyWith<$Res>
       String? displayState,
       DateTime? endDate,
       String? lonlat,
-      String? website});
+      String? website,
+      bool? paymentRequired});
 }
 
 /// @nodoc
@@ -167,6 +175,7 @@ class __$$ConventionModelImplCopyWithImpl<$Res>
     Object? endDate = freezed,
     Object? lonlat = freezed,
     Object? website = freezed,
+    Object? paymentRequired = freezed,
   }) {
     return _then(_$ConventionModelImpl(
       id: null == id
@@ -209,6 +218,10 @@ class __$$ConventionModelImplCopyWithImpl<$Res>
           ? _value.website
           : website // ignore: cast_nullable_to_non_nullable
               as String?,
+      paymentRequired: freezed == paymentRequired
+          ? _value.paymentRequired
+          : paymentRequired // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -226,7 +239,8 @@ class _$ConventionModelImpl implements _ConventionModel {
       this.displayState,
       this.endDate,
       this.lonlat,
-      this.website});
+      this.website,
+      this.paymentRequired});
 
   factory _$ConventionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConventionModelImplFromJson(json);
@@ -251,10 +265,12 @@ class _$ConventionModelImpl implements _ConventionModel {
   final String? lonlat;
   @override
   final String? website;
+  @override
+  final bool? paymentRequired;
 
   @override
   String toString() {
-    return 'ConventionModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, website: $website)';
+    return 'ConventionModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, website: $website, paymentRequired: $paymentRequired)';
   }
 
   @override
@@ -276,7 +292,9 @@ class _$ConventionModelImpl implements _ConventionModel {
                 other.displayState == displayState) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.lonlat, lonlat) || other.lonlat == lonlat) &&
-            (identical(other.website, website) || other.website == website));
+            (identical(other.website, website) || other.website == website) &&
+            (identical(other.paymentRequired, paymentRequired) ||
+                other.paymentRequired == paymentRequired));
   }
 
   @JsonKey(ignore: true)
@@ -292,7 +310,8 @@ class _$ConventionModelImpl implements _ConventionModel {
       displayState,
       endDate,
       lonlat,
-      website);
+      website,
+      paymentRequired);
 
   @JsonKey(ignore: true)
   @override
@@ -320,7 +339,8 @@ abstract class _ConventionModel implements ConventionModel {
       final String? displayState,
       final DateTime? endDate,
       final String? lonlat,
-      final String? website}) = _$ConventionModelImpl;
+      final String? website,
+      final bool? paymentRequired}) = _$ConventionModelImpl;
 
   factory _ConventionModel.fromJson(Map<String, dynamic> json) =
       _$ConventionModelImpl.fromJson;
@@ -345,6 +365,8 @@ abstract class _ConventionModel implements ConventionModel {
   String? get lonlat;
   @override
   String? get website;
+  @override
+  bool? get paymentRequired;
   @override
   @JsonKey(ignore: true)
   _$$ConventionModelImplCopyWith<_$ConventionModelImpl> get copyWith =>

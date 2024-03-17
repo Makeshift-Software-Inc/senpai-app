@@ -10,6 +10,7 @@ query fetchConventions($params: SearchEventInput!) {
     displayCity
     displayState
     coverImageUrl
+    paymentRequired
     events {
       id
       title

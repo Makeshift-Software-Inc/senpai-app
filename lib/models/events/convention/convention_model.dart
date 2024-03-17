@@ -16,6 +16,7 @@ class ConventionModel with _$ConventionModel {
     DateTime? endDate,
     String? lonlat,
     String? website,
+    bool? paymentRequired,
     //add another parameters
   }) = _ConventionModel;
 
@@ -30,6 +31,7 @@ class ConventionModel with _$ConventionModel {
         displayCity: '',
         displayState: '',
         website: '',
+        paymentRequired: false,
       );
 
   factory ConventionModel.fromJson(Map<String, dynamic> json) =>

@@ -21,6 +21,7 @@ _$ConventionModelImpl _$$ConventionModelImplFromJson(
           : DateTime.parse(json['endDate'] as String),
       lonlat: json['lonlat'] as String?,
       website: json['website'] as String?,
+      paymentRequired: json['paymentRequired'] as bool?,
     );
 
 Map<String, dynamic> _$$ConventionModelImplToJson(
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$ConventionModelImplToJson(
       'endDate': instance.endDate?.toIso8601String(),
       'lonlat': instance.lonlat,
       'website': instance.website,
+      'paymentRequired': instance.paymentRequired,
     };
