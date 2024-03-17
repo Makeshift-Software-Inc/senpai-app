@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:senpai/core/widgets/loading.dart';
+import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/screens/events_list/widgets/notched_container_widget.dart';
 import 'package:senpai/utils/constants.dart';
@@ -15,12 +17,15 @@ class EventListTile extends StatelessWidget {
     required this.title,
     required this.city,
     required this.state,
+    required this.paymentRequired,
   }) : super(key: key);
+
   final String coverImageUrl;
   final DateTime startDate;
   final String title;
   final String city;
   final String state;
+  final bool paymentRequired;
 
   @override
   Widget build(BuildContext context) {
@@ -113,19 +118,45 @@ class EventListTile extends StatelessWidget {
                   color: $constants.palette.black,
                   shape: BoxShape.circle,
                 ),
-                child: Text(
-                  R.strings.freeTitle,
-                  style: getTextTheme(context).headlineSmall?.copyWith(
-                        color: $constants.palette.white,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w900,
-                      ),
-                ),
+                child: _buildPaidWidget(context),
               ),
             ),
           )
         ],
       ),
     );
+  }
+
+  Widget _buildPaidWidget(BuildContext context) {
+    if (paymentRequired) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            PathConstants.eventPaidIcon,
+            width: $constants.corners.xlg,
+            height: $constants.corners.xlg,
+            fit: BoxFit.contain,
+          ),
+          Text(
+            'Paid Entry',
+            style: getTextTheme(context).headlineSmall?.copyWith(
+                  color: $constants.palette.white,
+                  fontSize: 8,
+                  fontWeight: FontWeight.w900,
+                ),
+          ),
+        ],
+      );
+    } else {
+      return Text(
+        R.strings.freeTitle,
+        style: getTextTheme(context).headlineSmall?.copyWith(
+              color: $constants.palette.white,
+              fontSize: 10,
+              fontWeight: FontWeight.w900,
+            ),
+      );
+    }
   }
 }
