@@ -6,13 +6,11 @@ import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/screens/edit_profile/widgets/edit_profile_content/edit_profile_input_widget.dart';
 import 'package:senpai/screens/new_event/widgets/event_location_textfield_widget.dart';
 import 'package:senpai/screens/new_event/bloc/new_event_bloc.dart';
-import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
 import 'package:senpai/screens/new_event/new_event_convention_content/new_event_convention_content.dart';
 import 'package:senpai/screens/new_event/widgets/new_event_cosplay_widget.dart';
 import 'package:senpai/screens/new_event/widgets/new_event_date_picker.dart';
 import 'package:senpai/screens/new_event/widgets/new_event_image_widget.dart';
-import 'package:senpai/screens/new_event/widgets/new_event_item_button.dart';
-import 'package:senpai/core/widgets/senpai_toogle_buttons.dart';
+import 'package:senpai/screens/new_event/widgets/new_event_payment_widget.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
@@ -50,7 +48,9 @@ class NewEventContent extends StatelessWidget {
                 const NewEventDatePicker(),
                 _buildPartySizeWidget(context, state),
                 SizedBox(height: $constants.insets.sm),
-                _buildPaymentLayer(context),
+                NewEventPaymentWidget(
+                  paymentRequiredIndex: bloc.paymentRequiredIndex,
+                ),
                 SizedBox(height: $constants.insets.sm),
                 NewEventCosplayWidget(
                   cosplayRequiredIndex: bloc.cosplayRequiredIndex,
@@ -123,22 +123,6 @@ class NewEventContent extends StatelessWidget {
       errorText: R.strings.invalidMaxPartySizeError,
       isError:
           state is ErrorNewEventState && state.isEnable && !isValidPartySize,
-    );
-  }
-
-  Widget _buildPaymentLayer(BuildContext context) {
-    final bloc = BlocProvider.of<NewEventBloc>(context);
-    return NewEventItemButton(
-      title: R.strings.requiresPaymentText,
-      customWidget: SenpaiToggleButtons(
-        items: PaymentRequired.values
-            .map((item) => paymentToString(item))
-            .toList(),
-        onTapItem: (index) {
-          bloc.add(OnChangeRequiredPaymentEvent(index));
-        },
-        selectedIndex: bloc.paymentRequiredIndex,
-      ),
     );
   }
 
