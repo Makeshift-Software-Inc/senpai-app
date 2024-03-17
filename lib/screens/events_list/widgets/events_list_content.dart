@@ -153,6 +153,7 @@ class _EventsListContentState extends State<EventsListContent> {
                     title: event.title,
                     city: event.displayCity ?? '',
                     state: event.displayState ?? '',
+                    paymentRequired: event.paymentRequired ?? false,
                   );
                 }),
           );
@@ -172,6 +173,7 @@ class _EventsListContentState extends State<EventsListContent> {
                     title: convention.title,
                     city: convention.displayCity ?? '',
                     state: convention.displayState ?? '',
+                    paymentRequired: false,
                   );
                 }),
           );
