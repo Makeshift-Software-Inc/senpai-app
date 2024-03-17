@@ -1,28 +1,23 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:fresh_graphql/fresh_graphql.dart';
 import 'package:senpai/core/events/blocs/fetch_conventions/fetch_conventions_bloc.dart';
 import 'package:senpai/core/events/blocs/fetch_events/fetch_events_bloc.dart';
-import 'package:senpai/core/graphql/blocs/query/query_bloc.dart';
-import 'package:senpai/core/widgets/loading.dart';
+
+import 'package:senpai/core/widgets/icon_input.dart';
+
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/dependency_injection/injection.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/models/auth/auth_model.dart';
-import 'package:senpai/models/events/convention/convention_model.dart';
-import 'package:senpai/models/events/event/event_model.dart';
-import 'package:senpai/routes/app_router.dart';
+
 import 'package:senpai/screens/events_list/bloc/events_list_bloc.dart';
 import 'package:senpai/screens/events_list/widgets/empty_events_widget.dart';
 import 'package:senpai/screens/events_list/widgets/event_list_tile.dart';
 import 'package:senpai/utils/constants.dart';
-import 'package:senpai/utils/helpers/snack_bar_helpers.dart';
-import 'package:senpai/utils/methods/aliases.dart';
-import 'package:senpai/utils/methods/utils.dart';
 
-enum EventsListType { normal, conventions, yourEvents }
+import 'package:senpai/utils/methods/utils.dart';
 
 class EventsListContent extends StatefulWidget {
   const EventsListContent({super.key});
@@ -32,78 +27,35 @@ class EventsListContent extends StatefulWidget {
 }
 
 class _EventsListContentState extends State<EventsListContent> {
-  final ValueNotifier<EventsListType> eventsListType =
-      ValueNotifier(EventsListType.normal);
-
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Builder(builder: (context) {
-      return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-              create: (_) => EventsListBloc()..add(OnLoadEventList(1))),
-          BlocProvider(
-              create: (_) => getIt<FetchEventsBloc>()
-                ..fetchEvents(startDate: DateTime.now())),
-          BlocProvider(create: (_) => getIt<FetchConventionsBloc>()),
-        ],
-        child: Stack(
+    return BlocBuilder<EventsListBloc, EventsListState>(
+      builder: (context, state) {
+        return Column(
           children: [
-            BlocBuilder<EventsListBloc, EventsListState>(
-                builder: (context, state) {
-              return Column(
-                children: [
-                  _buildHeader(),
-                  _buildContent(state),
-                ],
-              );
-            }),
-            _buildFetchEventsListeners(),
-            _buildFetchConventionsListeners(),
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: _buildCreateEventButton(context)),
+            _buildHeader(),
+            _buildContent(state),
           ],
-        ),
-      );
-    }));
+        );
+      },
+    );
   }
 
   Widget _buildHeader() {
+    final bloc = BlocProvider.of<EventsListBloc>(context);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width * 0.75,
-              margin: EdgeInsets.only(
-                top: $constants.insets.md,
-                left: $constants.insets.sm,
-              ),
-              child: TextField(
-                maxLines: 1,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(right: $constants.insets.xs),
-                  hintText: R.strings.searchText,
-                  hintStyle: getTextTheme(context)
-                      .bodySmall!
-                      .apply(color: $constants.palette.darkGrey),
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.circular($constants.corners.xxl),
-                      borderSide:
-                          BorderSide(color: $constants.palette.buttonBorder)),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius:
-                          BorderRadius.circular($constants.corners.xxl),
-                      borderSide:
-                          BorderSide(color: $constants.palette.buttonBorder)),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: $constants.palette.white,
-                  ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                  top: $constants.insets.md,
+                  left: $constants.insets.sm,
                 ),
+                child: _buildSearch(context),
               ),
             ),
             InkWell(
@@ -134,96 +86,48 @@ class _EventsListContentState extends State<EventsListContent> {
               top: $constants.insets.md,
               bottom: $constants.insets.sm),
           child: ValueListenableBuilder(
-              valueListenable: eventsListType,
-              builder: (context, type, child) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            valueListenable: bloc.eventsListType,
+            builder: (context, type, child) {
+              return SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  // return Wrap(
+                  //   runSpacing: $constants.insets.xs,
                   children: [
-                    InkWell(
+                    _buildItemEventType(
+                      title: R.strings.normalEvents,
+                      type: EventsListType.normal,
+                      selectedType: type,
                       onTap: () {
                         if (type == EventsListType.normal) return;
                         onNormalEventsTapped(context);
                       },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: $constants.insets.sm,
-                            vertical: $constants.insets.xs),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular($constants.corners.xlg),
-                            color: type == EventsListType.normal
-                                ? $constants.palette.white
-                                : $constants.palette.black,
-                            border: Border.all(
-                                color: $constants.palette.buttonBorder)),
-                        child: Text(
-                          R.strings.normalEvents,
-                          style: getTextTheme(context).headlineSmall!.copyWith(
-                              color: type == EventsListType.normal
-                                  ? $constants.palette.black
-                                  : $constants.palette.white,
-                              fontSize: 14),
-                        ),
-                      ),
                     ),
-                    InkWell(
+                    SizedBox(width: $constants.insets.xs),
+                    _buildItemEventType(
+                      title: R.strings.conventionsText,
+                      type: EventsListType.conventions,
+                      selectedType: type,
                       onTap: () {
                         if (type == EventsListType.conventions) return;
                         onConventionsTapped(context);
                       },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: $constants.insets.sm,
-                            vertical: $constants.insets.xs),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.circular($constants.corners.xlg),
-                            color: type == EventsListType.conventions
-                                ? $constants.palette.white
-                                : $constants.palette.black,
-                            border: Border.all(
-                                color: $constants.palette.buttonBorder)),
-                        child: Text(
-                          R.strings.conventionsText,
-                          style: getTextTheme(context).headlineSmall!.copyWith(
-                              color: type == EventsListType.conventions
-                                  ? $constants.palette.black
-                                  : $constants.palette.white,
-                              fontSize: 14),
-                        ),
-                      ),
                     ),
-                    InkWell(
+                    SizedBox(width: $constants.insets.xs),
+                    _buildItemEventType(
+                      title: R.strings.yourEvents,
+                      type: EventsListType.yourEvents,
+                      selectedType: type,
                       onTap: () {
                         if (type == EventsListType.yourEvents) return;
                         onYourEventsTapped(context);
                       },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: $constants.insets.sm,
-                            vertical: $constants.insets.xs),
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.circular($constants.corners.xlg),
-                          border: Border.all(
-                              color: $constants.palette.buttonBorder),
-                          gradient: type == EventsListType.yourEvents
-                              ? $constants.palette.mainGradient
-                              : null,
-                          color: type == EventsListType.yourEvents
-                              ? $constants.palette.white
-                              : $constants.palette.black,
-                        ),
-                        child: Text(
-                          R.strings.yourEvents,
-                          style: getTextTheme(context).headlineSmall!.copyWith(
-                              color: $constants.palette.white, fontSize: 14),
-                        ),
-                      ),
-                    )
+                    ),
                   ],
-                );
-              }),
+                ),
+              );
+            },
+          ),
         ),
       ],
     );
@@ -282,124 +186,9 @@ class _EventsListContentState extends State<EventsListContent> {
     });
   }
 
-  Widget _buildFetchEventsListeners() {
-    return BlocListener<FetchEventsBloc, QueryState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          loading: (result) {},
-          error: (error, result) {
-            showSnackBarError(context, R.strings.serverError);
-          },
-          loaded: (data, result) {
-            final response = result.data;
-            if (response == null) {
-              showSnackBarError(context, R.strings.nullUser);
-              logIt.wtf("A successful empty response just got set events");
-              return;
-            }
-            List<dynamic>? events;
-            try {
-              events = response["fetchEvents"];
-              final eventsList =
-                  events!.map((e) => EventModel.fromJson(e)).toList();
-              final bloc = BlocProvider.of<EventsListBloc>(context);
-              if (eventsListType.value == EventsListType.normal) {
-                bloc.add(OnEventsListLoaded(eventsList));
-              } else if (eventsListType.value == EventsListType.yourEvents) {
-                bloc.add(OnYourEventsListLoaded(eventsList));
-              }
-            } catch (e) {
-              logIt.error("Error accessing FetchEvents from response: $e");
-              events = null;
-            }
-            if (events == null) {
-              showSnackBarError(context, R.strings.serverError);
-              logIt.error("A FetchEvents with error");
-            }
-          },
-        );
-      },
-      child: BlocBuilder<FetchEventsBloc, QueryState>(
-        builder: (context, state) {
-          return state.maybeWhen<Widget>(
-            loading: (result) => const SenpaiLoading(),
-            orElse: () => const SizedBox.shrink(),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildFetchConventionsListeners() {
-    return BlocListener<FetchConventionsBloc, QueryState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          loading: (result) {},
-          error: (error, result) {
-            showSnackBarError(context, R.strings.serverError);
-          },
-          loaded: (data, result) {
-            final response = result.data;
-            if (response == null) {
-              showSnackBarError(context, R.strings.nullUser);
-              logIt.wtf("A successful empty response just got set conventions");
-              return;
-            }
-            List<dynamic>? conventions;
-            try {
-              conventions = response["fetchConventions"];
-              final conventionsList =
-                  conventions!.map((e) => ConventionModel.fromJson(e)).toList();
-              final bloc = BlocProvider.of<EventsListBloc>(context);
-              bloc.add(OnConventionsListLoaded(conventionsList));
-            } catch (e) {
-              logIt.error("Error accessing FetchConventions from response: $e");
-              conventions = null;
-            }
-            if (conventions == null) {
-              showSnackBarError(context, R.strings.serverError);
-              logIt.error("A FetchConventions with error");
-            }
-          },
-        );
-      },
-      child: BlocBuilder<FetchConventionsBloc, QueryState>(
-        builder: (context, state) {
-          return state.maybeWhen<Widget>(
-            loading: (result) => const SenpaiLoading(),
-            orElse: () => const SizedBox.shrink(),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildCreateEventButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.router.push(
-          const NewEventRoute(),
-        );
-      },
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          SvgPicture.asset(
-            PathConstants.eventButtonIcon,
-            height: $constants.corners.xxl,
-          ),
-          Text(
-            R.strings.createEventTitle,
-            style: getTextTheme(context).bodyMedium?.copyWith(
-                color: $constants.palette.white, fontWeight: FontWeight.w600),
-          ),
-        ],
-      ),
-    );
-  }
-
   void onNormalEventsTapped(BuildContext context) {
-    eventsListType.value = EventsListType.normal;
+    final bloc = BlocProvider.of<EventsListBloc>(context);
+    bloc.eventsListType.value = EventsListType.normal;
     final eventsListBloc = context.read<EventsListBloc>();
     if (eventsListBloc.eventsList.isNotEmpty) {
       eventsListBloc.add(OnEventsListLoaded(const []));
@@ -410,7 +199,8 @@ class _EventsListContentState extends State<EventsListContent> {
   }
 
   void onConventionsTapped(BuildContext context) {
-    eventsListType.value = EventsListType.conventions;
+    final bloc = BlocProvider.of<EventsListBloc>(context);
+    bloc.eventsListType.value = EventsListType.conventions;
     final eventsListBloc = context.read<EventsListBloc>();
     if (eventsListBloc.conventionsList.isNotEmpty) {
       eventsListBloc.add(OnConventionsListLoaded(const []));
@@ -422,7 +212,8 @@ class _EventsListContentState extends State<EventsListContent> {
   }
 
   Future<void> onYourEventsTapped(BuildContext context) async {
-    eventsListType.value = EventsListType.yourEvents;
+    final bloc = BlocProvider.of<EventsListBloc>(context);
+    bloc.eventsListType.value = EventsListType.yourEvents;
     final eventsListBloc = context.read<EventsListBloc>();
     if (eventsListBloc.yourEventsList.isNotEmpty) {
       eventsListBloc.add(OnEventsListLoaded(const []));
@@ -437,9 +228,53 @@ class _EventsListContentState extends State<EventsListContent> {
     }
   }
 
-  @override
-  void dispose() {
-    eventsListType.dispose();
-    super.dispose();
+  Widget _buildSearch(BuildContext context) {
+    return SenpaiIconInput(
+      hintText: R.strings.searchText,
+      borderRadius: $constants.corners.xxl,
+      controller: TextEditingController(),
+      onChange: (String search) {},
+      iconPath: PathConstants.searchIcon,
+      focusNode: FocusNode(),
+    );
+  }
+
+  Widget _buildItemEventType({
+    required EventsListType type,
+    required EventsListType selectedType,
+    required String title,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: $constants.insets.sm,
+          vertical: $constants.insets.xs,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular($constants.corners.xlg),
+          color: type == selectedType
+              ? $constants.palette.white
+              : $constants.palette.black,
+          border: Border.all(
+            color: $constants.palette.buttonBorder,
+          ),
+          gradient: type == EventsListType.yourEvents && selectedType == type
+              ? $constants.palette.mainGradient
+              : null,
+        ),
+        child: Text(
+          title,
+          style: getTextTheme(context).headlineSmall!.copyWith(
+                color: type == selectedType &&
+                        selectedType != EventsListType.yourEvents
+                    ? $constants.palette.black
+                    : $constants.palette.white,
+                fontSize: 14,
+              ),
+        ),
+      ),
+    );
   }
 }

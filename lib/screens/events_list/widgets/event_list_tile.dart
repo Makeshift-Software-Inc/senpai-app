@@ -29,28 +29,29 @@ class EventListTile extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-              height: $constants.events.eventListImageHeight,
-              margin: EdgeInsets.all($constants.insets.sm),
-              decoration: BoxDecoration(
-                color: $constants.palette.white,
-                borderRadius: BorderRadius.circular($constants.corners.xlg),
-              ),
-              child: CachedNetworkImage(
-                imageUrl: coverImageUrl,
-                imageBuilder: (context, imageProvider) => Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular($constants.corners.xlg),
-                    image: DecorationImage(
-                      image: imageProvider,
-                      fit: BoxFit.cover,
-                    ),
+            height: $constants.events.eventListImageHeight,
+            margin: EdgeInsets.all($constants.insets.sm),
+            decoration: BoxDecoration(
+              color: $constants.palette.white,
+              borderRadius: BorderRadius.circular($constants.corners.xlg),
+            ),
+            child: CachedNetworkImage(
+              imageUrl: coverImageUrl,
+              imageBuilder: (context, imageProvider) => Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular($constants.corners.xlg),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
                   ),
                 ),
-                placeholder: (context, url) => const Center(
-                  child: SenpaiLoading(),
-                ),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              )),
+              ),
+              placeholder: (context, url) => const Center(
+                child: SenpaiLoading(),
+              ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
+          ),
           Padding(
             padding: EdgeInsets.only(
                 top: $constants.insets.md, right: $constants.insets.lg),
@@ -105,18 +106,22 @@ class EventListTile extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Container(
-                  width: $constants.insets.xl,
-                  height: $constants.insets.xl,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: $constants.palette.black,
-                    shape: BoxShape.circle,
-                  ),
-                  child: Text(R.strings.freeTitle,
-                      style: getTextTheme(context).headlineSmall?.copyWith(
-                          color: $constants.palette.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w900))),
+                width: $constants.insets.xl,
+                height: $constants.insets.xl,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: $constants.palette.black,
+                  shape: BoxShape.circle,
+                ),
+                child: Text(
+                  R.strings.freeTitle,
+                  style: getTextTheme(context).headlineSmall?.copyWith(
+                        color: $constants.palette.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w900,
+                      ),
+                ),
+              ),
             ),
           )
         ],
