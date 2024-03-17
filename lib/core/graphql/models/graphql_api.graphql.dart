@@ -3946,6 +3946,8 @@ class FetchConventions$Query$FetchConventions extends JsonSerializable
 
   String? coverImageUrl;
 
+  late bool paymentRequired;
+
   List<FetchConventions$Query$FetchConventions$Events>? events;
 
   @override
@@ -3960,6 +3962,7 @@ class FetchConventions$Query$FetchConventions extends JsonSerializable
         displayCity,
         displayState,
         coverImageUrl,
+        paymentRequired,
         events
       ];
   @override
@@ -8824,6 +8827,13 @@ final FETCH_CONVENTIONS_QUERY_DOCUMENT = DocumentNode(definitions: [
           ),
           FieldNode(
             name: NameNode(value: 'coverImageUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'paymentRequired'),
             alias: null,
             arguments: [],
             directives: [],
