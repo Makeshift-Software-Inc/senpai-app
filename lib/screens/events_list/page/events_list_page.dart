@@ -152,26 +152,35 @@ class EventsListPage extends StatelessWidget {
   }
 
   Widget _buildCreateEventButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.router.push(
-          const NewEventRoute(),
-        );
+    return BlocBuilder<EventsListBloc, EventsListState>(
+      builder: (context, state) {
+        final bloc = BlocProvider.of<EventsListBloc>(context);
+        if (bloc.eventsListType.value == EventsListType.yourEvents) {
+          return GestureDetector(
+            onTap: () {
+              context.router.push(
+                const NewEventRoute(),
+              );
+            },
+            child: Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                SvgPicture.asset(
+                  PathConstants.eventButtonIcon,
+                  height: $constants.corners.xxl,
+                ),
+                Text(
+                  R.strings.createEventTitle,
+                  style: getTextTheme(context).bodyMedium?.copyWith(
+                      color: $constants.palette.white,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+          );
+        }
+        return const SizedBox.shrink();
       },
-      child: Stack(
-        alignment: AlignmentDirectional.center,
-        children: [
-          SvgPicture.asset(
-            PathConstants.eventButtonIcon,
-            height: $constants.corners.xxl,
-          ),
-          Text(
-            R.strings.createEventTitle,
-            style: getTextTheme(context).bodyMedium?.copyWith(
-                color: $constants.palette.white, fontWeight: FontWeight.w600),
-          ),
-        ],
-      ),
     );
   }
 }
