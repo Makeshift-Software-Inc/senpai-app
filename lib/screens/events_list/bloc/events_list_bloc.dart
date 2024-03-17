@@ -7,11 +7,16 @@ part 'events_list_event.dart';
 
 part 'events_list_state.dart';
 
+enum EventsListType { normal, conventions, yourEvents }
+
 class EventsListBloc extends Bloc<EventsListEvent, EventsListState> {
   int page = 1;
   List<EventModel> eventsList = [];
   List<ConventionModel> conventionsList = [];
   List<EventModel> yourEventsList = [];
+
+  final ValueNotifier<EventsListType> eventsListType =
+      ValueNotifier(EventsListType.normal);
 
   EventsListBloc() : super(LoadingEventsListState()) {
     on<OnLoadEventList>((event, emit) async {
@@ -32,5 +37,11 @@ class EventsListBloc extends Bloc<EventsListEvent, EventsListState> {
       yourEventsList.addAll(event.eventsList);
       emit(LoadedYourEventsListState(yourEventsList));
     });
+  }
+
+  @override
+  Future<void> close() {
+    eventsListType.dispose();
+    return super.close();
   }
 }
