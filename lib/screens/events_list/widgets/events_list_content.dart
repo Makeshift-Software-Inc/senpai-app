@@ -136,42 +136,51 @@ class _EventsListContentState extends State<EventsListContent> {
           final eventsList = state.runtimeType == LoadedEventsListState
               ? (state as LoadedEventsListState).eventsList
               : (state as LoadedYourEventsListState).eventsList;
-          return Flexible(
-            child: ListView.builder(
-                itemCount: eventsList.length,
-                shrinkWrap: true,
-                padding: EdgeInsets.only(bottom: $constants.insets.xl),
-                itemBuilder: (_, i) {
-                  final event = eventsList[i];
-                  return EventListTile(
-                    coverImageUrl: event.coverImageUrl,
-                    startDate: event.startDate,
-                    title: event.title,
-                    city: event.displayCity ?? '',
-                    state: event.displayState ?? '',
-                    paymentRequired: event.paymentRequired ?? false,
-                  );
-                }),
+          return Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async => state.runtimeType == LoadedEventsListState
+                  ? onNormalEventsTapped(context, isRefresh: true)
+                  : onYourEventsTapped(context, isRefresh: true),
+              child: ListView.builder(
+                  itemCount: eventsList.length,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(bottom: $constants.insets.xl),
+                  itemBuilder: (_, i) {
+                    final event = eventsList[i];
+                    return EventListTile(
+                      coverImageUrl: event.coverImageUrl,
+                      startDate: event.startDate,
+                      title: event.title,
+                      city: event.displayCity ?? '',
+                      state: event.displayState ?? '',
+                      paymentRequired: event.paymentRequired ?? false,
+                    );
+                  }),
+            ),
           );
         case LoadedConventionsListState:
           final conventionsList =
               (state as LoadedConventionsListState).conventionsList;
-          return Flexible(
-            child: ListView.builder(
-                itemCount: conventionsList.length,
-                shrinkWrap: true,
-                padding: EdgeInsets.only(bottom: $constants.insets.xl),
-                itemBuilder: (_, i) {
-                  final convention = conventionsList[i];
-                  return EventListTile(
-                    coverImageUrl: convention.coverImageUrl,
-                    startDate: convention.startDate,
-                    title: convention.title,
-                    city: convention.displayCity ?? '',
-                    state: convention.displayState ?? '',
-                    paymentRequired: false,
-                  );
-                }),
+          return Expanded(
+            child: RefreshIndicator(
+              onRefresh: () async =>
+                  onConventionsTapped(context, isRefresh: true),
+              child: ListView.builder(
+                  itemCount: conventionsList.length,
+                  shrinkWrap: true,
+                  padding: EdgeInsets.only(bottom: $constants.insets.xl),
+                  itemBuilder: (_, i) {
+                    final convention = conventionsList[i];
+                    return EventListTile(
+                      coverImageUrl: convention.coverImageUrl,
+                      startDate: convention.startDate,
+                      title: convention.title,
+                      city: convention.displayCity ?? '',
+                      state: convention.displayState ?? '',
+                      paymentRequired: false,
+                    );
+                  }),
+            ),
           );
         case EmptyEventsListState || EmptyConventionsListState:
           return const Expanded(
@@ -184,38 +193,51 @@ class _EventsListContentState extends State<EventsListContent> {
     });
   }
 
-  void onNormalEventsTapped(BuildContext context) {
+  void onNormalEventsTapped(BuildContext context, {bool isRefresh = false}) {
     final bloc = BlocProvider.of<EventsListBloc>(context);
     bloc.eventsListType.value = EventsListType.normal;
     final eventsListBloc = context.read<EventsListBloc>();
-    if (eventsListBloc.eventsList.isNotEmpty) {
-      eventsListBloc.add(OnEventsListLoaded(const []));
-    } else {
+    if (isRefresh) {
+      eventsListBloc.eventsList.clear();
       final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
       fetchEventsBloc.fetchEvents(startDate: DateTime.now());
+    } else {
+      if (eventsListBloc.eventsList.isNotEmpty) {
+        eventsListBloc.add(OnEventsListLoaded(const []));
+      } else {
+        final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
+        fetchEventsBloc.fetchEvents(startDate: DateTime.now());
+      }
     }
   }
 
-  void onConventionsTapped(BuildContext context) {
+  void onConventionsTapped(BuildContext context, {bool isRefresh = false}) {
     final bloc = BlocProvider.of<EventsListBloc>(context);
     bloc.eventsListType.value = EventsListType.conventions;
     final eventsListBloc = context.read<EventsListBloc>();
-    if (eventsListBloc.conventionsList.isNotEmpty) {
-      eventsListBloc.add(OnConventionsListLoaded(const []));
-    } else {
+    if (isRefresh) {
+      eventsListBloc.conventionsList.clear();
       final fetchConventionsBloc =
           BlocProvider.of<FetchConventionsBloc>(context);
       fetchConventionsBloc.fetchConventions(startDate: DateTime.now());
+    } else {
+      if (eventsListBloc.conventionsList.isNotEmpty) {
+        eventsListBloc.add(OnConventionsListLoaded(const []));
+      } else {
+        final fetchConventionsBloc =
+            BlocProvider.of<FetchConventionsBloc>(context);
+        fetchConventionsBloc.fetchConventions(startDate: DateTime.now());
+      }
     }
   }
 
-  Future<void> onYourEventsTapped(BuildContext context) async {
+  Future<void> onYourEventsTapped(BuildContext context,
+      {bool isRefresh = false}) async {
     final bloc = BlocProvider.of<EventsListBloc>(context);
     bloc.eventsListType.value = EventsListType.yourEvents;
     final eventsListBloc = context.read<EventsListBloc>();
-    if (eventsListBloc.yourEventsList.isNotEmpty) {
-      eventsListBloc.add(OnEventsListLoaded(const []));
-    } else {
+    if (isRefresh || eventsListBloc.yourEventsList.isEmpty) {
+      eventsListBloc.yourEventsList.clear();
       final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
       final storage = getIt<TokenStorage<AuthModel>>();
       final userData = await storage.read();
@@ -223,6 +245,8 @@ class _EventsListContentState extends State<EventsListContent> {
         fetchEventsBloc.fetchEvents(
             startDate: DateTime.now(), userId: userData.user.id);
       }
+    } else {
+      eventsListBloc.add(OnEventsListLoaded(const []));
     }
   }
 
