@@ -103,6 +103,9 @@ class _ImageResources {
 
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/empty_events_list.png)
   final empty_events_list = r'assets/images/events/empty_events_list.png';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/event_paid_icon.svg)
+  final event_paid_icon = r'assets/images/events/event_paid_icon.svg';
 }
 
 class _SvgResources {
