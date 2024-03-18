@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'convention_model.dart';
+part of 'event_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-ConventionModel _$ConventionModelFromJson(Map<String, dynamic> json) {
-  return _ConventionModel.fromJson(json);
+EventModel _$EventModelFromJson(Map<String, dynamic> json) {
+  return _EventModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ConventionModel {
+mixin _$EventModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   DateTime get startDate => throw _privateConstructorUsedError;
@@ -29,20 +29,21 @@ mixin _$ConventionModel {
   String? get displayState => throw _privateConstructorUsedError;
   DateTime? get endDate => throw _privateConstructorUsedError;
   String? get lonlat => throw _privateConstructorUsedError;
-  String? get website => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
   bool? get paymentRequired => throw _privateConstructorUsedError;
+  int? get cosplayRequired => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ConventionModelCopyWith<ConventionModel> get copyWith =>
+  $EventModelCopyWith<EventModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ConventionModelCopyWith<$Res> {
-  factory $ConventionModelCopyWith(
-          ConventionModel value, $Res Function(ConventionModel) then) =
-      _$ConventionModelCopyWithImpl<$Res, ConventionModel>;
+abstract class $EventModelCopyWith<$Res> {
+  factory $EventModelCopyWith(
+          EventModel value, $Res Function(EventModel) then) =
+      _$EventModelCopyWithImpl<$Res, EventModel>;
   @useResult
   $Res call(
       {String id,
@@ -54,14 +55,15 @@ abstract class $ConventionModelCopyWith<$Res> {
       String? displayState,
       DateTime? endDate,
       String? lonlat,
-      String? website,
-      bool? paymentRequired});
+      String? country,
+      bool? paymentRequired,
+      int? cosplayRequired});
 }
 
 /// @nodoc
-class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
-    implements $ConventionModelCopyWith<$Res> {
-  _$ConventionModelCopyWithImpl(this._value, this._then);
+class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
+    implements $EventModelCopyWith<$Res> {
+  _$EventModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -80,8 +82,9 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
     Object? displayState = freezed,
     Object? endDate = freezed,
     Object? lonlat = freezed,
-    Object? website = freezed,
+    Object? country = freezed,
     Object? paymentRequired = freezed,
+    Object? cosplayRequired = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -120,24 +123,28 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
           ? _value.lonlat
           : lonlat // ignore: cast_nullable_to_non_nullable
               as String?,
-      website: freezed == website
-          ? _value.website
-          : website // ignore: cast_nullable_to_non_nullable
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       paymentRequired: freezed == paymentRequired
           ? _value.paymentRequired
           : paymentRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
+      cosplayRequired: freezed == cosplayRequired
+          ? _value.cosplayRequired
+          : cosplayRequired // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$ConventionModelImplCopyWith<$Res>
-    implements $ConventionModelCopyWith<$Res> {
-  factory _$$ConventionModelImplCopyWith(_$ConventionModelImpl value,
-          $Res Function(_$ConventionModelImpl) then) =
-      __$$ConventionModelImplCopyWithImpl<$Res>;
+abstract class _$$EventModelImplCopyWith<$Res>
+    implements $EventModelCopyWith<$Res> {
+  factory _$$EventModelImplCopyWith(
+          _$EventModelImpl value, $Res Function(_$EventModelImpl) then) =
+      __$$EventModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -150,16 +157,17 @@ abstract class _$$ConventionModelImplCopyWith<$Res>
       String? displayState,
       DateTime? endDate,
       String? lonlat,
-      String? website,
-      bool? paymentRequired});
+      String? country,
+      bool? paymentRequired,
+      int? cosplayRequired});
 }
 
 /// @nodoc
-class __$$ConventionModelImplCopyWithImpl<$Res>
-    extends _$ConventionModelCopyWithImpl<$Res, _$ConventionModelImpl>
-    implements _$$ConventionModelImplCopyWith<$Res> {
-  __$$ConventionModelImplCopyWithImpl(
-      _$ConventionModelImpl _value, $Res Function(_$ConventionModelImpl) _then)
+class __$$EventModelImplCopyWithImpl<$Res>
+    extends _$EventModelCopyWithImpl<$Res, _$EventModelImpl>
+    implements _$$EventModelImplCopyWith<$Res> {
+  __$$EventModelImplCopyWithImpl(
+      _$EventModelImpl _value, $Res Function(_$EventModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -174,10 +182,11 @@ class __$$ConventionModelImplCopyWithImpl<$Res>
     Object? displayState = freezed,
     Object? endDate = freezed,
     Object? lonlat = freezed,
-    Object? website = freezed,
+    Object? country = freezed,
     Object? paymentRequired = freezed,
+    Object? cosplayRequired = freezed,
   }) {
-    return _then(_$ConventionModelImpl(
+    return _then(_$EventModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -214,22 +223,26 @@ class __$$ConventionModelImplCopyWithImpl<$Res>
           ? _value.lonlat
           : lonlat // ignore: cast_nullable_to_non_nullable
               as String?,
-      website: freezed == website
-          ? _value.website
-          : website // ignore: cast_nullable_to_non_nullable
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String?,
       paymentRequired: freezed == paymentRequired
           ? _value.paymentRequired
           : paymentRequired // ignore: cast_nullable_to_non_nullable
               as bool?,
+      cosplayRequired: freezed == cosplayRequired
+          ? _value.cosplayRequired
+          : cosplayRequired // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ConventionModelImpl implements _ConventionModel {
-  const _$ConventionModelImpl(
+class _$EventModelImpl implements _EventModel {
+  const _$EventModelImpl(
       {required this.id,
       required this.title,
       required this.startDate,
@@ -239,11 +252,12 @@ class _$ConventionModelImpl implements _ConventionModel {
       this.displayState,
       this.endDate,
       this.lonlat,
-      this.website,
-      this.paymentRequired});
+      this.country,
+      this.paymentRequired,
+      this.cosplayRequired});
 
-  factory _$ConventionModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ConventionModelImplFromJson(json);
+  factory _$EventModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EventModelImplFromJson(json);
 
   @override
   final String id;
@@ -264,20 +278,22 @@ class _$ConventionModelImpl implements _ConventionModel {
   @override
   final String? lonlat;
   @override
-  final String? website;
+  final String? country;
   @override
   final bool? paymentRequired;
+  @override
+  final int? cosplayRequired;
 
   @override
   String toString() {
-    return 'ConventionModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, website: $website, paymentRequired: $paymentRequired)';
+    return 'EventModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, country: $country, paymentRequired: $paymentRequired, cosplayRequired: $cosplayRequired)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConventionModelImpl &&
+            other is _$EventModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.startDate, startDate) ||
@@ -292,9 +308,11 @@ class _$ConventionModelImpl implements _ConventionModel {
                 other.displayState == displayState) &&
             (identical(other.endDate, endDate) || other.endDate == endDate) &&
             (identical(other.lonlat, lonlat) || other.lonlat == lonlat) &&
-            (identical(other.website, website) || other.website == website) &&
+            (identical(other.country, country) || other.country == country) &&
             (identical(other.paymentRequired, paymentRequired) ||
-                other.paymentRequired == paymentRequired));
+                other.paymentRequired == paymentRequired) &&
+            (identical(other.cosplayRequired, cosplayRequired) ||
+                other.cosplayRequired == cosplayRequired));
   }
 
   @JsonKey(ignore: true)
@@ -310,26 +328,26 @@ class _$ConventionModelImpl implements _ConventionModel {
       displayState,
       endDate,
       lonlat,
-      website,
-      paymentRequired);
+      country,
+      paymentRequired,
+      cosplayRequired);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConventionModelImplCopyWith<_$ConventionModelImpl> get copyWith =>
-      __$$ConventionModelImplCopyWithImpl<_$ConventionModelImpl>(
-          this, _$identity);
+  _$$EventModelImplCopyWith<_$EventModelImpl> get copyWith =>
+      __$$EventModelImplCopyWithImpl<_$EventModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ConventionModelImplToJson(
+    return _$$EventModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _ConventionModel implements ConventionModel {
-  const factory _ConventionModel(
+abstract class _EventModel implements EventModel {
+  const factory _EventModel(
       {required final String id,
       required final String title,
       required final DateTime startDate,
@@ -339,11 +357,12 @@ abstract class _ConventionModel implements ConventionModel {
       final String? displayState,
       final DateTime? endDate,
       final String? lonlat,
-      final String? website,
-      final bool? paymentRequired}) = _$ConventionModelImpl;
+      final String? country,
+      final bool? paymentRequired,
+      final int? cosplayRequired}) = _$EventModelImpl;
 
-  factory _ConventionModel.fromJson(Map<String, dynamic> json) =
-      _$ConventionModelImpl.fromJson;
+  factory _EventModel.fromJson(Map<String, dynamic> json) =
+      _$EventModelImpl.fromJson;
 
   @override
   String get id;
@@ -364,11 +383,13 @@ abstract class _ConventionModel implements ConventionModel {
   @override
   String? get lonlat;
   @override
-  String? get website;
+  String? get country;
   @override
   bool? get paymentRequired;
   @override
+  int? get cosplayRequired;
+  @override
   @JsonKey(ignore: true)
-  _$$ConventionModelImplCopyWith<_$ConventionModelImpl> get copyWith =>
+  _$$EventModelImplCopyWith<_$EventModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

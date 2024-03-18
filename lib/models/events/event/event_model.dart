@@ -1,11 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'convention_model.freezed.dart';
-part 'convention_model.g.dart';
+part 'event_model.freezed.dart';
+
+part 'event_model.g.dart';
 
 @freezed
-class ConventionModel with _$ConventionModel {
-  const factory ConventionModel({
+class EventModel with _$EventModel {
+  const factory EventModel({
     required String id,
     required String title,
     required DateTime startDate,
@@ -15,12 +16,12 @@ class ConventionModel with _$ConventionModel {
     String? displayState,
     DateTime? endDate,
     String? lonlat,
-    String? website,
+    String? country,
     bool? paymentRequired,
-    //add another parameters
-  }) = _ConventionModel;
+    int? cosplayRequired,
+  }) = _EventModel;
 
-  factory ConventionModel.initial() => ConventionModel(
+  factory EventModel.initial() => EventModel(
         id: '',
         title: '',
         startDate: DateTime.now(),
@@ -30,10 +31,11 @@ class ConventionModel with _$ConventionModel {
         fullAddress: '',
         displayCity: '',
         displayState: '',
-        website: '',
+        country: '',
         paymentRequired: false,
+        cosplayRequired: 0,
       );
 
-  factory ConventionModel.fromJson(Map<String, dynamic> json) =>
-      _$ConventionModelFromJson(json);
+  factory EventModel.fromJson(Map<String, dynamic> json) =>
+      _$EventModelFromJson(json);
 }
