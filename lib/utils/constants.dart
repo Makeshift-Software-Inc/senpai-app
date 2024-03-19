@@ -293,6 +293,7 @@ class _EventsConstants {
   late final double eventListNotchedContainerHeight = 63;
   late final double eventListRoundContainerSize = 50;
   late final double newEventImageHeight = 200;
+  late final String searchTag = 'searchEvents';
 }
 
 @immutable
