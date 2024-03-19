@@ -2152,6 +2152,54 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Invalid location. Please try again'**
   String get invalidLocationError;
+
+  /// This is the title of the event management app bar
+  ///
+  /// In en, this message translates to:
+  /// **'Event Management'**
+  String get eventManagementTitle;
+
+  /// No description provided for @paidEntryText.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid Entry'**
+  String get paidEntryText;
+
+  /// No description provided for @associationWithConvention.
+  ///
+  /// In en, this message translates to:
+  /// **'Association with Convention:'**
+  String get associationWithConvention;
+
+  /// No description provided for @attendButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Attend'**
+  String get attendButton;
+
+  /// No description provided for @hostTheEventText.
+  ///
+  /// In en, this message translates to:
+  /// **'Host of the event'**
+  String get hostTheEventText;
+
+  /// No description provided for @maximumPartyMemberLimit.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum party member limit: 10'**
+  String get maximumPartyMemberLimit;
+
+  /// No description provided for @youCanParticipateInPartyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You can participate in a party, find new friends and have a good time in a favorite environment.'**
+  String get youCanParticipateInPartyDescription;
+
+  /// No description provided for @associatedEventsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Associated Events'**
+  String get associatedEventsTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

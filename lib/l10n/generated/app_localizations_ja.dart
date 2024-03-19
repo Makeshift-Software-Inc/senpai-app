@@ -1032,4 +1032,28 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get invalidLocationError => '';
+
+  @override
+  String get eventManagementTitle => '';
+
+  @override
+  String get paidEntryText => '';
+
+  @override
+  String get associationWithConvention => '';
+
+  @override
+  String get attendButton => '';
+
+  @override
+  String get hostTheEventText => '';
+
+  @override
+  String get maximumPartyMemberLimit => '';
+
+  @override
+  String get youCanParticipateInPartyDescription => '';
+
+  @override
+  String get associatedEventsTitle => '';
 }
