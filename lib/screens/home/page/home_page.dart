@@ -22,8 +22,7 @@ class HomePage extends StatelessWidget {
         routes: const [
           MatchRoute(),
           ChatListRoute(),
-          //TODO: 14.03 Herbert Joseph: With the events tab hidden
-          // EventsListRoute(),
+          EventsListRoute(),
           ProfileRoute(),
         ],
         homeIndex: defaultIndex,
@@ -62,18 +61,17 @@ class HomePage extends StatelessWidget {
           ),
           label: R.strings.chatTabText,
         ),
-        //TODO: 14.03 Herbert Joseph: With the events tab hidden
-        // BottomNavigationBarItem(
-        //   icon: SvgPicture.asset(
-        //     PathConstants.eventsIcon,
-        //     colorFilter:
-        //         ColorFilter.mode($constants.palette.darkGrey, BlendMode.srcIn),
-        //   ),
-        //   activeIcon: SvgPicture.asset(
-        //     PathConstants.eventsIcon,
-        //   ),
-        //   label: R.strings.eventsTitle,
-        // ),
+        BottomNavigationBarItem(
+          icon: SvgPicture.asset(
+            PathConstants.eventsIcon,
+            colorFilter:
+                ColorFilter.mode($constants.palette.darkGrey, BlendMode.srcIn),
+          ),
+          activeIcon: SvgPicture.asset(
+            PathConstants.eventsIcon,
+          ),
+          label: R.strings.eventsTitle,
+        ),
         BottomNavigationBarItem(
           icon: SvgPicture.asset(
             PathConstants.profileIcon,
