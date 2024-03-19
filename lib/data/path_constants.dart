@@ -105,7 +105,17 @@ class PathConstants {
   static const String newEventImage =
       'assets/images/events/event_image_icon.svg';
   static const String arrowsForward = 'assets/icons/arrows_forward.svg';
-
   static const String eventPaidIcon =
       'assets/images/events/event_paid_icon.svg';
+  static const String aboutEventElement =
+      'assets/images/events/about_event_element.svg';
+  static const String eventMembersBackground =
+      'assets/images/events/members_background.png';
+  static const String peopleIcon = 'assets/icons/people_icon.svg';
+  static const String eventHostBGImage =
+      'assets/images/events/event_host_bg_image.png';
+  static const String eventHostBgCircle =
+      'assets/images/events/event_host_bg_circle.png';
+  static const String cosplayBgImage =
+      'assets/images/events/cosplay_bg_image.png';
 }
