@@ -1974,6 +1974,51 @@ Map<String, dynamic> _$DeleteFavoriteMusicInputToJson(
       'userId': instance.userId,
     };
 
+FetchConvention$Query$FetchConvention
+    _$FetchConvention$Query$FetchConventionFromJson(
+            Map<String, dynamic> json) =>
+        FetchConvention$Query$FetchConvention()
+          ..id = json['id'] as String
+          ..title = json['title'] as String?
+          ..startDate = fromGraphQLISO8601DateTimeToDartDateTime(
+              json['startDate'] as String)
+          ..endDate = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
+              json['endDate'] as String?)
+          ..lonlat = json['lonlat'] as String
+          ..fullAddress = json['fullAddress'] as String
+          ..coverImageUrl = json['coverImageUrl'] as String?
+          ..displayCity = json['displayCity'] as String
+          ..displayState = json['displayState'] as String
+          ..paymentRequired = json['paymentRequired'] as bool?;
+
+Map<String, dynamic> _$FetchConvention$Query$FetchConventionToJson(
+        FetchConvention$Query$FetchConvention instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'startDate': fromDartDateTimeToGraphQLISO8601DateTime(instance.startDate),
+      'endDate': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
+          instance.endDate),
+      'lonlat': instance.lonlat,
+      'fullAddress': instance.fullAddress,
+      'coverImageUrl': instance.coverImageUrl,
+      'displayCity': instance.displayCity,
+      'displayState': instance.displayState,
+      'paymentRequired': instance.paymentRequired,
+    };
+
+FetchConvention$Query _$FetchConvention$QueryFromJson(
+        Map<String, dynamic> json) =>
+    FetchConvention$Query()
+      ..fetchConvention = FetchConvention$Query$FetchConvention.fromJson(
+          json['fetchConvention'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$FetchConvention$QueryToJson(
+        FetchConvention$Query instance) =>
+    <String, dynamic>{
+      'fetchConvention': instance.fetchConvention.toJson(),
+    };
+
 FetchMessages$Query$FetchMessages$Recommendation$Anime
     _$FetchMessages$Query$FetchMessages$Recommendation$AnimeFromJson(
             Map<String, dynamic> json) =>
@@ -2760,6 +2805,180 @@ Map<String, dynamic> _$FetchConversations$QueryToJson(
           instance.fetchConversations.map((e) => e.toJson()).toList(),
     };
 
+FetchEvent$Query$FetchEvent$Party$PartyChat$Messages
+    _$FetchEvent$Query$FetchEvent$Party$PartyChat$MessagesFromJson(
+            Map<String, dynamic> json) =>
+        FetchEvent$Query$FetchEvent$Party$PartyChat$Messages()
+          ..content = json['content'] as String?;
+
+Map<String, dynamic>
+    _$FetchEvent$Query$FetchEvent$Party$PartyChat$MessagesToJson(
+            FetchEvent$Query$FetchEvent$Party$PartyChat$Messages instance) =>
+        <String, dynamic>{
+          'content': instance.content,
+        };
+
+FetchEvent$Query$FetchEvent$Party$PartyChat
+    _$FetchEvent$Query$FetchEvent$Party$PartyChatFromJson(
+            Map<String, dynamic> json) =>
+        FetchEvent$Query$FetchEvent$Party$PartyChat()
+          ..messages = (json['messages'] as List<dynamic>)
+              .map((e) =>
+                  FetchEvent$Query$FetchEvent$Party$PartyChat$Messages.fromJson(
+                      e as Map<String, dynamic>))
+              .toList();
+
+Map<String, dynamic> _$FetchEvent$Query$FetchEvent$Party$PartyChatToJson(
+        FetchEvent$Query$FetchEvent$Party$PartyChat instance) =>
+    <String, dynamic>{
+      'messages': instance.messages.map((e) => e.toJson()).toList(),
+    };
+
+FetchEvent$Query$FetchEvent$Party$Members$Gallery$Photos
+    _$FetchEvent$Query$FetchEvent$Party$Members$Gallery$PhotosFromJson(
+            Map<String, dynamic> json) =>
+        FetchEvent$Query$FetchEvent$Party$Members$Gallery$Photos()
+          ..order = json['order'] as int?
+          ..url = json['url'] as String;
+
+Map<String,
+    dynamic> _$FetchEvent$Query$FetchEvent$Party$Members$Gallery$PhotosToJson(
+        FetchEvent$Query$FetchEvent$Party$Members$Gallery$Photos instance) =>
+    <String, dynamic>{
+      'order': instance.order,
+      'url': instance.url,
+    };
+
+FetchEvent$Query$FetchEvent$Party$Members$Gallery
+    _$FetchEvent$Query$FetchEvent$Party$Members$GalleryFromJson(
+            Map<String, dynamic> json) =>
+        FetchEvent$Query$FetchEvent$Party$Members$Gallery()
+          ..photos = (json['photos'] as List<dynamic>?)
+              ?.map((e) =>
+                  FetchEvent$Query$FetchEvent$Party$Members$Gallery$Photos
+                      .fromJson(e as Map<String, dynamic>))
+              .toList();
+
+Map<String, dynamic> _$FetchEvent$Query$FetchEvent$Party$Members$GalleryToJson(
+        FetchEvent$Query$FetchEvent$Party$Members$Gallery instance) =>
+    <String, dynamic>{
+      'photos': instance.photos?.map((e) => e.toJson()).toList(),
+    };
+
+FetchEvent$Query$FetchEvent$Party$Members
+    _$FetchEvent$Query$FetchEvent$Party$MembersFromJson(
+            Map<String, dynamic> json) =>
+        FetchEvent$Query$FetchEvent$Party$Members()
+          ..id = json['id'] as String
+          ..gallery = json['gallery'] == null
+              ? null
+              : FetchEvent$Query$FetchEvent$Party$Members$Gallery.fromJson(
+                  json['gallery'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$FetchEvent$Query$FetchEvent$Party$MembersToJson(
+        FetchEvent$Query$FetchEvent$Party$Members instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'gallery': instance.gallery?.toJson(),
+    };
+
+FetchEvent$Query$FetchEvent$Party _$FetchEvent$Query$FetchEvent$PartyFromJson(
+        Map<String, dynamic> json) =>
+    FetchEvent$Query$FetchEvent$Party()
+      ..id = json['id'] as String
+      ..createdAt =
+          fromGraphQLISO8601DateTimeToDartDateTime(json['createdAt'] as String)
+      ..disbanded = json['disbanded'] as bool
+      ..hostId = json['hostId'] as int
+      ..eventId = json['eventId'] as int
+      ..partyChat = json['partyChat'] == null
+          ? null
+          : FetchEvent$Query$FetchEvent$Party$PartyChat.fromJson(
+              json['partyChat'] as Map<String, dynamic>)
+      ..status = json['status'] as String
+      ..members = (json['members'] as List<dynamic>?)
+          ?.map((e) => FetchEvent$Query$FetchEvent$Party$Members.fromJson(
+              e as Map<String, dynamic>))
+          .toList();
+
+Map<String, dynamic> _$FetchEvent$Query$FetchEvent$PartyToJson(
+        FetchEvent$Query$FetchEvent$Party instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'createdAt': fromDartDateTimeToGraphQLISO8601DateTime(instance.createdAt),
+      'disbanded': instance.disbanded,
+      'hostId': instance.hostId,
+      'eventId': instance.eventId,
+      'partyChat': instance.partyChat?.toJson(),
+      'status': instance.status,
+      'members': instance.members?.map((e) => e.toJson()).toList(),
+    };
+
+FetchEvent$Query$FetchEvent _$FetchEvent$Query$FetchEventFromJson(
+        Map<String, dynamic> json) =>
+    FetchEvent$Query$FetchEvent()
+      ..id = json['id'] as String
+      ..hostId = json['hostId'] as int
+      ..title = json['title'] as String?
+      ..description = json['description'] as String?
+      ..coverImageUrl = json['coverImageUrl'] as String?
+      ..cosplayRequired = json['cosplayRequired'] as int?
+      ..paymentRequired = json['paymentRequired'] as bool?
+      ..country = json['country'] as String
+      ..displayCity = json['displayCity'] as String
+      ..displayState = json['displayState'] as String
+      ..fullAddress = json['fullAddress'] as String
+      ..venue = json['venue'] as String
+      ..lonlat = json['lonlat'] as String
+      ..createdAt =
+          fromGraphQLISO8601DateTimeToDartDateTime(json['createdAt'] as String)
+      ..updatedAt =
+          fromGraphQLISO8601DateTimeToDartDateTime(json['updatedAt'] as String)
+      ..startDate =
+          fromGraphQLISO8601DateTimeToDartDateTime(json['startDate'] as String)
+      ..endDate = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
+          json['endDate'] as String?)
+      ..conventionId = json['conventionId'] as int?
+      ..party = json['party'] == null
+          ? null
+          : FetchEvent$Query$FetchEvent$Party.fromJson(
+              json['party'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$FetchEvent$Query$FetchEventToJson(
+        FetchEvent$Query$FetchEvent instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'hostId': instance.hostId,
+      'title': instance.title,
+      'description': instance.description,
+      'coverImageUrl': instance.coverImageUrl,
+      'cosplayRequired': instance.cosplayRequired,
+      'paymentRequired': instance.paymentRequired,
+      'country': instance.country,
+      'displayCity': instance.displayCity,
+      'displayState': instance.displayState,
+      'fullAddress': instance.fullAddress,
+      'venue': instance.venue,
+      'lonlat': instance.lonlat,
+      'createdAt': fromDartDateTimeToGraphQLISO8601DateTime(instance.createdAt),
+      'updatedAt': fromDartDateTimeToGraphQLISO8601DateTime(instance.updatedAt),
+      'startDate': fromDartDateTimeToGraphQLISO8601DateTime(instance.startDate),
+      'endDate': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
+          instance.endDate),
+      'conventionId': instance.conventionId,
+      'party': instance.party?.toJson(),
+    };
+
+FetchEvent$Query _$FetchEvent$QueryFromJson(Map<String, dynamic> json) =>
+    FetchEvent$Query()
+      ..fetchEvent = FetchEvent$Query$FetchEvent.fromJson(
+          json['fetchEvent'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$FetchEvent$QueryToJson(FetchEvent$Query instance) =>
+    <String, dynamic>{
+      'fetchEvent': instance.fetchEvent.toJson(),
+    };
+
 FetchConventions$Query$FetchConventions$Events$Party$Members
     _$FetchConventions$Query$FetchConventions$Events$Party$MembersFromJson(
             Map<String, dynamic> json) =>
@@ -2891,6 +3110,54 @@ Map<String, dynamic> _$SearchEventInputToJson(SearchEventInput instance) =>
       'userId': instance.userId,
     };
 
+FetchEvents$Query$FetchEvents _$FetchEvents$Query$FetchEventsFromJson(
+        Map<String, dynamic> json) =>
+    FetchEvents$Query$FetchEvents()
+      ..id = json['id'] as String
+      ..title = json['title'] as String?
+      ..country = json['country'] as String
+      ..displayCity = json['displayCity'] as String
+      ..displayState = json['displayState'] as String
+      ..fullAddress = json['fullAddress'] as String
+      ..startDate =
+          fromGraphQLISO8601DateTimeToDartDateTime(json['startDate'] as String)
+      ..endDate = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
+          json['endDate'] as String?)
+      ..coverImageUrl = json['coverImageUrl'] as String?
+      ..paymentRequired = json['paymentRequired'] as bool?
+      ..cosplayRequired = json['cosplayRequired'] as int?
+      ..lonlat = json['lonlat'] as String;
+
+Map<String, dynamic> _$FetchEvents$Query$FetchEventsToJson(
+        FetchEvents$Query$FetchEvents instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'title': instance.title,
+      'country': instance.country,
+      'displayCity': instance.displayCity,
+      'displayState': instance.displayState,
+      'fullAddress': instance.fullAddress,
+      'startDate': fromDartDateTimeToGraphQLISO8601DateTime(instance.startDate),
+      'endDate': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
+          instance.endDate),
+      'coverImageUrl': instance.coverImageUrl,
+      'paymentRequired': instance.paymentRequired,
+      'cosplayRequired': instance.cosplayRequired,
+      'lonlat': instance.lonlat,
+    };
+
+FetchEvents$Query _$FetchEvents$QueryFromJson(Map<String, dynamic> json) =>
+    FetchEvents$Query()
+      ..fetchEvents = (json['fetchEvents'] as List<dynamic>)
+          .map((e) =>
+              FetchEvents$Query$FetchEvents.fromJson(e as Map<String, dynamic>))
+          .toList();
+
+Map<String, dynamic> _$FetchEvents$QueryToJson(FetchEvents$Query instance) =>
+    <String, dynamic>{
+      'fetchEvents': instance.fetchEvents.map((e) => e.toJson()).toList(),
+    };
+
 FetchVerifyRequests$Query$FetchVerifyRequests
     _$FetchVerifyRequests$Query$FetchVerifyRequestsFromJson(
             Map<String, dynamic> json) =>
@@ -2944,54 +3211,6 @@ Map<String, dynamic> _$FetchStickers$QueryToJson(
         FetchStickers$Query instance) =>
     <String, dynamic>{
       'fetchStickers': instance.fetchStickers.map((e) => e.toJson()).toList(),
-    };
-
-FetchEvents$Query$FetchEvents _$FetchEvents$Query$FetchEventsFromJson(
-        Map<String, dynamic> json) =>
-    FetchEvents$Query$FetchEvents()
-      ..id = json['id'] as String
-      ..title = json['title'] as String?
-      ..country = json['country'] as String
-      ..displayCity = json['displayCity'] as String
-      ..displayState = json['displayState'] as String
-      ..fullAddress = json['fullAddress'] as String
-      ..startDate =
-          fromGraphQLISO8601DateTimeToDartDateTime(json['startDate'] as String)
-      ..endDate = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
-          json['endDate'] as String?)
-      ..coverImageUrl = json['coverImageUrl'] as String?
-      ..paymentRequired = json['paymentRequired'] as bool?
-      ..cosplayRequired = json['cosplayRequired'] as int?
-      ..lonlat = json['lonlat'] as String;
-
-Map<String, dynamic> _$FetchEvents$Query$FetchEventsToJson(
-        FetchEvents$Query$FetchEvents instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'country': instance.country,
-      'displayCity': instance.displayCity,
-      'displayState': instance.displayState,
-      'fullAddress': instance.fullAddress,
-      'startDate': fromDartDateTimeToGraphQLISO8601DateTime(instance.startDate),
-      'endDate': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
-          instance.endDate),
-      'coverImageUrl': instance.coverImageUrl,
-      'paymentRequired': instance.paymentRequired,
-      'cosplayRequired': instance.cosplayRequired,
-      'lonlat': instance.lonlat,
-    };
-
-FetchEvents$Query _$FetchEvents$QueryFromJson(Map<String, dynamic> json) =>
-    FetchEvents$Query()
-      ..fetchEvents = (json['fetchEvents'] as List<dynamic>)
-          .map((e) =>
-              FetchEvents$Query$FetchEvents.fromJson(e as Map<String, dynamic>))
-          .toList();
-
-Map<String, dynamic> _$FetchEvents$QueryToJson(FetchEvents$Query instance) =>
-    <String, dynamic>{
-      'fetchEvents': instance.fetchEvents.map((e) => e.toJson()).toList(),
     };
 
 DeleteFavoriteAnimeArguments _$DeleteFavoriteAnimeArgumentsFromJson(
@@ -3319,6 +3538,18 @@ Map<String, dynamic> _$DeleteFavoriteMusicArgumentsToJson(
       'input': instance.input.toJson(),
     };
 
+FetchConventionArguments _$FetchConventionArgumentsFromJson(
+        Map<String, dynamic> json) =>
+    FetchConventionArguments(
+      conventionId: json['conventionId'] as String,
+    );
+
+Map<String, dynamic> _$FetchConventionArgumentsToJson(
+        FetchConventionArguments instance) =>
+    <String, dynamic>{
+      'conventionId': instance.conventionId,
+    };
+
 FetchMessagesArguments _$FetchMessagesArgumentsFromJson(
         Map<String, dynamic> json) =>
     FetchMessagesArguments(
@@ -3378,6 +3609,17 @@ Map<String, dynamic> _$FetchConversationsArgumentsToJson(
       'userId': instance.userId,
     };
 
+FetchEventArguments _$FetchEventArgumentsFromJson(Map<String, dynamic> json) =>
+    FetchEventArguments(
+      eventId: json['eventId'] as String,
+    );
+
+Map<String, dynamic> _$FetchEventArgumentsToJson(
+        FetchEventArguments instance) =>
+    <String, dynamic>{
+      'eventId': instance.eventId,
+    };
+
 FetchConventionsArguments _$FetchConventionsArgumentsFromJson(
         Map<String, dynamic> json) =>
     FetchConventionsArguments(
@@ -3386,6 +3628,18 @@ FetchConventionsArguments _$FetchConventionsArgumentsFromJson(
 
 Map<String, dynamic> _$FetchConventionsArgumentsToJson(
         FetchConventionsArguments instance) =>
+    <String, dynamic>{
+      'params': instance.params.toJson(),
+    };
+
+FetchEventsArguments _$FetchEventsArgumentsFromJson(
+        Map<String, dynamic> json) =>
+    FetchEventsArguments(
+      params: SearchEventInput.fromJson(json['params'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$FetchEventsArgumentsToJson(
+        FetchEventsArguments instance) =>
     <String, dynamic>{
       'params': instance.params.toJson(),
     };
@@ -3412,16 +3666,4 @@ Map<String, dynamic> _$FetchStickersArgumentsToJson(
         FetchStickersArguments instance) =>
     <String, dynamic>{
       'page': instance.page,
-    };
-
-FetchEventsArguments _$FetchEventsArgumentsFromJson(
-        Map<String, dynamic> json) =>
-    FetchEventsArguments(
-      params: SearchEventInput.fromJson(json['params'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$FetchEventsArgumentsToJson(
-        FetchEventsArguments instance) =>
-    <String, dynamic>{
-      'params': instance.params.toJson(),
     };
