@@ -21,6 +21,7 @@ class SenpaiAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
+      scrolledUnderElevation: 0,
       backgroundColor: Colors.transparent,
       leading: _buildLeading(context),
       title: _buildTitle(context),
