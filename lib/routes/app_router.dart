@@ -16,6 +16,7 @@ import 'package:senpai/screens/edit_profile/edit_spotify/page/edit_spotify_music
 import 'package:senpai/screens/edit_profile/page/edit_profile_page.dart';
 import 'package:senpai/screens/edit_profile/work_education/page/work_education_page.dart';
 import 'package:senpai/screens/entry/page/entry_page.dart';
+import 'package:senpai/screens/event_details/page/event_details_page.dart';
 import 'package:senpai/screens/events_list/page/events_list_page.dart';
 import 'package:senpai/screens/home/page/home_page.dart';
 import 'package:senpai/screens/license/page/license_page.dart';
@@ -102,5 +103,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
             page: NewEventPhotoManagerRoute.page,
             path: '/new_event_photo_manager'),
+
+        AutoRoute(page: EventsDetailsRoute.page, path: '/event_details'),
       ];
 }

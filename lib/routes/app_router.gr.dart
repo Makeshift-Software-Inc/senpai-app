@@ -78,6 +78,17 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const EntryPage(),
       );
     },
+    EventsDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<EventsDetailsRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EventsDetailsPage(
+          key: args.key,
+          eventId: args.eventId,
+          eventName: args.eventName,
+        ),
+      );
+    },
     EventsListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -532,6 +543,49 @@ class EntryRoute extends PageRouteInfo<void> {
   static const String name = 'EntryRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [EventsDetailsPage]
+class EventsDetailsRoute extends PageRouteInfo<EventsDetailsRouteArgs> {
+  EventsDetailsRoute({
+    Key? key,
+    required String eventId,
+    required String eventName,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EventsDetailsRoute.name,
+          args: EventsDetailsRouteArgs(
+            key: key,
+            eventId: eventId,
+            eventName: eventName,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EventsDetailsRoute';
+
+  static const PageInfo<EventsDetailsRouteArgs> page =
+      PageInfo<EventsDetailsRouteArgs>(name);
+}
+
+class EventsDetailsRouteArgs {
+  const EventsDetailsRouteArgs({
+    this.key,
+    required this.eventId,
+    required this.eventName,
+  });
+
+  final Key? key;
+
+  final String eventId;
+
+  final String eventName;
+
+  @override
+  String toString() {
+    return 'EventsDetailsRouteArgs{key: $key, eventId: $eventId, eventName: $eventName}';
+  }
 }
 
 /// generated route for
