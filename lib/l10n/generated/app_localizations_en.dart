@@ -1032,4 +1032,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidLocationError => 'Invalid location. Please try again';
+
+  @override
+  String get eventManagementTitle => 'Event Management';
+
+  @override
+  String get paidEntryText => 'Paid Entry';
+
+  @override
+  String get associationWithConvention => 'Association with Convention:';
+
+  @override
+  String get attendButton => 'Attend';
+
+  @override
+  String get hostTheEventText => 'Host of the event';
+
+  @override
+  String get maximumPartyMemberLimit => 'Maximum party member limit: 10';
+
+  @override
+  String get youCanParticipateInPartyDescription => 'You can participate in a party, find new friends and have a good time in a favorite environment.';
+
+  @override
+  String get associatedEventsTitle => 'Associated Events';
 }
