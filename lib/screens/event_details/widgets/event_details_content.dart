@@ -8,6 +8,7 @@ import 'package:senpai/screens/event_details/widgets/event_details_header.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_members_widget.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_paid_widget.dart';
 import 'package:senpai/screens/events_list/widgets/event_map_widget.dart';
+import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
@@ -39,10 +40,11 @@ class EventDetailsContent extends StatelessWidget {
                 _buildLocationEvent(
                   context,
                   lonLat: bloc.eventModel?.lonlat ?? '',
-                  fullAddress: bloc.eventModel?.fullAddress ?? '',
+                  venue: bloc.eventModel?.venue ?? '',
                 ),
                 SizedBox(height: $constants.insets.sm),
-                const EventDetailsMembersWidget(),
+                if (bloc.hostModel != null)
+                  EventDetailsMembersWidget(hostModel: bloc.hostModel!),
                 SizedBox(height: $constants.insets.sm),
               ],
             ),
@@ -85,6 +87,9 @@ class EventDetailsContent extends StatelessWidget {
               title: eventModel.title,
               subtitle: '${eventModel.displayCity}, ${eventModel.displayState}',
               startDate: eventModel.startDate,
+              cosplayRequired: CosplayRequired.cosplayFromServer(
+                eventModel.cosplayRequired,
+              ),
             ),
           ),
         ),
@@ -95,7 +100,7 @@ class EventDetailsContent extends StatelessWidget {
   Widget _buildLocationEvent(
     BuildContext context, {
     required String lonLat,
-    required String fullAddress,
+    required String venue,
   }) {
     return Container(
       padding: EdgeInsets.all($constants.insets.sm),
@@ -109,7 +114,7 @@ class EventDetailsContent extends StatelessWidget {
       width: getSize(context).width - $constants.insets.lg,
       child: Column(
         children: [
-          _buildLocationTitle(context, fullAddress),
+          _buildLocationTitle(context, venue),
           SizedBox(height: $constants.insets.sm),
           ClipRRect(
             borderRadius: BorderRadius.circular($constants.insets.md),
