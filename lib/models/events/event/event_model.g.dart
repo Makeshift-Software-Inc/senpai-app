@@ -21,7 +21,7 @@ _$EventModelImpl _$$EventModelImplFromJson(Map<String, dynamic> json) =>
       lonlat: json['lonlat'] as String?,
       country: json['country'] as String?,
       paymentRequired: json['paymentRequired'] as bool?,
-      cosplayRequired: json['cosplayRequired'] as int?,
+      cosplayRequired: json['cosplayRequired'] as String?,
     );
 
 Map<String, dynamic> _$$EventModelImplToJson(_$EventModelImpl instance) =>

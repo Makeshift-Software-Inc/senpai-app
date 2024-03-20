@@ -18,7 +18,7 @@ class EventModel with _$EventModel {
     String? lonlat,
     String? country,
     bool? paymentRequired,
-    int? cosplayRequired,
+    String? cosplayRequired,
   }) = _EventModel;
 
   factory EventModel.initial() => EventModel(
@@ -33,7 +33,7 @@ class EventModel with _$EventModel {
         displayState: '',
         country: '',
         paymentRequired: false,
-        cosplayRequired: 0,
+        cosplayRequired: '',
       );
 
   factory EventModel.fromJson(Map<String, dynamic> json) =>

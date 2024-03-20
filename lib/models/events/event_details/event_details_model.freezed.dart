@@ -22,6 +22,7 @@ EventDetailsModel _$EventDetailsModelFromJson(Map<String, dynamic> json) {
 mixin _$EventDetailsModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  int? get hostId => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   DateTime get startDate => throw _privateConstructorUsedError;
   String get coverImageUrl => throw _privateConstructorUsedError;
@@ -33,7 +34,7 @@ mixin _$EventDetailsModel {
   String? get lonlat => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
   bool? get paymentRequired => throw _privateConstructorUsedError;
-  int? get cosplayRequired => throw _privateConstructorUsedError;
+  String? get cosplayRequired => throw _privateConstructorUsedError;
   int? get conventionId => throw _privateConstructorUsedError;
   PartyModel? get party => throw _privateConstructorUsedError;
 
@@ -52,6 +53,7 @@ abstract class $EventDetailsModelCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
+      int? hostId,
       String? description,
       DateTime startDate,
       String coverImageUrl,
@@ -63,7 +65,7 @@ abstract class $EventDetailsModelCopyWith<$Res> {
       String? lonlat,
       String? country,
       bool? paymentRequired,
-      int? cosplayRequired,
+      String? cosplayRequired,
       int? conventionId,
       PartyModel? party});
 
@@ -85,6 +87,7 @@ class _$EventDetailsModelCopyWithImpl<$Res, $Val extends EventDetailsModel>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? hostId = freezed,
     Object? description = freezed,
     Object? startDate = null,
     Object? coverImageUrl = null,
@@ -109,6 +112,10 @@ class _$EventDetailsModelCopyWithImpl<$Res, $Val extends EventDetailsModel>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      hostId: freezed == hostId
+          ? _value.hostId
+          : hostId // ignore: cast_nullable_to_non_nullable
+              as int?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -156,7 +163,7 @@ class _$EventDetailsModelCopyWithImpl<$Res, $Val extends EventDetailsModel>
       cosplayRequired: freezed == cosplayRequired
           ? _value.cosplayRequired
           : cosplayRequired // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       conventionId: freezed == conventionId
           ? _value.conventionId
           : conventionId // ignore: cast_nullable_to_non_nullable
@@ -192,6 +199,7 @@ abstract class _$$EventDetailsModelImplCopyWith<$Res>
   $Res call(
       {String id,
       String title,
+      int? hostId,
       String? description,
       DateTime startDate,
       String coverImageUrl,
@@ -203,7 +211,7 @@ abstract class _$$EventDetailsModelImplCopyWith<$Res>
       String? lonlat,
       String? country,
       bool? paymentRequired,
-      int? cosplayRequired,
+      String? cosplayRequired,
       int? conventionId,
       PartyModel? party});
 
@@ -224,6 +232,7 @@ class __$$EventDetailsModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? hostId = freezed,
     Object? description = freezed,
     Object? startDate = null,
     Object? coverImageUrl = null,
@@ -248,6 +257,10 @@ class __$$EventDetailsModelImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      hostId: freezed == hostId
+          ? _value.hostId
+          : hostId // ignore: cast_nullable_to_non_nullable
+              as int?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -295,7 +308,7 @@ class __$$EventDetailsModelImplCopyWithImpl<$Res>
       cosplayRequired: freezed == cosplayRequired
           ? _value.cosplayRequired
           : cosplayRequired // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
       conventionId: freezed == conventionId
           ? _value.conventionId
           : conventionId // ignore: cast_nullable_to_non_nullable
@@ -314,6 +327,7 @@ class _$EventDetailsModelImpl implements _EventDetailsModel {
   const _$EventDetailsModelImpl(
       {required this.id,
       required this.title,
+      this.hostId,
       this.description,
       required this.startDate,
       required this.coverImageUrl,
@@ -337,6 +351,8 @@ class _$EventDetailsModelImpl implements _EventDetailsModel {
   @override
   final String title;
   @override
+  final int? hostId;
+  @override
   final String? description;
   @override
   final DateTime startDate;
@@ -359,7 +375,7 @@ class _$EventDetailsModelImpl implements _EventDetailsModel {
   @override
   final bool? paymentRequired;
   @override
-  final int? cosplayRequired;
+  final String? cosplayRequired;
   @override
   final int? conventionId;
   @override
@@ -367,7 +383,7 @@ class _$EventDetailsModelImpl implements _EventDetailsModel {
 
   @override
   String toString() {
-    return 'EventDetailsModel(id: $id, title: $title, description: $description, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, venue: $venue, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, country: $country, paymentRequired: $paymentRequired, cosplayRequired: $cosplayRequired, conventionId: $conventionId, party: $party)';
+    return 'EventDetailsModel(id: $id, title: $title, hostId: $hostId, description: $description, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, venue: $venue, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, country: $country, paymentRequired: $paymentRequired, cosplayRequired: $cosplayRequired, conventionId: $conventionId, party: $party)';
   }
 
   @override
@@ -377,6 +393,7 @@ class _$EventDetailsModelImpl implements _EventDetailsModel {
             other is _$EventDetailsModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.hostId, hostId) || other.hostId == hostId) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.startDate, startDate) ||
@@ -408,6 +425,7 @@ class _$EventDetailsModelImpl implements _EventDetailsModel {
       runtimeType,
       id,
       title,
+      hostId,
       description,
       startDate,
       coverImageUrl,
@@ -442,6 +460,7 @@ abstract class _EventDetailsModel implements EventDetailsModel {
   const factory _EventDetailsModel(
       {required final String id,
       required final String title,
+      final int? hostId,
       final String? description,
       required final DateTime startDate,
       required final String coverImageUrl,
@@ -453,7 +472,7 @@ abstract class _EventDetailsModel implements EventDetailsModel {
       final String? lonlat,
       final String? country,
       final bool? paymentRequired,
-      final int? cosplayRequired,
+      final String? cosplayRequired,
       final int? conventionId,
       final PartyModel? party}) = _$EventDetailsModelImpl;
 
@@ -464,6 +483,8 @@ abstract class _EventDetailsModel implements EventDetailsModel {
   String get id;
   @override
   String get title;
+  @override
+  int? get hostId;
   @override
   String? get description;
   @override
@@ -487,7 +508,7 @@ abstract class _EventDetailsModel implements EventDetailsModel {
   @override
   bool? get paymentRequired;
   @override
-  int? get cosplayRequired;
+  String? get cosplayRequired;
   @override
   int? get conventionId;
   @override

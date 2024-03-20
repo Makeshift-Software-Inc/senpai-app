@@ -11,6 +11,7 @@ _$EventDetailsModelImpl _$$EventDetailsModelImplFromJson(
     _$EventDetailsModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
+      hostId: json['hostId'] as int?,
       description: json['description'] as String?,
       startDate: DateTime.parse(json['startDate'] as String),
       coverImageUrl: json['coverImageUrl'] as String,
@@ -24,7 +25,7 @@ _$EventDetailsModelImpl _$$EventDetailsModelImplFromJson(
       lonlat: json['lonlat'] as String?,
       country: json['country'] as String?,
       paymentRequired: json['paymentRequired'] as bool?,
-      cosplayRequired: json['cosplayRequired'] as int?,
+      cosplayRequired: json['cosplayRequired'] as String?,
       conventionId: json['conventionId'] as int?,
       party: json['party'] == null
           ? null
@@ -36,6 +37,7 @@ Map<String, dynamic> _$$EventDetailsModelImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'hostId': instance.hostId,
       'description': instance.description,
       'startDate': instance.startDate.toIso8601String(),
       'coverImageUrl': instance.coverImageUrl,

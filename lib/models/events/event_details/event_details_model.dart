@@ -10,6 +10,7 @@ class EventDetailsModel with _$EventDetailsModel {
   const factory EventDetailsModel({
     required String id,
     required String title,
+    int? hostId,
     String? description,
     required DateTime startDate,
     required String coverImageUrl,
@@ -21,7 +22,7 @@ class EventDetailsModel with _$EventDetailsModel {
     String? lonlat,
     String? country,
     bool? paymentRequired,
-    int? cosplayRequired,
+    String? cosplayRequired,
     int? conventionId,
     PartyModel? party,
   }) = _EventDetailsModel;
@@ -29,6 +30,7 @@ class EventDetailsModel with _$EventDetailsModel {
   factory EventDetailsModel.initial() => EventDetailsModel(
       id: '',
       title: '',
+      hostId: null,
       description: '',
       startDate: DateTime.now(),
       coverImageUrl: '',
@@ -40,7 +42,7 @@ class EventDetailsModel with _$EventDetailsModel {
       country: '',
       venue: '',
       paymentRequired: false,
-      cosplayRequired: 0,
+      cosplayRequired: '',
       party: null);
 
   factory EventDetailsModel.fromJson(Map<String, dynamic> json) =>

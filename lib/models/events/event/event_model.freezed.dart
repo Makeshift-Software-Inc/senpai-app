@@ -31,7 +31,7 @@ mixin _$EventModel {
   String? get lonlat => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
   bool? get paymentRequired => throw _privateConstructorUsedError;
-  int? get cosplayRequired => throw _privateConstructorUsedError;
+  String? get cosplayRequired => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +57,7 @@ abstract class $EventModelCopyWith<$Res> {
       String? lonlat,
       String? country,
       bool? paymentRequired,
-      int? cosplayRequired});
+      String? cosplayRequired});
 }
 
 /// @nodoc
@@ -134,7 +134,7 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
       cosplayRequired: freezed == cosplayRequired
           ? _value.cosplayRequired
           : cosplayRequired // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
     ) as $Val);
   }
 }
@@ -159,7 +159,7 @@ abstract class _$$EventModelImplCopyWith<$Res>
       String? lonlat,
       String? country,
       bool? paymentRequired,
-      int? cosplayRequired});
+      String? cosplayRequired});
 }
 
 /// @nodoc
@@ -234,7 +234,7 @@ class __$$EventModelImplCopyWithImpl<$Res>
       cosplayRequired: freezed == cosplayRequired
           ? _value.cosplayRequired
           : cosplayRequired // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
     ));
   }
 }
@@ -282,7 +282,7 @@ class _$EventModelImpl implements _EventModel {
   @override
   final bool? paymentRequired;
   @override
-  final int? cosplayRequired;
+  final String? cosplayRequired;
 
   @override
   String toString() {
@@ -359,7 +359,7 @@ abstract class _EventModel implements EventModel {
       final String? lonlat,
       final String? country,
       final bool? paymentRequired,
-      final int? cosplayRequired}) = _$EventModelImpl;
+      final String? cosplayRequired}) = _$EventModelImpl;
 
   factory _EventModel.fromJson(Map<String, dynamic> json) =
       _$EventModelImpl.fromJson;
@@ -387,7 +387,7 @@ abstract class _EventModel implements EventModel {
   @override
   bool? get paymentRequired;
   @override
-  int? get cosplayRequired;
+  String? get cosplayRequired;
   @override
   @JsonKey(ignore: true)
   _$$EventModelImplCopyWith<_$EventModelImpl> get copyWith =>
