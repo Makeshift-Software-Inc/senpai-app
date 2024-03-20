@@ -5,12 +5,14 @@ import 'package:senpai/core/events/blocs/fetch_event_details/fetch_event_details
 import 'package:senpai/core/events/blocs/fetch_convention_details/fetch_convention_details_bloc.dart';
 
 import 'package:senpai/core/graphql/blocs/query/query_bloc.dart';
+import 'package:senpai/core/user/blocs/fetch_user/fetch_user_bloc.dart';
 import 'package:senpai/core/widgets/loading.dart';
 import 'package:senpai/core/widgets/senpai_app_bar.dart';
 import 'package:senpai/dependency_injection/injection.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/models/events/convention/convention_model.dart';
 import 'package:senpai/models/events/event_details/event_details_model.dart';
+import 'package:senpai/models/user_profile/user_profile_model.dart';
 import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_content.dart';
 import 'package:senpai/utils/constants.dart';
@@ -37,6 +39,7 @@ class EventsDetailsPage extends StatelessWidget {
             create: (_) => getIt<FetchEventDetailsBloc>()
               ..fetchEventDetails(eventId: eventId)),
         BlocProvider(create: (_) => getIt<FetchConventionDetailsBloc>()),
+        BlocProvider(create: (_) => getIt<FetchUserBloc>()),
       ],
       child: Scaffold(
         backgroundColor: $constants.palette.darkBlue,
@@ -49,6 +52,7 @@ class EventsDetailsPage extends StatelessWidget {
             const EventDetailsContent(),
             _buildFetchEventDetailsListeners(),
             _buildFetchConventionDetailsListeners(),
+            _buildFetchUserListeners(),
           ],
         ),
       ),
@@ -82,6 +86,13 @@ class EventsDetailsPage extends StatelessWidget {
                     BlocProvider.of<FetchConventionDetailsBloc>(context);
                 serverBloc.fetchConventionDetails(
                   conventionId: event.conventionId!.toString(),
+                );
+              }
+
+              if (event.hostId != null) {
+                final serverBloc = BlocProvider.of<FetchUserBloc>(context);
+                serverBloc.fetchUser(
+                  userId: event.hostId!,
                 );
               }
             } catch (e) {
@@ -140,6 +151,47 @@ class EventsDetailsPage extends StatelessWidget {
         );
       },
       child: BlocBuilder<FetchConventionDetailsBloc, QueryState>(
+        builder: (context, state) {
+          return state.maybeWhen<Widget>(
+            loading: (result) => const SenpaiLoading(),
+            orElse: () => const SizedBox.shrink(),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildFetchUserListeners() {
+    return BlocListener<FetchUserBloc, QueryState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          error: (error, result) {
+            showSnackBarError(context, R.strings.serverError);
+          },
+          loaded: (data, result) {
+            final response = result.data;
+            if (response == null) {
+              showSnackBarError(context, R.strings.nullUser);
+              logIt.wtf("A successful empty response just got set user");
+              return;
+            }
+            UserProfileModel? user;
+            try {
+              user = UserProfileModel.fromJson(result.data!["fetchUser"]);
+              final bloc = BlocProvider.of<EventDetailsBloc>(context);
+              bloc.add(OnInitHostModelDetails(user));
+            } catch (e) {
+              logIt.error("Error accessing fetchUser from response: $e");
+              user = null;
+            }
+            if (user == null) {
+              showSnackBarError(context, R.strings.nullUser);
+              logIt.error("A user with error");
+            }
+          },
+        );
+      },
+      child: BlocBuilder<FetchUserBloc, QueryState>(
         builder: (context, state) {
           return state.maybeWhen<Widget>(
             loading: (result) => const SenpaiLoading(),
