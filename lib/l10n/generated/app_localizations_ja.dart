@@ -560,7 +560,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get premiumAbilityAnimesText => 'アニメを15本まで追加可能';
 
   @override
-  String get premiumUpgradeText => '19.99ドルでアップグレード';
+  String get premiumUpgradeText => '月額 19.99 ドルでアップグレード';
 
   @override
   String get editProfileButton => 'プロフィール編集';
@@ -1029,4 +1029,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get yourEvents => '';
+
+  @override
+  String get invalidLocationError => '';
+
+  @override
+  String get eventManagementTitle => '';
+
+  @override
+  String get paidEntryText => '';
+
+  @override
+  String get associationWithConvention => '';
+
+  @override
+  String get attendButton => '';
+
+  @override
+  String get hostTheEventText => '';
+
+  @override
+  String get maximumPartyMemberLimit => '';
+
+  @override
+  String get youCanParticipateInPartyDescription => '';
+
+  @override
+  String get associatedEventsTitle => '';
 }

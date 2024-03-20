@@ -19,7 +19,6 @@ class ConventionModel with _$ConventionModel {
     bool? paymentRequired,
     //add another parameters
   }) = _ConventionModel;
-
   factory ConventionModel.initial() => ConventionModel(
         id: '',
         title: '',

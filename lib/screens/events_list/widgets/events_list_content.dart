@@ -1,3 +1,4 @@
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,6 +28,8 @@ class EventsListContent extends StatefulWidget {
 }
 
 class _EventsListContentState extends State<EventsListContent> {
+  final searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<EventsListBloc, EventsListState>(
@@ -194,41 +197,21 @@ class _EventsListContentState extends State<EventsListContent> {
   }
 
   void onNormalEventsTapped(BuildContext context, {bool isRefresh = false}) {
-    final bloc = BlocProvider.of<EventsListBloc>(context);
-    bloc.eventsListType.value = EventsListType.normal;
     final eventsListBloc = context.read<EventsListBloc>();
-    if (isRefresh) {
-      eventsListBloc.eventsList.clear();
-      final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
-      fetchEventsBloc.fetchEvents(startDate: DateTime.now());
-    } else {
-      if (eventsListBloc.eventsList.isNotEmpty) {
-        eventsListBloc.add(OnEventsListLoaded(const []));
-      } else {
-        final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
-        fetchEventsBloc.fetchEvents(startDate: DateTime.now());
-      }
-    }
+    eventsListBloc.eventsListType.value = EventsListType.normal;
+    eventsListBloc.eventsList.clear();
+    final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
+    fetchEventsBloc.fetchEvents(
+        startDate: DateTime.now(), searchText: searchController.text);
   }
 
   void onConventionsTapped(BuildContext context, {bool isRefresh = false}) {
-    final bloc = BlocProvider.of<EventsListBloc>(context);
-    bloc.eventsListType.value = EventsListType.conventions;
     final eventsListBloc = context.read<EventsListBloc>();
-    if (isRefresh) {
-      eventsListBloc.conventionsList.clear();
-      final fetchConventionsBloc =
-          BlocProvider.of<FetchConventionsBloc>(context);
-      fetchConventionsBloc.fetchConventions(startDate: DateTime.now());
-    } else {
-      if (eventsListBloc.conventionsList.isNotEmpty) {
-        eventsListBloc.add(OnConventionsListLoaded(const []));
-      } else {
-        final fetchConventionsBloc =
-            BlocProvider.of<FetchConventionsBloc>(context);
-        fetchConventionsBloc.fetchConventions(startDate: DateTime.now());
-      }
-    }
+    eventsListBloc.eventsListType.value = EventsListType.conventions;
+    eventsListBloc.conventionsList.clear();
+    final fetchConventionsBloc = BlocProvider.of<FetchConventionsBloc>(context);
+    fetchConventionsBloc.fetchConventions(
+        startDate: DateTime.now(), searchText: searchController.text);
   }
 
   Future<void> onYourEventsTapped(BuildContext context,
@@ -254,8 +237,24 @@ class _EventsListContentState extends State<EventsListContent> {
     return SenpaiIconInput(
       hintText: R.strings.searchText,
       borderRadius: $constants.corners.xxl,
-      controller: TextEditingController(),
-      onChange: (String search) {},
+      controller: searchController,
+      onChange: (String search) {
+        if (searchController.text.length > 2 || searchController.text.isEmpty) {
+          EasyDebounce.debounce(
+            $constants.events.searchTag,
+            Duration(milliseconds: $constants.times.fast.inMilliseconds),
+            () {
+              final eventsListBloc = context.read<EventsListBloc>();
+              eventsListBloc.eventsListType.value == EventsListType.normal
+                  ? eventsListBloc.eventsList.clear()
+                  : eventsListBloc.conventionsList.clear();
+              eventsListBloc.eventsListType.value == EventsListType.normal
+                  ? onNormalEventsTapped(context)
+                  : onConventionsTapped(context);
+            },
+          );
+        }
+      },
       iconPath: PathConstants.searchIcon,
       focusNode: FocusNode(),
     );
