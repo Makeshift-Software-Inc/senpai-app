@@ -65,7 +65,7 @@ class EventDetailsPartisipantsList extends StatelessWidget {
               //change on real date
               _buildCirleMember(
                 image:
-                    'https://d2dafkwzq2hfgj.cloudfront.net/stage/g8zrrvfjbwr273up3hu2l9nmbwqw',
+                    'https://d2dafkwzq2hfgj.cloudfront.net/stage/noshoftktsasyebgiw2gvqpf1vvn',
               ),
             ],
           ),
