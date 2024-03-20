@@ -13,3 +13,8 @@ class OnInitConventionDetails extends EventDetailsEvent {
   final ConventionModel conventionModel;
   OnInitConventionDetails(this.conventionModel);
 }
+
+class OnInitHostModelDetails extends EventDetailsEvent {
+  final UserProfileModel hostModel;
+  OnInitHostModelDetails(this.hostModel);
+}
