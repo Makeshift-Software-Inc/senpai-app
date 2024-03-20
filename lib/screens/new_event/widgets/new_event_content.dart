@@ -123,6 +123,8 @@ class NewEventContent extends StatelessWidget {
       errorText: R.strings.invalidMaxPartySizeError,
       isError:
           state is ErrorNewEventState && state.isEnable && !isValidPartySize,
+      maxLines: 2,
+      isColumn: true,
     );
   }
 
