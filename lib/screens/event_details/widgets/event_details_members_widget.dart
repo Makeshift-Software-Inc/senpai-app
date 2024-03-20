@@ -39,39 +39,6 @@ class EventDetailsMembersWidget extends StatelessWidget {
         Positioned.fill(
           child: Center(
             child: Container(
-              height: $constants.events.eventMembersCenterBGHeight,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular($constants.insets.md),
-                ),
-                shape: BoxShape.rectangle,
-                image: const DecorationImage(
-                  image: AssetImage(PathConstants.eventHostBGImage),
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
-          ),
-        ),
-        Positioned.fill(
-          child: Center(
-            child: Container(
-              margin: const EdgeInsets.only(top: 3, left: 3),
-              height: $constants.events.eventMembersCircleBGHeight,
-              width: $constants.events.eventMembersCircleBGHeight,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(PathConstants.eventHostBgCircle),
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-            ),
-          ),
-        ),
-        Positioned.fill(
-          child: Center(
-            child: Container(
               margin: const EdgeInsets.only(top: 4, left: 4),
               height: $constants.events.eventMembersCenterImageSize,
               width: $constants.events.eventMembersCenterImageSize,
