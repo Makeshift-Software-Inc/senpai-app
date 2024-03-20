@@ -12,6 +12,7 @@ class EditProfileInputWidget extends StatefulWidget {
   final bool showHintText;
   final TextInputType? keyboardType;
   final String description;
+  final bool isColumn;
 
   const EditProfileInputWidget({
     super.key,
@@ -24,6 +25,7 @@ class EditProfileInputWidget extends StatefulWidget {
     this.showHintText = true,
     this.keyboardType = TextInputType.text,
     this.description = '',
+    this.isColumn = false,
   });
 
   @override
@@ -86,7 +88,7 @@ class _EditProfileInputWidgetState extends State<EditProfileInputWidget> {
                             onChanged: (String value) {
                               widget.onTextChanged(value);
                             },
-                            maxLines: widget.maxLines,
+                            maxLines: widget.isColumn ? 1 : widget.maxLines,
                             focusNode: _focusNode,
                             decoration: _getDecoration(),
                             controller: widget.controller,
@@ -151,7 +153,7 @@ class _EditProfileInputWidgetState extends State<EditProfileInputWidget> {
   }
 
   Widget? _buildCounterWidget(int currentLength) {
-    if (widget.maxLines != 1) {
+    if (widget.maxLines != 1 && !widget.isColumn) {
       return Padding(
         padding: EdgeInsets.only(bottom: $constants.insets.xs),
         child: Text(
