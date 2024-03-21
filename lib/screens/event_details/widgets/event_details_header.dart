@@ -71,8 +71,7 @@ class EventDetailsHeader extends StatelessWidget {
             ),
           ),
         ),
-        if (cosplayRequired == CosplayRequired.required ||
-            cosplayRequired == CosplayRequired.optional)
+        if (isCosplayRequired(cosplayRequired))
           Positioned(
             top: 0,
             right: $constants.corners.md,

@@ -51,8 +51,7 @@ class NotchedContainerWidget extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: cosplayRequired == CosplayRequired.required ||
-                          cosplayRequired == CosplayRequired.optional
+                  child: isCosplayRequired(cosplayRequired)
                       ? const SenpaiCosplayWidget()
                       : SizedBox(
                           width: $constants.insets.xl,

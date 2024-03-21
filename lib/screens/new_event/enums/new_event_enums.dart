@@ -29,6 +29,10 @@ String cosplayToString(CosplayRequired cosplay) {
   }
 }
 
+bool isCosplayRequired(CosplayRequired? type) {
+  return type == CosplayRequired.required || type == CosplayRequired.optional;
+}
+
 String cosplayToServer(CosplayRequired cosplay) {
   if (cosplay == CosplayRequired.required) {
     return 'required';
