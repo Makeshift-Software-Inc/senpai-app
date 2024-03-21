@@ -1,13 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/models/events/event_details/event_details_model.dart';
+import 'package:senpai/routes/app_router.dart';
 import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_description_widget.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_header.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_members_widget.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_paid_widget.dart';
-import 'package:senpai/screens/events_list/widgets/event_map_widget.dart';
 import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
@@ -114,17 +115,27 @@ class EventDetailsContent extends StatelessWidget {
       width: getSize(context).width - $constants.insets.lg,
       child: Column(
         children: [
-          _buildLocationTitle(context, venue),
-          SizedBox(height: $constants.insets.sm),
-          ClipRRect(
-            borderRadius: BorderRadius.circular($constants.insets.md),
-            child: SizedBox(
-              height: $constants.events.eventDetailsLocationHeight,
-              child: EventMapWidget(
-                eventCoordinates: stringToLatLng(lonLat),
-              ),
-            ),
+          GestureDetector(
+            onTap: () {
+              context.router.push(
+                EventMapRoute(
+                  eventCoordinates: stringToLatLng(lonLat),
+                ),
+              );
+            },
+            child: _buildLocationTitle(context, venue),
           ),
+          //delete it after test
+          // SizedBox(height: $constants.insets.sm),
+          // ClipRRect(
+          //   borderRadius: BorderRadius.circular($constants.insets.md),
+          //   child: SizedBox(
+          //     height: $constants.events.eventDetailsLocationHeight,
+          //     child: EventMapWidget(
+          //       eventCoordinates: stringToLatLng(lonLat),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
@@ -152,7 +163,7 @@ class EventDetailsContent extends StatelessWidget {
           ),
         ),
         SizedBox(width: $constants.insets.sm),
-        Flexible(
+        Expanded(
           child: RichText(
             text: TextSpan(
               style: getTextTheme(context)
@@ -170,6 +181,10 @@ class EventDetailsContent extends StatelessWidget {
               ],
             ),
           ),
+        ),
+        Icon(
+          Icons.chevron_right,
+          color: $constants.palette.white,
         ),
       ],
     );

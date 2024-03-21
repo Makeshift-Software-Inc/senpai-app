@@ -1,10 +1,14 @@
 import 'dart:async';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:senpai/core/widgets/senpai_app_bar.dart';
+import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/utils/constants.dart';
 
-class EventMapWidget extends StatelessWidget {
-  EventMapWidget({super.key, required this.eventCoordinates});
+@RoutePage()
+class EventMapPage extends StatelessWidget {
+  EventMapPage({super.key, required this.eventCoordinates});
 
   final LatLng eventCoordinates;
   final mapController = Completer<GoogleMapController>();
@@ -12,6 +16,9 @@ class EventMapWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: SenpaiAppBar(
+        title: R.strings.locationTitle,
+      ),
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
           target: eventCoordinates,
