@@ -31,6 +31,14 @@ class EventsListContent extends StatefulWidget {
 
 class _EventsListContentState extends State<EventsListContent> {
   final searchController = TextEditingController();
+  final eventScrollController = ScrollController();
+  final conventionScrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    addScrollListeners();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +110,11 @@ class _EventsListContentState extends State<EventsListContent> {
                     selectedType: type,
                     onTap: () {
                       if (type == EventsListType.normal) return;
-                      onNormalEventsTapped(context);
+                      onNormalEventsTapped(
+                        context,
+                        needToLoad: searchController.text.isNotEmpty,
+                        isRefresh: searchController.text.isNotEmpty,
+                      );
                     },
                   ),
                   SizedBox(width: $constants.insets.xs),
@@ -112,7 +124,12 @@ class _EventsListContentState extends State<EventsListContent> {
                     selectedType: type,
                     onTap: () {
                       if (type == EventsListType.conventions) return;
-                      onConventionsTapped(context);
+                      onConventionsTapped(
+                        context,
+                        needToLoad: bloc.conventionsList.isEmpty ||
+                            searchController.text.isNotEmpty,
+                        isRefresh: searchController.text.isNotEmpty,
+                      );
                     },
                   ),
                   SizedBox(width: $constants.insets.xs),
@@ -148,6 +165,7 @@ class _EventsListContentState extends State<EventsListContent> {
                   : onYourEventsTapped(context, isRefresh: true),
               child: ListView.builder(
                   itemCount: eventsList.length,
+                  controller: eventScrollController,
                   shrinkWrap: true,
                   padding: EdgeInsets.only(bottom: $constants.insets.xl),
                   itemBuilder: (_, i) {
@@ -181,6 +199,7 @@ class _EventsListContentState extends State<EventsListContent> {
                   onConventionsTapped(context, isRefresh: true),
               child: ListView.builder(
                   itemCount: conventionsList.length,
+                  controller: conventionScrollController,
                   shrinkWrap: true,
                   padding: EdgeInsets.only(bottom: $constants.insets.xl),
                   itemBuilder: (_, i) {
@@ -207,26 +226,47 @@ class _EventsListContentState extends State<EventsListContent> {
     });
   }
 
-  void onNormalEventsTapped(BuildContext context, {bool isRefresh = false}) {
+  void onNormalEventsTapped(BuildContext context,
+      {bool isRefresh = false, bool needToLoad = true}) {
     final eventsListBloc = context.read<EventsListBloc>();
     eventsListBloc.eventsListType.value = EventsListType.normal;
-    eventsListBloc.eventsList.clear();
-    final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
-    fetchEventsBloc.fetchEvents(
-        startDate: DateTime.now(), searchText: searchController.text);
+    if (isRefresh) {
+      eventsListBloc.eventsList.clear();
+      eventsListBloc.eventsPage = 1;
+    }
+    if (needToLoad) {
+      final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
+      fetchEventsBloc.fetchEvents(
+          startDate: DateTime.now(),
+          page: eventsListBloc.eventsPage,
+          searchText: searchController.text);
+    } else {
+      eventsListBloc.add(OnEventsListLoaded(const []));
+    }
   }
 
-  void onConventionsTapped(BuildContext context, {bool isRefresh = false}) {
+  void onConventionsTapped(BuildContext context,
+      {bool isRefresh = false, bool needToLoad = true}) {
     final eventsListBloc = context.read<EventsListBloc>();
     eventsListBloc.eventsListType.value = EventsListType.conventions;
-    eventsListBloc.conventionsList.clear();
-    final fetchConventionsBloc = BlocProvider.of<FetchConventionsBloc>(context);
-    fetchConventionsBloc.fetchConventions(
-        startDate: DateTime.now(), searchText: searchController.text);
+    if (isRefresh) {
+      eventsListBloc.conventionsList.clear();
+      eventsListBloc.conventionsPage = 1;
+    }
+    if (needToLoad) {
+      final fetchConventionsBloc =
+          BlocProvider.of<FetchConventionsBloc>(context);
+      fetchConventionsBloc.fetchConventions(
+          startDate: DateTime.now(),
+          page: eventsListBloc.conventionsPage,
+          searchText: searchController.text);
+    } else {
+      eventsListBloc.add(OnConventionsListLoaded(const []));
+    }
   }
 
   Future<void> onYourEventsTapped(BuildContext context,
-      {bool isRefresh = false}) async {
+      {bool isRefresh = false, bool needToLoad = true}) async {
     final bloc = BlocProvider.of<EventsListBloc>(context);
     bloc.eventsListType.value = EventsListType.yourEvents;
     final eventsListBloc = context.read<EventsListBloc>();
@@ -237,7 +277,9 @@ class _EventsListContentState extends State<EventsListContent> {
       final userData = await storage.read();
       if (userData != null) {
         fetchEventsBloc.fetchEvents(
-            startDate: DateTime.now(), userId: userData.user.id);
+            startDate: DateTime.now(),
+            page: eventsListBloc.eventsPage,
+            userId: userData.user.id);
       }
     } else {
       eventsListBloc.add(OnEventsListLoaded(const []));
@@ -259,6 +301,9 @@ class _EventsListContentState extends State<EventsListContent> {
               eventsListBloc.eventsListType.value == EventsListType.normal
                   ? eventsListBloc.eventsList.clear()
                   : eventsListBloc.conventionsList.clear();
+              eventsListBloc.eventsListType.value == EventsListType.normal
+                  ? eventsListBloc.eventsPage = 1
+                  : eventsListBloc.conventionsPage = 1;
               eventsListBloc.eventsListType.value == EventsListType.normal
                   ? onNormalEventsTapped(context)
                   : onConventionsTapped(context);
@@ -308,5 +353,40 @@ class _EventsListContentState extends State<EventsListContent> {
         ),
       ),
     );
+  }
+
+  void addScrollListeners() {
+    eventScrollController.addListener(() {
+      if (eventScrollController.position.pixels ==
+          eventScrollController.position.maxScrollExtent) {
+        final eventsListBloc = context.read<EventsListBloc>();
+        final needToLoadMoreEvents = eventsListBloc.eventsList.length % 10 == 0;
+        if (needToLoadMoreEvents) {
+          eventsListBloc.eventsPage++;
+          onNormalEventsTapped(context);
+        }
+      }
+    });
+
+    conventionScrollController.addListener(() {
+      if (conventionScrollController.position.pixels ==
+          conventionScrollController.position.maxScrollExtent) {
+        final eventsListBloc = context.read<EventsListBloc>();
+        final needToLoadMoreConventions =
+            eventsListBloc.conventionsList.length % 10 == 0;
+        if (needToLoadMoreConventions) {
+          eventsListBloc.conventionsPage++;
+          onConventionsTapped(context);
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    eventScrollController.dispose();
+    conventionScrollController.dispose();
+    super.dispose();
   }
 }

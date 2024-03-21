@@ -10,7 +10,8 @@ part 'events_list_state.dart';
 enum EventsListType { normal, conventions, yourEvents }
 
 class EventsListBloc extends Bloc<EventsListEvent, EventsListState> {
-  int page = 1;
+  int eventsPage = 1;
+  int conventionsPage = 1;
   List<EventModel> eventsList = [];
   List<ConventionModel> conventionsList = [];
   List<EventModel> yourEventsList = [];

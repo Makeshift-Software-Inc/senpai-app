@@ -16,11 +16,13 @@ class FetchConventionsBloc extends QueryBloc<FetchConventions$Query> {
 
   fetchConventions({
     required DateTime startDate,
+    int? page,
     String? searchText,
   }) {
     final variables = FetchConventionsArguments(
       params: SearchEventInput(
         startDate: startDate,
+        page: page ?? 1,
         query: searchText,
       ),
     ).toJson();

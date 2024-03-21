@@ -31,7 +31,7 @@ class EventsListPage extends StatelessWidget {
         BlocProvider(create: (_) => EventsListBloc()..add(OnLoadEventList(1))),
         BlocProvider(
             create: (_) => getIt<FetchEventsBloc>()
-              ..fetchEvents(startDate: DateTime.now())),
+              ..fetchEvents(startDate: DateTime.now(), page: 1)),
         BlocProvider(create: (_) => getIt<FetchConventionsBloc>()),
       ],
       child: Scaffold(
