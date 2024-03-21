@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'event_model.dart';
+part of 'event_details_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,17 +14,20 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-EventModel _$EventModelFromJson(Map<String, dynamic> json) {
-  return _EventModel.fromJson(json);
+EventDetailsModel _$EventDetailsModelFromJson(Map<String, dynamic> json) {
+  return _EventDetailsModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$EventModel {
+mixin _$EventDetailsModel {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  int? get hostId => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   DateTime get startDate => throw _privateConstructorUsedError;
   String get coverImageUrl => throw _privateConstructorUsedError;
   String? get fullAddress => throw _privateConstructorUsedError;
+  String? get venue => throw _privateConstructorUsedError;
   String? get displayCity => throw _privateConstructorUsedError;
   String? get displayState => throw _privateConstructorUsedError;
   DateTime? get endDate => throw _privateConstructorUsedError;
@@ -32,38 +35,47 @@ mixin _$EventModel {
   String? get country => throw _privateConstructorUsedError;
   bool? get paymentRequired => throw _privateConstructorUsedError;
   String? get cosplayRequired => throw _privateConstructorUsedError;
+  int? get conventionId => throw _privateConstructorUsedError;
+  PartyModel? get party => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EventModelCopyWith<EventModel> get copyWith =>
+  $EventDetailsModelCopyWith<EventDetailsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventModelCopyWith<$Res> {
-  factory $EventModelCopyWith(
-          EventModel value, $Res Function(EventModel) then) =
-      _$EventModelCopyWithImpl<$Res, EventModel>;
+abstract class $EventDetailsModelCopyWith<$Res> {
+  factory $EventDetailsModelCopyWith(
+          EventDetailsModel value, $Res Function(EventDetailsModel) then) =
+      _$EventDetailsModelCopyWithImpl<$Res, EventDetailsModel>;
   @useResult
   $Res call(
       {String id,
       String title,
+      int? hostId,
+      String? description,
       DateTime startDate,
       String coverImageUrl,
       String? fullAddress,
+      String? venue,
       String? displayCity,
       String? displayState,
       DateTime? endDate,
       String? lonlat,
       String? country,
       bool? paymentRequired,
-      String? cosplayRequired});
+      String? cosplayRequired,
+      int? conventionId,
+      PartyModel? party});
+
+  $PartyModelCopyWith<$Res>? get party;
 }
 
 /// @nodoc
-class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
-    implements $EventModelCopyWith<$Res> {
-  _$EventModelCopyWithImpl(this._value, this._then);
+class _$EventDetailsModelCopyWithImpl<$Res, $Val extends EventDetailsModel>
+    implements $EventDetailsModelCopyWith<$Res> {
+  _$EventDetailsModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,9 +87,12 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? hostId = freezed,
+    Object? description = freezed,
     Object? startDate = null,
     Object? coverImageUrl = null,
     Object? fullAddress = freezed,
+    Object? venue = freezed,
     Object? displayCity = freezed,
     Object? displayState = freezed,
     Object? endDate = freezed,
@@ -85,6 +100,8 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
     Object? country = freezed,
     Object? paymentRequired = freezed,
     Object? cosplayRequired = freezed,
+    Object? conventionId = freezed,
+    Object? party = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -95,6 +112,14 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      hostId: freezed == hostId
+          ? _value.hostId
+          : hostId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       startDate: null == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -106,6 +131,10 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
       fullAddress: freezed == fullAddress
           ? _value.fullAddress
           : fullAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      venue: freezed == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
               as String?,
       displayCity: freezed == displayCity
           ? _value.displayCity
@@ -135,39 +164,67 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
           ? _value.cosplayRequired
           : cosplayRequired // ignore: cast_nullable_to_non_nullable
               as String?,
+      conventionId: freezed == conventionId
+          ? _value.conventionId
+          : conventionId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      party: freezed == party
+          ? _value.party
+          : party // ignore: cast_nullable_to_non_nullable
+              as PartyModel?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PartyModelCopyWith<$Res>? get party {
+    if (_value.party == null) {
+      return null;
+    }
+
+    return $PartyModelCopyWith<$Res>(_value.party!, (value) {
+      return _then(_value.copyWith(party: value) as $Val);
+    });
   }
 }
 
 /// @nodoc
-abstract class _$$EventModelImplCopyWith<$Res>
-    implements $EventModelCopyWith<$Res> {
-  factory _$$EventModelImplCopyWith(
-          _$EventModelImpl value, $Res Function(_$EventModelImpl) then) =
-      __$$EventModelImplCopyWithImpl<$Res>;
+abstract class _$$EventDetailsModelImplCopyWith<$Res>
+    implements $EventDetailsModelCopyWith<$Res> {
+  factory _$$EventDetailsModelImplCopyWith(_$EventDetailsModelImpl value,
+          $Res Function(_$EventDetailsModelImpl) then) =
+      __$$EventDetailsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String id,
       String title,
+      int? hostId,
+      String? description,
       DateTime startDate,
       String coverImageUrl,
       String? fullAddress,
+      String? venue,
       String? displayCity,
       String? displayState,
       DateTime? endDate,
       String? lonlat,
       String? country,
       bool? paymentRequired,
-      String? cosplayRequired});
+      String? cosplayRequired,
+      int? conventionId,
+      PartyModel? party});
+
+  @override
+  $PartyModelCopyWith<$Res>? get party;
 }
 
 /// @nodoc
-class __$$EventModelImplCopyWithImpl<$Res>
-    extends _$EventModelCopyWithImpl<$Res, _$EventModelImpl>
-    implements _$$EventModelImplCopyWith<$Res> {
-  __$$EventModelImplCopyWithImpl(
-      _$EventModelImpl _value, $Res Function(_$EventModelImpl) _then)
+class __$$EventDetailsModelImplCopyWithImpl<$Res>
+    extends _$EventDetailsModelCopyWithImpl<$Res, _$EventDetailsModelImpl>
+    implements _$$EventDetailsModelImplCopyWith<$Res> {
+  __$$EventDetailsModelImplCopyWithImpl(_$EventDetailsModelImpl _value,
+      $Res Function(_$EventDetailsModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -175,9 +232,12 @@ class __$$EventModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? hostId = freezed,
+    Object? description = freezed,
     Object? startDate = null,
     Object? coverImageUrl = null,
     Object? fullAddress = freezed,
+    Object? venue = freezed,
     Object? displayCity = freezed,
     Object? displayState = freezed,
     Object? endDate = freezed,
@@ -185,8 +245,10 @@ class __$$EventModelImplCopyWithImpl<$Res>
     Object? country = freezed,
     Object? paymentRequired = freezed,
     Object? cosplayRequired = freezed,
+    Object? conventionId = freezed,
+    Object? party = freezed,
   }) {
-    return _then(_$EventModelImpl(
+    return _then(_$EventDetailsModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -195,6 +257,14 @@ class __$$EventModelImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      hostId: freezed == hostId
+          ? _value.hostId
+          : hostId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       startDate: null == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -206,6 +276,10 @@ class __$$EventModelImplCopyWithImpl<$Res>
       fullAddress: freezed == fullAddress
           ? _value.fullAddress
           : fullAddress // ignore: cast_nullable_to_non_nullable
+              as String?,
+      venue: freezed == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
               as String?,
       displayCity: freezed == displayCity
           ? _value.displayCity
@@ -235,40 +309,59 @@ class __$$EventModelImplCopyWithImpl<$Res>
           ? _value.cosplayRequired
           : cosplayRequired // ignore: cast_nullable_to_non_nullable
               as String?,
+      conventionId: freezed == conventionId
+          ? _value.conventionId
+          : conventionId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      party: freezed == party
+          ? _value.party
+          : party // ignore: cast_nullable_to_non_nullable
+              as PartyModel?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$EventModelImpl implements _EventModel {
-  const _$EventModelImpl(
+class _$EventDetailsModelImpl implements _EventDetailsModel {
+  const _$EventDetailsModelImpl(
       {required this.id,
       required this.title,
+      this.hostId,
+      this.description,
       required this.startDate,
       required this.coverImageUrl,
       this.fullAddress,
+      this.venue,
       this.displayCity,
       this.displayState,
       this.endDate,
       this.lonlat,
       this.country,
       this.paymentRequired,
-      this.cosplayRequired});
+      this.cosplayRequired,
+      this.conventionId,
+      this.party});
 
-  factory _$EventModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EventModelImplFromJson(json);
+  factory _$EventDetailsModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EventDetailsModelImplFromJson(json);
 
   @override
   final String id;
   @override
   final String title;
   @override
+  final int? hostId;
+  @override
+  final String? description;
+  @override
   final DateTime startDate;
   @override
   final String coverImageUrl;
   @override
   final String? fullAddress;
+  @override
+  final String? venue;
   @override
   final String? displayCity;
   @override
@@ -283,25 +376,33 @@ class _$EventModelImpl implements _EventModel {
   final bool? paymentRequired;
   @override
   final String? cosplayRequired;
+  @override
+  final int? conventionId;
+  @override
+  final PartyModel? party;
 
   @override
   String toString() {
-    return 'EventModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, country: $country, paymentRequired: $paymentRequired, cosplayRequired: $cosplayRequired)';
+    return 'EventDetailsModel(id: $id, title: $title, hostId: $hostId, description: $description, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, venue: $venue, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, country: $country, paymentRequired: $paymentRequired, cosplayRequired: $cosplayRequired, conventionId: $conventionId, party: $party)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EventModelImpl &&
+            other is _$EventDetailsModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.hostId, hostId) || other.hostId == hostId) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
             (identical(other.coverImageUrl, coverImageUrl) ||
                 other.coverImageUrl == coverImageUrl) &&
             (identical(other.fullAddress, fullAddress) ||
                 other.fullAddress == fullAddress) &&
+            (identical(other.venue, venue) || other.venue == venue) &&
             (identical(other.displayCity, displayCity) ||
                 other.displayCity == displayCity) &&
             (identical(other.displayState, displayState) ||
@@ -312,7 +413,10 @@ class _$EventModelImpl implements _EventModel {
             (identical(other.paymentRequired, paymentRequired) ||
                 other.paymentRequired == paymentRequired) &&
             (identical(other.cosplayRequired, cosplayRequired) ||
-                other.cosplayRequired == cosplayRequired));
+                other.cosplayRequired == cosplayRequired) &&
+            (identical(other.conventionId, conventionId) ||
+                other.conventionId == conventionId) &&
+            (identical(other.party, party) || other.party == party));
   }
 
   @JsonKey(ignore: true)
@@ -321,59 +425,76 @@ class _$EventModelImpl implements _EventModel {
       runtimeType,
       id,
       title,
+      hostId,
+      description,
       startDate,
       coverImageUrl,
       fullAddress,
+      venue,
       displayCity,
       displayState,
       endDate,
       lonlat,
       country,
       paymentRequired,
-      cosplayRequired);
+      cosplayRequired,
+      conventionId,
+      party);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EventModelImplCopyWith<_$EventModelImpl> get copyWith =>
-      __$$EventModelImplCopyWithImpl<_$EventModelImpl>(this, _$identity);
+  _$$EventDetailsModelImplCopyWith<_$EventDetailsModelImpl> get copyWith =>
+      __$$EventDetailsModelImplCopyWithImpl<_$EventDetailsModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EventModelImplToJson(
+    return _$$EventDetailsModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _EventModel implements EventModel {
-  const factory _EventModel(
+abstract class _EventDetailsModel implements EventDetailsModel {
+  const factory _EventDetailsModel(
       {required final String id,
       required final String title,
+      final int? hostId,
+      final String? description,
       required final DateTime startDate,
       required final String coverImageUrl,
       final String? fullAddress,
+      final String? venue,
       final String? displayCity,
       final String? displayState,
       final DateTime? endDate,
       final String? lonlat,
       final String? country,
       final bool? paymentRequired,
-      final String? cosplayRequired}) = _$EventModelImpl;
+      final String? cosplayRequired,
+      final int? conventionId,
+      final PartyModel? party}) = _$EventDetailsModelImpl;
 
-  factory _EventModel.fromJson(Map<String, dynamic> json) =
-      _$EventModelImpl.fromJson;
+  factory _EventDetailsModel.fromJson(Map<String, dynamic> json) =
+      _$EventDetailsModelImpl.fromJson;
 
   @override
   String get id;
   @override
   String get title;
   @override
+  int? get hostId;
+  @override
+  String? get description;
+  @override
   DateTime get startDate;
   @override
   String get coverImageUrl;
   @override
   String? get fullAddress;
+  @override
+  String? get venue;
   @override
   String? get displayCity;
   @override
@@ -389,7 +510,11 @@ abstract class _EventModel implements EventModel {
   @override
   String? get cosplayRequired;
   @override
+  int? get conventionId;
+  @override
+  PartyModel? get party;
+  @override
   @JsonKey(ignore: true)
-  _$$EventModelImplCopyWith<_$EventModelImpl> get copyWith =>
+  _$$EventDetailsModelImplCopyWith<_$EventDetailsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

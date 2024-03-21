@@ -127,6 +127,7 @@ class _Palette {
   final loadingBackground = const Color(0x4414161D);
 
   final disabledTextButton = const Color(0xFF98A1BB);
+  final folderBackground = const Color(0xFF1C2431);
 
   // gradients
   final flipCardBgGradient = LinearGradient(
@@ -187,6 +188,24 @@ class _Palette {
     colors: [
       const Color(0xFF0E1018).withOpacity(0),
       const Color(0xFF0E1018),
+    ],
+  );
+  final aboutEventGradient = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+      const Color(0xFF1C2431),
+      const Color(0xFF1C2431).withOpacity(0.2),
+    ],
+  );
+
+  final eventHostGradient = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [
+      const Color(0xFFFFFFFF).withOpacity(0),
+      const Color(0xFFFFFFFF),
+      const Color(0xFFFFFFFF).withOpacity(0),
     ],
   );
 }
@@ -294,6 +313,15 @@ class _EventsConstants {
   late final double eventListRoundContainerSize = 50;
   late final double newEventImageHeight = 200;
   late final String searchTag = 'searchEvents';
+  late final double eventDetailsImageHeight = 300;
+  late final double eventDetailsLocationHeight = 436;
+  late final double eventDetailsMembersHeight = 650;
+  late final double eventMembersCenterBGHeight = 150;
+  late final double eventMembersCircleBGHeight = 120;
+  late final double eventMembersCenterImageSize = 112;
+  late final double eventCosplaySize = 74;
+  late final double eventMembersBlur = 16;
+  late final double eventHostHeight = 130;
 }
 
 @immutable

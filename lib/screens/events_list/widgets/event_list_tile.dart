@@ -6,6 +6,7 @@ import 'package:senpai/core/widgets/loading.dart';
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/screens/events_list/widgets/notched_container_widget.dart';
+import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
@@ -18,6 +19,7 @@ class EventListTile extends StatelessWidget {
     required this.city,
     required this.state,
     required this.paymentRequired,
+    this.cosplayRequired,
   }) : super(key: key);
 
   final String coverImageUrl;
@@ -26,6 +28,7 @@ class EventListTile extends StatelessWidget {
   final String city;
   final String state;
   final bool paymentRequired;
+  final String? cosplayRequired;
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +100,9 @@ class EventListTile extends StatelessWidget {
             child: NotchedContainerWidget(
               title: title,
               subtitle: '$city, $state',
+              cosplayRequired: CosplayRequired.cosplayFromServer(
+                cosplayRequired,
+              ),
             ),
           ),
           Positioned(
@@ -139,7 +145,7 @@ class EventListTile extends StatelessWidget {
             fit: BoxFit.contain,
           ),
           Text(
-            'Paid Entry',
+            R.strings.paidEntryText,
             style: getTextTheme(context).headlineSmall?.copyWith(
                   color: $constants.palette.white,
                   fontSize: 8,

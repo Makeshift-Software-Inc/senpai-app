@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,7 @@ import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/dependency_injection/injection.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/models/auth/auth_model.dart';
+import 'package:senpai/routes/app_router.dart';
 
 import 'package:senpai/screens/events_list/bloc/events_list_bloc.dart';
 import 'package:senpai/screens/events_list/widgets/empty_events_widget.dart';
@@ -150,13 +152,22 @@ class _EventsListContentState extends State<EventsListContent> {
                   padding: EdgeInsets.only(bottom: $constants.insets.xl),
                   itemBuilder: (_, i) {
                     final event = eventsList[i];
-                    return EventListTile(
-                      coverImageUrl: event.coverImageUrl,
-                      startDate: event.startDate,
-                      title: event.title,
-                      city: event.displayCity ?? '',
-                      state: event.displayState ?? '',
-                      paymentRequired: event.paymentRequired ?? false,
+                    return GestureDetector(
+                      onTap: () {
+                        context.router.push(EventsDetailsRoute(
+                          eventId: event.id,
+                          eventName: event.title,
+                        ));
+                      },
+                      child: EventListTile(
+                        coverImageUrl: event.coverImageUrl,
+                        startDate: event.startDate,
+                        title: event.title,
+                        city: event.displayCity ?? '',
+                        state: event.displayState ?? '',
+                        paymentRequired: event.paymentRequired ?? false,
+                        cosplayRequired: event.cosplayRequired,
+                      ),
                     );
                   }),
             ),
@@ -180,7 +191,7 @@ class _EventsListContentState extends State<EventsListContent> {
                       title: convention.title,
                       city: convention.displayCity ?? '',
                       state: convention.displayState ?? '',
-                      paymentRequired: false,
+                      paymentRequired: convention.paymentRequired ?? false,
                     );
                   }),
             ),

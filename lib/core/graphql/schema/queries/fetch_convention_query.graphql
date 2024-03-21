@@ -1,0 +1,14 @@
+query fetchConvention($conventionId: ID!) {
+  fetchConvention(conventionId: $conventionId) {
+    id
+    title
+    startDate
+    endDate
+    lonlat
+    fullAddress
+    coverImageUrl
+    displayCity
+    displayState
+    paymentRequired
+  }
+}

@@ -5,7 +5,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
 import 'package:path/path.dart' as path;
-
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:senpai/models/chat/chat_message.dart';
@@ -321,4 +321,21 @@ bool isVideo(XFile file) {
 bool isValidMaxPartySize(String partySize) {
   final RegExp digitOneToTenRegex = RegExp(r'^(10|[1-9])$');
   return partySize.isNotEmpty && digitOneToTenRegex.hasMatch(partySize);
+}
+
+LatLng stringToLatLng(String? pointString) {
+  if (pointString == null) {
+    return const LatLng(37.785834, -122.406417);
+  }
+  RegExp regex = RegExp(r'POINT \((-?\d+\.\d+) (-?\d+\.\d+)\)');
+  RegExpMatch? match = regex.firstMatch(pointString);
+
+  if (match != null && match.groupCount == 2) {
+    double latitude = double.parse(match.group(2)!);
+    double longitude = double.parse(match.group(1)!);
+    LatLng latLng = LatLng(latitude, longitude);
+    return latLng;
+  } else {
+    return const LatLng(37.785834, -122.406417);
+  }
 }

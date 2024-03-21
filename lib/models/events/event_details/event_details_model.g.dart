@@ -1,18 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'event_model.dart';
+part of 'event_details_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EventModelImpl _$$EventModelImplFromJson(Map<String, dynamic> json) =>
-    _$EventModelImpl(
+_$EventDetailsModelImpl _$$EventDetailsModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EventDetailsModelImpl(
       id: json['id'] as String,
       title: json['title'] as String,
+      hostId: json['hostId'] as int?,
+      description: json['description'] as String?,
       startDate: DateTime.parse(json['startDate'] as String),
       coverImageUrl: json['coverImageUrl'] as String,
       fullAddress: json['fullAddress'] as String?,
+      venue: json['venue'] as String?,
       displayCity: json['displayCity'] as String?,
       displayState: json['displayState'] as String?,
       endDate: json['endDate'] == null
@@ -22,15 +26,23 @@ _$EventModelImpl _$$EventModelImplFromJson(Map<String, dynamic> json) =>
       country: json['country'] as String?,
       paymentRequired: json['paymentRequired'] as bool?,
       cosplayRequired: json['cosplayRequired'] as String?,
+      conventionId: json['conventionId'] as int?,
+      party: json['party'] == null
+          ? null
+          : PartyModel.fromJson(json['party'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$EventModelImplToJson(_$EventModelImpl instance) =>
+Map<String, dynamic> _$$EventDetailsModelImplToJson(
+        _$EventDetailsModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'hostId': instance.hostId,
+      'description': instance.description,
       'startDate': instance.startDate.toIso8601String(),
       'coverImageUrl': instance.coverImageUrl,
       'fullAddress': instance.fullAddress,
+      'venue': instance.venue,
       'displayCity': instance.displayCity,
       'displayState': instance.displayState,
       'endDate': instance.endDate?.toIso8601String(),
@@ -38,4 +50,6 @@ Map<String, dynamic> _$$EventModelImplToJson(_$EventModelImpl instance) =>
       'country': instance.country,
       'paymentRequired': instance.paymentRequired,
       'cosplayRequired': instance.cosplayRequired,
+      'conventionId': instance.conventionId,
+      'party': instance.party,
     };
