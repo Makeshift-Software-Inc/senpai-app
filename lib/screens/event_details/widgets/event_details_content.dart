@@ -131,7 +131,7 @@ class EventDetailsContent extends StatelessWidget {
           //   borderRadius: BorderRadius.circular($constants.insets.md),
           //   child: SizedBox(
           //     height: $constants.events.eventDetailsLocationHeight,
-          //     child: EventMapWidget(
+          //     child: EventMapPage(
           //       eventCoordinates: stringToLatLng(lonLat),
           //     ),
           //   ),
