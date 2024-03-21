@@ -42,9 +42,11 @@ class NotchedContainerWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: $constants.insets.md,
-                      vertical: $constants.insets.xs,
+                    padding: EdgeInsets.fromLTRB(
+                      $constants.insets.md,
+                      $constants.insets.xs,
+                      0,
+                      $constants.insets.xs,
                     ),
                     child: _buildTitle(context),
                   ),
@@ -54,7 +56,7 @@ class NotchedContainerWidget extends StatelessWidget {
                   child: isCosplayRequired(cosplayRequired)
                       ? const SenpaiCosplayWidget()
                       : SizedBox(
-                          width: $constants.insets.xl,
+                          width: $constants.insets.lg,
                           child: SvgPicture.asset(
                             PathConstants.arrowsForward,
                             width: $constants.corners.sm,

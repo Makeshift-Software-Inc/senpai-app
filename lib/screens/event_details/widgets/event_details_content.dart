@@ -164,8 +164,8 @@ class EventDetailsContent extends StatelessWidget {
         ),
         SizedBox(width: $constants.insets.sm),
         Expanded(
-          child: RichText(
-            text: TextSpan(
+          child: SelectableText.rich(
+            TextSpan(
               style: getTextTheme(context)
                   .bodyMedium
                   ?.copyWith(fontWeight: FontWeight.w600),
