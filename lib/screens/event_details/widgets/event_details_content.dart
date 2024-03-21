@@ -88,7 +88,7 @@ class EventDetailsContent extends StatelessWidget {
               title: eventModel.title,
               subtitle: '${eventModel.displayCity}, ${eventModel.displayState}',
               startDate: eventModel.startDate,
-              cosplayRequired: CosplayRequired.cosplayFromServer(
+              cosplayStatus: CosplayStatus.cosplayFromServer(
                 eventModel.cosplayRequired,
               ),
             ),

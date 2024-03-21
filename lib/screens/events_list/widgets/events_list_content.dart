@@ -185,7 +185,7 @@ class _EventsListContentState extends State<EventsListContent> {
                         city: event.displayCity ?? '',
                         state: event.displayState ?? '',
                         paymentRequired: event.paymentRequired ?? false,
-                        cosplayRequired: event.cosplayRequired,
+                        cosplayStatus: event.cosplayRequired,
                       ),
                     );
                   }),

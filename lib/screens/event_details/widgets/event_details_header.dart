@@ -13,14 +13,14 @@ class EventDetailsHeader extends StatelessWidget {
   final String title;
   final String subtitle;
   final DateTime startDate;
-  final CosplayRequired? cosplayRequired;
+  final CosplayStatus? cosplayStatus;
 
   const EventDetailsHeader({
     super.key,
     required this.title,
     required this.subtitle,
     required this.startDate,
-    this.cosplayRequired,
+    this.cosplayStatus,
   });
 
   @override
@@ -30,8 +30,7 @@ class EventDetailsHeader extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top: $constants.corners.xxl),
           child: ClipPath(
-            clipper: cosplayRequired == CosplayRequired.required ||
-                    cosplayRequired == CosplayRequired.optional
+            clipper: isCosplayRequired(cosplayStatus)
                 ? SenpaiCosplayCustomClipper()
                 : null,
             child: ClipRect(
@@ -71,7 +70,7 @@ class EventDetailsHeader extends StatelessWidget {
             ),
           ),
         ),
-        if (isCosplayRequired(cosplayRequired))
+        if (isCosplayRequired(cosplayStatus))
           Positioned(
             top: 0,
             right: $constants.corners.md,

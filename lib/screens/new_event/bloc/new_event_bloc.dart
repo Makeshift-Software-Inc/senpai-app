@@ -32,7 +32,7 @@ class NewEventBloc extends Bloc<NewEventEvent, NewEventState> {
   DateTime endTimeEvent = DateTime.now();
 
   int? paymentRequiredIndex;
-  int? cosplayRequiredIndex;
+  int? cosplayStatusIndex;
 
   NewEventBloc() : super(NewEventInitial()) {
     on<OnInitNewEvent>((event, emit) async {
@@ -167,9 +167,9 @@ class NewEventBloc extends Bloc<NewEventEvent, NewEventState> {
     });
 
     on<OnChangeCosplayInfoEvent>((event, emit) {
-      cosplayRequiredIndex = event.index;
+      cosplayStatusIndex = event.index;
       newEvent = newEvent.copyWith(
-        cosplayRequired: cosplayToServer(CosplayRequired.values[event.index]),
+        cosplayRequired: cosplayToServer(CosplayStatus.values[event.index]),
       );
       emit(ValidState());
     });

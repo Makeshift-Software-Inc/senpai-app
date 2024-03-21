@@ -8,11 +8,11 @@ import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
 class NewEventCosplayWidget extends StatelessWidget {
-  final int? cosplayRequiredIndex;
+  final int? cosplayStatusIndex;
 
   const NewEventCosplayWidget({
     super.key,
-    this.cosplayRequiredIndex,
+    this.cosplayStatusIndex,
   });
 
   @override
@@ -33,7 +33,7 @@ class NewEventCosplayWidget extends StatelessWidget {
           ),
           SizedBox(height: $constants.insets.xs),
           Wrap(
-            children: CosplayRequired.values
+            children: CosplayStatus.values
                 .asMap()
                 .entries
                 .map(
@@ -58,7 +58,7 @@ class NewEventCosplayWidget extends StatelessWidget {
     String title,
     int index,
   ) {
-    final isSelected = index == cosplayRequiredIndex;
+    final isSelected = index == cosplayStatusIndex;
     return ElevatedButton(
       onPressed: () {
         final bloc = BlocProvider.of<NewEventBloc>(context);

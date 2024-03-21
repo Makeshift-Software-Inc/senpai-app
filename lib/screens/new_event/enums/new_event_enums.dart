@@ -3,40 +3,40 @@ import 'package:senpai/l10n/resources.dart';
 //required
 //optional
 
-enum CosplayRequired {
+enum CosplayStatus {
   required,
   optional,
   no;
 
-  static CosplayRequired cosplayFromServer(String? cosplay) {
+  static CosplayStatus cosplayFromServer(String? cosplay) {
     if (cosplay == 'required') {
-      return CosplayRequired.required;
+      return CosplayStatus.required;
     } else if (cosplay == 'optional') {
-      return CosplayRequired.optional;
+      return CosplayStatus.optional;
     } else {
-      return CosplayRequired.no;
+      return CosplayStatus.no;
     }
   }
 }
 
-String cosplayToString(CosplayRequired cosplay) {
-  if (cosplay == CosplayRequired.required) {
+String cosplayToString(CosplayStatus cosplay) {
+  if (cosplay == CosplayStatus.required) {
     return R.strings.yesButton.toUpperCase();
-  } else if (cosplay == CosplayRequired.optional) {
+  } else if (cosplay == CosplayStatus.optional) {
     return R.strings.optionalButton.toUpperCase();
   } else {
     return R.strings.noButton.toUpperCase();
   }
 }
 
-bool isCosplayRequired(CosplayRequired? type) {
-  return type == CosplayRequired.required || type == CosplayRequired.optional;
+bool isCosplayRequired(CosplayStatus? type) {
+  return type == CosplayStatus.required || type == CosplayStatus.optional;
 }
 
-String cosplayToServer(CosplayRequired cosplay) {
-  if (cosplay == CosplayRequired.required) {
+String cosplayToServer(CosplayStatus cosplay) {
+  if (cosplay == CosplayStatus.required) {
     return 'required';
-  } else if (cosplay == CosplayRequired.optional) {
+  } else if (cosplay == CosplayStatus.optional) {
     return 'optional';
   } else {
     return 'no';
