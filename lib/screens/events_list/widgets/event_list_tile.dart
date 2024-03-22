@@ -72,10 +72,10 @@ class EventListTile extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: $constants.palette.black.withOpacity(0.4),
                       shape: BoxShape.circle),
-                  child: Icon(
-                    Icons.calendar_month,
-                    size: $constants.insets.sm,
-                    color: $constants.palette.white,
+                  child: SvgPicture.asset(
+                    PathConstants.calendarIcon,
+                    width: $constants.insets.sm,
+                    height: $constants.insets.sm,
                   ),
                 ),
                 Container(
