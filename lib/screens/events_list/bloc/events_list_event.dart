@@ -15,6 +15,12 @@ class OnLoadConventionsList extends EventsListEvent {
   OnLoadConventionsList(this.page);
 }
 
+class OnLoadYourEventsList extends EventsListEvent {
+  final int page;
+
+  OnLoadYourEventsList(this.page);
+}
+
 class OnEventsListLoaded extends EventsListEvent {
   final List<EventModel> eventsList;
 

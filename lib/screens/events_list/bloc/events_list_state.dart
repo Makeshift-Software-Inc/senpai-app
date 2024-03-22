@@ -19,6 +19,8 @@ class LoadedConventionsListState extends EventsListState {
   LoadedConventionsListState(this.conventionsList);
 }
 
+class LoadingYourEventsListState extends EventsListState {}
+
 class LoadedYourEventsListState extends EventsListState {
   final List<EventModel> eventsList;
 
@@ -28,6 +30,8 @@ class LoadedYourEventsListState extends EventsListState {
 class EmptyConventionsListState extends EventsListState {}
 
 class EmptyEventsListState extends EventsListState {}
+
+class EmptyYourEventsListState extends EventsListState {}
 
 class ErrorEventsListState extends EventsListState {}
 

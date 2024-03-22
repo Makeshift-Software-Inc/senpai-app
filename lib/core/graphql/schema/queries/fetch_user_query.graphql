@@ -1,4 +1,4 @@
-query fetchUser($userId: ID!) {
+query fetchUser($userId: ID!, $page: Int!) {
   fetchUser(userId: $userId) {
     id
     role
@@ -16,6 +16,20 @@ query fetchUser($userId: ID!) {
     displayState
     onlineStatus
     lonlat
+    events (page: $page) {
+    id
+    title
+    country
+    displayCity
+    displayState
+    fullAddress
+    startDate
+    endDate
+    coverImageUrl
+    paymentRequired
+    cosplayRequired
+    lonlat
+    	}
     matches {
       id
       matcheeId

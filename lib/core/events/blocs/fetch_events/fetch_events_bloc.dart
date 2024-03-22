@@ -18,14 +18,12 @@ class FetchEventsBloc extends QueryBloc<FetchEvents$Query> {
     required DateTime startDate,
     required int page,
     String? searchText,
-    String? userId,
   }) {
     final variables = FetchEventsArguments(
       params: SearchEventInput(
         startDate: startDate,
         page: page,
         query: searchText,
-        userId: userId,
       ),
     ).toJson();
 

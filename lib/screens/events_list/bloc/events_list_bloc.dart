@@ -12,6 +12,7 @@ enum EventsListType { normal, conventions, yourEvents }
 class EventsListBloc extends Bloc<EventsListEvent, EventsListState> {
   int eventsPage = 1;
   int conventionsPage = 1;
+  int yourEventsPage = 1;
   List<EventModel> eventsList = [];
   List<ConventionModel> conventionsList = [];
   List<EventModel> yourEventsList = [];
@@ -33,6 +34,9 @@ class EventsListBloc extends Bloc<EventsListEvent, EventsListState> {
     on<OnConventionsListLoaded>((event, emit) async {
       conventionsList.addAll(event.conventionsList);
       emit(LoadedConventionsListState(conventionsList));
+    });
+    on<OnLoadYourEventsList>((event, emit) async {
+      emit(LoadingYourEventsListState());
     });
     on<OnYourEventsListLoaded>((event, emit) async {
       yourEventsList.addAll(event.eventsList);
