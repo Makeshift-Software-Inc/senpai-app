@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:senpai/core/events/blocs/fetch_conventions/fetch_conventions_bloc.dart';
 import 'package:senpai/core/events/blocs/fetch_events/fetch_events_bloc.dart';
 import 'package:senpai/core/graphql/blocs/query/query_bloc.dart';
+import 'package:senpai/core/user/blocs/fetch_user/fetch_user_bloc.dart';
 import 'package:senpai/core/widgets/loading.dart';
 import 'package:senpai/core/widgets/senpai_app_bar.dart';
 import 'package:senpai/data/path_constants.dart';
@@ -33,6 +34,7 @@ class EventsListPage extends StatelessWidget {
             create: (_) => getIt<FetchEventsBloc>()
               ..fetchEvents(startDate: DateTime.now(), page: 1)),
         BlocProvider(create: (_) => getIt<FetchConventionsBloc>()),
+        BlocProvider(create: (_) => getIt<FetchUserBloc>()),
       ],
       child: Scaffold(
         backgroundColor: $constants.palette.darkBlue,
@@ -49,6 +51,7 @@ class EventsListPage extends StatelessWidget {
             const EventsListContent(),
             _buildFetchEventsListeners(),
             _buildFetchConventionsListeners(),
+            _buildFetchYourEventsListener(),
             Align(
                 alignment: Alignment.bottomCenter,
                 child: _buildCreateEventButton(context)),
@@ -79,12 +82,7 @@ class EventsListPage extends StatelessWidget {
               final eventsList =
                   events!.map((e) => EventModel.fromJson(e)).toList();
               final bloc = BlocProvider.of<EventsListBloc>(context);
-              if (bloc.eventsListType.value == EventsListType.normal) {
-                bloc.add(OnEventsListLoaded(eventsList));
-              } else if (bloc.eventsListType.value ==
-                  EventsListType.yourEvents) {
-                bloc.add(OnYourEventsListLoaded(eventsList));
-              }
+              bloc.add(OnEventsListLoaded(eventsList));
             } catch (e) {
               logIt.error("Error accessing FetchEvents from response: $e");
               events = null;
@@ -141,6 +139,50 @@ class EventsListPage extends StatelessWidget {
         );
       },
       child: BlocBuilder<FetchConventionsBloc, QueryState>(
+        builder: (context, state) {
+          return state.maybeWhen<Widget>(
+            loading: (result) => const SenpaiLoading(),
+            orElse: () => const SizedBox.shrink(),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildFetchYourEventsListener() {
+    return BlocListener<FetchUserBloc, QueryState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          loading: (result) {},
+          error: (error, result) {
+            showSnackBarError(context, R.strings.serverError);
+          },
+          loaded: (data, result) {
+            final response = result.data;
+            if (response == null) {
+              showSnackBarError(context, R.strings.nullUser);
+              logIt.wtf("A successful empty response just got set your events");
+              return;
+            }
+            List<dynamic>? events;
+            try {
+              events = response["fetchUser"]["events"];
+              final eventsList =
+                  events!.map((e) => EventModel.fromJson(e)).toList();
+              final bloc = BlocProvider.of<EventsListBloc>(context);
+              bloc.add(OnYourEventsListLoaded(eventsList));
+            } catch (e) {
+              logIt.error("Error accessing FetchYourEvents from response: $e");
+              events = null;
+            }
+            if (events == null) {
+              showSnackBarError(context, R.strings.serverError);
+              logIt.error("A FetchYourEvents with error");
+            }
+          },
+        );
+      },
+      child: BlocBuilder<FetchEventsBloc, QueryState>(
         builder: (context, state) {
           return state.maybeWhen<Widget>(
             loading: (result) => const SenpaiLoading(),

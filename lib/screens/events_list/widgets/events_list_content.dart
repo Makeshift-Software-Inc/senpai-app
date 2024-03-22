@@ -2,24 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:fresh_graphql/fresh_graphql.dart';
 import 'package:senpai/core/events/blocs/fetch_conventions/fetch_conventions_bloc.dart';
 import 'package:senpai/core/events/blocs/fetch_events/fetch_events_bloc.dart';
-
+import 'package:senpai/core/user/blocs/fetch_user/fetch_user_bloc.dart';
 import 'package:senpai/core/widgets/icon_input.dart';
-
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/dependency_injection/injection.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/models/auth/auth_model.dart';
 import 'package:senpai/routes/app_router.dart';
-
 import 'package:senpai/screens/events_list/bloc/events_list_bloc.dart';
 import 'package:senpai/screens/events_list/widgets/empty_events_widget.dart';
 import 'package:senpai/screens/events_list/widgets/event_list_tile.dart';
 import 'package:senpai/utils/constants.dart';
-
 import 'package:senpai/utils/methods/utils.dart';
 
 class EventsListContent extends StatefulWidget {
@@ -33,6 +29,7 @@ class _EventsListContentState extends State<EventsListContent> {
   final searchController = TextEditingController();
   final eventScrollController = ScrollController();
   final conventionScrollController = ScrollController();
+  final yourEventsScrollController = ScrollController();
 
   @override
   void initState() {
@@ -112,7 +109,8 @@ class _EventsListContentState extends State<EventsListContent> {
                       if (type == EventsListType.normal) return;
                       onNormalEventsTapped(
                         context,
-                        needToLoad: searchController.text.isNotEmpty,
+                        needToLoad: bloc.eventsList.isEmpty ||
+                            searchController.text.isNotEmpty,
                         isRefresh: searchController.text.isNotEmpty,
                       );
                     },
@@ -139,7 +137,10 @@ class _EventsListContentState extends State<EventsListContent> {
                     selectedType: type,
                     onTap: () {
                       if (type == EventsListType.yourEvents) return;
-                      onYourEventsTapped(context);
+                      onYourEventsTapped(context,
+                          needToLoad: bloc.yourEventsList.isEmpty ||
+                              searchController.text.isNotEmpty,
+                          isRefresh: searchController.text.isNotEmpty);
                     },
                   ),
                 ],
@@ -267,22 +268,21 @@ class _EventsListContentState extends State<EventsListContent> {
 
   Future<void> onYourEventsTapped(BuildContext context,
       {bool isRefresh = false, bool needToLoad = true}) async {
-    final bloc = BlocProvider.of<EventsListBloc>(context);
-    bloc.eventsListType.value = EventsListType.yourEvents;
     final eventsListBloc = context.read<EventsListBloc>();
-    if (isRefresh || eventsListBloc.yourEventsList.isEmpty) {
+    eventsListBloc.eventsListType.value = EventsListType.yourEvents;
+    if (isRefresh) {
       eventsListBloc.yourEventsList.clear();
-      final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
+      eventsListBloc.yourEventsPage = 1;
+    }
+    if (needToLoad) {
+      final fetchUserBloc = BlocProvider.of<FetchUserBloc>(context);
       final storage = getIt<TokenStorage<AuthModel>>();
       final userData = await storage.read();
-      if (userData != null) {
-        fetchEventsBloc.fetchEvents(
-            startDate: DateTime.now(),
-            page: eventsListBloc.eventsPage,
-            userId: userData.user.id);
-      }
+      fetchUserBloc.fetchUser(
+          userId: int.parse(userData?.user.id ?? '0'),
+          page: eventsListBloc.yourEventsPage);
     } else {
-      eventsListBloc.add(OnEventsListLoaded(const []));
+      eventsListBloc.add(OnYourEventsListLoaded(const []));
     }
   }
 
@@ -298,15 +298,23 @@ class _EventsListContentState extends State<EventsListContent> {
             Duration(milliseconds: $constants.times.fast.inMilliseconds),
             () {
               final eventsListBloc = context.read<EventsListBloc>();
-              eventsListBloc.eventsListType.value == EventsListType.normal
-                  ? eventsListBloc.eventsList.clear()
-                  : eventsListBloc.conventionsList.clear();
-              eventsListBloc.eventsListType.value == EventsListType.normal
-                  ? eventsListBloc.eventsPage = 1
-                  : eventsListBloc.conventionsPage = 1;
-              eventsListBloc.eventsListType.value == EventsListType.normal
-                  ? onNormalEventsTapped(context)
-                  : onConventionsTapped(context);
+              eventsListBloc.eventsList.clear();
+              eventsListBloc.conventionsList.clear();
+              eventsListBloc.yourEventsList.clear();
+              eventsListBloc.eventsPage = 1;
+              eventsListBloc.conventionsPage = 1;
+              eventsListBloc.yourEventsPage = 1;
+              switch (eventsListBloc.eventsListType.value) {
+                case EventsListType.normal:
+                  onNormalEventsTapped(context);
+                  break;
+                case EventsListType.conventions:
+                  onConventionsTapped(context);
+                  break;
+                case EventsListType.yourEvents:
+                  onYourEventsTapped(context);
+                  break;
+              }
             },
           );
         }
@@ -380,6 +388,19 @@ class _EventsListContentState extends State<EventsListContent> {
         }
       }
     });
+
+    yourEventsScrollController.addListener(() {
+      if (yourEventsScrollController.position.pixels ==
+          yourEventsScrollController.position.maxScrollExtent) {
+        final eventsListBloc = context.read<EventsListBloc>();
+        final needToLoadMoreYourEvents =
+            eventsListBloc.yourEventsList.length % 10 == 0;
+        if (needToLoadMoreYourEvents) {
+          eventsListBloc.yourEventsPage++;
+          onYourEventsTapped(context);
+        }
+      }
+    });
   }
 
   @override
@@ -387,6 +408,7 @@ class _EventsListContentState extends State<EventsListContent> {
     searchController.dispose();
     eventScrollController.dispose();
     conventionScrollController.dispose();
+    yourEventsScrollController.dispose();
     super.dispose();
   }
 }

@@ -44,7 +44,8 @@ class FetchConversationsBloc extends QueryBloc<FetchConversations$Query> {
       throw Exception("Could not find a signed in user");
     }
     _authModel = authModel;
-    final variables = FetchUserArguments(userId: authModel.user.id).toJson();
+    final variables =
+        FetchUserArguments(userId: authModel.user.id, page: 1).toJson();
     run(variables: variables);
   }
 
@@ -61,7 +62,8 @@ class FetchConversationsBloc extends QueryBloc<FetchConversations$Query> {
       throw Exception("Could not find a signed in user");
     }
     _authModel = authModel;
-    final variables = FetchUserArguments(userId: authModel.user.id).toJson();
+    final variables =
+        FetchUserArguments(userId: authModel.user.id, page: 1).toJson();
     run(variables: variables);
   }
 

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:senpai/models/events/event/event_model.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
@@ -10,6 +11,7 @@ class UserModel with _$UserModel {
     required String phone,
     required String createdAt,
     required String updatedAt,
+    List<EventModel>? events,
   }) = _UserModel;
 
   factory UserModel.initial() => const UserModel(
@@ -17,6 +19,7 @@ class UserModel with _$UserModel {
         phone: '',
         createdAt: '',
         updatedAt: '',
+        events: [],
       );
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

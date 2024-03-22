@@ -16,9 +16,10 @@ class FetchUserBloc extends QueryBloc<FetchUser$Query> {
     );
   }
 
-  fetchUser({required int userId}) {
+  fetchUser({required int userId, int? page}) {
     final variables = FetchUserArguments(
       userId: '$userId',
+      page: page ?? 1,
     ).toJson();
 
     log("user fetch message: $variables");

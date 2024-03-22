@@ -24,6 +24,7 @@ mixin _$UserModel {
   String get phone => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
+  List<EventModel>? get events => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +37,12 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String id, String phone, String createdAt, String updatedAt});
+  $Res call(
+      {String id,
+      String phone,
+      String createdAt,
+      String updatedAt,
+      List<EventModel>? events});
 }
 
 /// @nodoc
@@ -56,6 +62,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? phone = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? events = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -74,6 +81,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      events: freezed == events
+          ? _value.events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<EventModel>?,
     ) as $Val);
   }
 }
@@ -86,7 +97,12 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String phone, String createdAt, String updatedAt});
+  $Res call(
+      {String id,
+      String phone,
+      String createdAt,
+      String updatedAt,
+      List<EventModel>? events});
 }
 
 /// @nodoc
@@ -104,6 +120,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
     Object? phone = null,
     Object? createdAt = null,
     Object? updatedAt = null,
+    Object? events = freezed,
   }) {
     return _then(_$UserModelImpl(
       id: null == id
@@ -122,6 +139,10 @@ class __$$UserModelImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String,
+      events: freezed == events
+          ? _value._events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<EventModel>?,
     ));
   }
 }
@@ -133,7 +154,9 @@ class _$UserModelImpl implements _UserModel {
       {required this.id,
       required this.phone,
       required this.createdAt,
-      required this.updatedAt});
+      required this.updatedAt,
+      final List<EventModel>? events})
+      : _events = events;
 
   factory _$UserModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserModelImplFromJson(json);
@@ -146,10 +169,19 @@ class _$UserModelImpl implements _UserModel {
   final String createdAt;
   @override
   final String updatedAt;
+  final List<EventModel>? _events;
+  @override
+  List<EventModel>? get events {
+    final value = _events;
+    if (value == null) return null;
+    if (_events is EqualUnmodifiableListView) return _events;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'UserModel(id: $id, phone: $phone, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'UserModel(id: $id, phone: $phone, createdAt: $createdAt, updatedAt: $updatedAt, events: $events)';
   }
 
   @override
@@ -162,12 +194,14 @@ class _$UserModelImpl implements _UserModel {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            const DeepCollectionEquality().equals(other._events, _events));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, phone, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, phone, createdAt, updatedAt,
+      const DeepCollectionEquality().hash(_events));
 
   @JsonKey(ignore: true)
   @override
@@ -188,7 +222,8 @@ abstract class _UserModel implements UserModel {
       {required final String id,
       required final String phone,
       required final String createdAt,
-      required final String updatedAt}) = _$UserModelImpl;
+      required final String updatedAt,
+      final List<EventModel>? events}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -201,6 +236,8 @@ abstract class _UserModel implements UserModel {
   String get createdAt;
   @override
   String get updatedAt;
+  @override
+  List<EventModel>? get events;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>
