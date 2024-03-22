@@ -115,18 +115,6 @@ class EventDetailsPartisipantsList extends StatelessWidget {
                   Icons.add,
                   color: $constants.palette.white,
                 ),
-
-          //Vika delete after test
-          // : BackdropFilter(
-          //     filter: ImageFilter.blur(
-          //       sigmaX: $constants.events.eventMembersBlur,
-          //       sigmaY: $constants.events.eventMembersBlur,
-          //     ),
-          //     child: Icon(
-          //       Icons.add,
-          //       color: $constants.palette.white,
-          //     ),
-          //   ),
         ),
       ),
     );
