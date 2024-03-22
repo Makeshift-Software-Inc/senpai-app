@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:senpai/l10n/resources.dart';
-import 'package:senpai/screens/new_event/bloc/new_event_bloc.dart';
 import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
 
 import 'package:senpai/utils/constants.dart';
@@ -9,10 +7,12 @@ import 'package:senpai/utils/methods/utils.dart';
 
 class NewEventCosplayWidget extends StatelessWidget {
   final int? cosplayStatusIndex;
+  final ValueChanged<int> onTap;
 
   const NewEventCosplayWidget({
     super.key,
     this.cosplayStatusIndex,
+    required this.onTap,
   });
 
   @override
@@ -61,8 +61,7 @@ class NewEventCosplayWidget extends StatelessWidget {
     final isSelected = index == cosplayStatusIndex;
     return ElevatedButton(
       onPressed: () {
-        final bloc = BlocProvider.of<NewEventBloc>(context);
-        bloc.add(OnChangeCosplayInfoEvent(index));
+        onTap(index);
       },
       style: ElevatedButton.styleFrom(
         elevation: 0,
