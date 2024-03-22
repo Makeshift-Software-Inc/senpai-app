@@ -123,4 +123,6 @@ class PathConstants {
       'assets/images/events/paid_filter_icon.svg';
   static const String calendarIcon = 'assets/images/events/calendar_icon.svg';
   static const String starIcon = 'assets/icons/star_icon.svg';
+  static const String hostEventImage =
+      'assets/images/events/host_event_image.png';
 }
