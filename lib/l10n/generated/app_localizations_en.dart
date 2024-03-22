@@ -1052,8 +1052,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get maximumPartyMemberLimit => 'Maximum party member limit: 10';
 
   @override
-  String get youCanParticipateInPartyDescription => 'You can participate in a party, find new friends and have a good time in a favorite environment.';
+  String get youCanParticipateInPartyDescription => 'You can participate in a party, find new friends and have a good time.';
 
   @override
   String get associatedEventsTitle => 'Associated Events';
+
+  @override
+  String get startDateTitle => 'Start Date';
+
+  @override
+  String get endDateTitle => 'End Date';
+
+  @override
+  String get creatingEventTitle => 'Creating an event';
+
+  @override
+  String get creatingEventDescription => 'You must be verified before you can create an event';
+
+  @override
+  String get verifyNowButton => 'Verify Now';
+
+  @override
+  String get hostAnEventTitle => 'Host an Event';
+
+  @override
+  String get hostAnEventDescription => 'Whether it\'s a night out for bowling or going out for drinks or assembling your cosplay squad for the convention, host an event today and build your party!';
 }
