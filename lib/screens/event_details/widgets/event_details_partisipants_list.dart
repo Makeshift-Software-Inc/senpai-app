@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:senpai/utils/constants.dart';
 
@@ -80,6 +78,7 @@ class EventDetailsPartisipantsList extends StatelessWidget {
       height: $constants.carousel.marginAmount,
       alignment: Alignment.topCenter,
       decoration: ShapeDecoration(
+        color: $constants.palette.lightBlue.withOpacity(0.5),
         shape: StadiumBorder(
           side: BorderSide(
             color: image != null
@@ -112,15 +111,9 @@ class EventDetailsPartisipantsList extends StatelessWidget {
                   width: $constants.carousel.marginAmount,
                   fit: BoxFit.cover,
                 )
-              : BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: $constants.events.eventMembersBlur,
-                    sigmaY: $constants.events.eventMembersBlur,
-                  ),
-                  child: Icon(
-                    Icons.add,
-                    color: $constants.palette.white,
-                  ),
+              : Icon(
+                  Icons.add,
+                  color: $constants.palette.white,
                 ),
         ),
       ),

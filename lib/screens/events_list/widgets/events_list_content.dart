@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:fresh_graphql/fresh_graphql.dart';
 import 'package:senpai/core/events/blocs/fetch_conventions/fetch_conventions_bloc.dart';
 import 'package:senpai/core/events/blocs/fetch_events/fetch_events_bloc.dart';
@@ -80,10 +82,11 @@ class _EventsListContentState extends State<EventsListContent> {
                 decoration: BoxDecoration(
                     border: Border.all(color: $constants.palette.buttonBorder),
                     shape: BoxShape.circle),
-                child: Icon(
-                  Icons.tune,
-                  size: $constants.corners.xl,
-                  color: $constants.palette.white,
+                child: SvgPicture.asset(
+                  PathConstants.eventFilterIcon,
+                  width: $constants.insets.md,
+                  height: $constants.insets.md,
+                  fit: BoxFit.contain,
                 ),
               ),
             )
@@ -185,7 +188,7 @@ class _EventsListContentState extends State<EventsListContent> {
                         city: event.displayCity ?? '',
                         state: event.displayState ?? '',
                         paymentRequired: event.paymentRequired ?? false,
-                        cosplayRequired: event.cosplayRequired,
+                        cosplayStatus: event.cosplayRequired,
                       ),
                     );
                   }),

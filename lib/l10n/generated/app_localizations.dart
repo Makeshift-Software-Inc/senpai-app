@@ -2192,7 +2192,7 @@ abstract class AppLocalizations {
   /// No description provided for @youCanParticipateInPartyDescription.
   ///
   /// In en, this message translates to:
-  /// **'You can participate in a party, find new friends and have a good time in a favorite environment.'**
+  /// **'You can participate in a party, find new friends and have a good time.'**
   String get youCanParticipateInPartyDescription;
 
   /// No description provided for @associatedEventsTitle.
@@ -2200,6 +2200,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Associated Events'**
   String get associatedEventsTitle;
+
+  /// No description provided for @startDateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Date'**
+  String get startDateTitle;
+
+  /// No description provided for @endDateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'End Date'**
+  String get endDateTitle;
+
+  /// No description provided for @creatingEventTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating an event'**
+  String get creatingEventTitle;
+
+  /// No description provided for @creatingEventDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You must be verified before you can create an event'**
+  String get creatingEventDescription;
+
+  /// No description provided for @verifyNowButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify Now'**
+  String get verifyNowButton;
+
+  /// No description provided for @hostAnEventTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Host an Event'**
+  String get hostAnEventTitle;
+
+  /// No description provided for @hostAnEventDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Whether it\'s a night out for bowling or going out for drinks or assembling your cosplay squad for the convention, host an event today and build your party!'**
+  String get hostAnEventDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -1056,4 +1056,25 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get associatedEventsTitle => '';
+
+  @override
+  String get startDateTitle => '';
+
+  @override
+  String get endDateTitle => '';
+
+  @override
+  String get creatingEventTitle => '';
+
+  @override
+  String get creatingEventDescription => '';
+
+  @override
+  String get verifyNowButton => '';
+
+  @override
+  String get hostAnEventTitle => '';
+
+  @override
+  String get hostAnEventDescription => '';
 }

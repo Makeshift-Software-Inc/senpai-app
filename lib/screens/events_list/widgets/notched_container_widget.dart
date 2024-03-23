@@ -12,13 +12,13 @@ import 'package:senpai/utils/methods/utils.dart';
 class NotchedContainerWidget extends StatelessWidget {
   final String title;
   final String subtitle;
-  final CosplayRequired? cosplayRequired;
+  final CosplayStatus? cosplayStatus;
 
   const NotchedContainerWidget({
     super.key,
     required this.title,
     required this.subtitle,
-    this.cosplayRequired,
+    this.cosplayStatus,
   });
 
   @override
@@ -42,19 +42,21 @@ class NotchedContainerWidget extends StatelessWidget {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: $constants.insets.md,
-                      vertical: $constants.insets.xs,
+                    padding: EdgeInsets.fromLTRB(
+                      $constants.insets.md,
+                      $constants.insets.xs,
+                      0,
+                      $constants.insets.xs,
                     ),
                     child: _buildTitle(context),
                   ),
                 ),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: isCosplayRequired(cosplayRequired)
+                  child: isCosplayRequired(cosplayStatus)
                       ? const SenpaiCosplayWidget()
                       : SizedBox(
-                          width: $constants.insets.xl,
+                          width: $constants.insets.lg,
                           child: SvgPicture.asset(
                             PathConstants.arrowsForward,
                             width: $constants.corners.sm,

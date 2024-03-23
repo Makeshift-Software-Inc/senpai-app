@@ -19,7 +19,7 @@ class EventListTile extends StatelessWidget {
     required this.city,
     required this.state,
     required this.paymentRequired,
-    this.cosplayRequired,
+    this.cosplayStatus,
   }) : super(key: key);
 
   final String coverImageUrl;
@@ -28,7 +28,7 @@ class EventListTile extends StatelessWidget {
   final String city;
   final String state;
   final bool paymentRequired;
-  final String? cosplayRequired;
+  final String? cosplayStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +72,10 @@ class EventListTile extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: $constants.palette.black.withOpacity(0.4),
                       shape: BoxShape.circle),
-                  child: Icon(
-                    Icons.calendar_month,
-                    size: $constants.insets.sm,
-                    color: $constants.palette.white,
+                  child: SvgPicture.asset(
+                    PathConstants.calendarIcon,
+                    width: $constants.insets.sm,
+                    height: $constants.insets.sm,
                   ),
                 ),
                 Container(
@@ -100,8 +100,8 @@ class EventListTile extends StatelessWidget {
             child: NotchedContainerWidget(
               title: title,
               subtitle: '$city, $state',
-              cosplayRequired: CosplayRequired.cosplayFromServer(
-                cosplayRequired,
+              cosplayStatus: CosplayStatus.cosplayFromServer(
+                cosplayStatus,
               ),
             ),
           ),

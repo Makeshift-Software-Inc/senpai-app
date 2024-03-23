@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:senpai/core/widgets/events/senpai_cosplay_widget.dart';
+import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/screens/events_list/widgets/senpai_custom_clipper.dart';
 import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
 
@@ -13,14 +15,14 @@ class EventDetailsHeader extends StatelessWidget {
   final String title;
   final String subtitle;
   final DateTime startDate;
-  final CosplayRequired? cosplayRequired;
+  final CosplayStatus? cosplayStatus;
 
   const EventDetailsHeader({
     super.key,
     required this.title,
     required this.subtitle,
     required this.startDate,
-    this.cosplayRequired,
+    this.cosplayStatus,
   });
 
   @override
@@ -30,8 +32,7 @@ class EventDetailsHeader extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top: $constants.corners.xxl),
           child: ClipPath(
-            clipper: cosplayRequired == CosplayRequired.required ||
-                    cosplayRequired == CosplayRequired.optional
+            clipper: isCosplayRequired(cosplayStatus)
                 ? SenpaiCosplayCustomClipper()
                 : null,
             child: ClipRect(
@@ -71,7 +72,7 @@ class EventDetailsHeader extends StatelessWidget {
             ),
           ),
         ),
-        if (isCosplayRequired(cosplayRequired))
+        if (isCosplayRequired(cosplayStatus))
           Positioned(
             top: 0,
             right: $constants.corners.md,
@@ -114,10 +115,10 @@ class EventDetailsHeader extends StatelessWidget {
             color: $constants.palette.black,
             shape: BoxShape.circle,
           ),
-          child: Icon(
-            Icons.calendar_month,
-            size: $constants.insets.sm,
-            color: $constants.palette.white,
+          child: SvgPicture.asset(
+            PathConstants.calendarIcon,
+            width: $constants.insets.sm,
+            height: $constants.insets.sm,
           ),
         ),
         Container(

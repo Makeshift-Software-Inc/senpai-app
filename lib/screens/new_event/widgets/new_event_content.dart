@@ -53,7 +53,10 @@ class NewEventContent extends StatelessWidget {
                 ),
                 SizedBox(height: $constants.insets.sm),
                 NewEventCosplayWidget(
-                  cosplayRequiredIndex: bloc.cosplayRequiredIndex,
+                  cosplayStatusIndex: bloc.cosplayStatusIndex,
+                  onTap: (index) {
+                    bloc.add(OnChangeCosplayInfoEvent(index));
+                  },
                 ),
                 SizedBox(height: $constants.insets.sm),
                 NewEventConventionContent(startData: bloc.startTimeEvent),
