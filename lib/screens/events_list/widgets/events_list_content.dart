@@ -56,10 +56,11 @@ class _EventsListContentState extends State<EventsListContent> {
         }
       },
       builder: (context, state) {
+        final bloc = BlocProvider.of<EventsListBloc>(context);
         return Column(
           children: [
             _buildHeader(),
-            _buildContent(state),
+            _buildContent(bloc, state),
           ],
         );
       },
@@ -172,7 +173,7 @@ class _EventsListContentState extends State<EventsListContent> {
     );
   }
 
-  Widget _buildContent(EventsListState state) {
+  Widget _buildContent(EventsListBloc bloc, EventsListState state) {
     return Builder(builder: (context) {
       switch (state.runtimeType) {
         case LoadedEventsListState || LoadedYourEventsListState:
@@ -236,10 +237,14 @@ class _EventsListContentState extends State<EventsListContent> {
                   }),
             ),
           );
-        case EmptyEventsListState || EmptyConventionsListState:
-          return const Expanded(
+        case EmptyEventsListState ||
+              EmptyConventionsListState ||
+              EmptyYourEventsListState:
+          return Expanded(
             child: Center(
-              child: EmptyEventsWidget(),
+              child: EmptyEventsWidget(
+                eventsListType: bloc.eventsListType.value,
+              ),
             ),
           );
       }
@@ -247,8 +252,11 @@ class _EventsListContentState extends State<EventsListContent> {
     });
   }
 
-  void onNormalEventsTapped(BuildContext context,
-      {bool isRefresh = false, bool needToLoad = true}) {
+  void onNormalEventsTapped(
+    BuildContext context, {
+    bool isRefresh = false,
+    bool needToLoad = true,
+  }) {
     final eventsListBloc = context.read<EventsListBloc>();
     eventsListBloc.eventsListType.value = EventsListType.normal;
     if (isRefresh) {

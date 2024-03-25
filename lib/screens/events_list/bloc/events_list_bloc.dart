@@ -53,7 +53,12 @@ class EventsListBloc extends HydratedBloc<EventsListEvent, EventsListState> {
       userId = event.userId ?? userId;
       isVerifiedUser = event.verified ?? isVerifiedUser;
       yourEventsList.addAll(event.eventsList);
-      emit(LoadedYourEventsListState(yourEventsList));
+
+      if (yourEventsList.isNotEmpty) {
+        emit(LoadedYourEventsListState(yourEventsList));
+      } else {
+        emit(EmptyYourEventsListState());
+      }
     });
 
     on<OnApplyProfileFilters>((event, emit) {
