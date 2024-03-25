@@ -27,7 +27,7 @@ class CreateEventButton extends StatelessWidget {
         surfaceTintColor: Colors.transparent,
         insetPadding: EdgeInsets.zero,
         child: Center(
-          child: !isVerifiedUser
+          child: isVerifiedUser
               ? HostNewEventDialog(
                   onTapOk: () {
                     context.router.pop();
