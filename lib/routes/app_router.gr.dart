@@ -99,6 +99,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    EventsFilterRoute.name: (routeData) {
+      final args = routeData.argsAs<EventsFilterRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: EventsFilterPage(
+          key: args.key,
+          eventsListBloc: args.eventsListBloc,
+        ),
+      );
+    },
     EventsListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -633,6 +643,44 @@ class EventsDetailsRouteArgs {
   @override
   String toString() {
     return 'EventsDetailsRouteArgs{key: $key, eventId: $eventId, eventName: $eventName}';
+  }
+}
+
+/// generated route for
+/// [EventsFilterPage]
+class EventsFilterRoute extends PageRouteInfo<EventsFilterRouteArgs> {
+  EventsFilterRoute({
+    Key? key,
+    required EventsListBloc eventsListBloc,
+    List<PageRouteInfo>? children,
+  }) : super(
+          EventsFilterRoute.name,
+          args: EventsFilterRouteArgs(
+            key: key,
+            eventsListBloc: eventsListBloc,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'EventsFilterRoute';
+
+  static const PageInfo<EventsFilterRouteArgs> page =
+      PageInfo<EventsFilterRouteArgs>(name);
+}
+
+class EventsFilterRouteArgs {
+  const EventsFilterRouteArgs({
+    this.key,
+    required this.eventsListBloc,
+  });
+
+  final Key? key;
+
+  final EventsListBloc eventsListBloc;
+
+  @override
+  String toString() {
+    return 'EventsFilterRouteArgs{key: $key, eventsListBloc: $eventsListBloc}';
   }
 }
 
