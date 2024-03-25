@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/l10n/resources.dart';
+import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
 class EmptyEventsWidget extends StatelessWidget {
@@ -8,17 +9,22 @@ class EmptyEventsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(
-          PathConstants.emptyEventsImage,
-          fit: BoxFit.fitWidth,
-          width: getSize(context).width,
-        ),
-        _buildTitleWidget(context),
-        _buildDescriptionWidget(context),
-      ],
-    );
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+      final maxHeight = constraints.maxHeight;
+      return Column(
+        children: [
+          Image.asset(
+            PathConstants.emptyEventsImage,
+            fit: BoxFit.fitWidth,
+            width: getSize(context).width,
+            height: maxHeight - $constants.events.eventMembersCircleBGHeight,
+          ),
+          _buildTitleWidget(context),
+          _buildDescriptionWidget(context),
+        ],
+      );
+    });
   }
 
   Widget _buildTitleWidget(BuildContext context) {
