@@ -36,3 +36,9 @@ class EmptyYourEventsListState extends EventsListState {}
 class ErrorEventsListState extends EventsListState {}
 
 class LoadedListState extends EventsListState {}
+
+class FetchFiltersSucssesfulState extends EventsListState {}
+
+class ValidSaveEventsFiltersState extends EventsListState {}
+
+class ValidRefreshYouEventsState extends EventsListState {}

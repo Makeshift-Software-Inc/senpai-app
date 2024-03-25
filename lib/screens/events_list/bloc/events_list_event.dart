@@ -35,6 +35,16 @@ class OnConventionsListLoaded extends EventsListEvent {
 
 class OnYourEventsListLoaded extends EventsListEvent {
   final List<EventModel> eventsList;
+  final bool? verified;
+  final String? userId;
+  OnYourEventsListLoaded(this.eventsList, {this.userId, this.verified});
+}
 
-  OnYourEventsListLoaded(this.eventsList);
+class OnApplyProfileFilters extends EventsListEvent {
+  final EventsListFilterModel filters;
+  OnApplyProfileFilters({required this.filters});
+}
+
+class OnRefreshYourEventsList extends EventsListEvent {
+  OnRefreshYourEventsList();
 }
