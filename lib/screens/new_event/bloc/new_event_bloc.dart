@@ -31,7 +31,7 @@ class NewEventBloc extends Bloc<NewEventEvent, NewEventState> {
   DateTime startTimeEvent = DateTime.now();
   DateTime endTimeEvent = DateTime.now();
 
-  int? paymentRequiredIndex;
+  int? paymentRequiredIndex = 1;
   int? cosplayStatusIndex;
 
   NewEventBloc() : super(NewEventInitial()) {
