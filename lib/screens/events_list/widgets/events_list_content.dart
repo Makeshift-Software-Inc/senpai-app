@@ -41,7 +41,20 @@ class _EventsListContentState extends State<EventsListContent> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventsListBloc, EventsListState>(
+    return BlocConsumer<EventsListBloc, EventsListState>(
+      listenWhen: (_, currState) =>
+          currState is LoadingEventsListState ||
+          currState is ValidSaveEventsFiltersState ||
+          currState is ValidRefreshYouEventsState,
+      listener: (context, state) {
+        if (state is LoadingEventsListState ||
+            state is ValidSaveEventsFiltersState) {
+          onNormalEventsTapped(context, isRefresh: true);
+        }
+        if (state is ValidRefreshYouEventsState) {
+          onYourEventsTapped(context, isRefresh: true);
+        }
+      },
       builder: (context, state) {
         return Column(
           children: [
@@ -71,7 +84,11 @@ class _EventsListContentState extends State<EventsListContent> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                context.router.push(
+                  EventsFilterRoute(eventsListBloc: bloc),
+                );
+              },
               child: Container(
                 padding: EdgeInsets.all($constants.insets.xs),
                 margin: EdgeInsets.only(
@@ -241,9 +258,10 @@ class _EventsListContentState extends State<EventsListContent> {
     if (needToLoad) {
       final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
       fetchEventsBloc.fetchEvents(
-          startDate: DateTime.now(),
-          page: eventsListBloc.eventsPage,
-          searchText: searchController.text);
+        filters: eventsListBloc.filters,
+        page: eventsListBloc.eventsPage,
+        searchText: searchController.text,
+      );
     } else {
       eventsListBloc.add(OnEventsListLoaded(const []));
     }
