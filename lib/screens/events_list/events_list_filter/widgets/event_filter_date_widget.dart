@@ -9,7 +9,7 @@ import 'package:senpai/utils/methods/utils.dart';
 
 class EventFilterDateWidget extends StatelessWidget {
   final String title;
-  final DateTime date;
+  final DateTime? date;
   final ValueChanged<DateTime> onDateTimeChanged;
 
   const EventFilterDateWidget({
@@ -47,15 +47,7 @@ class EventFilterDateWidget extends StatelessWidget {
               title,
               style: getTextTheme(context).bodyMedium,
             ),
-            Expanded(
-              child: Text(
-                DateFormat('dd/MM/yyyy').format(date),
-                style: getTextTheme(context)
-                    .bodyMedium!
-                    .copyWith(color: $constants.palette.grey),
-                textAlign: TextAlign.right,
-              ),
-            ),
+            Expanded(child: _buildDateTimeText(context)),
             SizedBox(width: $constants.corners.md),
             Container(
               height: $constants.insets.xxl,
@@ -82,7 +74,9 @@ class EventFilterDateWidget extends StatelessWidget {
   }
 
   Widget _buildEventDateDialog(
-      BuildContext context, EventsListFilterBloc bloc) {
+    BuildContext context,
+    EventsListFilterBloc bloc,
+  ) {
     return Container(
       height: $constants.match.matchBottomHeight,
       padding: EdgeInsets.only(top: $constants.corners.xs),
@@ -93,7 +87,7 @@ class EventFilterDateWidget extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: CupertinoDatePicker(
-          initialDateTime: date,
+          initialDateTime: date ?? DateTime.now(),
           mode: CupertinoDatePickerMode.date,
           onDateTimeChanged: (DateTime newDate) {
             onDateTimeChanged(newDate);
@@ -101,5 +95,18 @@ class EventFilterDateWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildDateTimeText(BuildContext context) {
+    if (date != null) {
+      return Text(
+        DateFormat('dd/MM/yyyy').format(date!),
+        style: getTextTheme(context)
+            .bodyMedium!
+            .copyWith(color: $constants.palette.grey),
+        textAlign: TextAlign.right,
+      );
+    }
+    return const SizedBox();
   }
 }

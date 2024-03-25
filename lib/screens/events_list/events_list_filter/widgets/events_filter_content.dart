@@ -54,7 +54,7 @@ class EventsFilterContent extends StatelessWidget {
                     SizedBox(height: $constants.insets.xs),
                     EventFilterDateWidget(
                       title: R.strings.endDateTitle,
-                      date: bloc.changedFilters.endDate ?? DateTime.now(),
+                      date: bloc.changedFilters.endDate,
                       onDateTimeChanged: (date) {
                         bloc.add(OnChangeEndDate(endDate: date));
                       },
