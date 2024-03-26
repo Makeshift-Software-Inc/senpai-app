@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/l10n/resources.dart';
@@ -51,16 +52,19 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
                   Flexible(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                          horizontal: $constants.insets.sm),
+                        horizontal: $constants.insets.sm,
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
                             padding: EdgeInsets.only(
                               left: $constants.insets.offset,
+                              right: $constants.insets.xs,
                             ),
-                            child: Text(R.strings.inviteFriendsGetPremiumText,
-                                overflow: TextOverflow.ellipsis,
+                            child: AutoSizeText(
+                                R.strings.inviteFriendsGetPremiumText,
+                                maxLines: 1,
                                 style: getTextTheme(context)
                                     .headlineSmall
                                     ?.copyWith(fontSize: 18)),
@@ -68,19 +72,24 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(
                               left: $constants.insets.offset,
+                              right: $constants.insets.xs,
                             ),
-                            child: Text(
+                            child: AutoSizeText(
                               R.strings.keepInvitingPeopleDescription,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: getTextTheme(context)
-                                  .displaySmall
+                                  .labelMedium
                                   ?.apply(color: $constants.palette.grey),
+                              minFontSize: 8,
                             ),
                           ),
                           const Spacer(),
                           Container(
                             height: 36,
+                            margin: EdgeInsets.only(
+                              right: $constants.insets.xs,
+                            ),
                             padding: EdgeInsets.only(
                               left: $constants.insets.sm,
                             ),
@@ -127,7 +136,8 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
                                 )
                               ],
                             ),
-                          )
+                          ),
+                          SizedBox(height: $constants.insets.sm),
                         ],
                       ),
                     ),
