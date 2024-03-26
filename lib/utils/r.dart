@@ -20,6 +20,15 @@ class _ImageResources {
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/logo.png)
   final logo = r'assets/images/logo.png';
 
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/premium.png)
+  final premium = r'assets/images/premium.png';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/invited_friends_container.png)
+  final invited_friends_container = r'assets/images/invited_friends_container.png';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/invited_friends_container_background.png)
+  final invited_friends_container_background = r'assets/images/invited_friends_container_background.png';
+
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/onboarding/onboarding_1.png)
   final onboarding_1 = r'assets/images/onboarding/onboarding_1.png';
 
@@ -118,6 +127,15 @@ class _ImageResources {
 
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/cosplay_bg_image.png)
   final cosplay_bg_image = r'assets/images/events/cosplay_bg_image.png';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/paid_filter_icon.svg)
+  final paid_filter_icon = r'assets/images/events/paid_filter_icon.svg';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/host_event_image.png)
+  final host_event_image = r'assets/images/events/host_event_image.png';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/calendar_icon.svg)
+  final calendar_icon = r'assets/images/events/calendar_icon.svg';
 }
 
 class _SvgResources {

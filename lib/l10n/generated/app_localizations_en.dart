@@ -1077,4 +1077,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hostAnEventDescription => 'Whether it\'s a night out for bowling or going out for drinks or assembling your cosplay squad for the convention, host an event today and build your party!';
+
+  @override
+  String get inviteFriendsGetPremiumText => 'Invite Friends, Get Premium!';
+
+  @override
+  String get keepInvitingPeopleDescription => 'Keep inviting people and soon you will get a Premium account․';
 }

@@ -86,6 +86,10 @@ class PathConstants {
   static const String spotifyImage = 'assets/images/profile/spotify_image.png';
   static const String spotifyLogoImage =
       'assets/images/profile/spotify_logo_image.png';
+  static const String invitedFriendsContainerBackgroundImage =
+      'assets/images/invited_friends_container_background.png';
+  static const String invitedFriendsContainerImage =
+      'assets/images/invited_friends_container.png';
 
   //Match
   static const String catsPawIcon = 'assets/icons/cats_paw.svg';
