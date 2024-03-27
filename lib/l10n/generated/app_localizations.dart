@@ -2254,6 +2254,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Keep inviting people and soon you will get a Premium account․'**
   String get keepInvitingPeopleDescription;
+
+  /// No description provided for @attendSuccessfulDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You have successfully applied to join the party and will be notified when the host makes a decision.'**
+  String get attendSuccessfulDescription;
+
+  /// No description provided for @attendSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get attendSuccessTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
