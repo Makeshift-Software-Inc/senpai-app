@@ -19,6 +19,8 @@ import 'package:senpai/screens/edit_profile/work_education/page/work_education_p
 import 'package:senpai/screens/entry/page/entry_page.dart';
 import 'package:senpai/screens/event_details/page/event_details_page.dart';
 import 'package:senpai/screens/event_details/page/event_map_page.dart';
+import 'package:senpai/screens/events_list/bloc/events_list_bloc.dart';
+import 'package:senpai/screens/events_list/events_list_filter/page/events_filter_page.dart';
 import 'package:senpai/screens/events_list/page/events_list_page.dart';
 import 'package:senpai/screens/home/page/home_page.dart';
 import 'package:senpai/screens/license/page/license_page.dart';
@@ -108,5 +110,7 @@ class AppRouter extends _$AppRouter {
 
         AutoRoute(page: EventsDetailsRoute.page, path: '/event_details'),
         AutoRoute(page: EventMapRoute.page, path: '/event_map'),
+
+        AutoRoute(page: EventsFilterRoute.page, path: '/events_filter'),
       ];
 }

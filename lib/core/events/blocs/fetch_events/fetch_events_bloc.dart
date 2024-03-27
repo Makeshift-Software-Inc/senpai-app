@@ -2,6 +2,8 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:injectable/injectable.dart';
 import 'package:senpai/core/graphql/blocs/query/query_bloc.dart';
 import 'package:senpai/core/graphql/models/graphql_api.dart';
+import 'package:senpai/models/events/events_list_filter/events_list_filter_model.dart';
+import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
 
 @injectable
 class FetchEventsBloc extends QueryBloc<FetchEvents$Query> {
@@ -15,15 +17,23 @@ class FetchEventsBloc extends QueryBloc<FetchEvents$Query> {
   }
 
   fetchEvents({
-    required DateTime startDate,
     required int page,
+    required EventsListFilterModel filters,
     String? searchText,
   }) {
     final variables = FetchEventsArguments(
       params: SearchEventInput(
-        startDate: startDate,
+        startDate: filters.startDate,
         page: page,
         query: searchText,
+        cosplayRequired: filters.cosplayStatus != null
+            ? cosplayToServer(filters.cosplayStatus)
+            : null,
+        endDate: filters.endDate,
+        hostRating: filters.hostRating,
+        milesAway: filters.userId != null ? filters.milesAway : null,
+        paymentRequired: filters.paymentRequired,
+        userId: filters.userId,
       ),
     ).toJson();
 

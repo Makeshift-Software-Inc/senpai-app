@@ -33,7 +33,7 @@ bool isCosplayRequired(CosplayStatus? type) {
   return type == CosplayStatus.required || type == CosplayStatus.optional;
 }
 
-String cosplayToServer(CosplayStatus cosplay) {
+String cosplayToServer(CosplayStatus? cosplay) {
   if (cosplay == CosplayStatus.required) {
     return 'required';
   } else if (cosplay == CosplayStatus.optional) {

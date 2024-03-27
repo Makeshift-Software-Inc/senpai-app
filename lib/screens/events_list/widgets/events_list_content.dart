@@ -41,12 +41,26 @@ class _EventsListContentState extends State<EventsListContent> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<EventsListBloc, EventsListState>(
+    return BlocConsumer<EventsListBloc, EventsListState>(
+      listenWhen: (_, currState) =>
+          currState is LoadingEventsListState ||
+          currState is ValidSaveEventsFiltersState ||
+          currState is ValidRefreshYouEventsState,
+      listener: (context, state) {
+        if (state is LoadingEventsListState ||
+            state is ValidSaveEventsFiltersState) {
+          onNormalEventsTapped(context, isRefresh: true);
+        }
+        if (state is ValidRefreshYouEventsState) {
+          onYourEventsTapped(context, isRefresh: true);
+        }
+      },
       builder: (context, state) {
+        final bloc = BlocProvider.of<EventsListBloc>(context);
         return Column(
           children: [
             _buildHeader(),
-            _buildContent(state),
+            _buildContent(bloc, state),
           ],
         );
       },
@@ -71,7 +85,11 @@ class _EventsListContentState extends State<EventsListContent> {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                context.router.push(
+                  EventsFilterRoute(eventsListBloc: bloc),
+                );
+              },
               child: Container(
                 padding: EdgeInsets.all($constants.insets.xs),
                 margin: EdgeInsets.only(
@@ -155,7 +173,7 @@ class _EventsListContentState extends State<EventsListContent> {
     );
   }
 
-  Widget _buildContent(EventsListState state) {
+  Widget _buildContent(EventsListBloc bloc, EventsListState state) {
     return Builder(builder: (context) {
       switch (state.runtimeType) {
         case LoadedEventsListState || LoadedYourEventsListState:
@@ -176,9 +194,11 @@ class _EventsListContentState extends State<EventsListContent> {
                     final event = eventsList[i];
                     return GestureDetector(
                       onTap: () {
+                        final bloc = BlocProvider.of<EventsListBloc>(context);
                         context.router.push(EventsDetailsRoute(
                           eventId: event.id,
                           eventName: event.title,
+                          userId: bloc.userId,
                         ));
                       },
                       child: EventListTile(
@@ -219,10 +239,14 @@ class _EventsListContentState extends State<EventsListContent> {
                   }),
             ),
           );
-        case EmptyEventsListState || EmptyConventionsListState:
-          return const Expanded(
+        case EmptyEventsListState ||
+              EmptyConventionsListState ||
+              EmptyYourEventsListState:
+          return Expanded(
             child: Center(
-              child: EmptyEventsWidget(),
+              child: EmptyEventsWidget(
+                eventsListType: bloc.eventsListType.value,
+              ),
             ),
           );
       }
@@ -230,8 +254,11 @@ class _EventsListContentState extends State<EventsListContent> {
     });
   }
 
-  void onNormalEventsTapped(BuildContext context,
-      {bool isRefresh = false, bool needToLoad = true}) {
+  void onNormalEventsTapped(
+    BuildContext context, {
+    bool isRefresh = false,
+    bool needToLoad = true,
+  }) {
     final eventsListBloc = context.read<EventsListBloc>();
     eventsListBloc.eventsListType.value = EventsListType.normal;
     if (isRefresh) {
@@ -241,9 +268,10 @@ class _EventsListContentState extends State<EventsListContent> {
     if (needToLoad) {
       final fetchEventsBloc = BlocProvider.of<FetchEventsBloc>(context);
       fetchEventsBloc.fetchEvents(
-          startDate: DateTime.now(),
-          page: eventsListBloc.eventsPage,
-          searchText: searchController.text);
+        filters: eventsListBloc.filters,
+        page: eventsListBloc.eventsPage,
+        searchText: searchController.text,
+      );
     } else {
       eventsListBloc.add(OnEventsListLoaded(const []));
     }

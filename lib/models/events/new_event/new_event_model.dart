@@ -29,7 +29,7 @@ class NewEventModel with _$NewEventModel {
         fullAddress: '',
         cosplayRequired: '',
         conventionId: null,
-        paymentRequired: null,
+        paymentRequired: false,
         memberLimit: 10,
       );
 

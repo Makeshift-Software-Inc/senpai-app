@@ -1083,4 +1083,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get keepInvitingPeopleDescription => 'Keep inviting people and soon you will get a Premium account․';
+
+  @override
+  String get attendSuccessfulDescription => 'You have successfully applied to join the party and will be notified when the host makes a decision.';
+
+  @override
+  String get attendSuccessTitle => 'Success';
 }

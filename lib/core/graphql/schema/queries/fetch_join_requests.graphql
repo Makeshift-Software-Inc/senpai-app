@@ -1,0 +1,12 @@
+query fetchJoinRequests($eventId: ID!, $page: Int, $applicantId: ID) {
+  fetchJoinRequests(eventId: $eventId, page: $page, applicantId: $applicantId) {
+    id
+    eventId
+    applicant {
+      id
+    }
+    conversation {
+      id
+    }
+  }
+}
