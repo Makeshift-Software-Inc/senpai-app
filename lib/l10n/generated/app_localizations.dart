@@ -2242,6 +2242,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Whether it\'s a night out for bowling or going out for drinks or assembling your cosplay squad for the convention, host an event today and build your party!'**
   String get hostAnEventDescription;
+
+  /// No description provided for @inviteFriendsGetPremiumText.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite Friends, Get Premium!'**
+  String get inviteFriendsGetPremiumText;
+
+  /// No description provided for @keepInvitingPeopleDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep inviting people and soon you will get a Premium account․'**
+  String get keepInvitingPeopleDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

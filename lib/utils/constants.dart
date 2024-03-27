@@ -52,6 +52,9 @@ class Constants {
   /// Events constants
   late final events = _EventsConstants();
 
+  /// Referral constants
+  late final referral = _ReferralConstants();
+
   /// API keys
   late final apiKeys = _ApiKeys();
 }
@@ -115,6 +118,7 @@ class _Palette {
   final grey2 = const Color(0xFF98A1BB);
   final darkGrey = const Color(0xFF5B6277);
   final darkGrey2 = const Color(0xFF2E3A62);
+  final darkGrey3 = const Color(0xFF344256);
   final yellow = const Color(0xFFFFB200);
   final gold = const Color(0xFFE39F04);
   final green = const Color(0xFF67B527);
@@ -322,6 +326,13 @@ class _EventsConstants {
   late final double eventCosplaySize = 74;
   late final double eventMembersBlur = 16;
   late final double eventHostHeight = 130;
+}
+
+@immutable
+class _ReferralConstants {
+  late final double invitedFriendsContainerHeight = 144;
+  late final double premiumWidgetWidth = 89;
+  late final double premiumWidgetHeight = 83;
 }
 
 @immutable

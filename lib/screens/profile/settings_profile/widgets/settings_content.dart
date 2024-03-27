@@ -12,6 +12,7 @@ import 'package:senpai/screens/profile/settings_profile/bloc/settings_profile_bl
 import 'package:senpai/screens/profile/settings_profile/widgets/cupertino_logout_widget.dart';
 import 'package:senpai/screens/profile/settings_profile/widgets/delete_account_widget.dart';
 import 'package:senpai/screens/profile/settings_profile/widgets/setting_premium_widget.dart';
+import 'package:senpai/screens/profile/settings_profile/widgets/settings_invited_friends_widget.dart';
 import 'package:senpai/screens/profile/widgets/profile_app_bar.dart';
 import 'package:senpai/screens/profile/widgets/profile_item_header.dart';
 import 'package:senpai/utils/constants.dart';
@@ -49,6 +50,7 @@ class SettingsContent extends StatelessWidget {
           title: R.strings.settingsTitle,
           onDoneTap: () => _onDoneTap(context),
         ),
+        const SettingsInvitedFriendsWidget(),
         _buildPremiumWidget(context),
         Expanded(
           child: Padding(

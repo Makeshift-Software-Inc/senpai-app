@@ -1077,4 +1077,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get hostAnEventDescription => '';
+
+  @override
+  String get inviteFriendsGetPremiumText => '';
+
+  @override
+  String get keepInvitingPeopleDescription => '';
 }
