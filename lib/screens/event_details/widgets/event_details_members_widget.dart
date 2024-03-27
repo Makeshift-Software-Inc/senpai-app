@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:senpai/core/events/blocs/join_request/create_join_request_bloc.dart';
 import 'package:senpai/core/widgets/primary_button.dart';
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/l10n/resources.dart';
@@ -11,10 +13,16 @@ import 'package:senpai/utils/methods/utils.dart';
 
 class EventDetailsMembersWidget extends StatelessWidget {
   final UserProfileModel hostModel;
+  final String userId;
+  final String eventId;
+  final bool isSendJoinRequest;
 
   const EventDetailsMembersWidget({
     super.key,
     required this.hostModel,
+    required this.userId,
+    required this.eventId,
+    this.isSendJoinRequest = false,
   });
 
   @override
@@ -99,15 +107,23 @@ class EventDetailsMembersWidget extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
-          bottom: $constants.insets.sm,
-          left: $constants.insets.md,
-          right: $constants.insets.md,
-          child: PrimaryButton(
-            text: R.strings.attendButton,
-            onPressed: () {},
+        if (userId != hostModel.id && !isSendJoinRequest)
+          Positioned(
+            bottom: $constants.insets.sm,
+            left: $constants.insets.md,
+            right: $constants.insets.md,
+            child: PrimaryButton(
+              text: R.strings.attendButton,
+              onPressed: () {
+                final serverBloc =
+                    BlocProvider.of<CreateJoinRequestBloc>(context);
+                serverBloc.createJoinRequest(
+                  eventId: eventId,
+                  userId: userId,
+                );
+              },
+            ),
           ),
-        ),
       ],
     );
   }

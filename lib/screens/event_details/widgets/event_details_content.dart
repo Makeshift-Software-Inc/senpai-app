@@ -44,7 +44,13 @@ class EventDetailsContent extends StatelessWidget {
                 ),
                 SizedBox(height: $constants.insets.sm),
                 if (bloc.hostModel != null)
-                  EventDetailsMembersWidget(hostModel: bloc.hostModel!),
+                  EventDetailsMembersWidget(
+                    hostModel: bloc.hostModel!,
+                    userId: bloc.userId,
+                    eventId: bloc.eventModel!.id,
+                    isSendJoinRequest: bloc.requestsList.isNotEmpty ||
+                        bloc.joinRequestId.isNotEmpty,
+                  ),
                 SizedBox(height: $constants.insets.sm),
               ],
             ),
