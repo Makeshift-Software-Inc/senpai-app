@@ -194,9 +194,11 @@ class _EventsListContentState extends State<EventsListContent> {
                     final event = eventsList[i];
                     return GestureDetector(
                       onTap: () {
+                        final bloc = BlocProvider.of<EventsListBloc>(context);
                         context.router.push(EventsDetailsRoute(
                           eventId: event.id,
                           eventName: event.title,
+                          userId: bloc.userId,
                         ));
                       },
                       child: EventListTile(

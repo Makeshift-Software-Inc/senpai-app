@@ -96,6 +96,7 @@ abstract class _$AppRouter extends RootStackRouter {
           key: args.key,
           eventId: args.eventId,
           eventName: args.eventName,
+          userId: args.userId,
         ),
       );
     },
@@ -610,6 +611,7 @@ class EventsDetailsRoute extends PageRouteInfo<EventsDetailsRouteArgs> {
     Key? key,
     required String eventId,
     required String eventName,
+    required String userId,
     List<PageRouteInfo>? children,
   }) : super(
           EventsDetailsRoute.name,
@@ -617,6 +619,7 @@ class EventsDetailsRoute extends PageRouteInfo<EventsDetailsRouteArgs> {
             key: key,
             eventId: eventId,
             eventName: eventName,
+            userId: userId,
           ),
           initialChildren: children,
         );
@@ -632,6 +635,7 @@ class EventsDetailsRouteArgs {
     this.key,
     required this.eventId,
     required this.eventName,
+    required this.userId,
   });
 
   final Key? key;
@@ -640,9 +644,11 @@ class EventsDetailsRouteArgs {
 
   final String eventName;
 
+  final String userId;
+
   @override
   String toString() {
-    return 'EventsDetailsRouteArgs{key: $key, eventId: $eventId, eventName: $eventName}';
+    return 'EventsDetailsRouteArgs{key: $key, eventId: $eventId, eventName: $eventName, userId: $userId}';
   }
 }
 
