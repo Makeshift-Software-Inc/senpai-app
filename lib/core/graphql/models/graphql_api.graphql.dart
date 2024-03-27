@@ -2752,6 +2752,74 @@ class DeleteFavoriteMusicInput extends JsonSerializable with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
+class FetchConvention$Query$FetchConvention extends JsonSerializable
+    with EquatableMixin {
+  FetchConvention$Query$FetchConvention();
+
+  factory FetchConvention$Query$FetchConvention.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConvention$Query$FetchConventionFromJson(json);
+
+  late String id;
+
+  late String title;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  late DateTime startDate;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
+      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
+  DateTime? endDate;
+
+  late String lonlat;
+
+  late String fullAddress;
+
+  String? coverImageUrl;
+
+  String? displayCity;
+
+  String? displayState;
+
+  late bool paymentRequired;
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        startDate,
+        endDate,
+        lonlat,
+        fullAddress,
+        coverImageUrl,
+        displayCity,
+        displayState,
+        paymentRequired
+      ];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConvention$Query$FetchConventionToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConvention$Query extends JsonSerializable with EquatableMixin {
+  FetchConvention$Query();
+
+  factory FetchConvention$Query.fromJson(Map<String, dynamic> json) =>
+      _$FetchConvention$QueryFromJson(json);
+
+  late FetchConvention$Query$FetchConvention fetchConvention;
+
+  @override
+  List<Object?> get props => [fetchConvention];
+  @override
+  Map<String, dynamic> toJson() => _$FetchConvention$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class FetchMessages$Query$FetchMessages$Recommendation$Anime
     extends JsonSerializable with EquatableMixin {
   FetchMessages$Query$FetchMessages$Recommendation$Anime();
@@ -3842,409 +3910,6 @@ class FetchConversations$Query extends JsonSerializable with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class FetchConventions$Query$FetchConventions$Events$Party$Members
-    extends JsonSerializable with EquatableMixin {
-  FetchConventions$Query$FetchConventions$Events$Party$Members();
-
-  factory FetchConventions$Query$FetchConventions$Events$Party$Members.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchConventions$Query$FetchConventions$Events$Party$MembersFromJson(
-          json);
-
-  late String id;
-
-  @override
-  List<Object?> get props => [id];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchConventions$Query$FetchConventions$Events$Party$MembersToJson(
-          this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchConventions$Query$FetchConventions$Events$Party
-    extends JsonSerializable with EquatableMixin {
-  FetchConventions$Query$FetchConventions$Events$Party();
-
-  factory FetchConventions$Query$FetchConventions$Events$Party.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchConventions$Query$FetchConventions$Events$PartyFromJson(json);
-
-  late String id;
-
-  List<FetchConventions$Query$FetchConventions$Events$Party$Members>? members;
-
-  @override
-  List<Object?> get props => [id, members];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchConventions$Query$FetchConventions$Events$PartyToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchConventions$Query$FetchConventions$Events extends JsonSerializable
-    with EquatableMixin {
-  FetchConventions$Query$FetchConventions$Events();
-
-  factory FetchConventions$Query$FetchConventions$Events.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchConventions$Query$FetchConventions$EventsFromJson(json);
-
-  late String id;
-
-  String? title;
-
-  FetchConventions$Query$FetchConventions$Events$Party? party;
-
-  @override
-  List<Object?> get props => [id, title, party];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchConventions$Query$FetchConventions$EventsToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchConventions$Query$FetchConventions extends JsonSerializable
-    with EquatableMixin {
-  FetchConventions$Query$FetchConventions();
-
-  factory FetchConventions$Query$FetchConventions.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchConventions$Query$FetchConventionsFromJson(json);
-
-  late String id;
-
-  late String title;
-
-  @JsonKey(
-      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
-      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
-  late DateTime startDate;
-
-  @JsonKey(
-      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
-      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
-  DateTime? endDate;
-
-  late String lonlat;
-
-  String? website;
-
-  late String fullAddress;
-
-  String? displayCity;
-
-  String? displayState;
-
-  String? coverImageUrl;
-
-  late bool paymentRequired;
-
-  List<FetchConventions$Query$FetchConventions$Events>? events;
-
-  @override
-  List<Object?> get props => [
-        id,
-        title,
-        startDate,
-        endDate,
-        lonlat,
-        website,
-        fullAddress,
-        displayCity,
-        displayState,
-        coverImageUrl,
-        paymentRequired,
-        events
-      ];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchConventions$Query$FetchConventionsToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchConventions$Query extends JsonSerializable with EquatableMixin {
-  FetchConventions$Query();
-
-  factory FetchConventions$Query.fromJson(Map<String, dynamic> json) =>
-      _$FetchConventions$QueryFromJson(json);
-
-  late List<FetchConventions$Query$FetchConventions> fetchConventions;
-
-  @override
-  List<Object?> get props => [fetchConventions];
-  @override
-  Map<String, dynamic> toJson() => _$FetchConventions$QueryToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class SearchEventInput extends JsonSerializable with EquatableMixin {
-  SearchEventInput({
-    this.cosplayRequired,
-    this.endDate,
-    this.hostRating,
-    this.milesAway,
-    this.page,
-    this.paymentRequired,
-    this.query,
-    required this.startDate,
-    this.userId,
-  });
-
-  factory SearchEventInput.fromJson(Map<String, dynamic> json) =>
-      _$SearchEventInputFromJson(json);
-
-  String? cosplayRequired;
-
-  @JsonKey(
-      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
-      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
-  DateTime? endDate;
-
-  double? hostRating;
-
-  int? milesAway;
-
-  int? page;
-
-  bool? paymentRequired;
-
-  String? query;
-
-  @JsonKey(
-      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
-      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
-  late DateTime startDate;
-
-  String? userId;
-
-  @override
-  List<Object?> get props => [
-        cosplayRequired,
-        endDate,
-        hostRating,
-        milesAway,
-        page,
-        paymentRequired,
-        query,
-        startDate,
-        userId
-      ];
-  @override
-  Map<String, dynamic> toJson() => _$SearchEventInputToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchVerifyRequests$Query$FetchVerifyRequests extends JsonSerializable
-    with EquatableMixin {
-  FetchVerifyRequests$Query$FetchVerifyRequests();
-
-  factory FetchVerifyRequests$Query$FetchVerifyRequests.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchVerifyRequests$Query$FetchVerifyRequestsFromJson(json);
-
-  late int userId;
-
-  late String status;
-
-  @override
-  List<Object?> get props => [userId, status];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchVerifyRequests$Query$FetchVerifyRequestsToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchVerifyRequests$Query extends JsonSerializable with EquatableMixin {
-  FetchVerifyRequests$Query();
-
-  factory FetchVerifyRequests$Query.fromJson(Map<String, dynamic> json) =>
-      _$FetchVerifyRequests$QueryFromJson(json);
-
-  late List<FetchVerifyRequests$Query$FetchVerifyRequests> fetchVerifyRequests;
-
-  @override
-  List<Object?> get props => [fetchVerifyRequests];
-  @override
-  Map<String, dynamic> toJson() => _$FetchVerifyRequests$QueryToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchStickers$Query$FetchStickers extends JsonSerializable
-    with EquatableMixin {
-  FetchStickers$Query$FetchStickers();
-
-  factory FetchStickers$Query$FetchStickers.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchStickers$Query$FetchStickersFromJson(json);
-
-  late String id;
-
-  late String url;
-
-  @override
-  List<Object?> get props => [id, url];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchStickers$Query$FetchStickersToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchStickers$Query extends JsonSerializable with EquatableMixin {
-  FetchStickers$Query();
-
-  factory FetchStickers$Query.fromJson(Map<String, dynamic> json) =>
-      _$FetchStickers$QueryFromJson(json);
-
-  late List<FetchStickers$Query$FetchStickers> fetchStickers;
-
-  @override
-  List<Object?> get props => [fetchStickers];
-  @override
-  Map<String, dynamic> toJson() => _$FetchStickers$QueryToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchEvents$Query$FetchEvents extends JsonSerializable
-    with EquatableMixin {
-  FetchEvents$Query$FetchEvents();
-
-  factory FetchEvents$Query$FetchEvents.fromJson(Map<String, dynamic> json) =>
-      _$FetchEvents$Query$FetchEventsFromJson(json);
-
-  late String id;
-
-  String? title;
-
-  late String country;
-
-  late String displayCity;
-
-  late String displayState;
-
-  late String fullAddress;
-
-  @JsonKey(
-      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
-      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
-  late DateTime startDate;
-
-  @JsonKey(
-      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
-      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
-  DateTime? endDate;
-
-  String? coverImageUrl;
-
-  bool? paymentRequired;
-
-  String? cosplayRequired;
-
-  late String lonlat;
-
-  @override
-  List<Object?> get props => [
-        id,
-        title,
-        country,
-        displayCity,
-        displayState,
-        fullAddress,
-        startDate,
-        endDate,
-        coverImageUrl,
-        paymentRequired,
-        cosplayRequired,
-        lonlat
-      ];
-  @override
-  Map<String, dynamic> toJson() => _$FetchEvents$Query$FetchEventsToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchEvents$Query extends JsonSerializable with EquatableMixin {
-  FetchEvents$Query();
-
-  factory FetchEvents$Query.fromJson(Map<String, dynamic> json) =>
-      _$FetchEvents$QueryFromJson(json);
-
-  late List<FetchEvents$Query$FetchEvents> fetchEvents;
-
-  @override
-  List<Object?> get props => [fetchEvents];
-  @override
-  Map<String, dynamic> toJson() => _$FetchEvents$QueryToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchConvention$Query$FetchConvention extends JsonSerializable
-    with EquatableMixin {
-  FetchConvention$Query$FetchConvention();
-
-  factory FetchConvention$Query$FetchConvention.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchConvention$Query$FetchConventionFromJson(json);
-
-  late String id;
-
-  late String title;
-
-  @JsonKey(
-      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
-      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
-  late DateTime startDate;
-
-  @JsonKey(
-      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
-      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
-  DateTime? endDate;
-
-  late String lonlat;
-
-  late String fullAddress;
-
-  String? coverImageUrl;
-
-  String? displayCity;
-
-  String? displayState;
-
-  late bool paymentRequired;
-
-  @override
-  List<Object?> get props => [
-        id,
-        title,
-        startDate,
-        endDate,
-        lonlat,
-        fullAddress,
-        coverImageUrl,
-        displayCity,
-        displayState,
-        paymentRequired
-      ];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchConvention$Query$FetchConventionToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchConvention$Query extends JsonSerializable with EquatableMixin {
-  FetchConvention$Query();
-
-  factory FetchConvention$Query.fromJson(Map<String, dynamic> json) =>
-      _$FetchConvention$QueryFromJson(json);
-
-  late FetchConvention$Query$FetchConvention fetchConvention;
-
-  @override
-  List<Object?> get props => [fetchConvention];
-  @override
-  Map<String, dynamic> toJson() => _$FetchConvention$QueryToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
 class FetchEvent$Query$FetchEvent$Party$PartyChat$Messages
     extends JsonSerializable with EquatableMixin {
   FetchEvent$Query$FetchEvent$Party$PartyChat$Messages();
@@ -4470,6 +4135,571 @@ class FetchEvent$Query extends JsonSerializable with EquatableMixin {
   List<Object?> get props => [fetchEvent];
   @override
   Map<String, dynamic> toJson() => _$FetchEvent$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConventions$Query$FetchConventions$Events$Party$Members
+    extends JsonSerializable with EquatableMixin {
+  FetchConventions$Query$FetchConventions$Events$Party$Members();
+
+  factory FetchConventions$Query$FetchConventions$Events$Party$Members.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConventions$Query$FetchConventions$Events$Party$MembersFromJson(
+          json);
+
+  late String id;
+
+  @override
+  List<Object?> get props => [id];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConventions$Query$FetchConventions$Events$Party$MembersToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConventions$Query$FetchConventions$Events$Party
+    extends JsonSerializable with EquatableMixin {
+  FetchConventions$Query$FetchConventions$Events$Party();
+
+  factory FetchConventions$Query$FetchConventions$Events$Party.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConventions$Query$FetchConventions$Events$PartyFromJson(json);
+
+  late String id;
+
+  List<FetchConventions$Query$FetchConventions$Events$Party$Members>? members;
+
+  @override
+  List<Object?> get props => [id, members];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConventions$Query$FetchConventions$Events$PartyToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConventions$Query$FetchConventions$Events extends JsonSerializable
+    with EquatableMixin {
+  FetchConventions$Query$FetchConventions$Events();
+
+  factory FetchConventions$Query$FetchConventions$Events.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConventions$Query$FetchConventions$EventsFromJson(json);
+
+  late String id;
+
+  String? title;
+
+  FetchConventions$Query$FetchConventions$Events$Party? party;
+
+  @override
+  List<Object?> get props => [id, title, party];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConventions$Query$FetchConventions$EventsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConventions$Query$FetchConventions extends JsonSerializable
+    with EquatableMixin {
+  FetchConventions$Query$FetchConventions();
+
+  factory FetchConventions$Query$FetchConventions.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConventions$Query$FetchConventionsFromJson(json);
+
+  late String id;
+
+  late String title;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  late DateTime startDate;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
+      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
+  DateTime? endDate;
+
+  late String lonlat;
+
+  String? website;
+
+  late String fullAddress;
+
+  String? displayCity;
+
+  String? displayState;
+
+  String? coverImageUrl;
+
+  late bool paymentRequired;
+
+  List<FetchConventions$Query$FetchConventions$Events>? events;
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        startDate,
+        endDate,
+        lonlat,
+        website,
+        fullAddress,
+        displayCity,
+        displayState,
+        coverImageUrl,
+        paymentRequired,
+        events
+      ];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConventions$Query$FetchConventionsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConventions$Query extends JsonSerializable with EquatableMixin {
+  FetchConventions$Query();
+
+  factory FetchConventions$Query.fromJson(Map<String, dynamic> json) =>
+      _$FetchConventions$QueryFromJson(json);
+
+  late List<FetchConventions$Query$FetchConventions> fetchConventions;
+
+  @override
+  List<Object?> get props => [fetchConventions];
+  @override
+  Map<String, dynamic> toJson() => _$FetchConventions$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class SearchEventInput extends JsonSerializable with EquatableMixin {
+  SearchEventInput({
+    this.cosplayRequired,
+    this.endDate,
+    this.hostRating,
+    this.milesAway,
+    this.page,
+    this.paymentRequired,
+    this.query,
+    required this.startDate,
+    this.userId,
+  });
+
+  factory SearchEventInput.fromJson(Map<String, dynamic> json) =>
+      _$SearchEventInputFromJson(json);
+
+  String? cosplayRequired;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
+      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
+  DateTime? endDate;
+
+  double? hostRating;
+
+  int? milesAway;
+
+  int? page;
+
+  bool? paymentRequired;
+
+  String? query;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  late DateTime startDate;
+
+  String? userId;
+
+  @override
+  List<Object?> get props => [
+        cosplayRequired,
+        endDate,
+        hostRating,
+        milesAway,
+        page,
+        paymentRequired,
+        query,
+        startDate,
+        userId
+      ];
+  @override
+  Map<String, dynamic> toJson() => _$SearchEventInputToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchEvents$Query$FetchEvents extends JsonSerializable
+    with EquatableMixin {
+  FetchEvents$Query$FetchEvents();
+
+  factory FetchEvents$Query$FetchEvents.fromJson(Map<String, dynamic> json) =>
+      _$FetchEvents$Query$FetchEventsFromJson(json);
+
+  late String id;
+
+  String? title;
+
+  late String country;
+
+  late String displayCity;
+
+  late String displayState;
+
+  late String fullAddress;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  late DateTime startDate;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
+      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
+  DateTime? endDate;
+
+  String? coverImageUrl;
+
+  bool? paymentRequired;
+
+  String? cosplayRequired;
+
+  late String lonlat;
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        country,
+        displayCity,
+        displayState,
+        fullAddress,
+        startDate,
+        endDate,
+        coverImageUrl,
+        paymentRequired,
+        cosplayRequired,
+        lonlat
+      ];
+  @override
+  Map<String, dynamic> toJson() => _$FetchEvents$Query$FetchEventsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchEvents$Query extends JsonSerializable with EquatableMixin {
+  FetchEvents$Query();
+
+  factory FetchEvents$Query.fromJson(Map<String, dynamic> json) =>
+      _$FetchEvents$QueryFromJson(json);
+
+  late List<FetchEvents$Query$FetchEvents> fetchEvents;
+
+  @override
+  List<Object?> get props => [fetchEvents];
+  @override
+  Map<String, dynamic> toJson() => _$FetchEvents$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchVerifyRequests$Query$FetchVerifyRequests extends JsonSerializable
+    with EquatableMixin {
+  FetchVerifyRequests$Query$FetchVerifyRequests();
+
+  factory FetchVerifyRequests$Query$FetchVerifyRequests.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchVerifyRequests$Query$FetchVerifyRequestsFromJson(json);
+
+  late int userId;
+
+  late String status;
+
+  @override
+  List<Object?> get props => [userId, status];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchVerifyRequests$Query$FetchVerifyRequestsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchVerifyRequests$Query extends JsonSerializable with EquatableMixin {
+  FetchVerifyRequests$Query();
+
+  factory FetchVerifyRequests$Query.fromJson(Map<String, dynamic> json) =>
+      _$FetchVerifyRequests$QueryFromJson(json);
+
+  late List<FetchVerifyRequests$Query$FetchVerifyRequests> fetchVerifyRequests;
+
+  @override
+  List<Object?> get props => [fetchVerifyRequests];
+  @override
+  Map<String, dynamic> toJson() => _$FetchVerifyRequests$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchStickers$Query$FetchStickers extends JsonSerializable
+    with EquatableMixin {
+  FetchStickers$Query$FetchStickers();
+
+  factory FetchStickers$Query$FetchStickers.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchStickers$Query$FetchStickersFromJson(json);
+
+  late String id;
+
+  late String url;
+
+  @override
+  List<Object?> get props => [id, url];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchStickers$Query$FetchStickersToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchStickers$Query extends JsonSerializable with EquatableMixin {
+  FetchStickers$Query();
+
+  factory FetchStickers$Query.fromJson(Map<String, dynamic> json) =>
+      _$FetchStickers$QueryFromJson(json);
+
+  late List<FetchStickers$Query$FetchStickers> fetchStickers;
+
+  @override
+  List<Object?> get props => [fetchStickers];
+  @override
+  Map<String, dynamic> toJson() => _$FetchStickers$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
+    extends JsonSerializable with EquatableMixin {
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant();
+
+  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantFromJson(
+          json);
+
+  late String id;
+
+  late String firstName;
+
+  @override
+  List<Object?> get props => [id, firstName];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
+    extends JsonSerializable with EquatableMixin {
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation();
+
+  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationFromJson(
+          json);
+
+  late String id;
+
+  @override
+  List<Object?> get props => [id];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest
+    extends JsonSerializable with EquatableMixin {
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest();
+
+  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestFromJson(json);
+
+  late String id;
+
+  late int eventId;
+
+  late int userId;
+
+  String? description;
+
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant? applicant;
+
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation?
+      conversation;
+
+  @override
+  List<Object?> get props =>
+      [id, eventId, userId, description, applicant, conversation];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation$CreateJoinRequest extends JsonSerializable
+    with EquatableMixin {
+  CreateJoinRequest$Mutation$CreateJoinRequest();
+
+  factory CreateJoinRequest$Mutation$CreateJoinRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequestFromJson(json);
+
+  late CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest joinRequest;
+
+  @override
+  List<Object?> get props => [joinRequest];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequestToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation extends JsonSerializable with EquatableMixin {
+  CreateJoinRequest$Mutation();
+
+  factory CreateJoinRequest$Mutation.fromJson(Map<String, dynamic> json) =>
+      _$CreateJoinRequest$MutationFromJson(json);
+
+  CreateJoinRequest$Mutation$CreateJoinRequest? createJoinRequest;
+
+  @override
+  List<Object?> get props => [createJoinRequest];
+  @override
+  Map<String, dynamic> toJson() => _$CreateJoinRequest$MutationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequestInput extends JsonSerializable with EquatableMixin {
+  CreateJoinRequestInput({
+    this.clientMutationId,
+    required this.params,
+  });
+
+  factory CreateJoinRequestInput.fromJson(Map<String, dynamic> json) =>
+      _$CreateJoinRequestInputFromJson(json);
+
+  String? clientMutationId;
+
+  late JoinRequestInput params;
+
+  @override
+  List<Object?> get props => [clientMutationId, params];
+  @override
+  Map<String, dynamic> toJson() => _$CreateJoinRequestInputToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class JoinRequestInput extends JsonSerializable with EquatableMixin {
+  JoinRequestInput({
+    this.description,
+    required this.eventId,
+    this.joinRequestId,
+    this.status,
+    required this.userId,
+  });
+
+  factory JoinRequestInput.fromJson(Map<String, dynamic> json) =>
+      _$JoinRequestInputFromJson(json);
+
+  String? description;
+
+  late String eventId;
+
+  String? joinRequestId;
+
+  String? status;
+
+  late String userId;
+
+  @override
+  List<Object?> get props =>
+      [description, eventId, joinRequestId, status, userId];
+  @override
+  Map<String, dynamic> toJson() => _$JoinRequestInputToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchJoinRequests$Query$FetchJoinRequests$Applicant
+    extends JsonSerializable with EquatableMixin {
+  FetchJoinRequests$Query$FetchJoinRequests$Applicant();
+
+  factory FetchJoinRequests$Query$FetchJoinRequests$Applicant.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantFromJson(json);
+
+  late String id;
+
+  @override
+  List<Object?> get props => [id];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchJoinRequests$Query$FetchJoinRequests$Conversation
+    extends JsonSerializable with EquatableMixin {
+  FetchJoinRequests$Query$FetchJoinRequests$Conversation();
+
+  factory FetchJoinRequests$Query$FetchJoinRequests$Conversation.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchJoinRequests$Query$FetchJoinRequests$ConversationFromJson(json);
+
+  late String id;
+
+  @override
+  List<Object?> get props => [id];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchJoinRequests$Query$FetchJoinRequests$ConversationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchJoinRequests$Query$FetchJoinRequests extends JsonSerializable
+    with EquatableMixin {
+  FetchJoinRequests$Query$FetchJoinRequests();
+
+  factory FetchJoinRequests$Query$FetchJoinRequests.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchJoinRequests$Query$FetchJoinRequestsFromJson(json);
+
+  late String id;
+
+  late int eventId;
+
+  FetchJoinRequests$Query$FetchJoinRequests$Applicant? applicant;
+
+  FetchJoinRequests$Query$FetchJoinRequests$Conversation? conversation;
+
+  @override
+  List<Object?> get props => [id, eventId, applicant, conversation];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchJoinRequests$Query$FetchJoinRequestsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchJoinRequests$Query extends JsonSerializable with EquatableMixin {
+  FetchJoinRequests$Query();
+
+  factory FetchJoinRequests$Query.fromJson(Map<String, dynamic> json) =>
+      _$FetchJoinRequests$QueryFromJson(json);
+
+  late List<FetchJoinRequests$Query$FetchJoinRequests> fetchJoinRequests;
+
+  @override
+  List<Object?> get props => [fetchJoinRequests];
+  @override
+  Map<String, dynamic> toJson() => _$FetchJoinRequests$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -7472,6 +7702,147 @@ class DeleteFavoriteMusicMutation extends GraphQLQuery<
 }
 
 @JsonSerializable(explicitToJson: true)
+class FetchConventionArguments extends JsonSerializable with EquatableMixin {
+  FetchConventionArguments({required this.conventionId});
+
+  @override
+  factory FetchConventionArguments.fromJson(Map<String, dynamic> json) =>
+      _$FetchConventionArgumentsFromJson(json);
+
+  late String conventionId;
+
+  @override
+  List<Object?> get props => [conventionId];
+  @override
+  Map<String, dynamic> toJson() => _$FetchConventionArgumentsToJson(this);
+}
+
+final FETCH_CONVENTION_QUERY_DOCUMENT_OPERATION_NAME = 'fetchConvention';
+final FETCH_CONVENTION_QUERY_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'fetchConvention'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'conventionId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'fetchConvention'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'conventionId'),
+            value: VariableNode(name: NameNode(value: 'conventionId')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'title'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'startDate'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'endDate'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'lonlat'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'fullAddress'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'coverImageUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'displayCity'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'displayState'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'paymentRequired'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      )
+    ]),
+  )
+]);
+
+class FetchConventionQuery
+    extends GraphQLQuery<FetchConvention$Query, FetchConventionArguments> {
+  FetchConventionQuery({required this.variables});
+
+  @override
+  final DocumentNode document = FETCH_CONVENTION_QUERY_DOCUMENT;
+
+  @override
+  final String operationName = FETCH_CONVENTION_QUERY_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final FetchConventionArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  FetchConvention$Query parse(Map<String, dynamic> json) =>
+      FetchConvention$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
 class FetchMessagesArguments extends JsonSerializable with EquatableMixin {
   FetchMessagesArguments({
     required this.conversationId,
@@ -9032,675 +9403,6 @@ class FetchConversationsQuery extends GraphQLQuery<FetchConversations$Query,
 }
 
 @JsonSerializable(explicitToJson: true)
-class FetchConventionsArguments extends JsonSerializable with EquatableMixin {
-  FetchConventionsArguments({required this.params});
-
-  @override
-  factory FetchConventionsArguments.fromJson(Map<String, dynamic> json) =>
-      _$FetchConventionsArgumentsFromJson(json);
-
-  late SearchEventInput params;
-
-  @override
-  List<Object?> get props => [params];
-  @override
-  Map<String, dynamic> toJson() => _$FetchConventionsArgumentsToJson(this);
-}
-
-final FETCH_CONVENTIONS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchConventions';
-final FETCH_CONVENTIONS_QUERY_DOCUMENT = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.query,
-    name: NameNode(value: 'fetchConventions'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'params')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'SearchEventInput'),
-          isNonNull: true,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'fetchConventions'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'params'),
-            value: VariableNode(name: NameNode(value: 'params')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'id'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'title'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'startDate'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'endDate'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'lonlat'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'website'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'fullAddress'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'displayCity'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'displayState'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'coverImageUrl'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'paymentRequired'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'events'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                name: NameNode(value: 'id'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'title'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'party'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: SelectionSetNode(selections: [
-                  FieldNode(
-                    name: NameNode(value: 'id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: 'members'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: SelectionSetNode(selections: [
-                      FieldNode(
-                        name: NameNode(value: 'id'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      )
-                    ]),
-                  ),
-                ]),
-              ),
-            ]),
-          ),
-        ]),
-      )
-    ]),
-  )
-]);
-
-class FetchConventionsQuery
-    extends GraphQLQuery<FetchConventions$Query, FetchConventionsArguments> {
-  FetchConventionsQuery({required this.variables});
-
-  @override
-  final DocumentNode document = FETCH_CONVENTIONS_QUERY_DOCUMENT;
-
-  @override
-  final String operationName = FETCH_CONVENTIONS_QUERY_DOCUMENT_OPERATION_NAME;
-
-  @override
-  final FetchConventionsArguments variables;
-
-  @override
-  List<Object?> get props => [document, operationName, variables];
-  @override
-  FetchConventions$Query parse(Map<String, dynamic> json) =>
-      FetchConventions$Query.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchVerifyRequestsArguments extends JsonSerializable
-    with EquatableMixin {
-  FetchVerifyRequestsArguments({required this.userId});
-
-  @override
-  factory FetchVerifyRequestsArguments.fromJson(Map<String, dynamic> json) =>
-      _$FetchVerifyRequestsArgumentsFromJson(json);
-
-  late String userId;
-
-  @override
-  List<Object?> get props => [userId];
-  @override
-  Map<String, dynamic> toJson() => _$FetchVerifyRequestsArgumentsToJson(this);
-}
-
-final FETCH_VERIFY_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME =
-    'fetchVerifyRequests';
-final FETCH_VERIFY_REQUESTS_QUERY_DOCUMENT = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.query,
-    name: NameNode(value: 'fetchVerifyRequests'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'userId')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'ID'),
-          isNonNull: true,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'fetchVerifyRequests'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'userId'),
-            value: VariableNode(name: NameNode(value: 'userId')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'userId'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'status'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-        ]),
-      )
-    ]),
-  )
-]);
-
-class FetchVerifyRequestsQuery extends GraphQLQuery<FetchVerifyRequests$Query,
-    FetchVerifyRequestsArguments> {
-  FetchVerifyRequestsQuery({required this.variables});
-
-  @override
-  final DocumentNode document = FETCH_VERIFY_REQUESTS_QUERY_DOCUMENT;
-
-  @override
-  final String operationName =
-      FETCH_VERIFY_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME;
-
-  @override
-  final FetchVerifyRequestsArguments variables;
-
-  @override
-  List<Object?> get props => [document, operationName, variables];
-  @override
-  FetchVerifyRequests$Query parse(Map<String, dynamic> json) =>
-      FetchVerifyRequests$Query.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchStickersArguments extends JsonSerializable with EquatableMixin {
-  FetchStickersArguments({required this.page});
-
-  @override
-  factory FetchStickersArguments.fromJson(Map<String, dynamic> json) =>
-      _$FetchStickersArgumentsFromJson(json);
-
-  late int page;
-
-  @override
-  List<Object?> get props => [page];
-  @override
-  Map<String, dynamic> toJson() => _$FetchStickersArgumentsToJson(this);
-}
-
-final FETCH_STICKERS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchStickers';
-final FETCH_STICKERS_QUERY_DOCUMENT = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.query,
-    name: NameNode(value: 'fetchStickers'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'page')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'Int'),
-          isNonNull: true,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'fetchStickers'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'page'),
-            value: VariableNode(name: NameNode(value: 'page')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'id'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'url'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-        ]),
-      )
-    ]),
-  )
-]);
-
-class FetchStickersQuery
-    extends GraphQLQuery<FetchStickers$Query, FetchStickersArguments> {
-  FetchStickersQuery({required this.variables});
-
-  @override
-  final DocumentNode document = FETCH_STICKERS_QUERY_DOCUMENT;
-
-  @override
-  final String operationName = FETCH_STICKERS_QUERY_DOCUMENT_OPERATION_NAME;
-
-  @override
-  final FetchStickersArguments variables;
-
-  @override
-  List<Object?> get props => [document, operationName, variables];
-  @override
-  FetchStickers$Query parse(Map<String, dynamic> json) =>
-      FetchStickers$Query.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchEventsArguments extends JsonSerializable with EquatableMixin {
-  FetchEventsArguments({required this.params});
-
-  @override
-  factory FetchEventsArguments.fromJson(Map<String, dynamic> json) =>
-      _$FetchEventsArgumentsFromJson(json);
-
-  late SearchEventInput params;
-
-  @override
-  List<Object?> get props => [params];
-  @override
-  Map<String, dynamic> toJson() => _$FetchEventsArgumentsToJson(this);
-}
-
-final FETCH_EVENTS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchEvents';
-final FETCH_EVENTS_QUERY_DOCUMENT = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.query,
-    name: NameNode(value: 'fetchEvents'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'params')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'SearchEventInput'),
-          isNonNull: true,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'fetchEvents'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'params'),
-            value: VariableNode(name: NameNode(value: 'params')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'id'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'title'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'country'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'displayCity'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'displayState'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'fullAddress'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'startDate'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'endDate'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'coverImageUrl'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'paymentRequired'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'cosplayRequired'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'lonlat'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-        ]),
-      )
-    ]),
-  )
-]);
-
-class FetchEventsQuery
-    extends GraphQLQuery<FetchEvents$Query, FetchEventsArguments> {
-  FetchEventsQuery({required this.variables});
-
-  @override
-  final DocumentNode document = FETCH_EVENTS_QUERY_DOCUMENT;
-
-  @override
-  final String operationName = FETCH_EVENTS_QUERY_DOCUMENT_OPERATION_NAME;
-
-  @override
-  final FetchEventsArguments variables;
-
-  @override
-  List<Object?> get props => [document, operationName, variables];
-  @override
-  FetchEvents$Query parse(Map<String, dynamic> json) =>
-      FetchEvents$Query.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchConventionArguments extends JsonSerializable with EquatableMixin {
-  FetchConventionArguments({required this.conventionId});
-
-  @override
-  factory FetchConventionArguments.fromJson(Map<String, dynamic> json) =>
-      _$FetchConventionArgumentsFromJson(json);
-
-  late String conventionId;
-
-  @override
-  List<Object?> get props => [conventionId];
-  @override
-  Map<String, dynamic> toJson() => _$FetchConventionArgumentsToJson(this);
-}
-
-final FETCH_CONVENTION_QUERY_DOCUMENT_OPERATION_NAME = 'fetchConvention';
-final FETCH_CONVENTION_QUERY_DOCUMENT = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.query,
-    name: NameNode(value: 'fetchConvention'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'conventionId')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'ID'),
-          isNonNull: true,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'fetchConvention'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'conventionId'),
-            value: VariableNode(name: NameNode(value: 'conventionId')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'id'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'title'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'startDate'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'endDate'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'lonlat'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'fullAddress'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'coverImageUrl'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'displayCity'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'displayState'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'paymentRequired'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-        ]),
-      )
-    ]),
-  )
-]);
-
-class FetchConventionQuery
-    extends GraphQLQuery<FetchConvention$Query, FetchConventionArguments> {
-  FetchConventionQuery({required this.variables});
-
-  @override
-  final DocumentNode document = FETCH_CONVENTION_QUERY_DOCUMENT;
-
-  @override
-  final String operationName = FETCH_CONVENTION_QUERY_DOCUMENT_OPERATION_NAME;
-
-  @override
-  final FetchConventionArguments variables;
-
-  @override
-  List<Object?> get props => [document, operationName, variables];
-  @override
-  FetchConvention$Query parse(Map<String, dynamic> json) =>
-      FetchConvention$Query.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
 class FetchEventArguments extends JsonSerializable with EquatableMixin {
   FetchEventArguments({required this.eventId});
 
@@ -10013,4 +9715,828 @@ class FetchEventQuery
   @override
   FetchEvent$Query parse(Map<String, dynamic> json) =>
       FetchEvent$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConventionsArguments extends JsonSerializable with EquatableMixin {
+  FetchConventionsArguments({required this.params});
+
+  @override
+  factory FetchConventionsArguments.fromJson(Map<String, dynamic> json) =>
+      _$FetchConventionsArgumentsFromJson(json);
+
+  late SearchEventInput params;
+
+  @override
+  List<Object?> get props => [params];
+  @override
+  Map<String, dynamic> toJson() => _$FetchConventionsArgumentsToJson(this);
+}
+
+final FETCH_CONVENTIONS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchConventions';
+final FETCH_CONVENTIONS_QUERY_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'fetchConventions'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'params')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'SearchEventInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'fetchConventions'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'params'),
+            value: VariableNode(name: NameNode(value: 'params')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'title'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'startDate'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'endDate'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'lonlat'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'website'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'fullAddress'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'displayCity'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'displayState'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'coverImageUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'paymentRequired'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'events'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'title'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'party'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'members'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                        name: NameNode(value: 'id'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      )
+                    ]),
+                  ),
+                ]),
+              ),
+            ]),
+          ),
+        ]),
+      )
+    ]),
+  )
+]);
+
+class FetchConventionsQuery
+    extends GraphQLQuery<FetchConventions$Query, FetchConventionsArguments> {
+  FetchConventionsQuery({required this.variables});
+
+  @override
+  final DocumentNode document = FETCH_CONVENTIONS_QUERY_DOCUMENT;
+
+  @override
+  final String operationName = FETCH_CONVENTIONS_QUERY_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final FetchConventionsArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  FetchConventions$Query parse(Map<String, dynamic> json) =>
+      FetchConventions$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchEventsArguments extends JsonSerializable with EquatableMixin {
+  FetchEventsArguments({required this.params});
+
+  @override
+  factory FetchEventsArguments.fromJson(Map<String, dynamic> json) =>
+      _$FetchEventsArgumentsFromJson(json);
+
+  late SearchEventInput params;
+
+  @override
+  List<Object?> get props => [params];
+  @override
+  Map<String, dynamic> toJson() => _$FetchEventsArgumentsToJson(this);
+}
+
+final FETCH_EVENTS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchEvents';
+final FETCH_EVENTS_QUERY_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'fetchEvents'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'params')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'SearchEventInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'fetchEvents'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'params'),
+            value: VariableNode(name: NameNode(value: 'params')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'title'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'country'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'displayCity'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'displayState'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'fullAddress'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'startDate'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'endDate'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'coverImageUrl'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'paymentRequired'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'cosplayRequired'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'lonlat'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      )
+    ]),
+  )
+]);
+
+class FetchEventsQuery
+    extends GraphQLQuery<FetchEvents$Query, FetchEventsArguments> {
+  FetchEventsQuery({required this.variables});
+
+  @override
+  final DocumentNode document = FETCH_EVENTS_QUERY_DOCUMENT;
+
+  @override
+  final String operationName = FETCH_EVENTS_QUERY_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final FetchEventsArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  FetchEvents$Query parse(Map<String, dynamic> json) =>
+      FetchEvents$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchVerifyRequestsArguments extends JsonSerializable
+    with EquatableMixin {
+  FetchVerifyRequestsArguments({required this.userId});
+
+  @override
+  factory FetchVerifyRequestsArguments.fromJson(Map<String, dynamic> json) =>
+      _$FetchVerifyRequestsArgumentsFromJson(json);
+
+  late String userId;
+
+  @override
+  List<Object?> get props => [userId];
+  @override
+  Map<String, dynamic> toJson() => _$FetchVerifyRequestsArgumentsToJson(this);
+}
+
+final FETCH_VERIFY_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME =
+    'fetchVerifyRequests';
+final FETCH_VERIFY_REQUESTS_QUERY_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'fetchVerifyRequests'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'userId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'fetchVerifyRequests'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'userId'),
+            value: VariableNode(name: NameNode(value: 'userId')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'userId'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'status'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      )
+    ]),
+  )
+]);
+
+class FetchVerifyRequestsQuery extends GraphQLQuery<FetchVerifyRequests$Query,
+    FetchVerifyRequestsArguments> {
+  FetchVerifyRequestsQuery({required this.variables});
+
+  @override
+  final DocumentNode document = FETCH_VERIFY_REQUESTS_QUERY_DOCUMENT;
+
+  @override
+  final String operationName =
+      FETCH_VERIFY_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final FetchVerifyRequestsArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  FetchVerifyRequests$Query parse(Map<String, dynamic> json) =>
+      FetchVerifyRequests$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchStickersArguments extends JsonSerializable with EquatableMixin {
+  FetchStickersArguments({required this.page});
+
+  @override
+  factory FetchStickersArguments.fromJson(Map<String, dynamic> json) =>
+      _$FetchStickersArgumentsFromJson(json);
+
+  late int page;
+
+  @override
+  List<Object?> get props => [page];
+  @override
+  Map<String, dynamic> toJson() => _$FetchStickersArgumentsToJson(this);
+}
+
+final FETCH_STICKERS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchStickers';
+final FETCH_STICKERS_QUERY_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'fetchStickers'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'page')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'fetchStickers'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'page'),
+            value: VariableNode(name: NameNode(value: 'page')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'url'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+        ]),
+      )
+    ]),
+  )
+]);
+
+class FetchStickersQuery
+    extends GraphQLQuery<FetchStickers$Query, FetchStickersArguments> {
+  FetchStickersQuery({required this.variables});
+
+  @override
+  final DocumentNode document = FETCH_STICKERS_QUERY_DOCUMENT;
+
+  @override
+  final String operationName = FETCH_STICKERS_QUERY_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final FetchStickersArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  FetchStickers$Query parse(Map<String, dynamic> json) =>
+      FetchStickers$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequestArguments extends JsonSerializable with EquatableMixin {
+  CreateJoinRequestArguments({required this.input});
+
+  @override
+  factory CreateJoinRequestArguments.fromJson(Map<String, dynamic> json) =>
+      _$CreateJoinRequestArgumentsFromJson(json);
+
+  late CreateJoinRequestInput input;
+
+  @override
+  List<Object?> get props => [input];
+  @override
+  Map<String, dynamic> toJson() => _$CreateJoinRequestArgumentsToJson(this);
+}
+
+final CREATE_JOIN_REQUEST_MUTATION_DOCUMENT_OPERATION_NAME =
+    'createJoinRequest';
+final CREATE_JOIN_REQUEST_MUTATION_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'createJoinRequest'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'CreateJoinRequestInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'createJoinRequest'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'joinRequest'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'eventId'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'userId'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'description'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'applicant'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'firstName'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'conversation'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  )
+                ]),
+              ),
+            ]),
+          )
+        ]),
+      )
+    ]),
+  )
+]);
+
+class CreateJoinRequestMutation extends GraphQLQuery<CreateJoinRequest$Mutation,
+    CreateJoinRequestArguments> {
+  CreateJoinRequestMutation({required this.variables});
+
+  @override
+  final DocumentNode document = CREATE_JOIN_REQUEST_MUTATION_DOCUMENT;
+
+  @override
+  final String operationName =
+      CREATE_JOIN_REQUEST_MUTATION_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final CreateJoinRequestArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  CreateJoinRequest$Mutation parse(Map<String, dynamic> json) =>
+      CreateJoinRequest$Mutation.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchJoinRequestsArguments extends JsonSerializable with EquatableMixin {
+  FetchJoinRequestsArguments({
+    required this.eventId,
+    this.page,
+    this.applicantId,
+  });
+
+  @override
+  factory FetchJoinRequestsArguments.fromJson(Map<String, dynamic> json) =>
+      _$FetchJoinRequestsArgumentsFromJson(json);
+
+  late String eventId;
+
+  final int? page;
+
+  final String? applicantId;
+
+  @override
+  List<Object?> get props => [eventId, page, applicantId];
+  @override
+  Map<String, dynamic> toJson() => _$FetchJoinRequestsArgumentsToJson(this);
+}
+
+final FETCH_JOIN_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchJoinRequests';
+final FETCH_JOIN_REQUESTS_QUERY_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'fetchJoinRequests'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'eventId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'page')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'applicantId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'fetchJoinRequests'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'eventId'),
+            value: VariableNode(name: NameNode(value: 'eventId')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'page'),
+            value: VariableNode(name: NameNode(value: 'page')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'applicantId'),
+            value: VariableNode(name: NameNode(value: 'applicantId')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'eventId'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'applicant'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              )
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'conversation'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              )
+            ]),
+          ),
+        ]),
+      )
+    ]),
+  )
+]);
+
+class FetchJoinRequestsQuery
+    extends GraphQLQuery<FetchJoinRequests$Query, FetchJoinRequestsArguments> {
+  FetchJoinRequestsQuery({required this.variables});
+
+  @override
+  final DocumentNode document = FETCH_JOIN_REQUESTS_QUERY_DOCUMENT;
+
+  @override
+  final String operationName =
+      FETCH_JOIN_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final FetchJoinRequestsArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  FetchJoinRequests$Query parse(Map<String, dynamic> json) =>
+      FetchJoinRequests$Query.fromJson(json);
 }

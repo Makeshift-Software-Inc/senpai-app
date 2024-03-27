@@ -1,0 +1,17 @@
+mutation createJoinRequest($input: CreateJoinRequestInput!) {
+  createJoinRequest(input: $input) {
+    joinRequest {
+      id
+      eventId
+      userId
+      description
+      applicant {
+        id
+        firstName
+      }
+      conversation {
+        id
+      }
+    }
+  }
+}
