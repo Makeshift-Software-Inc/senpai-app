@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_dio/fresh_dio.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:senpai/data/storage_keys_constants.dart';
+import 'package:senpai/dependency_injection/injection.dart';
+import 'package:senpai/models/auth/auth_model.dart';
 import 'package:senpai/models/events/convention/convention_model.dart';
 import 'package:senpai/models/events/event/event_model.dart';
 import 'package:senpai/models/events/events_list_filter/events_list_filter_model.dart';
@@ -28,6 +31,12 @@ class EventsListBloc extends HydratedBloc<EventsListEvent, EventsListState> {
 
   EventsListBloc() : super(LoadingEventsListState()) {
     on<OnLoadEventList>((event, emit) async {
+      final storage = getIt<TokenStorage<AuthModel>>();
+      await storage.read().then((data) {
+        if (data != null) {
+          userId = data.user.id;
+        }
+      });
       emit(LoadingEventsListState());
     });
     on<OnLoadConventionsList>((event, emit) async {
