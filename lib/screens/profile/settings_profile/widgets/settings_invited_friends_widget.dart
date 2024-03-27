@@ -45,7 +45,7 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
               padding: EdgeInsets.only(
                 top: $constants.insets.xs,
               ),
-              height: 144,
+              height: $constants.referral.invitedFriendsContainerHeight,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -86,7 +86,7 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
                           ),
                           const Spacer(),
                           Container(
-                            height: 36,
+                            height: $constants.sizes.attachmentsIconSize,
                             margin: EdgeInsets.only(
                               right: $constants.insets.xs,
                             ),
@@ -102,7 +102,7 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
                               children: [
                                 Container(
                                   width: gradientContainerWidth,
-                                  height: 6,
+                                  height: $constants.corners.xs,
                                   alignment: Alignment.centerLeft,
                                   decoration: BoxDecoration(
                                       color: $constants.palette.black,
@@ -110,7 +110,7 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
                                           $constants.corners.sm)),
                                   child: Container(
                                     width: gradientWidth,
-                                    height: 6,
+                                    height: $constants.corners.xs,
                                     decoration: BoxDecoration(
                                         gradient:
                                             $constants.palette.lineGradient,
@@ -119,8 +119,8 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                  width: 36,
-                                  height: 36,
+                                  width: $constants.sizes.attachmentsIconSize,
+                                  height: $constants.sizes.attachmentsIconSize,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                       color: $constants.palette.black,
@@ -152,8 +152,8 @@ class SettingsInvitedFriendsWidget extends StatelessWidget {
           top: 2,
           child: Image.asset(
             'assets/images/premium.png',
-            width: 89,
-            height: 83,
+            width: $constants.referral.premiumWidgetWidth,
+            height: $constants.referral.premiumWidgetHeight,
             fit: BoxFit.cover,
           ),
         ),

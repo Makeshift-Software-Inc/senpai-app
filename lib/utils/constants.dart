@@ -52,6 +52,9 @@ class Constants {
   /// Events constants
   late final events = _EventsConstants();
 
+  /// Referral constants
+  late final referral = _ReferralConstants();
+
   /// API keys
   late final apiKeys = _ApiKeys();
 }
@@ -323,6 +326,13 @@ class _EventsConstants {
   late final double eventCosplaySize = 74;
   late final double eventMembersBlur = 16;
   late final double eventHostHeight = 130;
+}
+
+@immutable
+class _ReferralConstants {
+  late final double invitedFriendsContainerHeight = 144;
+  late final double premiumWidgetWidth = 89;
+  late final double premiumWidgetHeight = 83;
 }
 
 @immutable
