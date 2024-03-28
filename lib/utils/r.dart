@@ -17,17 +17,17 @@ class _ImageResources {
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/senpai_logo.png)
   final senpai_logo = r'assets/images/senpai_logo.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/logo.png)
-  final logo = r'assets/images/logo.png';
-
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/premium.png)
-  final premium = r'assets/images/premium.png';
-
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/invited_friends_container.png)
   final invited_friends_container = r'assets/images/invited_friends_container.png';
 
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/invited_friends_container_background.png)
   final invited_friends_container_background = r'assets/images/invited_friends_container_background.png';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/logo.png)
+  final logo = r'assets/images/logo.png';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/premium.png)
+  final premium = r'assets/images/premium.png';
 
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/onboarding/onboarding_1.png)
   final onboarding_1 = r'assets/images/onboarding/onboarding_1.png';
@@ -104,8 +104,17 @@ class _ImageResources {
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/chat/empty_conversations.png)
   final empty_conversations = r'assets/images/chat/empty_conversations.png';
 
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/paid_filter_icon.svg)
+  final paid_filter_icon = r'assets/images/events/paid_filter_icon.svg';
+
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/event_image_icon.svg)
   final event_image_icon = r'assets/images/events/event_image_icon.svg';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/members_background.png)
+  final members_background = r'assets/images/events/members_background.png';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/host_event_image.png)
+  final host_event_image = r'assets/images/events/host_event_image.png';
 
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/event_button_icon.svg)
   final event_button_icon = r'assets/images/events/event_button_icon.svg';
@@ -113,29 +122,20 @@ class _ImageResources {
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/empty_events_list.png)
   final empty_events_list = r'assets/images/events/empty_events_list.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/event_paid_icon.svg)
-  final event_paid_icon = r'assets/images/events/event_paid_icon.svg';
-
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/members_background.png)
-  final members_background = r'assets/images/events/members_background.png';
-
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/about_event_element.svg)
   final about_event_element = r'assets/images/events/about_event_element.svg';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/calendar_icon.svg)
+  final calendar_icon = r'assets/images/events/calendar_icon.svg';
+
+  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/event_paid_icon.svg)
+  final event_paid_icon = r'assets/images/events/event_paid_icon.svg';
 
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/create_event_warning.png)
   final create_event_warning = r'assets/images/events/create_event_warning.png';
 
   /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/cosplay_bg_image.png)
   final cosplay_bg_image = r'assets/images/events/cosplay_bg_image.png';
-
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/paid_filter_icon.svg)
-  final paid_filter_icon = r'assets/images/events/paid_filter_icon.svg';
-
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/host_event_image.png)
-  final host_event_image = r'assets/images/events/host_event_image.png';
-
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/calendar_icon.svg)
-  final calendar_icon = r'assets/images/events/calendar_icon.svg';
 }
 
 class _SvgResources {

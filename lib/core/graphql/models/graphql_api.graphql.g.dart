@@ -1781,6 +1781,125 @@ Map<String, dynamic> _$UndoLikeInputToJson(UndoLikeInput instance) =>
       'userId': instance.userId,
     };
 
+CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
+    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantFromJson(
+            Map<String, dynamic> json) =>
+        CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant()
+          ..id = json['id'] as String
+          ..firstName = json['firstName'] as String;
+
+Map<String, dynamic>
+    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantToJson(
+            CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
+                instance) =>
+        <String, dynamic>{
+          'id': instance.id,
+          'firstName': instance.firstName,
+        };
+
+CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
+    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationFromJson(
+            Map<String, dynamic> json) =>
+        CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation()
+          ..id = json['id'] as String;
+
+Map<String, dynamic>
+    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationToJson(
+            CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
+                instance) =>
+        <String, dynamic>{
+          'id': instance.id,
+        };
+
+CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest
+    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestFromJson(
+            Map<String, dynamic> json) =>
+        CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest()
+          ..id = json['id'] as String
+          ..eventId = json['eventId'] as int
+          ..userId = json['userId'] as int
+          ..description = json['description'] as String?
+          ..applicant = json['applicant'] == null
+              ? null
+              : CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
+                  .fromJson(json['applicant'] as Map<String, dynamic>)
+          ..conversation = json['conversation'] == null
+              ? null
+              : CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
+                  .fromJson(json['conversation'] as Map<String, dynamic>);
+
+Map<String,
+    dynamic> _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestToJson(
+        CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'eventId': instance.eventId,
+      'userId': instance.userId,
+      'description': instance.description,
+      'applicant': instance.applicant?.toJson(),
+      'conversation': instance.conversation?.toJson(),
+    };
+
+CreateJoinRequest$Mutation$CreateJoinRequest
+    _$CreateJoinRequest$Mutation$CreateJoinRequestFromJson(
+            Map<String, dynamic> json) =>
+        CreateJoinRequest$Mutation$CreateJoinRequest()
+          ..joinRequest =
+              CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest.fromJson(
+                  json['joinRequest'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$CreateJoinRequest$Mutation$CreateJoinRequestToJson(
+        CreateJoinRequest$Mutation$CreateJoinRequest instance) =>
+    <String, dynamic>{
+      'joinRequest': instance.joinRequest.toJson(),
+    };
+
+CreateJoinRequest$Mutation _$CreateJoinRequest$MutationFromJson(
+        Map<String, dynamic> json) =>
+    CreateJoinRequest$Mutation()
+      ..createJoinRequest = json['createJoinRequest'] == null
+          ? null
+          : CreateJoinRequest$Mutation$CreateJoinRequest.fromJson(
+              json['createJoinRequest'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$CreateJoinRequest$MutationToJson(
+        CreateJoinRequest$Mutation instance) =>
+    <String, dynamic>{
+      'createJoinRequest': instance.createJoinRequest?.toJson(),
+    };
+
+CreateJoinRequestInput _$CreateJoinRequestInputFromJson(
+        Map<String, dynamic> json) =>
+    CreateJoinRequestInput(
+      clientMutationId: json['clientMutationId'] as String?,
+      params: JoinRequestInput.fromJson(json['params'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CreateJoinRequestInputToJson(
+        CreateJoinRequestInput instance) =>
+    <String, dynamic>{
+      'clientMutationId': instance.clientMutationId,
+      'params': instance.params.toJson(),
+    };
+
+JoinRequestInput _$JoinRequestInputFromJson(Map<String, dynamic> json) =>
+    JoinRequestInput(
+      description: json['description'] as String?,
+      eventId: json['eventId'] as String,
+      joinRequestId: json['joinRequestId'] as String?,
+      status: json['status'] as String?,
+      userId: json['userId'] as String,
+    );
+
+Map<String, dynamic> _$JoinRequestInputToJson(JoinRequestInput instance) =>
+    <String, dynamic>{
+      'description': instance.description,
+      'eventId': instance.eventId,
+      'joinRequestId': instance.joinRequestId,
+      'status': instance.status,
+      'userId': instance.userId,
+    };
+
 AddSuperLikes$Mutation$AddSuperLikes$User
     _$AddSuperLikes$Mutation$AddSuperLikes$UserFromJson(
             Map<String, dynamic> json) =>
@@ -2846,6 +2965,71 @@ Map<String, dynamic> _$FetchConversations$QueryToJson(
           instance.fetchConversations.map((e) => e.toJson()).toList(),
     };
 
+FetchJoinRequests$Query$FetchJoinRequests$Applicant
+    _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantFromJson(
+            Map<String, dynamic> json) =>
+        FetchJoinRequests$Query$FetchJoinRequests$Applicant()
+          ..id = json['id'] as String;
+
+Map<String, dynamic>
+    _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantToJson(
+            FetchJoinRequests$Query$FetchJoinRequests$Applicant instance) =>
+        <String, dynamic>{
+          'id': instance.id,
+        };
+
+FetchJoinRequests$Query$FetchJoinRequests$Conversation
+    _$FetchJoinRequests$Query$FetchJoinRequests$ConversationFromJson(
+            Map<String, dynamic> json) =>
+        FetchJoinRequests$Query$FetchJoinRequests$Conversation()
+          ..id = json['id'] as String;
+
+Map<String, dynamic>
+    _$FetchJoinRequests$Query$FetchJoinRequests$ConversationToJson(
+            FetchJoinRequests$Query$FetchJoinRequests$Conversation instance) =>
+        <String, dynamic>{
+          'id': instance.id,
+        };
+
+FetchJoinRequests$Query$FetchJoinRequests
+    _$FetchJoinRequests$Query$FetchJoinRequestsFromJson(
+            Map<String, dynamic> json) =>
+        FetchJoinRequests$Query$FetchJoinRequests()
+          ..id = json['id'] as String
+          ..eventId = json['eventId'] as int
+          ..applicant = json['applicant'] == null
+              ? null
+              : FetchJoinRequests$Query$FetchJoinRequests$Applicant.fromJson(
+                  json['applicant'] as Map<String, dynamic>)
+          ..conversation = json['conversation'] == null
+              ? null
+              : FetchJoinRequests$Query$FetchJoinRequests$Conversation.fromJson(
+                  json['conversation'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$FetchJoinRequests$Query$FetchJoinRequestsToJson(
+        FetchJoinRequests$Query$FetchJoinRequests instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'eventId': instance.eventId,
+      'applicant': instance.applicant?.toJson(),
+      'conversation': instance.conversation?.toJson(),
+    };
+
+FetchJoinRequests$Query _$FetchJoinRequests$QueryFromJson(
+        Map<String, dynamic> json) =>
+    FetchJoinRequests$Query()
+      ..fetchJoinRequests = (json['fetchJoinRequests'] as List<dynamic>)
+          .map((e) => FetchJoinRequests$Query$FetchJoinRequests.fromJson(
+              e as Map<String, dynamic>))
+          .toList();
+
+Map<String, dynamic> _$FetchJoinRequests$QueryToJson(
+        FetchJoinRequests$Query instance) =>
+    <String, dynamic>{
+      'fetchJoinRequests':
+          instance.fetchJoinRequests.map((e) => e.toJson()).toList(),
+    };
+
 FetchEvent$Query$FetchEvent$Party$PartyChat$Messages
     _$FetchEvent$Query$FetchEvent$Party$PartyChat$MessagesFromJson(
             Map<String, dynamic> json) =>
@@ -3260,190 +3444,6 @@ Map<String, dynamic> _$FetchStickers$QueryToJson(
       'fetchStickers': instance.fetchStickers.map((e) => e.toJson()).toList(),
     };
 
-CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
-    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantFromJson(
-            Map<String, dynamic> json) =>
-        CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant()
-          ..id = json['id'] as String
-          ..firstName = json['firstName'] as String;
-
-Map<String, dynamic>
-    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantToJson(
-            CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
-                instance) =>
-        <String, dynamic>{
-          'id': instance.id,
-          'firstName': instance.firstName,
-        };
-
-CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
-    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationFromJson(
-            Map<String, dynamic> json) =>
-        CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation()
-          ..id = json['id'] as String;
-
-Map<String, dynamic>
-    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationToJson(
-            CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
-                instance) =>
-        <String, dynamic>{
-          'id': instance.id,
-        };
-
-CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest
-    _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestFromJson(
-            Map<String, dynamic> json) =>
-        CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest()
-          ..id = json['id'] as String
-          ..eventId = json['eventId'] as int
-          ..userId = json['userId'] as int
-          ..description = json['description'] as String?
-          ..applicant = json['applicant'] == null
-              ? null
-              : CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
-                  .fromJson(json['applicant'] as Map<String, dynamic>)
-          ..conversation = json['conversation'] == null
-              ? null
-              : CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
-                  .fromJson(json['conversation'] as Map<String, dynamic>);
-
-Map<String,
-    dynamic> _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestToJson(
-        CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'eventId': instance.eventId,
-      'userId': instance.userId,
-      'description': instance.description,
-      'applicant': instance.applicant?.toJson(),
-      'conversation': instance.conversation?.toJson(),
-    };
-
-CreateJoinRequest$Mutation$CreateJoinRequest
-    _$CreateJoinRequest$Mutation$CreateJoinRequestFromJson(
-            Map<String, dynamic> json) =>
-        CreateJoinRequest$Mutation$CreateJoinRequest()
-          ..joinRequest =
-              CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest.fromJson(
-                  json['joinRequest'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$CreateJoinRequest$Mutation$CreateJoinRequestToJson(
-        CreateJoinRequest$Mutation$CreateJoinRequest instance) =>
-    <String, dynamic>{
-      'joinRequest': instance.joinRequest.toJson(),
-    };
-
-CreateJoinRequest$Mutation _$CreateJoinRequest$MutationFromJson(
-        Map<String, dynamic> json) =>
-    CreateJoinRequest$Mutation()
-      ..createJoinRequest = json['createJoinRequest'] == null
-          ? null
-          : CreateJoinRequest$Mutation$CreateJoinRequest.fromJson(
-              json['createJoinRequest'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$CreateJoinRequest$MutationToJson(
-        CreateJoinRequest$Mutation instance) =>
-    <String, dynamic>{
-      'createJoinRequest': instance.createJoinRequest?.toJson(),
-    };
-
-CreateJoinRequestInput _$CreateJoinRequestInputFromJson(
-        Map<String, dynamic> json) =>
-    CreateJoinRequestInput(
-      clientMutationId: json['clientMutationId'] as String?,
-      params: JoinRequestInput.fromJson(json['params'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$CreateJoinRequestInputToJson(
-        CreateJoinRequestInput instance) =>
-    <String, dynamic>{
-      'clientMutationId': instance.clientMutationId,
-      'params': instance.params.toJson(),
-    };
-
-JoinRequestInput _$JoinRequestInputFromJson(Map<String, dynamic> json) =>
-    JoinRequestInput(
-      description: json['description'] as String?,
-      eventId: json['eventId'] as String,
-      joinRequestId: json['joinRequestId'] as String?,
-      status: json['status'] as String?,
-      userId: json['userId'] as String,
-    );
-
-Map<String, dynamic> _$JoinRequestInputToJson(JoinRequestInput instance) =>
-    <String, dynamic>{
-      'description': instance.description,
-      'eventId': instance.eventId,
-      'joinRequestId': instance.joinRequestId,
-      'status': instance.status,
-      'userId': instance.userId,
-    };
-
-FetchJoinRequests$Query$FetchJoinRequests$Applicant
-    _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantFromJson(
-            Map<String, dynamic> json) =>
-        FetchJoinRequests$Query$FetchJoinRequests$Applicant()
-          ..id = json['id'] as String;
-
-Map<String, dynamic>
-    _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantToJson(
-            FetchJoinRequests$Query$FetchJoinRequests$Applicant instance) =>
-        <String, dynamic>{
-          'id': instance.id,
-        };
-
-FetchJoinRequests$Query$FetchJoinRequests$Conversation
-    _$FetchJoinRequests$Query$FetchJoinRequests$ConversationFromJson(
-            Map<String, dynamic> json) =>
-        FetchJoinRequests$Query$FetchJoinRequests$Conversation()
-          ..id = json['id'] as String;
-
-Map<String, dynamic>
-    _$FetchJoinRequests$Query$FetchJoinRequests$ConversationToJson(
-            FetchJoinRequests$Query$FetchJoinRequests$Conversation instance) =>
-        <String, dynamic>{
-          'id': instance.id,
-        };
-
-FetchJoinRequests$Query$FetchJoinRequests
-    _$FetchJoinRequests$Query$FetchJoinRequestsFromJson(
-            Map<String, dynamic> json) =>
-        FetchJoinRequests$Query$FetchJoinRequests()
-          ..id = json['id'] as String
-          ..eventId = json['eventId'] as int
-          ..applicant = json['applicant'] == null
-              ? null
-              : FetchJoinRequests$Query$FetchJoinRequests$Applicant.fromJson(
-                  json['applicant'] as Map<String, dynamic>)
-          ..conversation = json['conversation'] == null
-              ? null
-              : FetchJoinRequests$Query$FetchJoinRequests$Conversation.fromJson(
-                  json['conversation'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$FetchJoinRequests$Query$FetchJoinRequestsToJson(
-        FetchJoinRequests$Query$FetchJoinRequests instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'eventId': instance.eventId,
-      'applicant': instance.applicant?.toJson(),
-      'conversation': instance.conversation?.toJson(),
-    };
-
-FetchJoinRequests$Query _$FetchJoinRequests$QueryFromJson(
-        Map<String, dynamic> json) =>
-    FetchJoinRequests$Query()
-      ..fetchJoinRequests = (json['fetchJoinRequests'] as List<dynamic>)
-          .map((e) => FetchJoinRequests$Query$FetchJoinRequests.fromJson(
-              e as Map<String, dynamic>))
-          .toList();
-
-Map<String, dynamic> _$FetchJoinRequests$QueryToJson(
-        FetchJoinRequests$Query instance) =>
-    <String, dynamic>{
-      'fetchJoinRequests':
-          instance.fetchJoinRequests.map((e) => e.toJson()).toList(),
-    };
-
 DeleteFavoriteAnimeArguments _$DeleteFavoriteAnimeArgumentsFromJson(
         Map<String, dynamic> json) =>
     DeleteFavoriteAnimeArguments(
@@ -3732,6 +3732,19 @@ Map<String, dynamic> _$UndoLikeArgumentsToJson(UndoLikeArguments instance) =>
       'input': instance.input.toJson(),
     };
 
+CreateJoinRequestArguments _$CreateJoinRequestArgumentsFromJson(
+        Map<String, dynamic> json) =>
+    CreateJoinRequestArguments(
+      input: CreateJoinRequestInput.fromJson(
+          json['input'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$CreateJoinRequestArgumentsToJson(
+        CreateJoinRequestArguments instance) =>
+    <String, dynamic>{
+      'input': instance.input.toJson(),
+    };
+
 AddSuperLikesArguments _$AddSuperLikesArgumentsFromJson(
         Map<String, dynamic> json) =>
     AddSuperLikesArguments(
@@ -3842,6 +3855,22 @@ Map<String, dynamic> _$FetchConversationsArgumentsToJson(
       'userId': instance.userId,
     };
 
+FetchJoinRequestsArguments _$FetchJoinRequestsArgumentsFromJson(
+        Map<String, dynamic> json) =>
+    FetchJoinRequestsArguments(
+      eventId: json['eventId'] as String,
+      page: json['page'] as int?,
+      applicantId: json['applicantId'] as String?,
+    );
+
+Map<String, dynamic> _$FetchJoinRequestsArgumentsToJson(
+        FetchJoinRequestsArguments instance) =>
+    <String, dynamic>{
+      'eventId': instance.eventId,
+      'page': instance.page,
+      'applicantId': instance.applicantId,
+    };
+
 FetchEventArguments _$FetchEventArgumentsFromJson(Map<String, dynamic> json) =>
     FetchEventArguments(
       eventId: json['eventId'] as String,
@@ -3899,33 +3928,4 @@ Map<String, dynamic> _$FetchStickersArgumentsToJson(
         FetchStickersArguments instance) =>
     <String, dynamic>{
       'page': instance.page,
-    };
-
-CreateJoinRequestArguments _$CreateJoinRequestArgumentsFromJson(
-        Map<String, dynamic> json) =>
-    CreateJoinRequestArguments(
-      input: CreateJoinRequestInput.fromJson(
-          json['input'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$CreateJoinRequestArgumentsToJson(
-        CreateJoinRequestArguments instance) =>
-    <String, dynamic>{
-      'input': instance.input.toJson(),
-    };
-
-FetchJoinRequestsArguments _$FetchJoinRequestsArgumentsFromJson(
-        Map<String, dynamic> json) =>
-    FetchJoinRequestsArguments(
-      eventId: json['eventId'] as String,
-      page: json['page'] as int?,
-      applicantId: json['applicantId'] as String?,
-    );
-
-Map<String, dynamic> _$FetchJoinRequestsArgumentsToJson(
-        FetchJoinRequestsArguments instance) =>
-    <String, dynamic>{
-      'eventId': instance.eventId,
-      'page': instance.page,
-      'applicantId': instance.applicantId,
     };

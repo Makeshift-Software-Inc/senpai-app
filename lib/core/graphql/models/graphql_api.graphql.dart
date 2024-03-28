@@ -2495,6 +2495,161 @@ class UndoLikeInput extends JsonSerializable with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
+    extends JsonSerializable with EquatableMixin {
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant();
+
+  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantFromJson(
+          json);
+
+  late String id;
+
+  late String firstName;
+
+  @override
+  List<Object?> get props => [id, firstName];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
+    extends JsonSerializable with EquatableMixin {
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation();
+
+  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationFromJson(
+          json);
+
+  late String id;
+
+  @override
+  List<Object?> get props => [id];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest
+    extends JsonSerializable with EquatableMixin {
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest();
+
+  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestFromJson(json);
+
+  late String id;
+
+  late int eventId;
+
+  late int userId;
+
+  String? description;
+
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant? applicant;
+
+  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation?
+      conversation;
+
+  @override
+  List<Object?> get props =>
+      [id, eventId, userId, description, applicant, conversation];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation$CreateJoinRequest extends JsonSerializable
+    with EquatableMixin {
+  CreateJoinRequest$Mutation$CreateJoinRequest();
+
+  factory CreateJoinRequest$Mutation$CreateJoinRequest.fromJson(
+          Map<String, dynamic> json) =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequestFromJson(json);
+
+  late CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest joinRequest;
+
+  @override
+  List<Object?> get props => [joinRequest];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$CreateJoinRequest$Mutation$CreateJoinRequestToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequest$Mutation extends JsonSerializable with EquatableMixin {
+  CreateJoinRequest$Mutation();
+
+  factory CreateJoinRequest$Mutation.fromJson(Map<String, dynamic> json) =>
+      _$CreateJoinRequest$MutationFromJson(json);
+
+  CreateJoinRequest$Mutation$CreateJoinRequest? createJoinRequest;
+
+  @override
+  List<Object?> get props => [createJoinRequest];
+  @override
+  Map<String, dynamic> toJson() => _$CreateJoinRequest$MutationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class CreateJoinRequestInput extends JsonSerializable with EquatableMixin {
+  CreateJoinRequestInput({
+    this.clientMutationId,
+    required this.params,
+  });
+
+  factory CreateJoinRequestInput.fromJson(Map<String, dynamic> json) =>
+      _$CreateJoinRequestInputFromJson(json);
+
+  String? clientMutationId;
+
+  late JoinRequestInput params;
+
+  @override
+  List<Object?> get props => [clientMutationId, params];
+  @override
+  Map<String, dynamic> toJson() => _$CreateJoinRequestInputToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class JoinRequestInput extends JsonSerializable with EquatableMixin {
+  JoinRequestInput({
+    this.description,
+    required this.eventId,
+    this.joinRequestId,
+    this.status,
+    required this.userId,
+  });
+
+  factory JoinRequestInput.fromJson(Map<String, dynamic> json) =>
+      _$JoinRequestInputFromJson(json);
+
+  String? description;
+
+  late String eventId;
+
+  String? joinRequestId;
+
+  String? status;
+
+  late String userId;
+
+  @override
+  List<Object?> get props =>
+      [description, eventId, joinRequestId, status, userId];
+  @override
+  Map<String, dynamic> toJson() => _$JoinRequestInputToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class AddSuperLikes$Mutation$AddSuperLikes$User extends JsonSerializable
     with EquatableMixin {
   AddSuperLikes$Mutation$AddSuperLikes$User();
@@ -3910,6 +4065,81 @@ class FetchConversations$Query extends JsonSerializable with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
+class FetchJoinRequests$Query$FetchJoinRequests$Applicant
+    extends JsonSerializable with EquatableMixin {
+  FetchJoinRequests$Query$FetchJoinRequests$Applicant();
+
+  factory FetchJoinRequests$Query$FetchJoinRequests$Applicant.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantFromJson(json);
+
+  late String id;
+
+  @override
+  List<Object?> get props => [id];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchJoinRequests$Query$FetchJoinRequests$Conversation
+    extends JsonSerializable with EquatableMixin {
+  FetchJoinRequests$Query$FetchJoinRequests$Conversation();
+
+  factory FetchJoinRequests$Query$FetchJoinRequests$Conversation.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchJoinRequests$Query$FetchJoinRequests$ConversationFromJson(json);
+
+  late String id;
+
+  @override
+  List<Object?> get props => [id];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchJoinRequests$Query$FetchJoinRequests$ConversationToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchJoinRequests$Query$FetchJoinRequests extends JsonSerializable
+    with EquatableMixin {
+  FetchJoinRequests$Query$FetchJoinRequests();
+
+  factory FetchJoinRequests$Query$FetchJoinRequests.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchJoinRequests$Query$FetchJoinRequestsFromJson(json);
+
+  late String id;
+
+  late int eventId;
+
+  FetchJoinRequests$Query$FetchJoinRequests$Applicant? applicant;
+
+  FetchJoinRequests$Query$FetchJoinRequests$Conversation? conversation;
+
+  @override
+  List<Object?> get props => [id, eventId, applicant, conversation];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchJoinRequests$Query$FetchJoinRequestsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchJoinRequests$Query extends JsonSerializable with EquatableMixin {
+  FetchJoinRequests$Query();
+
+  factory FetchJoinRequests$Query.fromJson(Map<String, dynamic> json) =>
+      _$FetchJoinRequests$QueryFromJson(json);
+
+  late List<FetchJoinRequests$Query$FetchJoinRequests> fetchJoinRequests;
+
+  @override
+  List<Object?> get props => [fetchJoinRequests];
+  @override
+  Map<String, dynamic> toJson() => _$FetchJoinRequests$QueryToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class FetchEvent$Query$FetchEvent$Party$PartyChat$Messages
     extends JsonSerializable with EquatableMixin {
   FetchEvent$Query$FetchEvent$Party$PartyChat$Messages();
@@ -4470,236 +4700,6 @@ class FetchStickers$Query extends JsonSerializable with EquatableMixin {
   List<Object?> get props => [fetchStickers];
   @override
   Map<String, dynamic> toJson() => _$FetchStickers$QueryToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant
-    extends JsonSerializable with EquatableMixin {
-  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant();
-
-  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant.fromJson(
-          Map<String, dynamic> json) =>
-      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantFromJson(
-          json);
-
-  late String id;
-
-  late String firstName;
-
-  @override
-  List<Object?> get props => [id, firstName];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ApplicantToJson(
-          this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation
-    extends JsonSerializable with EquatableMixin {
-  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation();
-
-  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation.fromJson(
-          Map<String, dynamic> json) =>
-      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationFromJson(
-          json);
-
-  late String id;
-
-  @override
-  List<Object?> get props => [id];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$ConversationToJson(
-          this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest
-    extends JsonSerializable with EquatableMixin {
-  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest();
-
-  factory CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestFromJson(json);
-
-  late String id;
-
-  late int eventId;
-
-  late int userId;
-
-  String? description;
-
-  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Applicant? applicant;
-
-  CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest$Conversation?
-      conversation;
-
-  @override
-  List<Object?> get props =>
-      [id, eventId, userId, description, applicant, conversation];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequestToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class CreateJoinRequest$Mutation$CreateJoinRequest extends JsonSerializable
-    with EquatableMixin {
-  CreateJoinRequest$Mutation$CreateJoinRequest();
-
-  factory CreateJoinRequest$Mutation$CreateJoinRequest.fromJson(
-          Map<String, dynamic> json) =>
-      _$CreateJoinRequest$Mutation$CreateJoinRequestFromJson(json);
-
-  late CreateJoinRequest$Mutation$CreateJoinRequest$JoinRequest joinRequest;
-
-  @override
-  List<Object?> get props => [joinRequest];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$CreateJoinRequest$Mutation$CreateJoinRequestToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class CreateJoinRequest$Mutation extends JsonSerializable with EquatableMixin {
-  CreateJoinRequest$Mutation();
-
-  factory CreateJoinRequest$Mutation.fromJson(Map<String, dynamic> json) =>
-      _$CreateJoinRequest$MutationFromJson(json);
-
-  CreateJoinRequest$Mutation$CreateJoinRequest? createJoinRequest;
-
-  @override
-  List<Object?> get props => [createJoinRequest];
-  @override
-  Map<String, dynamic> toJson() => _$CreateJoinRequest$MutationToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class CreateJoinRequestInput extends JsonSerializable with EquatableMixin {
-  CreateJoinRequestInput({
-    this.clientMutationId,
-    required this.params,
-  });
-
-  factory CreateJoinRequestInput.fromJson(Map<String, dynamic> json) =>
-      _$CreateJoinRequestInputFromJson(json);
-
-  String? clientMutationId;
-
-  late JoinRequestInput params;
-
-  @override
-  List<Object?> get props => [clientMutationId, params];
-  @override
-  Map<String, dynamic> toJson() => _$CreateJoinRequestInputToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class JoinRequestInput extends JsonSerializable with EquatableMixin {
-  JoinRequestInput({
-    this.description,
-    required this.eventId,
-    this.joinRequestId,
-    this.status,
-    required this.userId,
-  });
-
-  factory JoinRequestInput.fromJson(Map<String, dynamic> json) =>
-      _$JoinRequestInputFromJson(json);
-
-  String? description;
-
-  late String eventId;
-
-  String? joinRequestId;
-
-  String? status;
-
-  late String userId;
-
-  @override
-  List<Object?> get props =>
-      [description, eventId, joinRequestId, status, userId];
-  @override
-  Map<String, dynamic> toJson() => _$JoinRequestInputToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchJoinRequests$Query$FetchJoinRequests$Applicant
-    extends JsonSerializable with EquatableMixin {
-  FetchJoinRequests$Query$FetchJoinRequests$Applicant();
-
-  factory FetchJoinRequests$Query$FetchJoinRequests$Applicant.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantFromJson(json);
-
-  late String id;
-
-  @override
-  List<Object?> get props => [id];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchJoinRequests$Query$FetchJoinRequests$ApplicantToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchJoinRequests$Query$FetchJoinRequests$Conversation
-    extends JsonSerializable with EquatableMixin {
-  FetchJoinRequests$Query$FetchJoinRequests$Conversation();
-
-  factory FetchJoinRequests$Query$FetchJoinRequests$Conversation.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchJoinRequests$Query$FetchJoinRequests$ConversationFromJson(json);
-
-  late String id;
-
-  @override
-  List<Object?> get props => [id];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchJoinRequests$Query$FetchJoinRequests$ConversationToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchJoinRequests$Query$FetchJoinRequests extends JsonSerializable
-    with EquatableMixin {
-  FetchJoinRequests$Query$FetchJoinRequests();
-
-  factory FetchJoinRequests$Query$FetchJoinRequests.fromJson(
-          Map<String, dynamic> json) =>
-      _$FetchJoinRequests$Query$FetchJoinRequestsFromJson(json);
-
-  late String id;
-
-  late int eventId;
-
-  FetchJoinRequests$Query$FetchJoinRequests$Applicant? applicant;
-
-  FetchJoinRequests$Query$FetchJoinRequests$Conversation? conversation;
-
-  @override
-  List<Object?> get props => [id, eventId, applicant, conversation];
-  @override
-  Map<String, dynamic> toJson() =>
-      _$FetchJoinRequests$Query$FetchJoinRequestsToJson(this);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchJoinRequests$Query extends JsonSerializable with EquatableMixin {
-  FetchJoinRequests$Query();
-
-  factory FetchJoinRequests$Query.fromJson(Map<String, dynamic> json) =>
-      _$FetchJoinRequests$QueryFromJson(json);
-
-  late List<FetchJoinRequests$Query$FetchJoinRequests> fetchJoinRequests;
-
-  @override
-  List<Object?> get props => [fetchJoinRequests];
-  @override
-  Map<String, dynamic> toJson() => _$FetchJoinRequests$QueryToJson(this);
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -7398,6 +7398,152 @@ class UndoLikeMutation
 }
 
 @JsonSerializable(explicitToJson: true)
+class CreateJoinRequestArguments extends JsonSerializable with EquatableMixin {
+  CreateJoinRequestArguments({required this.input});
+
+  @override
+  factory CreateJoinRequestArguments.fromJson(Map<String, dynamic> json) =>
+      _$CreateJoinRequestArgumentsFromJson(json);
+
+  late CreateJoinRequestInput input;
+
+  @override
+  List<Object?> get props => [input];
+  @override
+  Map<String, dynamic> toJson() => _$CreateJoinRequestArgumentsToJson(this);
+}
+
+final CREATE_JOIN_REQUEST_MUTATION_DOCUMENT_OPERATION_NAME =
+    'createJoinRequest';
+final CREATE_JOIN_REQUEST_MUTATION_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'createJoinRequest'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'input')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'CreateJoinRequestInput'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'createJoinRequest'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'input'),
+            value: VariableNode(name: NameNode(value: 'input')),
+          )
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'joinRequest'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'eventId'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'userId'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'description'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'applicant'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'firstName'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'conversation'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  )
+                ]),
+              ),
+            ]),
+          )
+        ]),
+      )
+    ]),
+  )
+]);
+
+class CreateJoinRequestMutation extends GraphQLQuery<CreateJoinRequest$Mutation,
+    CreateJoinRequestArguments> {
+  CreateJoinRequestMutation({required this.variables});
+
+  @override
+  final DocumentNode document = CREATE_JOIN_REQUEST_MUTATION_DOCUMENT;
+
+  @override
+  final String operationName =
+      CREATE_JOIN_REQUEST_MUTATION_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final CreateJoinRequestArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  CreateJoinRequest$Mutation parse(Map<String, dynamic> json) =>
+      CreateJoinRequest$Mutation.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
 class AddSuperLikesArguments extends JsonSerializable with EquatableMixin {
   AddSuperLikesArguments({required this.input});
 
@@ -9403,6 +9549,156 @@ class FetchConversationsQuery extends GraphQLQuery<FetchConversations$Query,
 }
 
 @JsonSerializable(explicitToJson: true)
+class FetchJoinRequestsArguments extends JsonSerializable with EquatableMixin {
+  FetchJoinRequestsArguments({
+    required this.eventId,
+    this.page,
+    this.applicantId,
+  });
+
+  @override
+  factory FetchJoinRequestsArguments.fromJson(Map<String, dynamic> json) =>
+      _$FetchJoinRequestsArgumentsFromJson(json);
+
+  late String eventId;
+
+  final int? page;
+
+  final String? applicantId;
+
+  @override
+  List<Object?> get props => [eventId, page, applicantId];
+  @override
+  Map<String, dynamic> toJson() => _$FetchJoinRequestsArgumentsToJson(this);
+}
+
+final FETCH_JOIN_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchJoinRequests';
+final FETCH_JOIN_REQUESTS_QUERY_DOCUMENT = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'fetchJoinRequests'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'eventId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: true,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'page')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'applicantId')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'ID'),
+          isNonNull: false,
+        ),
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'fetchJoinRequests'),
+        alias: null,
+        arguments: [
+          ArgumentNode(
+            name: NameNode(value: 'eventId'),
+            value: VariableNode(name: NameNode(value: 'eventId')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'page'),
+            value: VariableNode(name: NameNode(value: 'page')),
+          ),
+          ArgumentNode(
+            name: NameNode(value: 'applicantId'),
+            value: VariableNode(name: NameNode(value: 'applicantId')),
+          ),
+        ],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FieldNode(
+            name: NameNode(value: 'id'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'eventId'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'applicant'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              )
+            ]),
+          ),
+          FieldNode(
+            name: NameNode(value: 'conversation'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              )
+            ]),
+          ),
+        ]),
+      )
+    ]),
+  )
+]);
+
+class FetchJoinRequestsQuery
+    extends GraphQLQuery<FetchJoinRequests$Query, FetchJoinRequestsArguments> {
+  FetchJoinRequestsQuery({required this.variables});
+
+  @override
+  final DocumentNode document = FETCH_JOIN_REQUESTS_QUERY_DOCUMENT;
+
+  @override
+  final String operationName =
+      FETCH_JOIN_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME;
+
+  @override
+  final FetchJoinRequestsArguments variables;
+
+  @override
+  List<Object?> get props => [document, operationName, variables];
+  @override
+  FetchJoinRequests$Query parse(Map<String, dynamic> json) =>
+      FetchJoinRequests$Query.fromJson(json);
+}
+
+@JsonSerializable(explicitToJson: true)
 class FetchEventArguments extends JsonSerializable with EquatableMixin {
   FetchEventArguments({required this.eventId});
 
@@ -10243,300 +10539,4 @@ class FetchStickersQuery
   @override
   FetchStickers$Query parse(Map<String, dynamic> json) =>
       FetchStickers$Query.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class CreateJoinRequestArguments extends JsonSerializable with EquatableMixin {
-  CreateJoinRequestArguments({required this.input});
-
-  @override
-  factory CreateJoinRequestArguments.fromJson(Map<String, dynamic> json) =>
-      _$CreateJoinRequestArgumentsFromJson(json);
-
-  late CreateJoinRequestInput input;
-
-  @override
-  List<Object?> get props => [input];
-  @override
-  Map<String, dynamic> toJson() => _$CreateJoinRequestArgumentsToJson(this);
-}
-
-final CREATE_JOIN_REQUEST_MUTATION_DOCUMENT_OPERATION_NAME =
-    'createJoinRequest';
-final CREATE_JOIN_REQUEST_MUTATION_DOCUMENT = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.mutation,
-    name: NameNode(value: 'createJoinRequest'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'input')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'CreateJoinRequestInput'),
-          isNonNull: true,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      )
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'createJoinRequest'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'input'),
-            value: VariableNode(name: NameNode(value: 'input')),
-          )
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'joinRequest'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                name: NameNode(value: 'id'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'eventId'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'userId'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'description'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'applicant'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: SelectionSetNode(selections: [
-                  FieldNode(
-                    name: NameNode(value: 'id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: 'firstName'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                ]),
-              ),
-              FieldNode(
-                name: NameNode(value: 'conversation'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: SelectionSetNode(selections: [
-                  FieldNode(
-                    name: NameNode(value: 'id'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  )
-                ]),
-              ),
-            ]),
-          )
-        ]),
-      )
-    ]),
-  )
-]);
-
-class CreateJoinRequestMutation extends GraphQLQuery<CreateJoinRequest$Mutation,
-    CreateJoinRequestArguments> {
-  CreateJoinRequestMutation({required this.variables});
-
-  @override
-  final DocumentNode document = CREATE_JOIN_REQUEST_MUTATION_DOCUMENT;
-
-  @override
-  final String operationName =
-      CREATE_JOIN_REQUEST_MUTATION_DOCUMENT_OPERATION_NAME;
-
-  @override
-  final CreateJoinRequestArguments variables;
-
-  @override
-  List<Object?> get props => [document, operationName, variables];
-  @override
-  CreateJoinRequest$Mutation parse(Map<String, dynamic> json) =>
-      CreateJoinRequest$Mutation.fromJson(json);
-}
-
-@JsonSerializable(explicitToJson: true)
-class FetchJoinRequestsArguments extends JsonSerializable with EquatableMixin {
-  FetchJoinRequestsArguments({
-    required this.eventId,
-    this.page,
-    this.applicantId,
-  });
-
-  @override
-  factory FetchJoinRequestsArguments.fromJson(Map<String, dynamic> json) =>
-      _$FetchJoinRequestsArgumentsFromJson(json);
-
-  late String eventId;
-
-  final int? page;
-
-  final String? applicantId;
-
-  @override
-  List<Object?> get props => [eventId, page, applicantId];
-  @override
-  Map<String, dynamic> toJson() => _$FetchJoinRequestsArgumentsToJson(this);
-}
-
-final FETCH_JOIN_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME = 'fetchJoinRequests';
-final FETCH_JOIN_REQUESTS_QUERY_DOCUMENT = DocumentNode(definitions: [
-  OperationDefinitionNode(
-    type: OperationType.query,
-    name: NameNode(value: 'fetchJoinRequests'),
-    variableDefinitions: [
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'eventId')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'ID'),
-          isNonNull: true,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      ),
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'page')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'Int'),
-          isNonNull: false,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      ),
-      VariableDefinitionNode(
-        variable: VariableNode(name: NameNode(value: 'applicantId')),
-        type: NamedTypeNode(
-          name: NameNode(value: 'ID'),
-          isNonNull: false,
-        ),
-        defaultValue: DefaultValueNode(value: null),
-        directives: [],
-      ),
-    ],
-    directives: [],
-    selectionSet: SelectionSetNode(selections: [
-      FieldNode(
-        name: NameNode(value: 'fetchJoinRequests'),
-        alias: null,
-        arguments: [
-          ArgumentNode(
-            name: NameNode(value: 'eventId'),
-            value: VariableNode(name: NameNode(value: 'eventId')),
-          ),
-          ArgumentNode(
-            name: NameNode(value: 'page'),
-            value: VariableNode(name: NameNode(value: 'page')),
-          ),
-          ArgumentNode(
-            name: NameNode(value: 'applicantId'),
-            value: VariableNode(name: NameNode(value: 'applicantId')),
-          ),
-        ],
-        directives: [],
-        selectionSet: SelectionSetNode(selections: [
-          FieldNode(
-            name: NameNode(value: 'id'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'eventId'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'applicant'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                name: NameNode(value: 'id'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              )
-            ]),
-          ),
-          FieldNode(
-            name: NameNode(value: 'conversation'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: SelectionSetNode(selections: [
-              FieldNode(
-                name: NameNode(value: 'id'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              )
-            ]),
-          ),
-        ]),
-      )
-    ]),
-  )
-]);
-
-class FetchJoinRequestsQuery
-    extends GraphQLQuery<FetchJoinRequests$Query, FetchJoinRequestsArguments> {
-  FetchJoinRequestsQuery({required this.variables});
-
-  @override
-  final DocumentNode document = FETCH_JOIN_REQUESTS_QUERY_DOCUMENT;
-
-  @override
-  final String operationName =
-      FETCH_JOIN_REQUESTS_QUERY_DOCUMENT_OPERATION_NAME;
-
-  @override
-  final FetchJoinRequestsArguments variables;
-
-  @override
-  List<Object?> get props => [document, operationName, variables];
-  @override
-  FetchJoinRequests$Query parse(Map<String, dynamic> json) =>
-      FetchJoinRequests$Query.fromJson(json);
 }
