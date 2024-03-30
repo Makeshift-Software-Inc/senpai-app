@@ -90,6 +90,8 @@ class PathConstants {
       'assets/images/invited_friends_container_background.png';
   static const String invitedFriendsContainerImage =
       'assets/images/invited_friends_container.png';
+  static const String premiumProfileImage =
+      'assets/icons/senpai_premium.svg';
 
   //Match
   static const String catsPawIcon = 'assets/icons/cats_paw.svg';

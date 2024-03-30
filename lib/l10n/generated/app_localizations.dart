@@ -2266,6 +2266,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Success'**
   String get attendSuccessTitle;
+
+  /// No description provided for @scanQRCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan QR Code'**
+  String get scanQRCodeTitle;
+
+  /// No description provided for @congratulationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Congratulations!'**
+  String get congratulationsTitle;
+
+  /// No description provided for @youHavePremiumAccountForMonth.
+  ///
+  /// In en, this message translates to:
+  /// **'You have a Premium account for 1 month.'**
+  String get youHavePremiumAccountForMonth;
+
+  /// No description provided for @higherVisibilityRatesSuperLikesAndMuchMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Higher visibility rates, 30 Super Likes and much more!'**
+  String get higherVisibilityRatesSuperLikesAndMuchMore;
+
+  /// No description provided for @backHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Back Home'**
+  String get backHomeTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

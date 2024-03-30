@@ -1089,4 +1089,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get attendSuccessTitle => 'Success';
+
+  @override
+  String get scanQRCodeTitle => 'Scan QR Code';
+
+  @override
+  String get congratulationsTitle => 'Congratulations!';
+
+  @override
+  String get youHavePremiumAccountForMonth => 'You have a Premium account for 1 month.';
+
+  @override
+  String get higherVisibilityRatesSuperLikesAndMuchMore => 'Higher visibility rates, 30 Super Likes and much more!';
+
+  @override
+  String get backHomeTitle => 'Back Home';
 }

@@ -1089,4 +1089,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get attendSuccessTitle => '';
+
+  @override
+  String get scanQRCodeTitle => '';
+
+  @override
+  String get congratulationsTitle => '';
+
+  @override
+  String get youHavePremiumAccountForMonth => '';
+
+  @override
+  String get higherVisibilityRatesSuperLikesAndMuchMore => '';
+
+  @override
+  String get backHomeTitle => '';
 }

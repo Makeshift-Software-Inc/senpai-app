@@ -95,6 +95,7 @@ class _Corners {
 
 @immutable
 class _Insets {
+  late final double xxxs = 1;
   late final double xxs = 4;
   late final double xs = 8;
   late final double sm = 16;
@@ -122,6 +123,7 @@ class _Palette {
   final yellow = const Color(0xFFFFB200);
   final gold = const Color(0xFFE39F04);
   final green = const Color(0xFF67B527);
+  final green2 = const Color(0xFF19CC60);
   final red = const Color(0xFFFF3A3D);
   final buttonBackground = const Color(0xB214161D);
   final appBackground = const Color(0xFF14161D);
@@ -333,6 +335,11 @@ class _ReferralConstants {
   late final double invitedFriendsContainerHeight = 144;
   late final double premiumWidgetWidth = 89;
   late final double premiumWidgetHeight = 83;
+  late final double qrCodeSize = 125;
+  late final double premiumDialogContainerHeight = 370;
+  late final double premiumDialogContainerHeight2 = 380;
+  late final double qrDialogContainerHeight = 350;
+  late final double qrDialogContainerHeight2 = 360;
 }
 
 @immutable
