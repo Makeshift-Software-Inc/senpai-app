@@ -90,8 +90,7 @@ class PathConstants {
       'assets/images/invited_friends_container_background.png';
   static const String invitedFriendsContainerImage =
       'assets/images/invited_friends_container.png';
-  static const String premiumProfileImage =
-      'assets/icons/senpai_premium.svg';
+  static const String premiumProfileImage = 'assets/icons/senpai_premium.svg';
 
   //Match
   static const String catsPawIcon = 'assets/icons/cats_paw.svg';
@@ -128,6 +127,7 @@ class PathConstants {
   static const String paidFilterIcon =
       'assets/images/events/paid_filter_icon.svg';
   static const String calendarIcon = 'assets/images/events/calendar_icon.svg';
+  static const String eventWebsiteIcon = 'assets/icons/events/globe.svg';
   static const String starIcon = 'assets/icons/star_icon.svg';
   static const String hostEventImage =
       'assets/images/events/host_event_image.png';

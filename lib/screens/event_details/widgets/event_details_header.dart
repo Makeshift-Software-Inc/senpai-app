@@ -16,6 +16,7 @@ class EventDetailsHeader extends StatelessWidget {
   final String subtitle;
   final DateTime startDate;
   final CosplayStatus? cosplayStatus;
+  final Widget additionalInfomationWidget;
 
   const EventDetailsHeader({
     super.key,
@@ -23,6 +24,7 @@ class EventDetailsHeader extends StatelessWidget {
     required this.subtitle,
     required this.startDate,
     this.cosplayStatus,
+    this.additionalInfomationWidget = const SizedBox(),
   });
 
   @override
@@ -65,6 +67,7 @@ class EventDetailsHeader extends StatelessWidget {
                       Flexible(child: _buildLocationWidget(context)),
                       SizedBox(height: $constants.insets.xs),
                       _buildDateWidget(context),
+                      additionalInfomationWidget,
                     ],
                   ),
                 ),

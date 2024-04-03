@@ -8,6 +8,7 @@ import 'package:senpai/core/widgets/senpai_app_bar.dart';
 import 'package:senpai/dependency_injection/injection.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/models/events/convention/convention_model.dart';
+import 'package:senpai/screens/convention_details/widgets/convention_details_content.dart';
 import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/helpers/snack_bar_helpers.dart';
@@ -39,7 +40,7 @@ class ConventionDetailsPage extends StatelessWidget {
         body: Stack(
           children: [
             _buildFetchConventionDetailsListeners(),
-            const Placeholder(),
+            const ConventionDetailsContent(),
           ],
         ),
       ),
