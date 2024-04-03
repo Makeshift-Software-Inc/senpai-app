@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
+import 'package:senpai/screens/event_details/widgets/event_details_description_widget.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_header.dart';
 import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
 import 'package:senpai/utils/constants.dart';
@@ -25,12 +26,18 @@ class ConventionDetailsContent extends StatelessWidget {
   }
 
   Widget _buildConventionsContent(BuildContext context) {
+    final bloc = BlocProvider.of<EventDetailsBloc>(context);
+    final conventionModel = bloc.conventionModel!;
     return Padding(
       padding: EdgeInsets.all($constants.insets.sm),
       child: SingleChildScrollView(
         child: Column(
           children: [
             _buildImageWidget(context),
+            SizedBox(height: $constants.insets.sm),
+            EventDetailsDescriptionWidget(
+              description: conventionModel.displayState ?? '',
+            ),
           ],
         ),
       ),
