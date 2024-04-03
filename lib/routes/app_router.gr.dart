@@ -38,6 +38,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: ConventionDetailsPage(
           key: args.key,
           convention: args.convention,
+          userId: args.userId,
         ),
       );
     },
@@ -411,12 +412,14 @@ class ConventionDetailsRoute extends PageRouteInfo<ConventionDetailsRouteArgs> {
   ConventionDetailsRoute({
     Key? key,
     required ConventionModel convention,
+    required String userId,
     List<PageRouteInfo>? children,
   }) : super(
           ConventionDetailsRoute.name,
           args: ConventionDetailsRouteArgs(
             key: key,
             convention: convention,
+            userId: userId,
           ),
           initialChildren: children,
         );
@@ -431,15 +434,18 @@ class ConventionDetailsRouteArgs {
   const ConventionDetailsRouteArgs({
     this.key,
     required this.convention,
+    required this.userId,
   });
 
   final Key? key;
 
   final ConventionModel convention;
 
+  final String userId;
+
   @override
   String toString() {
-    return 'ConventionDetailsRouteArgs{key: $key, convention: $convention}';
+    return 'ConventionDetailsRouteArgs{key: $key, convention: $convention, userId: $userId}';
   }
 }
 

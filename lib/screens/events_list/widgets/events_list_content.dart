@@ -228,13 +228,22 @@ class _EventsListContentState extends State<EventsListContent> {
                   padding: EdgeInsets.only(bottom: $constants.insets.xl),
                   itemBuilder: (_, i) {
                     final convention = conventionsList[i];
-                    return EventListTile(
-                      coverImageUrl: convention.coverImageUrl,
-                      startDate: convention.startDate,
-                      title: convention.title,
-                      city: convention.displayCity ?? '',
-                      state: convention.displayState ?? '',
-                      paymentRequired: convention.paymentRequired ?? false,
+                    return GestureDetector(
+                      onTap: () {
+                        final bloc = BlocProvider.of<EventsListBloc>(context);
+                        context.router.push(ConventionDetailsRoute(
+                          convention: convention,
+                          userId: bloc.userId,
+                        ));
+                      },
+                      child: EventListTile(
+                        coverImageUrl: convention.coverImageUrl,
+                        startDate: convention.startDate,
+                        title: convention.title,
+                        city: convention.displayCity ?? '',
+                        state: convention.displayState ?? '',
+                        paymentRequired: convention.paymentRequired ?? false,
+                      ),
                     );
                   }),
             ),
