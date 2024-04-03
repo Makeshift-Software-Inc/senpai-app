@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:senpai/data/path_constants.dart';
+import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
+import 'package:senpai/screens/event_details/page/event_map_page.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_description_widget.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_header.dart';
 import 'package:senpai/screens/new_event/enums/new_event_enums.dart';
@@ -37,6 +39,12 @@ class ConventionDetailsContent extends StatelessWidget {
             SizedBox(height: $constants.insets.sm),
             EventDetailsDescriptionWidget(
               description: conventionModel.displayState ?? '',
+            ),
+            SizedBox(height: $constants.insets.sm),
+            _buildLocationEvent(
+              context,
+              lonLat: conventionModel.lonlat ?? '',
+              venue: conventionModel.fullAddress ?? '',
             ),
           ],
         ),
@@ -121,6 +129,84 @@ class ConventionDetailsContent extends StatelessWidget {
                 ),
           ),
         )
+      ],
+    );
+  }
+
+  Widget _buildLocationEvent(
+    BuildContext context, {
+    required String lonLat,
+    required String venue,
+  }) {
+    return Container(
+      padding: EdgeInsets.all($constants.insets.sm),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular($constants.insets.md),
+        ),
+        shape: BoxShape.rectangle,
+        gradient: $constants.palette.aboutEventGradient,
+      ),
+      width: getSize(context).width - $constants.insets.lg,
+      child: Column(
+        children: [
+          _buildLocationTitle(context, venue),
+          SizedBox(height: $constants.insets.sm),
+          ClipRRect(
+            borderRadius: BorderRadius.circular($constants.insets.md),
+            child: SizedBox(
+              height: $constants.events.eventDetailsLocationHeight,
+              child: EventMapPage(
+                eventCoordinates: stringToLatLng(lonLat),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLocationTitle(
+    BuildContext context,
+    String fullAddress,
+  ) {
+    return Row(
+      children: [
+        Container(
+          padding: EdgeInsets.all($constants.insets.xs),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: $constants.palette.darkGrey,
+              width: 1.0,
+            ),
+          ),
+          child: Icon(
+            Icons.location_on_outlined,
+            size: $constants.insets.md,
+            color: $constants.palette.white,
+          ),
+        ),
+        SizedBox(width: $constants.insets.sm),
+        Expanded(
+          child: SelectableText.rich(
+            TextSpan(
+              style: getTextTheme(context)
+                  .bodyMedium
+                  ?.copyWith(fontWeight: FontWeight.w600),
+              children: [
+                TextSpan(text: R.strings.locationTitle),
+                const TextSpan(text: '\n'),
+                TextSpan(
+                  text: fullAddress,
+                  style: getTextTheme(context)
+                      .bodySmall
+                      ?.copyWith(letterSpacing: 0.5),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
