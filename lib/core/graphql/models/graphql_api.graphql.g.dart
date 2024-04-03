@@ -2108,7 +2108,8 @@ FetchConvention$Query$FetchConvention
           ..coverImageUrl = json['coverImageUrl'] as String?
           ..displayCity = json['displayCity'] as String?
           ..displayState = json['displayState'] as String?
-          ..paymentRequired = json['paymentRequired'] as bool;
+          ..paymentRequired = json['paymentRequired'] as bool
+          ..description = json['description'] as String?;
 
 Map<String, dynamic> _$FetchConvention$Query$FetchConventionToJson(
         FetchConvention$Query$FetchConvention instance) =>
@@ -2124,6 +2125,7 @@ Map<String, dynamic> _$FetchConvention$Query$FetchConventionToJson(
       'displayCity': instance.displayCity,
       'displayState': instance.displayState,
       'paymentRequired': instance.paymentRequired,
+      'description': instance.description,
     };
 
 FetchConvention$Query _$FetchConvention$QueryFromJson(

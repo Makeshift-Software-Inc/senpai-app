@@ -17,6 +17,7 @@ class ConventionModel with _$ConventionModel {
     String? lonlat,
     String? website,
     bool? paymentRequired,
+    String? description,
     //add another parameters
   }) = _ConventionModel;
   factory ConventionModel.initial() => ConventionModel(
@@ -31,6 +32,7 @@ class ConventionModel with _$ConventionModel {
         displayState: '',
         website: '',
         paymentRequired: false,
+        description: '',
       );
 
   factory ConventionModel.fromJson(Map<String, dynamic> json) =>

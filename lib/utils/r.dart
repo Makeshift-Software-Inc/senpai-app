@@ -136,6 +136,9 @@ class _ImageResources {
 
   /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/cosplay_bg_image.png)
   final cosplay_bg_image = r'assets/images/events/cosplay_bg_image.png';
+
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/globe.svg)
+  final globe = r'assets/images/events/globe.svg';
 }
 
 class _SvgResources {

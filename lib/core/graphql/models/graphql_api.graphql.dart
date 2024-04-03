@@ -2941,6 +2941,8 @@ class FetchConvention$Query$FetchConvention extends JsonSerializable
 
   late bool paymentRequired;
 
+  String? description;
+
   @override
   List<Object?> get props => [
         id,
@@ -2952,7 +2954,8 @@ class FetchConvention$Query$FetchConvention extends JsonSerializable
         coverImageUrl,
         displayCity,
         displayState,
-        paymentRequired
+        paymentRequired,
+        description
       ];
   @override
   Map<String, dynamic> toJson() =>
@@ -7957,6 +7960,13 @@ final FETCH_CONVENTION_QUERY_DOCUMENT = DocumentNode(definitions: [
           ),
           FieldNode(
             name: NameNode(value: 'paymentRequired'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'description'),
             alias: null,
             arguments: [],
             directives: [],

@@ -38,7 +38,7 @@ class ConventionDetailsContent extends StatelessWidget {
             _buildImageWidget(context),
             SizedBox(height: $constants.insets.sm),
             EventDetailsDescriptionWidget(
-              description: conventionModel.displayState ?? '',
+              description: conventionModel.description ?? '',
             ),
             SizedBox(height: $constants.insets.sm),
             _buildLocationEvent(

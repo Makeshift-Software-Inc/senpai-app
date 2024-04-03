@@ -22,6 +22,7 @@ _$ConventionModelImpl _$$ConventionModelImplFromJson(
       lonlat: json['lonlat'] as String?,
       website: json['website'] as String?,
       paymentRequired: json['paymentRequired'] as bool?,
+      description: json['description'] as String?,
     );
 
 Map<String, dynamic> _$$ConventionModelImplToJson(
@@ -38,4 +39,5 @@ Map<String, dynamic> _$$ConventionModelImplToJson(
       'lonlat': instance.lonlat,
       'website': instance.website,
       'paymentRequired': instance.paymentRequired,
+      'description': instance.description,
     };
