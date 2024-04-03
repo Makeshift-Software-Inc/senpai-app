@@ -31,6 +31,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ConventionDetailsRoute.name: (routeData) {
+      final args = routeData.argsAs<ConventionDetailsRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ConventionDetailsPage(
+          key: args.key,
+          convention: args.convention,
+        ),
+      );
+    },
     EditFavoriteAnimeRoute.name: (routeData) {
       final args = routeData.argsAs<EditFavoriteAnimeRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -392,6 +402,44 @@ class ChatRouteArgs {
   @override
   String toString() {
     return 'ChatRouteArgs{key: $key, roomArgs: $roomArgs}';
+  }
+}
+
+/// generated route for
+/// [ConventionDetailsPage]
+class ConventionDetailsRoute extends PageRouteInfo<ConventionDetailsRouteArgs> {
+  ConventionDetailsRoute({
+    Key? key,
+    required ConventionModel convention,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ConventionDetailsRoute.name,
+          args: ConventionDetailsRouteArgs(
+            key: key,
+            convention: convention,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ConventionDetailsRoute';
+
+  static const PageInfo<ConventionDetailsRouteArgs> page =
+      PageInfo<ConventionDetailsRouteArgs>(name);
+}
+
+class ConventionDetailsRouteArgs {
+  const ConventionDetailsRouteArgs({
+    this.key,
+    required this.convention,
+  });
+
+  final Key? key;
+
+  final ConventionModel convention;
+
+  @override
+  String toString() {
+    return 'ConventionDetailsRouteArgs{key: $key, convention: $convention}';
   }
 }
 

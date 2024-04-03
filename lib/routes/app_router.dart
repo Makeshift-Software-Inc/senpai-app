@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:senpai/models/chat/categorized_conversation.dart';
+import 'package:senpai/models/events/convention/convention_model.dart';
 import 'package:senpai/models/match/like_user_model/like_user_model.dart';
 import 'package:senpai/models/profile_fill/anime/anime_model.dart';
 import 'package:senpai/models/report_user/report_user_params.dart';
@@ -10,6 +11,7 @@ import 'package:senpai/routes/guards/onboarding_guard.dart';
 import 'package:senpai/screens/chat/page/chat_page.dart';
 import 'package:senpai/screens/chat/widgets/video_viewer.dart';
 import 'package:senpai/screens/chat_list/page/chat_list_page.dart';
+import 'package:senpai/screens/convention_details/page/convention_details_page.dart';
 import 'package:senpai/screens/edit_profile/bloc/edit_profile_bloc.dart';
 import 'package:senpai/screens/edit_profile/edit_favorite_anime/page/edit_favorite_anime_page.dart';
 import 'package:senpai/screens/edit_profile/edit_location/page/edit_location_page.dart';
@@ -112,5 +114,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: EventMapRoute.page, path: '/event_map'),
 
         AutoRoute(page: EventsFilterRoute.page, path: '/events_filter'),
+
+        AutoRoute(
+            page: ConventionDetailsRoute.page, path: '/convention_details'),
       ];
 }

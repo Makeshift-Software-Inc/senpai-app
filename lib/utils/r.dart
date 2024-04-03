@@ -11,130 +11,130 @@ class R {
 class _ImageResources {
   const _ImageResources();
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/launcher.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/launcher.png)
   final launcher = r'assets/images/launcher.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/senpai_logo.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/senpai_logo.png)
   final senpai_logo = r'assets/images/senpai_logo.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/invited_friends_container.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/invited_friends_container.png)
   final invited_friends_container = r'assets/images/invited_friends_container.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/invited_friends_container_background.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/invited_friends_container_background.png)
   final invited_friends_container_background = r'assets/images/invited_friends_container_background.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/logo.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/logo.png)
   final logo = r'assets/images/logo.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/premium.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/premium.png)
   final premium = r'assets/images/premium.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/onboarding/onboarding_1.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/onboarding/onboarding_1.png)
   final onboarding_1 = r'assets/images/onboarding/onboarding_1.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/onboarding/onboarding_3.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/onboarding/onboarding_3.png)
   final onboarding_3 = r'assets/images/onboarding/onboarding_3.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/onboarding/onboarding_2.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/onboarding/onboarding_2.png)
   final onboarding_2 = r'assets/images/onboarding/onboarding_2.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/onboarding/onboarding_bg.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/onboarding/onboarding_bg.png)
   final onboarding_bg = r'assets/images/onboarding/onboarding_bg.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/onboarding/heart.svg)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/onboarding/heart.svg)
   final heart = r'assets/images/onboarding/heart.svg';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/start_match_bg.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/start_match_bg.png)
   final start_match_bg = r'assets/images/profile/start_match_bg.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/spotify_logo_image.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/spotify_logo_image.png)
   final spotify_logo_image = r'assets/images/profile/spotify_logo_image.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/photo_not_verified.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/photo_not_verified.png)
   final photo_not_verified = r'assets/images/profile/photo_not_verified.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/photo_verifed.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/photo_verifed.png)
   final photo_verifed = r'assets/images/profile/photo_verifed.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/spotify_image.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/spotify_image.png)
   final spotify_image = r'assets/images/profile/spotify_image.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/location_bg.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/location_bg.png)
   final location_bg = r'assets/images/profile/location_bg.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/welcome_image.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/welcome_image.png)
   final welcome_image = r'assets/images/profile/welcome_image.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/verify_user_photo.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/verify_user_photo.png)
   final verify_user_photo = r'assets/images/profile/verify_user_photo.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/premium_image.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/premium_image.png)
   final premium_image = r'assets/images/profile/premium_image.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/lines_bg.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/lines_bg.png)
   final lines_bg = r'assets/images/profile/lines_bg.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/marker_icon.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/marker_icon.png)
   final marker_icon = r'assets/images/profile/marker_icon.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/anime_empty.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/anime_empty.png)
   final anime_empty = r'assets/images/profile/anime_empty.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/anime_header.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/anime_header.png)
   final anime_header = r'assets/images/profile/anime_header.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/profile/spotify_bg.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/profile/spotify_bg.png)
   final spotify_bg = r'assets/images/profile/spotify_bg.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/match/super_like_bg.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/match/super_like_bg.png)
   final super_like_bg = r'assets/images/match/super_like_bg.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/match/match_successful.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/match/match_successful.png)
   final match_successful = r'assets/images/match/match_successful.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/chat/empty_conversation_search.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/chat/empty_conversation_search.png)
   final empty_conversation_search = r'assets/images/chat/empty_conversation_search.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/chat/empty_animations.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/chat/empty_animations.png)
   final empty_animations = r'assets/images/chat/empty_animations.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/chat/giphy_attribution.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/chat/giphy_attribution.png)
   final giphy_attribution = r'assets/images/chat/giphy_attribution.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/chat/empty_conversations.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/chat/empty_conversations.png)
   final empty_conversations = r'assets/images/chat/empty_conversations.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/paid_filter_icon.svg)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/paid_filter_icon.svg)
   final paid_filter_icon = r'assets/images/events/paid_filter_icon.svg';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/event_image_icon.svg)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/event_image_icon.svg)
   final event_image_icon = r'assets/images/events/event_image_icon.svg';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/members_background.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/members_background.png)
   final members_background = r'assets/images/events/members_background.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/host_event_image.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/host_event_image.png)
   final host_event_image = r'assets/images/events/host_event_image.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/event_button_icon.svg)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/event_button_icon.svg)
   final event_button_icon = r'assets/images/events/event_button_icon.svg';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/empty_events_list.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/empty_events_list.png)
   final empty_events_list = r'assets/images/events/empty_events_list.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/about_event_element.svg)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/about_event_element.svg)
   final about_event_element = r'assets/images/events/about_event_element.svg';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/calendar_icon.svg)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/calendar_icon.svg)
   final calendar_icon = r'assets/images/events/calendar_icon.svg';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/event_paid_icon.svg)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/event_paid_icon.svg)
   final event_paid_icon = r'assets/images/events/event_paid_icon.svg';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/create_event_warning.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/create_event_warning.png)
   final create_event_warning = r'assets/images/events/create_event_warning.png';
 
-  /// ![](/Users/georgiizubkov/StudioProjects/senpai-app/assets/images/events/cosplay_bg_image.png)
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/cosplay_bg_image.png)
   final cosplay_bg_image = r'assets/images/events/cosplay_bg_image.png';
 }
 
