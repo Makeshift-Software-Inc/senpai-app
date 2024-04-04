@@ -23,6 +23,9 @@ _$ConventionModelImpl _$$ConventionModelImplFromJson(
       website: json['website'] as String?,
       paymentRequired: json['paymentRequired'] as bool?,
       description: json['description'] as String?,
+      events: (json['events'] as List<dynamic>)
+          .map((e) => EventModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$ConventionModelImplToJson(
@@ -40,4 +43,5 @@ Map<String, dynamic> _$$ConventionModelImplToJson(
       'website': instance.website,
       'paymentRequired': instance.paymentRequired,
       'description': instance.description,
+      'events': instance.events,
     };

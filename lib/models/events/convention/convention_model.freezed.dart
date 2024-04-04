@@ -32,6 +32,7 @@ mixin _$ConventionModel {
   String? get website => throw _privateConstructorUsedError;
   bool? get paymentRequired => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
+  List<EventModel> get events => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +58,8 @@ abstract class $ConventionModelCopyWith<$Res> {
       String? lonlat,
       String? website,
       bool? paymentRequired,
-      String? description});
+      String? description,
+      List<EventModel> events});
 }
 
 /// @nodoc
@@ -85,6 +87,7 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
     Object? website = freezed,
     Object? paymentRequired = freezed,
     Object? description = freezed,
+    Object? events = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -135,6 +138,10 @@ class _$ConventionModelCopyWithImpl<$Res, $Val extends ConventionModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      events: null == events
+          ? _value.events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<EventModel>,
     ) as $Val);
   }
 }
@@ -159,7 +166,8 @@ abstract class _$$ConventionModelImplCopyWith<$Res>
       String? lonlat,
       String? website,
       bool? paymentRequired,
-      String? description});
+      String? description,
+      List<EventModel> events});
 }
 
 /// @nodoc
@@ -185,6 +193,7 @@ class __$$ConventionModelImplCopyWithImpl<$Res>
     Object? website = freezed,
     Object? paymentRequired = freezed,
     Object? description = freezed,
+    Object? events = null,
   }) {
     return _then(_$ConventionModelImpl(
       id: null == id
@@ -235,6 +244,10 @@ class __$$ConventionModelImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      events: null == events
+          ? _value._events
+          : events // ignore: cast_nullable_to_non_nullable
+              as List<EventModel>,
     ));
   }
 }
@@ -254,7 +267,9 @@ class _$ConventionModelImpl implements _ConventionModel {
       this.lonlat,
       this.website,
       this.paymentRequired,
-      this.description});
+      this.description,
+      required final List<EventModel> events})
+      : _events = events;
 
   factory _$ConventionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$ConventionModelImplFromJson(json);
@@ -283,10 +298,17 @@ class _$ConventionModelImpl implements _ConventionModel {
   final bool? paymentRequired;
   @override
   final String? description;
+  final List<EventModel> _events;
+  @override
+  List<EventModel> get events {
+    if (_events is EqualUnmodifiableListView) return _events;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_events);
+  }
 
   @override
   String toString() {
-    return 'ConventionModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, website: $website, paymentRequired: $paymentRequired, description: $description)';
+    return 'ConventionModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, website: $website, paymentRequired: $paymentRequired, description: $description, events: $events)';
   }
 
   @override
@@ -312,7 +334,8 @@ class _$ConventionModelImpl implements _ConventionModel {
             (identical(other.paymentRequired, paymentRequired) ||
                 other.paymentRequired == paymentRequired) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            const DeepCollectionEquality().equals(other._events, _events));
   }
 
   @JsonKey(ignore: true)
@@ -330,7 +353,8 @@ class _$ConventionModelImpl implements _ConventionModel {
       lonlat,
       website,
       paymentRequired,
-      description);
+      description,
+      const DeepCollectionEquality().hash(_events));
 
   @JsonKey(ignore: true)
   @override
@@ -360,7 +384,8 @@ abstract class _ConventionModel implements ConventionModel {
       final String? lonlat,
       final String? website,
       final bool? paymentRequired,
-      final String? description}) = _$ConventionModelImpl;
+      final String? description,
+      required final List<EventModel> events}) = _$ConventionModelImpl;
 
   factory _ConventionModel.fromJson(Map<String, dynamic> json) =
       _$ConventionModelImpl.fromJson;
@@ -389,6 +414,8 @@ abstract class _ConventionModel implements ConventionModel {
   bool? get paymentRequired;
   @override
   String? get description;
+  @override
+  List<EventModel> get events;
   @override
   @JsonKey(ignore: true)
   _$$ConventionModelImplCopyWith<_$ConventionModelImpl> get copyWith =>

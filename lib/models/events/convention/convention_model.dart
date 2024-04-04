@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:senpai/models/events/event/event_model.dart';
 
 part 'convention_model.freezed.dart';
 part 'convention_model.g.dart';
@@ -18,6 +19,7 @@ class ConventionModel with _$ConventionModel {
     String? website,
     bool? paymentRequired,
     String? description,
+    required List<EventModel> events,
     //add another parameters
   }) = _ConventionModel;
   factory ConventionModel.initial() => ConventionModel(
@@ -33,6 +35,7 @@ class ConventionModel with _$ConventionModel {
         website: '',
         paymentRequired: false,
         description: '',
+        events: [],
       );
 
   factory ConventionModel.fromJson(Map<String, dynamic> json) =>

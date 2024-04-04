@@ -2907,6 +2907,234 @@ class DeleteFavoriteMusicInput extends JsonSerializable with EquatableMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
+class FetchConvention$Query$FetchConvention$Events$Party$PartyChat$Messages
+    extends JsonSerializable with EquatableMixin {
+  FetchConvention$Query$FetchConvention$Events$Party$PartyChat$Messages();
+
+  factory FetchConvention$Query$FetchConvention$Events$Party$PartyChat$Messages.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$PartyChat$MessagesFromJson(
+          json);
+
+  String? content;
+
+  @override
+  List<Object?> get props => [content];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$PartyChat$MessagesToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConvention$Query$FetchConvention$Events$Party$PartyChat
+    extends JsonSerializable with EquatableMixin {
+  FetchConvention$Query$FetchConvention$Events$Party$PartyChat();
+
+  factory FetchConvention$Query$FetchConvention$Events$Party$PartyChat.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$PartyChatFromJson(
+          json);
+
+  late List<
+          FetchConvention$Query$FetchConvention$Events$Party$PartyChat$Messages>
+      messages;
+
+  @override
+  List<Object?> get props => [messages];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$PartyChatToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$Photos
+    extends JsonSerializable with EquatableMixin {
+  FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$Photos();
+
+  factory FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$Photos.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$PhotosFromJson(
+          json);
+
+  int? order;
+
+  late String url;
+
+  @override
+  List<Object?> get props => [order, url];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$PhotosToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery
+    extends JsonSerializable with EquatableMixin {
+  FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery();
+
+  factory FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$Members$GalleryFromJson(
+          json);
+
+  List<FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$Photos>?
+      photos;
+
+  @override
+  List<Object?> get props => [photos];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$Members$GalleryToJson(
+          this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConvention$Query$FetchConvention$Events$Party$Members
+    extends JsonSerializable with EquatableMixin {
+  FetchConvention$Query$FetchConvention$Events$Party$Members();
+
+  factory FetchConvention$Query$FetchConvention$Events$Party$Members.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$MembersFromJson(
+          json);
+
+  late String id;
+
+  FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery? gallery;
+
+  @override
+  List<Object?> get props => [id, gallery];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConvention$Query$FetchConvention$Events$Party$MembersToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConvention$Query$FetchConvention$Events$Party
+    extends JsonSerializable with EquatableMixin {
+  FetchConvention$Query$FetchConvention$Events$Party();
+
+  factory FetchConvention$Query$FetchConvention$Events$Party.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConvention$Query$FetchConvention$Events$PartyFromJson(json);
+
+  late String id;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  late DateTime createdAt;
+
+  late bool disbanded;
+
+  late int hostId;
+
+  late int eventId;
+
+  FetchConvention$Query$FetchConvention$Events$Party$PartyChat? partyChat;
+
+  late String status;
+
+  List<FetchConvention$Query$FetchConvention$Events$Party$Members>? members;
+
+  @override
+  List<Object?> get props =>
+      [id, createdAt, disbanded, hostId, eventId, partyChat, status, members];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConvention$Query$FetchConvention$Events$PartyToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
+class FetchConvention$Query$FetchConvention$Events extends JsonSerializable
+    with EquatableMixin {
+  FetchConvention$Query$FetchConvention$Events();
+
+  factory FetchConvention$Query$FetchConvention$Events.fromJson(
+          Map<String, dynamic> json) =>
+      _$FetchConvention$Query$FetchConvention$EventsFromJson(json);
+
+  late String id;
+
+  late int hostId;
+
+  String? title;
+
+  String? description;
+
+  String? coverImageUrl;
+
+  String? cosplayRequired;
+
+  bool? paymentRequired;
+
+  late String country;
+
+  late String displayCity;
+
+  late String displayState;
+
+  late String fullAddress;
+
+  late String venue;
+
+  late String lonlat;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  late DateTime createdAt;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  late DateTime updatedAt;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeToDartDateTime,
+      toJson: fromDartDateTimeToGraphQLISO8601DateTime)
+  late DateTime startDate;
+
+  @JsonKey(
+      fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
+      toJson: fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable)
+  DateTime? endDate;
+
+  int? conventionId;
+
+  FetchConvention$Query$FetchConvention$Events$Party? party;
+
+  @override
+  List<Object?> get props => [
+        id,
+        hostId,
+        title,
+        description,
+        coverImageUrl,
+        cosplayRequired,
+        paymentRequired,
+        country,
+        displayCity,
+        displayState,
+        fullAddress,
+        venue,
+        lonlat,
+        createdAt,
+        updatedAt,
+        startDate,
+        endDate,
+        conventionId,
+        party
+      ];
+  @override
+  Map<String, dynamic> toJson() =>
+      _$FetchConvention$Query$FetchConvention$EventsToJson(this);
+}
+
+@JsonSerializable(explicitToJson: true)
 class FetchConvention$Query$FetchConvention extends JsonSerializable
     with EquatableMixin {
   FetchConvention$Query$FetchConvention();
@@ -2943,6 +3171,10 @@ class FetchConvention$Query$FetchConvention extends JsonSerializable
 
   String? description;
 
+  String? website;
+
+  List<FetchConvention$Query$FetchConvention$Events>? events;
+
   @override
   List<Object?> get props => [
         id,
@@ -2955,7 +3187,9 @@ class FetchConvention$Query$FetchConvention extends JsonSerializable
         displayCity,
         displayState,
         paymentRequired,
-        description
+        description,
+        website,
+        events
       ];
   @override
   Map<String, dynamic> toJson() =>
@@ -7971,6 +8205,265 @@ final FETCH_CONVENTION_QUERY_DOCUMENT = DocumentNode(definitions: [
             arguments: [],
             directives: [],
             selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'website'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: null,
+          ),
+          FieldNode(
+            name: NameNode(value: 'events'),
+            alias: null,
+            arguments: [],
+            directives: [],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'hostId'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'title'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'description'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'coverImageUrl'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'cosplayRequired'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'paymentRequired'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'country'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'displayCity'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'displayState'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'fullAddress'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'venue'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'lonlat'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'createdAt'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'updatedAt'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'startDate'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'endDate'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'conventionId'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'party'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'id'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'createdAt'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'disbanded'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'hostId'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'eventId'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'partyChat'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                        name: NameNode(value: 'messages'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                            name: NameNode(value: 'content'),
+                            alias: null,
+                            arguments: [],
+                            directives: [],
+                            selectionSet: null,
+                          )
+                        ]),
+                      )
+                    ]),
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'status'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: 'members'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: SelectionSetNode(selections: [
+                      FieldNode(
+                        name: NameNode(value: 'id'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: null,
+                      ),
+                      FieldNode(
+                        name: NameNode(value: 'gallery'),
+                        alias: null,
+                        arguments: [],
+                        directives: [],
+                        selectionSet: SelectionSetNode(selections: [
+                          FieldNode(
+                            name: NameNode(value: 'photos'),
+                            alias: null,
+                            arguments: [],
+                            directives: [],
+                            selectionSet: SelectionSetNode(selections: [
+                              FieldNode(
+                                name: NameNode(value: 'order'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                              FieldNode(
+                                name: NameNode(value: 'url'),
+                                alias: null,
+                                arguments: [],
+                                directives: [],
+                                selectionSet: null,
+                              ),
+                            ]),
+                          )
+                        ]),
+                      ),
+                    ]),
+                  ),
+                ]),
+              ),
+            ]),
           ),
         ]),
       )

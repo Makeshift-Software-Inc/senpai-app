@@ -2093,6 +2093,180 @@ Map<String, dynamic> _$DeleteFavoriteMusicInputToJson(
       'userId': instance.userId,
     };
 
+FetchConvention$Query$FetchConvention$Events$Party$PartyChat$Messages
+    _$FetchConvention$Query$FetchConvention$Events$Party$PartyChat$MessagesFromJson(
+            Map<String, dynamic> json) =>
+        FetchConvention$Query$FetchConvention$Events$Party$PartyChat$Messages()
+          ..content = json['content'] as String?;
+
+Map<String, dynamic>
+    _$FetchConvention$Query$FetchConvention$Events$Party$PartyChat$MessagesToJson(
+            FetchConvention$Query$FetchConvention$Events$Party$PartyChat$Messages
+                instance) =>
+        <String, dynamic>{
+          'content': instance.content,
+        };
+
+FetchConvention$Query$FetchConvention$Events$Party$PartyChat
+    _$FetchConvention$Query$FetchConvention$Events$Party$PartyChatFromJson(
+            Map<String, dynamic> json) =>
+        FetchConvention$Query$FetchConvention$Events$Party$PartyChat()
+          ..messages = (json['messages'] as List<dynamic>)
+              .map((e) =>
+                  FetchConvention$Query$FetchConvention$Events$Party$PartyChat$Messages
+                      .fromJson(e as Map<String, dynamic>))
+              .toList();
+
+Map<String, dynamic>
+    _$FetchConvention$Query$FetchConvention$Events$Party$PartyChatToJson(
+            FetchConvention$Query$FetchConvention$Events$Party$PartyChat
+                instance) =>
+        <String, dynamic>{
+          'messages': instance.messages.map((e) => e.toJson()).toList(),
+        };
+
+FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$Photos
+    _$FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$PhotosFromJson(
+            Map<String, dynamic> json) =>
+        FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$Photos()
+          ..order = json['order'] as int?
+          ..url = json['url'] as String;
+
+Map<String, dynamic>
+    _$FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$PhotosToJson(
+            FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$Photos
+                instance) =>
+        <String, dynamic>{
+          'order': instance.order,
+          'url': instance.url,
+        };
+
+FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery
+    _$FetchConvention$Query$FetchConvention$Events$Party$Members$GalleryFromJson(
+            Map<String, dynamic> json) =>
+        FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery()
+          ..photos = (json['photos'] as List<dynamic>?)
+              ?.map((e) =>
+                  FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery$Photos
+                      .fromJson(e as Map<String, dynamic>))
+              .toList();
+
+Map<String, dynamic>
+    _$FetchConvention$Query$FetchConvention$Events$Party$Members$GalleryToJson(
+            FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery
+                instance) =>
+        <String, dynamic>{
+          'photos': instance.photos?.map((e) => e.toJson()).toList(),
+        };
+
+FetchConvention$Query$FetchConvention$Events$Party$Members
+    _$FetchConvention$Query$FetchConvention$Events$Party$MembersFromJson(
+            Map<String, dynamic> json) =>
+        FetchConvention$Query$FetchConvention$Events$Party$Members()
+          ..id = json['id'] as String
+          ..gallery = json['gallery'] == null
+              ? null
+              : FetchConvention$Query$FetchConvention$Events$Party$Members$Gallery
+                  .fromJson(json['gallery'] as Map<String, dynamic>);
+
+Map<String,
+    dynamic> _$FetchConvention$Query$FetchConvention$Events$Party$MembersToJson(
+        FetchConvention$Query$FetchConvention$Events$Party$Members instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'gallery': instance.gallery?.toJson(),
+    };
+
+FetchConvention$Query$FetchConvention$Events$Party
+    _$FetchConvention$Query$FetchConvention$Events$PartyFromJson(
+            Map<String, dynamic> json) =>
+        FetchConvention$Query$FetchConvention$Events$Party()
+          ..id = json['id'] as String
+          ..createdAt = fromGraphQLISO8601DateTimeToDartDateTime(
+              json['createdAt'] as String)
+          ..disbanded = json['disbanded'] as bool
+          ..hostId = json['hostId'] as int
+          ..eventId = json['eventId'] as int
+          ..partyChat = json['partyChat'] == null
+              ? null
+              : FetchConvention$Query$FetchConvention$Events$Party$PartyChat
+                  .fromJson(json['partyChat'] as Map<String, dynamic>)
+          ..status = json['status'] as String
+          ..members = (json['members'] as List<dynamic>?)
+              ?.map((e) =>
+                  FetchConvention$Query$FetchConvention$Events$Party$Members
+                      .fromJson(e as Map<String, dynamic>))
+              .toList();
+
+Map<String, dynamic> _$FetchConvention$Query$FetchConvention$Events$PartyToJson(
+        FetchConvention$Query$FetchConvention$Events$Party instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'createdAt': fromDartDateTimeToGraphQLISO8601DateTime(instance.createdAt),
+      'disbanded': instance.disbanded,
+      'hostId': instance.hostId,
+      'eventId': instance.eventId,
+      'partyChat': instance.partyChat?.toJson(),
+      'status': instance.status,
+      'members': instance.members?.map((e) => e.toJson()).toList(),
+    };
+
+FetchConvention$Query$FetchConvention$Events
+    _$FetchConvention$Query$FetchConvention$EventsFromJson(
+            Map<String, dynamic> json) =>
+        FetchConvention$Query$FetchConvention$Events()
+          ..id = json['id'] as String
+          ..hostId = json['hostId'] as int
+          ..title = json['title'] as String?
+          ..description = json['description'] as String?
+          ..coverImageUrl = json['coverImageUrl'] as String?
+          ..cosplayRequired = json['cosplayRequired'] as String?
+          ..paymentRequired = json['paymentRequired'] as bool?
+          ..country = json['country'] as String
+          ..displayCity = json['displayCity'] as String
+          ..displayState = json['displayState'] as String
+          ..fullAddress = json['fullAddress'] as String
+          ..venue = json['venue'] as String
+          ..lonlat = json['lonlat'] as String
+          ..createdAt = fromGraphQLISO8601DateTimeToDartDateTime(
+              json['createdAt'] as String)
+          ..updatedAt = fromGraphQLISO8601DateTimeToDartDateTime(
+              json['updatedAt'] as String)
+          ..startDate = fromGraphQLISO8601DateTimeToDartDateTime(
+              json['startDate'] as String)
+          ..endDate = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
+              json['endDate'] as String?)
+          ..conventionId = json['conventionId'] as int?
+          ..party = json['party'] == null
+              ? null
+              : FetchConvention$Query$FetchConvention$Events$Party.fromJson(
+                  json['party'] as Map<String, dynamic>);
+
+Map<String, dynamic> _$FetchConvention$Query$FetchConvention$EventsToJson(
+        FetchConvention$Query$FetchConvention$Events instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'hostId': instance.hostId,
+      'title': instance.title,
+      'description': instance.description,
+      'coverImageUrl': instance.coverImageUrl,
+      'cosplayRequired': instance.cosplayRequired,
+      'paymentRequired': instance.paymentRequired,
+      'country': instance.country,
+      'displayCity': instance.displayCity,
+      'displayState': instance.displayState,
+      'fullAddress': instance.fullAddress,
+      'venue': instance.venue,
+      'lonlat': instance.lonlat,
+      'createdAt': fromDartDateTimeToGraphQLISO8601DateTime(instance.createdAt),
+      'updatedAt': fromDartDateTimeToGraphQLISO8601DateTime(instance.updatedAt),
+      'startDate': fromDartDateTimeToGraphQLISO8601DateTime(instance.startDate),
+      'endDate': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
+          instance.endDate),
+      'conventionId': instance.conventionId,
+      'party': instance.party?.toJson(),
+    };
+
 FetchConvention$Query$FetchConvention
     _$FetchConvention$Query$FetchConventionFromJson(
             Map<String, dynamic> json) =>
@@ -2109,7 +2283,13 @@ FetchConvention$Query$FetchConvention
           ..displayCity = json['displayCity'] as String?
           ..displayState = json['displayState'] as String?
           ..paymentRequired = json['paymentRequired'] as bool
-          ..description = json['description'] as String?;
+          ..description = json['description'] as String?
+          ..website = json['website'] as String?
+          ..events = (json['events'] as List<dynamic>?)
+              ?.map((e) =>
+                  FetchConvention$Query$FetchConvention$Events.fromJson(
+                      e as Map<String, dynamic>))
+              .toList();
 
 Map<String, dynamic> _$FetchConvention$Query$FetchConventionToJson(
         FetchConvention$Query$FetchConvention instance) =>
@@ -2126,6 +2306,8 @@ Map<String, dynamic> _$FetchConvention$Query$FetchConventionToJson(
       'displayState': instance.displayState,
       'paymentRequired': instance.paymentRequired,
       'description': instance.description,
+      'website': instance.website,
+      'events': instance.events?.map((e) => e.toJson()).toList(),
     };
 
 FetchConvention$Query _$FetchConvention$QueryFromJson(

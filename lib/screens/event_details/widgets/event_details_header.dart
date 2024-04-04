@@ -16,7 +16,7 @@ class EventDetailsHeader extends StatelessWidget {
   final String subtitle;
   final DateTime startDate;
   final CosplayStatus? cosplayStatus;
-  final Widget additionalInfomationWidget;
+  final Widget? additionalInfomationWidget;
 
   const EventDetailsHeader({
     super.key,
@@ -24,7 +24,7 @@ class EventDetailsHeader extends StatelessWidget {
     required this.subtitle,
     required this.startDate,
     this.cosplayStatus,
-    this.additionalInfomationWidget = const SizedBox(),
+    this.additionalInfomationWidget,
   });
 
   @override
@@ -45,14 +45,16 @@ class EventDetailsHeader extends StatelessWidget {
                 ),
                 child: Container(
                   width: getSize(context).width - $constants.insets.lg * 2,
-                  height: $constants.corners.rounded,
+                  height: additionalInfomationWidget == null
+                      ? $constants.corners.rounded
+                      : $constants.events.eventMembersCircleBGHeight,
                   padding: EdgeInsets.symmetric(
                     horizontal: $constants.insets.sm,
                     vertical: $constants.insets.xs,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular($constants.corners.xlg),
-                    color: $constants.palette.darkGrey2.withOpacity(0.8),
+                    color: $constants.palette.bannerInfoBg,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,10 +66,10 @@ class EventDetailsHeader extends StatelessWidget {
                           style: getTextTheme(context).headlineSmall!,
                         ),
                       ),
-                      Flexible(child: _buildLocationWidget(context)),
+                      _buildLocationWidget(context),
                       SizedBox(height: $constants.insets.xs),
                       _buildDateWidget(context),
-                      additionalInfomationWidget,
+                      _tryBuildingAdditionalInfoWidget(context),
                     ],
                   ),
                 ),
@@ -81,6 +83,18 @@ class EventDetailsHeader extends StatelessWidget {
             right: $constants.corners.md,
             child: const SenpaiCosplayWidget(),
           ),
+      ],
+    );
+  }
+
+  Widget _tryBuildingAdditionalInfoWidget(BuildContext context) {
+    if (additionalInfomationWidget == null) {
+      return const SizedBox();
+    }
+    return Column(
+      children: [
+        SizedBox(height: $constants.insets.xxs),
+        additionalInfomationWidget!,
       ],
     );
   }

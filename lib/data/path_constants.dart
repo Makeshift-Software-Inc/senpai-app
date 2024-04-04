@@ -127,7 +127,7 @@ class PathConstants {
   static const String paidFilterIcon =
       'assets/images/events/paid_filter_icon.svg';
   static const String calendarIcon = 'assets/images/events/calendar_icon.svg';
-  static const String eventWebsiteIcon = 'assets/icons/events/globe.svg';
+  static const String eventWebsiteIcon = 'assets/images/events/globe.svg';
   static const String starIcon = 'assets/icons/star_icon.svg';
   static const String hostEventImage =
       'assets/images/events/host_event_image.png';

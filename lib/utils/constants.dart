@@ -129,6 +129,7 @@ class _Palette {
   final appBackground = const Color(0xFF14161D);
   final progressBackground = const Color(0xFF1F2542);
   final buttonBorder = const Color(0xFF363B4B);
+  final bannerInfoBg = const Color(0xBA192037);
 
   final loadingBackground = const Color(0x4414161D);
 
