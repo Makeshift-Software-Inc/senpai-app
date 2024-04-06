@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/l10n/resources.dart';
+import 'package:senpai/screens/convention_details/widgets/associated_events.dart';
 import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
 import 'package:senpai/screens/event_details/page/event_map_page.dart';
 import 'package:senpai/screens/event_details/widgets/event_details_description_widget.dart';
@@ -46,6 +47,8 @@ class ConventionDetailsContent extends StatelessWidget {
               lonLat: conventionModel.lonlat ?? '',
               venue: conventionModel.fullAddress ?? '',
             ),
+            SizedBox(height: $constants.insets.sm),
+            const AssociatedEvents(),
           ],
         ),
       ),

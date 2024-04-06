@@ -1104,4 +1104,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backHomeTitle => 'Back Home';
+
+  @override
+  String get openInvitesFilterTitle => 'Accepting invites';
+
+  @override
+  String get closedInvitesFilterTitle => 'Party filled';
 }

@@ -1104,4 +1104,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get backHomeTitle => '';
+
+  @override
+  String get openInvitesFilterTitle => '';
+
+  @override
+  String get closedInvitesFilterTitle => '';
 }

@@ -2296,6 +2296,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back Home'**
   String get backHomeTitle;
+
+  /// No description provided for @openInvitesFilterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepting invites'**
+  String get openInvitesFilterTitle;
+
+  /// No description provided for @closedInvitesFilterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Party filled'**
+  String get closedInvitesFilterTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
