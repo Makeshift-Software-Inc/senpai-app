@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:senpai/models/events/event_details/party_model.dart';
 
 part 'event_model.freezed.dart';
 
@@ -19,6 +20,10 @@ class EventModel with _$EventModel {
     String? country,
     bool? paymentRequired,
     String? cosplayRequired,
+    String? description,
+    String? venue,
+    PartyModel? party,
+    int? hostId,
   }) = _EventModel;
 
   factory EventModel.initial() => EventModel(
@@ -34,6 +39,10 @@ class EventModel with _$EventModel {
         country: '',
         paymentRequired: false,
         cosplayRequired: '',
+        description: '',
+        venue: '',
+        party: null,
+        hostId: 0,
       );
 
   factory EventModel.fromJson(Map<String, dynamic> json) =>

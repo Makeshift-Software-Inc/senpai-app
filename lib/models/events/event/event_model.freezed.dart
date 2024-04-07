@@ -32,6 +32,10 @@ mixin _$EventModel {
   String? get country => throw _privateConstructorUsedError;
   bool? get paymentRequired => throw _privateConstructorUsedError;
   String? get cosplayRequired => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get venue => throw _privateConstructorUsedError;
+  PartyModel? get party => throw _privateConstructorUsedError;
+  int? get hostId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +61,13 @@ abstract class $EventModelCopyWith<$Res> {
       String? lonlat,
       String? country,
       bool? paymentRequired,
-      String? cosplayRequired});
+      String? cosplayRequired,
+      String? description,
+      String? venue,
+      PartyModel? party,
+      int? hostId});
+
+  $PartyModelCopyWith<$Res>? get party;
 }
 
 /// @nodoc
@@ -85,6 +95,10 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
     Object? country = freezed,
     Object? paymentRequired = freezed,
     Object? cosplayRequired = freezed,
+    Object? description = freezed,
+    Object? venue = freezed,
+    Object? party = freezed,
+    Object? hostId = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -135,7 +149,35 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
           ? _value.cosplayRequired
           : cosplayRequired // ignore: cast_nullable_to_non_nullable
               as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      venue: freezed == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
+              as String?,
+      party: freezed == party
+          ? _value.party
+          : party // ignore: cast_nullable_to_non_nullable
+              as PartyModel?,
+      hostId: freezed == hostId
+          ? _value.hostId
+          : hostId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PartyModelCopyWith<$Res>? get party {
+    if (_value.party == null) {
+      return null;
+    }
+
+    return $PartyModelCopyWith<$Res>(_value.party!, (value) {
+      return _then(_value.copyWith(party: value) as $Val);
+    });
   }
 }
 
@@ -159,7 +201,14 @@ abstract class _$$EventModelImplCopyWith<$Res>
       String? lonlat,
       String? country,
       bool? paymentRequired,
-      String? cosplayRequired});
+      String? cosplayRequired,
+      String? description,
+      String? venue,
+      PartyModel? party,
+      int? hostId});
+
+  @override
+  $PartyModelCopyWith<$Res>? get party;
 }
 
 /// @nodoc
@@ -185,6 +234,10 @@ class __$$EventModelImplCopyWithImpl<$Res>
     Object? country = freezed,
     Object? paymentRequired = freezed,
     Object? cosplayRequired = freezed,
+    Object? description = freezed,
+    Object? venue = freezed,
+    Object? party = freezed,
+    Object? hostId = freezed,
   }) {
     return _then(_$EventModelImpl(
       id: null == id
@@ -235,6 +288,22 @@ class __$$EventModelImplCopyWithImpl<$Res>
           ? _value.cosplayRequired
           : cosplayRequired // ignore: cast_nullable_to_non_nullable
               as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      venue: freezed == venue
+          ? _value.venue
+          : venue // ignore: cast_nullable_to_non_nullable
+              as String?,
+      party: freezed == party
+          ? _value.party
+          : party // ignore: cast_nullable_to_non_nullable
+              as PartyModel?,
+      hostId: freezed == hostId
+          ? _value.hostId
+          : hostId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -254,7 +323,11 @@ class _$EventModelImpl implements _EventModel {
       this.lonlat,
       this.country,
       this.paymentRequired,
-      this.cosplayRequired});
+      this.cosplayRequired,
+      this.description,
+      this.venue,
+      this.party,
+      this.hostId});
 
   factory _$EventModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EventModelImplFromJson(json);
@@ -283,10 +356,18 @@ class _$EventModelImpl implements _EventModel {
   final bool? paymentRequired;
   @override
   final String? cosplayRequired;
+  @override
+  final String? description;
+  @override
+  final String? venue;
+  @override
+  final PartyModel? party;
+  @override
+  final int? hostId;
 
   @override
   String toString() {
-    return 'EventModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, country: $country, paymentRequired: $paymentRequired, cosplayRequired: $cosplayRequired)';
+    return 'EventModel(id: $id, title: $title, startDate: $startDate, coverImageUrl: $coverImageUrl, fullAddress: $fullAddress, displayCity: $displayCity, displayState: $displayState, endDate: $endDate, lonlat: $lonlat, country: $country, paymentRequired: $paymentRequired, cosplayRequired: $cosplayRequired, description: $description, venue: $venue, party: $party, hostId: $hostId)';
   }
 
   @override
@@ -312,7 +393,12 @@ class _$EventModelImpl implements _EventModel {
             (identical(other.paymentRequired, paymentRequired) ||
                 other.paymentRequired == paymentRequired) &&
             (identical(other.cosplayRequired, cosplayRequired) ||
-                other.cosplayRequired == cosplayRequired));
+                other.cosplayRequired == cosplayRequired) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.venue, venue) || other.venue == venue) &&
+            (identical(other.party, party) || other.party == party) &&
+            (identical(other.hostId, hostId) || other.hostId == hostId));
   }
 
   @JsonKey(ignore: true)
@@ -330,7 +416,11 @@ class _$EventModelImpl implements _EventModel {
       lonlat,
       country,
       paymentRequired,
-      cosplayRequired);
+      cosplayRequired,
+      description,
+      venue,
+      party,
+      hostId);
 
   @JsonKey(ignore: true)
   @override
@@ -359,7 +449,11 @@ abstract class _EventModel implements EventModel {
       final String? lonlat,
       final String? country,
       final bool? paymentRequired,
-      final String? cosplayRequired}) = _$EventModelImpl;
+      final String? cosplayRequired,
+      final String? description,
+      final String? venue,
+      final PartyModel? party,
+      final int? hostId}) = _$EventModelImpl;
 
   factory _EventModel.fromJson(Map<String, dynamic> json) =
       _$EventModelImpl.fromJson;
@@ -388,6 +482,14 @@ abstract class _EventModel implements EventModel {
   bool? get paymentRequired;
   @override
   String? get cosplayRequired;
+  @override
+  String? get description;
+  @override
+  String? get venue;
+  @override
+  PartyModel? get party;
+  @override
+  int? get hostId;
   @override
   @JsonKey(ignore: true)
   _$$EventModelImplCopyWith<_$EventModelImpl> get copyWith =>

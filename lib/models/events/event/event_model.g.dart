@@ -22,6 +22,12 @@ _$EventModelImpl _$$EventModelImplFromJson(Map<String, dynamic> json) =>
       country: json['country'] as String?,
       paymentRequired: json['paymentRequired'] as bool?,
       cosplayRequired: json['cosplayRequired'] as String?,
+      description: json['description'] as String?,
+      venue: json['venue'] as String?,
+      party: json['party'] == null
+          ? null
+          : PartyModel.fromJson(json['party'] as Map<String, dynamic>),
+      hostId: json['hostId'] as int?,
     );
 
 Map<String, dynamic> _$$EventModelImplToJson(_$EventModelImpl instance) =>
@@ -38,4 +44,8 @@ Map<String, dynamic> _$$EventModelImplToJson(_$EventModelImpl instance) =>
       'country': instance.country,
       'paymentRequired': instance.paymentRequired,
       'cosplayRequired': instance.cosplayRequired,
+      'description': instance.description,
+      'venue': instance.venue,
+      'party': instance.party,
+      'hostId': instance.hostId,
     };

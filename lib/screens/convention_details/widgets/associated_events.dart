@@ -1,7 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:senpai/core/widgets/events/folder_background.dart';
 import 'package:senpai/l10n/resources.dart';
+import 'package:senpai/models/events/event/event_model.dart';
+import 'package:senpai/routes/app_router.dart';
 import 'package:senpai/screens/convention_details/bloc/associated_events_bloc/associated_events_bloc.dart';
+import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
+import 'package:senpai/screens/events_list/bloc/events_list_bloc.dart';
+import 'package:senpai/screens/events_list/widgets/empty_events_widget.dart';
+import 'package:senpai/screens/events_list/widgets/event_list_tile.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
@@ -16,40 +24,56 @@ class AssociatedEvents extends StatelessWidget {
         return Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: $constants.palette.white,
+            gradient: $constants.palette.aboutEventGradient,
             borderRadius: BorderRadius.circular($constants.corners.xlg),
           ),
-          child: Column(
+          child: Stack(
             children: [
-              SizedBox(
-                height: $constants.corners.xxl,
-                child: Text(
-                  R.strings.associatedEventsTitle,
-                  style: getTextTheme(context).headlineSmall,
+              Positioned(
+                top: 0,
+                left: 0,
+                child: FolderBackground(
+                  width: getSize(context).width * 0.5,
+                  height: 80,
                 ),
               ),
-              SizedBox(height: $constants.insets.sm),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _buildFilterButton(context,
-                      title: R.strings.openInvitesFilterTitle,
-                      isActive: state == AssociatedEventsFilterState.open,
-                      onTap: () {
-                    context
-                        .read<AssociatedEventsFilterCubit>()
-                        .setFilterToOpen();
-                  }),
-                  SizedBox(width: $constants.insets.sm),
-                  _buildFilterButton(context,
-                      title: R.strings.closedInvitesFilterTitle,
-                      isActive: state == AssociatedEventsFilterState.filled,
-                      onTap: () {
-                    context
-                        .read<AssociatedEventsFilterCubit>()
-                        .setFilterToFilled();
-                  }),
-                ],
+              Container(
+                padding: EdgeInsets.all($constants.insets.sm),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      R.strings.associatedEventsTitle,
+                      style: getTextTheme(context).headlineSmall,
+                      textAlign: TextAlign.left,
+                    ),
+                    SizedBox(height: $constants.insets.lg),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        _buildFilterButton(context,
+                            title: R.strings.openInvitesFilterTitle,
+                            isActive: state == AssociatedEventsFilterState.open,
+                            onTap: () {
+                          context
+                              .read<AssociatedEventsFilterCubit>()
+                              .setFilterToOpen();
+                        }),
+                        SizedBox(width: $constants.insets.sm),
+                        _buildFilterButton(context,
+                            title: R.strings.closedInvitesFilterTitle,
+                            isActive: state ==
+                                AssociatedEventsFilterState.filled, onTap: () {
+                          context
+                              .read<AssociatedEventsFilterCubit>()
+                              .setFilterToFilled();
+                        }),
+                      ],
+                    ),
+                    SizedBox(height: $constants.insets.sm),
+                    _buildAssociatedEvents(context),
+                  ],
+                ),
               ),
             ],
           ),
@@ -89,5 +113,62 @@ class AssociatedEvents extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildAssociatedEvents(BuildContext context) {
+    return BlocBuilder<AssociatedEventsFilterCubit,
+        AssociatedEventsFilterState>(builder: (context, state) {
+      final bloc = BlocProvider.of<EventDetailsBloc>(context);
+      if (bloc.conventionModel == null) {
+        return const SizedBox();
+      }
+
+      final activeFilter = context.read<AssociatedEventsFilterCubit>().state;
+      List<EventModel> events = [];
+      if (activeFilter == AssociatedEventsFilterState.open) {
+        events = bloc.conventionModel!.events
+            .where((event) => event.party?.status == "open")
+            .toList();
+      } else {
+        events = bloc.conventionModel!.events
+            .where((event) => event.party?.status != "open")
+            .toList();
+      }
+
+      if (events.isEmpty) {
+        return const SizedBox(
+          width: double.infinity,
+          height: 400,
+          child: EmptyEventsWidget(eventsListType: EventsListType.conventions),
+        );
+      }
+
+      return ListView.builder(
+        itemCount: events.length,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          final event = events[index];
+          return GestureDetector(
+            onTap: () {
+              final bloc = BlocProvider.of<EventsListBloc>(context);
+              context.router.push(EventsDetailsRoute(
+                eventId: event.id,
+                eventName: event.title,
+                userId: bloc.userId,
+              ));
+            },
+            child: EventListTile(
+              coverImageUrl: event.coverImageUrl,
+              startDate: event.startDate,
+              title: event.title,
+              city: event.displayCity ?? '',
+              state: event.displayState ?? '',
+              paymentRequired: event.paymentRequired ?? false,
+              cosplayStatus: event.cosplayRequired,
+            ),
+          );
+        },
+      );
+    });
   }
 }
