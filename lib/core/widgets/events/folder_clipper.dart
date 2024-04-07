@@ -16,11 +16,11 @@ class FolderClipper extends CustomClipper<Path> {
       endPoint.dy,
     );
 
-    path.lineTo(size.width - 30, size.height - 20);
+    path.lineTo(size.width - 55, size.height - 20);
 
     // second cubic curve now
-    Offset controlPoint1 = Offset(size.width, size.height - 20);
-    Offset controlPoint2 = Offset(size.width - 30, 0);
+    Offset controlPoint1 = Offset(size.width - 35, size.height - 20);
+    Offset controlPoint2 = Offset(size.width - 25, 0);
     Offset endPoint1 = Offset(size.width, 0);
     path.cubicTo(
       controlPoint1.dx,
