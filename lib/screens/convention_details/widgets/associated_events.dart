@@ -21,61 +21,46 @@ class AssociatedEvents extends StatelessWidget {
     return BlocBuilder<AssociatedEventsFilterCubit,
         AssociatedEventsFilterState>(
       builder: (context, state) {
-        return Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            gradient: $constants.palette.aboutEventGradient,
-            borderRadius: BorderRadius.circular($constants.corners.xlg),
-          ),
-          child: Stack(
-            children: [
-              Positioned(
-                top: 0,
-                left: 0,
-                child: FolderBackground(
-                  width: getSize(context).width * 0.5,
-                  height: 80,
+        return FolderBackground(
+          width: getSize(context).width * 0.5,
+          height: 80,
+          child: Container(
+            padding: EdgeInsets.all($constants.insets.sm),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  R.strings.associatedEventsTitle,
+                  style: getTextTheme(context).headlineSmall,
+                  textAlign: TextAlign.left,
                 ),
-              ),
-              Container(
-                padding: EdgeInsets.all($constants.insets.sm),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                SizedBox(height: $constants.insets.lg),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(
-                      R.strings.associatedEventsTitle,
-                      style: getTextTheme(context).headlineSmall,
-                      textAlign: TextAlign.left,
-                    ),
-                    SizedBox(height: $constants.insets.lg),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        _buildFilterButton(context,
-                            title: R.strings.openInvitesFilterTitle,
-                            isActive: state == AssociatedEventsFilterState.open,
-                            onTap: () {
-                          context
-                              .read<AssociatedEventsFilterCubit>()
-                              .setFilterToOpen();
-                        }),
-                        SizedBox(width: $constants.insets.sm),
-                        _buildFilterButton(context,
-                            title: R.strings.closedInvitesFilterTitle,
-                            isActive: state ==
-                                AssociatedEventsFilterState.filled, onTap: () {
-                          context
-                              .read<AssociatedEventsFilterCubit>()
-                              .setFilterToFilled();
-                        }),
-                      ],
-                    ),
-                    SizedBox(height: $constants.insets.sm),
-                    _buildAssociatedEvents(context),
+                    _buildFilterButton(context,
+                        title: R.strings.openInvitesFilterTitle,
+                        isActive: state == AssociatedEventsFilterState.open,
+                        onTap: () {
+                      context
+                          .read<AssociatedEventsFilterCubit>()
+                          .setFilterToOpen();
+                    }),
+                    SizedBox(width: $constants.insets.sm),
+                    _buildFilterButton(context,
+                        title: R.strings.closedInvitesFilterTitle,
+                        isActive: state == AssociatedEventsFilterState.filled,
+                        onTap: () {
+                      context
+                          .read<AssociatedEventsFilterCubit>()
+                          .setFilterToFilled();
+                    }),
                   ],
                 ),
-              ),
-            ],
+                SizedBox(height: $constants.insets.sm),
+                _buildAssociatedEvents(context),
+              ],
+            ),
           ),
         );
       },
