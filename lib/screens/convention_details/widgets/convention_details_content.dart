@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:senpai/core/widgets/events/folder_background.dart';
 import 'package:senpai/data/path_constants.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/screens/convention_details/widgets/associated_events.dart';
@@ -141,30 +142,26 @@ class ConventionDetailsContent extends StatelessWidget {
     required String lonLat,
     required String venue,
   }) {
-    return Container(
-      padding: EdgeInsets.all($constants.insets.sm),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular($constants.insets.md),
-        ),
-        shape: BoxShape.rectangle,
-        gradient: $constants.palette.aboutEventGradient,
-      ),
-      width: getSize(context).width - $constants.insets.lg,
-      child: Column(
-        children: [
-          _buildLocationTitle(context, venue),
-          SizedBox(height: $constants.insets.sm),
-          ClipRRect(
-            borderRadius: BorderRadius.circular($constants.insets.md),
-            child: SizedBox(
-              height: $constants.events.eventDetailsLocationHeight,
-              child: EventMapPage(
-                eventCoordinates: stringToLatLng(lonLat),
+    return FolderBackground(
+      width: 100,
+      height: 90,
+      child: Container(
+        padding: EdgeInsets.all($constants.insets.sm),
+        child: Column(
+          children: [
+            _buildLocationTitle(context, venue),
+            SizedBox(height: $constants.insets.sm),
+            ClipRRect(
+              borderRadius: BorderRadius.circular($constants.insets.md),
+              child: SizedBox(
+                height: $constants.events.eventDetailsLocationHeight,
+                child: EventMapPage(
+                  eventCoordinates: stringToLatLng(lonLat),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -190,7 +187,7 @@ class ConventionDetailsContent extends StatelessWidget {
             color: $constants.palette.white,
           ),
         ),
-        SizedBox(width: $constants.insets.sm),
+        SizedBox(width: $constants.insets.lg),
         Expanded(
           child: SelectableText.rich(
             TextSpan(
