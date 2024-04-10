@@ -6,9 +6,9 @@ import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/models/events/event/event_model.dart';
 import 'package:senpai/routes/app_router.dart';
 import 'package:senpai/screens/convention_details/bloc/associated_events_bloc/associated_events_bloc.dart';
+import 'package:senpai/screens/convention_details/widgets/associated_event_tile.dart';
 import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
 import 'package:senpai/screens/events_list/bloc/events_list_bloc.dart';
-import 'package:senpai/screens/events_list/widgets/event_list_tile.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
@@ -131,7 +131,7 @@ class AssociatedEvents extends StatelessWidget {
                 userId: bloc.userId,
               ));
             },
-            child: EventListTile(
+            child: AssociatedEventTile(
               coverImageUrl: event.coverImageUrl,
               startDate: event.startDate,
               title: event.title,

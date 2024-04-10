@@ -12,12 +12,14 @@ class NotchedContainerWidget extends StatelessWidget {
   final String title;
   final String subtitle;
   final CosplayStatus? cosplayStatus;
+  final double? width;
 
   const NotchedContainerWidget({
     super.key,
     required this.title,
     required this.subtitle,
     this.cosplayStatus,
+    this.width,
   });
 
   @override
@@ -31,7 +33,7 @@ class NotchedContainerWidget extends StatelessWidget {
             sigmaY: $constants.match.blur,
           ),
           child: Container(
-            width: MediaQuery.of(context).size.width - $constants.insets.lg * 2,
+            width: width ?? getSize(context).width - $constants.insets.lg * 2,
             height: $constants.events.eventListNotchedContainerHeight,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular($constants.corners.xlg),
