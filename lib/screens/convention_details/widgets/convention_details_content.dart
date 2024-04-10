@@ -143,8 +143,6 @@ class ConventionDetailsContent extends StatelessWidget {
     required String venue,
   }) {
     return FolderBackground(
-      width: 100,
-      height: 90,
       header: Container(
         padding: EdgeInsets.all($constants.insets.xs),
         decoration: BoxDecoration(
@@ -187,7 +185,7 @@ class ConventionDetailsContent extends StatelessWidget {
   ) {
     return Row(
       children: [
-        SizedBox(width: $constants.insets.lg),
+        SizedBox(width: $constants.insets.offset),
         Expanded(
           child: SelectableText.rich(
             TextSpan(

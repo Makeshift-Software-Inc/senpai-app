@@ -21,8 +21,6 @@ class AssociatedEvents extends StatelessWidget {
         AssociatedEventsFilterState>(
       builder: (context, state) {
         return FolderBackground(
-          width: getSize(context).width * 0.5,
-          height: 80,
           header: Text(
             R.strings.associatedEventsTitle,
             style: getTextTheme(context).headlineSmall,
@@ -33,7 +31,7 @@ class AssociatedEvents extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: $constants.insets.lg),
+                SizedBox(height: $constants.insets.xl),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
