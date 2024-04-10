@@ -8,7 +8,6 @@ import 'package:senpai/routes/app_router.dart';
 import 'package:senpai/screens/convention_details/bloc/associated_events_bloc/associated_events_bloc.dart';
 import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
 import 'package:senpai/screens/events_list/bloc/events_list_bloc.dart';
-import 'package:senpai/screens/events_list/widgets/empty_events_widget.dart';
 import 'package:senpai/screens/events_list/widgets/event_list_tile.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
@@ -24,16 +23,16 @@ class AssociatedEvents extends StatelessWidget {
         return FolderBackground(
           width: getSize(context).width * 0.5,
           height: 80,
+          header: Text(
+            R.strings.associatedEventsTitle,
+            style: getTextTheme(context).headlineSmall,
+            textAlign: TextAlign.left,
+          ),
           child: Container(
             padding: EdgeInsets.all($constants.insets.sm),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  R.strings.associatedEventsTitle,
-                  style: getTextTheme(context).headlineSmall,
-                  textAlign: TextAlign.left,
-                ),
                 SizedBox(height: $constants.insets.lg),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -118,14 +117,6 @@ class AssociatedEvents extends StatelessWidget {
         events = bloc.conventionModel!.events
             .where((event) => event.party?.status != "open")
             .toList();
-      }
-
-      if (events.isEmpty) {
-        return const SizedBox(
-          width: double.infinity,
-          height: 400,
-          child: EmptyEventsWidget(eventsListType: EventsListType.conventions),
-        );
       }
 
       return ListView.builder(

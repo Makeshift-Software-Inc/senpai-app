@@ -119,8 +119,17 @@ class EventsListPage extends StatelessWidget {
             List<dynamic>? conventions;
             try {
               conventions = response["fetchConventions"];
-              final conventionsList =
-                  conventions!.map((e) => ConventionModel.fromJson(e)).toList();
+              final conventionsList = conventions!.map((convention) {
+                try {
+                  ConventionModel model = ConventionModel.fromJson(convention);
+                  return model;
+                } catch (e) {
+                  logIt.error(
+                      "Error accessing FetchConventions from response: $e");
+                  logIt.debug(convention);
+                  rethrow;
+                }
+              }).toList();
               final bloc = BlocProvider.of<EventsListBloc>(context);
               bloc.add(OnConventionsListLoaded(conventionsList));
             } catch (e) {

@@ -145,6 +145,21 @@ class ConventionDetailsContent extends StatelessWidget {
     return FolderBackground(
       width: 100,
       height: 90,
+      header: Container(
+        padding: EdgeInsets.all($constants.insets.xs),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: $constants.palette.darkGrey,
+            width: 1.0,
+          ),
+        ),
+        child: Icon(
+          Icons.location_on_outlined,
+          size: $constants.insets.md,
+          color: $constants.palette.white,
+        ),
+      ),
       child: Container(
         padding: EdgeInsets.all($constants.insets.sm),
         child: Column(
@@ -172,21 +187,6 @@ class ConventionDetailsContent extends StatelessWidget {
   ) {
     return Row(
       children: [
-        Container(
-          padding: EdgeInsets.all($constants.insets.xs),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: $constants.palette.darkGrey,
-              width: 1.0,
-            ),
-          ),
-          child: Icon(
-            Icons.location_on_outlined,
-            size: $constants.insets.md,
-            color: $constants.palette.white,
-          ),
-        ),
         SizedBox(width: $constants.insets.lg),
         Expanded(
           child: SelectableText.rich(

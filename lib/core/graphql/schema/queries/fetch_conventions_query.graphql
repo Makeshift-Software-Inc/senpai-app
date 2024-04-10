@@ -4,20 +4,53 @@ query fetchConventions($params: SearchEventInput!) {
     title
     startDate
     endDate
-    lonlat
     website
+    lonlat
     fullAddress
     displayCity
     displayState
     coverImageUrl
     paymentRequired
+
     events {
       id
+      hostId
       title
+      description
+      coverImageUrl
+      cosplayRequired
+      paymentRequired
+      country
+      displayCity
+      displayState
+      fullAddress
+      venue
+      lonlat
+      createdAt
+      updatedAt
+      startDate
+      endDate
+      conventionId
       party {
         id
+        createdAt
+        disbanded
+        hostId
+        eventId
+        partyChat {
+          messages {
+            content
+          }
+        }
+        status
         members {
           id
+          gallery {
+            photos {
+              order
+              url
+            }
+          }
         }
       }
     }

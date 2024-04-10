@@ -17,7 +17,7 @@ class PartyModel with _$PartyModel {
     //members
   }) = _PartyModel;
 
-  factory PartyModel.initial() => PartyModel(
+  factory PartyModel.initial() => const PartyModel(
         id: '',
         disbanded: false,
         hostId: null,

@@ -131,14 +131,14 @@ class _ImageResources {
   /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/event_paid_icon.svg)
   final event_paid_icon = r'assets/images/events/event_paid_icon.svg';
 
+  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/globe.svg)
+  final globe = r'assets/images/events/globe.svg';
+
   /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/create_event_warning.png)
   final create_event_warning = r'assets/images/events/create_event_warning.png';
 
   /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/cosplay_bg_image.png)
   final cosplay_bg_image = r'assets/images/events/cosplay_bg_image.png';
-
-  /// ![](/Users/daniel/Desktop/work/senpai/assets/images/events/globe.svg)
-  final globe = r'assets/images/events/globe.svg';
 }
 
 class _SvgResources {

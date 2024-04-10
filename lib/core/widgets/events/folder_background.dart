@@ -6,8 +6,13 @@ class FolderBackground extends StatelessWidget {
   final double width;
   final double height;
   final Widget? child;
+  final Widget header;
   const FolderBackground(
-      {super.key, required this.width, required this.height, this.child});
+      {super.key,
+      required this.width,
+      required this.height,
+      this.child,
+      required this.header});
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +29,12 @@ class FolderBackground extends StatelessWidget {
             left: 0,
             child: ClipPath(
               clipper: FolderClipper(),
-              child: SizedBox(
-                width: width,
-                height: height,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: $constants.palette.darkBlue,
-                  ),
+              child: Container(
+                padding: EdgeInsets.all($constants.insets.sm),
+                decoration: BoxDecoration(
+                  color: $constants.palette.darkBlue,
                 ),
+                child: header,
               ),
             ),
           ),
