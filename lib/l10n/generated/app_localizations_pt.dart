@@ -1110,4 +1110,13 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get closedInvitesFilterTitle => '';
+
+  @override
+  String get manageSubscriptionTitle => 'Gerenciar assinatura';
+
+  @override
+  String get cancelAnytimeTitle => 'Cancelar a qualquer momento';
+
+  @override
+  String get conventionWebsiteText => '';
 }

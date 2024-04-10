@@ -1110,4 +1110,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get closedInvitesFilterTitle => '';
+
+  @override
+  String get manageSubscriptionTitle => 'サブスクリプションの管理';
+
+  @override
+  String get cancelAnytimeTitle => 'いつでもキャンセル';
+
+  @override
+  String get conventionWebsiteText => '';
 }

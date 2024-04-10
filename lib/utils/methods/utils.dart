@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:senpai/models/chat/chat_message.dart';
 import 'package:senpai/utils/constants.dart';
+import 'package:senpai/utils/methods/aliases.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Size getSize(BuildContext context) {
   return MediaQuery.of(context).size;
@@ -337,5 +339,15 @@ LatLng stringToLatLng(String? pointString) {
     return latLng;
   } else {
     return const LatLng(37.785834, -122.406417);
+  }
+}
+
+Future<void> launchExternalUrl(String urlString) async {
+  final Uri url = Uri.parse(urlString);
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    // Unable to launch the URL, you can handle this case as needed
+    logIt.error('Could not launch $urlString');
   }
 }

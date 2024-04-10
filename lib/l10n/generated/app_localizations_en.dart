@@ -1110,4 +1110,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get closedInvitesFilterTitle => 'Party filled';
+
+  @override
+  String get manageSubscriptionTitle => 'Manage Subscription';
+
+  @override
+  String get cancelAnytimeTitle => 'Cancel Anytime';
+
+  @override
+  String get conventionWebsiteText => 'convention website';
 }

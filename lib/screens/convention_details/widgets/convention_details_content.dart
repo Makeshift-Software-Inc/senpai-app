@@ -126,11 +126,14 @@ class ConventionDetailsContent extends StatelessWidget {
             color: $constants.palette.black,
             borderRadius: BorderRadius.circular($constants.corners.xlg),
           ),
-          child: Text(
-            conventionModel.website!,
-            style: getTextTheme(context).displaySmall!.copyWith(
-                  color: $constants.palette.white,
-                ),
+          child: GestureDetector(
+            onTap: () => launchExternalUrl(conventionModel.website!),
+            child: Text(
+              R.strings.conventionWebsiteText,
+              style: getTextTheme(context).displaySmall!.copyWith(
+                    color: $constants.palette.white,
+                  ),
+            ),
           ),
         )
       ],

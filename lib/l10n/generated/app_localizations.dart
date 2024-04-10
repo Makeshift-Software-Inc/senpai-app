@@ -2308,6 +2308,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Party filled'**
   String get closedInvitesFilterTitle;
+
+  /// No description provided for @manageSubscriptionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Subscription'**
+  String get manageSubscriptionTitle;
+
+  /// No description provided for @cancelAnytimeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel Anytime'**
+  String get cancelAnytimeTitle;
+
+  /// No description provided for @conventionWebsiteText.
+  ///
+  /// In en, this message translates to:
+  /// **'convention website'**
+  String get conventionWebsiteText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
