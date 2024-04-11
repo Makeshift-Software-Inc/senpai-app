@@ -28,22 +28,23 @@ class EventDetailsModel with _$EventDetailsModel {
   }) = _EventDetailsModel;
 
   factory EventDetailsModel.initial() => EventDetailsModel(
-      id: '',
-      title: '',
-      hostId: null,
-      description: '',
-      startDate: DateTime.now(),
-      coverImageUrl: '',
-      endDate: null,
-      lonlat: '',
-      fullAddress: '',
-      displayCity: '',
-      displayState: '',
-      country: '',
-      venue: '',
-      paymentRequired: false,
-      cosplayRequired: '',
-      party: null);
+        id: '',
+        title: '',
+        hostId: null,
+        description: '',
+        startDate: DateTime.now(),
+        coverImageUrl: '',
+        endDate: null,
+        lonlat: '',
+        fullAddress: '',
+        displayCity: '',
+        displayState: '',
+        country: '',
+        venue: '',
+        paymentRequired: false,
+        cosplayRequired: '',
+        party: null,
+      );
 
   factory EventDetailsModel.fromJson(Map<String, dynamic> json) =>
       _$EventDetailsModelFromJson(json);

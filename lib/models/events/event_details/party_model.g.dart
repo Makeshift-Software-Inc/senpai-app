@@ -13,6 +13,9 @@ _$PartyModelImpl _$$PartyModelImplFromJson(Map<String, dynamic> json) =>
       hostId: json['hostId'] as int?,
       eventId: json['eventId'] as int,
       status: json['status'] as String,
+      members: (json['members'] as List<dynamic>)
+          .map((e) => Member.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$PartyModelImplToJson(_$PartyModelImpl instance) =>
@@ -22,4 +25,5 @@ Map<String, dynamic> _$$PartyModelImplToJson(_$PartyModelImpl instance) =>
       'hostId': instance.hostId,
       'eventId': instance.eventId,
       'status': instance.status,
+      'members': instance.members,
     };

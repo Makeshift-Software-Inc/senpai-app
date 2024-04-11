@@ -81,7 +81,7 @@ class EventDetailsMembersWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              const EventDetailsPartisipantsList(),
+              EventDetailsPartisipantsList(),
             ],
           ),
         ),

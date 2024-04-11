@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:senpai/models/events/member/member_model.dart';
 
 part 'party_model.freezed.dart';
 
@@ -12,9 +13,9 @@ class PartyModel with _$PartyModel {
     int? hostId,
     required int eventId,
     required String status,
+    required List<Member> members,
 
     //partyChat
-    //members
   }) = _PartyModel;
 
   factory PartyModel.initial() => const PartyModel(
@@ -23,6 +24,7 @@ class PartyModel with _$PartyModel {
         hostId: null,
         eventId: 0,
         status: '',
+        members: [],
       );
 
   factory PartyModel.fromJson(Map<String, dynamic> json) =>

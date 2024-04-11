@@ -25,6 +25,7 @@ mixin _$PartyModel {
   int? get hostId => throw _privateConstructorUsedError;
   int get eventId => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
+  List<Member> get members => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +40,12 @@ abstract class $PartyModelCopyWith<$Res> {
       _$PartyModelCopyWithImpl<$Res, PartyModel>;
   @useResult
   $Res call(
-      {String id, bool disbanded, int? hostId, int eventId, String status});
+      {String id,
+      bool disbanded,
+      int? hostId,
+      int eventId,
+      String status,
+      List<Member> members});
 }
 
 /// @nodoc
@@ -60,6 +66,7 @@ class _$PartyModelCopyWithImpl<$Res, $Val extends PartyModel>
     Object? hostId = freezed,
     Object? eventId = null,
     Object? status = null,
+    Object? members = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -82,6 +89,10 @@ class _$PartyModelCopyWithImpl<$Res, $Val extends PartyModel>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      members: null == members
+          ? _value.members
+          : members // ignore: cast_nullable_to_non_nullable
+              as List<Member>,
     ) as $Val);
   }
 }
@@ -95,7 +106,12 @@ abstract class _$$PartyModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id, bool disbanded, int? hostId, int eventId, String status});
+      {String id,
+      bool disbanded,
+      int? hostId,
+      int eventId,
+      String status,
+      List<Member> members});
 }
 
 /// @nodoc
@@ -114,6 +130,7 @@ class __$$PartyModelImplCopyWithImpl<$Res>
     Object? hostId = freezed,
     Object? eventId = null,
     Object? status = null,
+    Object? members = null,
   }) {
     return _then(_$PartyModelImpl(
       id: null == id
@@ -136,6 +153,10 @@ class __$$PartyModelImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
+      members: null == members
+          ? _value._members
+          : members // ignore: cast_nullable_to_non_nullable
+              as List<Member>,
     ));
   }
 }
@@ -148,7 +169,9 @@ class _$PartyModelImpl implements _PartyModel {
       required this.disbanded,
       this.hostId,
       required this.eventId,
-      required this.status});
+      required this.status,
+      required final List<Member> members})
+      : _members = members;
 
   factory _$PartyModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$PartyModelImplFromJson(json);
@@ -163,10 +186,17 @@ class _$PartyModelImpl implements _PartyModel {
   final int eventId;
   @override
   final String status;
+  final List<Member> _members;
+  @override
+  List<Member> get members {
+    if (_members is EqualUnmodifiableListView) return _members;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_members);
+  }
 
   @override
   String toString() {
-    return 'PartyModel(id: $id, disbanded: $disbanded, hostId: $hostId, eventId: $eventId, status: $status)';
+    return 'PartyModel(id: $id, disbanded: $disbanded, hostId: $hostId, eventId: $eventId, status: $status, members: $members)';
   }
 
   @override
@@ -179,13 +209,14 @@ class _$PartyModelImpl implements _PartyModel {
                 other.disbanded == disbanded) &&
             (identical(other.hostId, hostId) || other.hostId == hostId) &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
-            (identical(other.status, status) || other.status == status));
+            (identical(other.status, status) || other.status == status) &&
+            const DeepCollectionEquality().equals(other._members, _members));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, disbanded, hostId, eventId, status);
+  int get hashCode => Object.hash(runtimeType, id, disbanded, hostId, eventId,
+      status, const DeepCollectionEquality().hash(_members));
 
   @JsonKey(ignore: true)
   @override
@@ -207,7 +238,8 @@ abstract class _PartyModel implements PartyModel {
       required final bool disbanded,
       final int? hostId,
       required final int eventId,
-      required final String status}) = _$PartyModelImpl;
+      required final String status,
+      required final List<Member> members}) = _$PartyModelImpl;
 
   factory _PartyModel.fromJson(Map<String, dynamic> json) =
       _$PartyModelImpl.fromJson;
@@ -222,6 +254,8 @@ abstract class _PartyModel implements PartyModel {
   int get eventId;
   @override
   String get status;
+  @override
+  List<Member> get members;
   @override
   @JsonKey(ignore: true)
   _$$PartyModelImplCopyWith<_$PartyModelImpl> get copyWith =>

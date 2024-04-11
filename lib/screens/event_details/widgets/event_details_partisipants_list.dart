@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:senpai/screens/event_details/bloc/event_details_bloc.dart';
 import 'package:senpai/utils/constants.dart';
 
 class EventDetailsPartisipantsList extends StatelessWidget {
@@ -8,6 +10,7 @@ class EventDetailsPartisipantsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = BlocProvider.of<EventDetailsBloc>(context);
     return Column(
       children: [
         Padding(
@@ -61,6 +64,7 @@ class EventDetailsPartisipantsList extends StatelessWidget {
                 ),
               ),
               //change on real date
+              // 4
               _buildCirleMember(
                 image:
                     'https://d2dafkwzq2hfgj.cloudfront.net/stage/noshoftktsasyebgiw2gvqpf1vvn',
