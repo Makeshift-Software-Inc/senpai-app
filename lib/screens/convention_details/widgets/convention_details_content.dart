@@ -80,7 +80,7 @@ class ConventionDetailsContent extends StatelessWidget {
           child: Align(
             alignment: Alignment.bottomCenter,
             child: EventDetailsHeader(
-              title: conventionModel.title,
+              title: "",
               subtitle:
                   '${conventionModel.displayCity}, ${conventionModel.displayState}',
               startDate: conventionModel.startDate,

@@ -1118,5 +1118,5 @@ class AppLocalizationsJa extends AppLocalizations {
   String get cancelAnytimeTitle => 'いつでもキャンセル';
 
   @override
-  String get conventionWebsiteText => '';
+  String get conventionWebsiteText => 'ウェブサイト';
 }

@@ -1118,5 +1118,5 @@ class AppLocalizationsPt extends AppLocalizations {
   String get cancelAnytimeTitle => 'Cancelar a qualquer momento';
 
   @override
-  String get conventionWebsiteText => '';
+  String get conventionWebsiteText => 'Site';
 }

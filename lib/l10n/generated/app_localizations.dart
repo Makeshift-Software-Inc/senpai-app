@@ -2324,7 +2324,7 @@ abstract class AppLocalizations {
   /// No description provided for @conventionWebsiteText.
   ///
   /// In en, this message translates to:
-  /// **'convention website'**
+  /// **'Website'**
   String get conventionWebsiteText;
 }
 
