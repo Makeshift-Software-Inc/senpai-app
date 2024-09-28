@@ -37,6 +37,7 @@ import 'package:senpai/screens/report_user/page/report_user_page.dart';
 import 'package:senpai/screens/signup/page/sign_up_page.dart';
 import 'package:senpai/screens/unity/page/unity_view.dart';
 import 'package:senpai/screens/unity/page/unity_view_videochat.dart';
+import 'package:senpai/screens/unity/page/unity_view_record.dart';
 import 'package:senpai/screens/verify_phone/page/verify_phone_page.dart';
 import 'package:senpai/screens/verify_photo/bloc/verify_photo_bloc.dart';
 import 'package:senpai/screens/verify_photo/camera_page/page/verify_camera_page.dart';
@@ -102,6 +103,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: VerifyPhotoRoute.page, path: '/verify_photo'),
         AutoRoute(page: UnityViewRoute.page, path: '/avatar_test'),
         AutoRoute(page: UnityViewVideoChatRoute.page, path: '/video_call'),
+        AutoRoute(page: UnityViewRecordRoute.page, path: '/video_record'),
         AutoRoute(page: HomeRoute.page, path: '/home', children: [
           AutoRoute(
             page: MatchRoute.page,

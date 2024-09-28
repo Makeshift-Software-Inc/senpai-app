@@ -255,6 +255,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+      UnityViewRecordRoute.name: (routeData) {
+      final args = routeData.argsAs<UnityViewRecordRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: UnityViewRecordPage(
+          key: args.key,
+          avatorGuid: args.avatorGuid,
+        ),
+      );
+    },
     UnityViewVideoChatRoute.name: (routeData) {
       final args = routeData.argsAs<UnityViewVideoChatRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -1180,6 +1190,56 @@ class UnityViewRouteArgs {
   }
 }
 
+
+
+
+
+/// generated route for
+/// [UnityViewRecordPage]
+class UnityViewRecordRoute extends PageRouteInfo<UnityViewRecordRouteArgs> {
+  UnityViewRecordRoute({
+    Key? key,
+    required String avatorGuid,
+    List<PageRouteInfo>? children,
+  }) : super(
+          UnityViewRecordRoute.name,
+          args: UnityViewRecordRouteArgs(
+            key: key,
+            avatorGuid: avatorGuid,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'UnityViewRecordRoute';
+
+  static const PageInfo<UnityViewRecordRouteArgs> page =
+      PageInfo<UnityViewRecordRouteArgs>(name);
+}
+
+class UnityViewRecordRouteArgs {
+  const UnityViewRecordRouteArgs({
+    this.key,
+    required this.avatorGuid,
+  });
+
+  final Key? key;
+
+  final String avatorGuid;
+
+  @override
+  String toString() {
+    return 'UnityViewRecordRouteArgs{key: $key, avatorGuid: $avatorGuid}';
+  }
+}
+
+
+
+
+
+
+
+
+
 /// generated route for
 /// [UnityViewVideoChatPage]
 class UnityViewVideoChatRoute
@@ -1218,6 +1278,8 @@ class UnityViewVideoChatRouteArgs {
     return 'UnityViewVideoChatRouteArgs{key: $key, matchData: $matchData}';
   }
 }
+
+
 
 /// generated route for
 /// [UploadPhotosManagerPage]

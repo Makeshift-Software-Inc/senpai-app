@@ -425,6 +425,58 @@ class _SettingsContentState extends State<SettingsContent> {
     );
   }
 
+
+
+  Widget _buildRecordAvatarButton(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        context.router.push(UnityViewRecordRoute(avatorGuid: selectedAvatarId));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              $constants.palette.emoteButtonStart,
+              $constants.palette.emoteButtonEnd,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+          borderRadius: BorderRadius.circular(getWidthSize(context, 0.14)),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(getWidthSize(context, 0.14)),
+          child: Padding(
+            padding: const EdgeInsets.all(1),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius:
+                      BorderRadius.circular(getWidthSize(context, 0.14))),
+              child: Padding(
+                padding: EdgeInsets.all(getWidthSize(context, 0.003)),
+                child: SizedBox(
+                  height: getWidthSize(context, 0.13),
+                  child: Center(
+                    child: Text(
+                      'Record Reel',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: getWidthSize(context, 0.0372),
+                          fontWeight: FontWeight.w800),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
+
   Widget _buildSetDefaultAvatarButton(BuildContext context) {
     return InkWell(
       onTap: () {
@@ -498,6 +550,8 @@ class _SettingsContentState extends State<SettingsContent> {
                   Expanded(child: _buildSetDefaultAvatarButton(context)),
                   const SizedBox(width: 11),
                   Expanded(child: _buildTestAvatarButton(context)),
+                   const SizedBox(width: 11),
+                  Expanded(child: _buildRecordAvatarButton(context))
                 ],
               ),
             // _buildFetchAvatarsShopListeners(),

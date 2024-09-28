@@ -68,7 +68,9 @@ class EntryPage extends StatelessWidget {
                 //video chat
                 //context.router.replaceAll([UnityViewVideoChatRoute()]);
                 //avatar test
-                // context.router.replaceAll([UnityViewRoute()]);
+                 //context.router.replaceAll([UnityViewRoute()]);
+                 //avatar record
+                 //context.router.replaceAll([UnityViewRecordRoute(avatorGuid: "")]);
               });
             }
             return const SizedBox.shrink();
