@@ -127,11 +127,11 @@ class __$$QueryEventErrorImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
     Object? result = null,
   }) {
     return _then(_$QueryEventErrorImpl<T>(
-      error: freezed == error
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as OperationException,
@@ -163,13 +163,12 @@ class _$QueryEventErrorImpl<T> implements _QueryEventError<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QueryEventErrorImpl<T> &&
-            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.error, error) || other.error == error) &&
             (identical(other.result, result) || other.result == result));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(error), result);
+  int get hashCode => Object.hash(runtimeType, error, result);
 
   @JsonKey(ignore: true)
   @override
@@ -983,10 +982,10 @@ class __$$QueryEventFetchMoreImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? options = freezed,
+    Object? options = null,
   }) {
     return _then(_$QueryEventFetchMoreImpl<T>(
-      options: freezed == options
+      options: null == options
           ? _value.options
           : options // ignore: cast_nullable_to_non_nullable
               as FetchMoreOptions,
@@ -1012,12 +1011,11 @@ class _$QueryEventFetchMoreImpl<T> implements _QueryEventFetchMore<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QueryEventFetchMoreImpl<T> &&
-            const DeepCollectionEquality().equals(other.options, options));
+            (identical(other.options, options) || other.options == options));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(options));
+  int get hashCode => Object.hash(runtimeType, options);
 
   @JsonKey(ignore: true)
   @override
@@ -1536,11 +1534,11 @@ class __$$QueryStateErrorImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
     Object? result = null,
   }) {
     return _then(_$QueryStateErrorImpl<T>(
-      error: freezed == error
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as OperationException,
@@ -1572,13 +1570,12 @@ class _$QueryStateErrorImpl<T> implements _QueryStateError<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QueryStateErrorImpl<T> &&
-            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.error, error) || other.error == error) &&
             (identical(other.result, result) || other.result == result));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(error), result);
+  int get hashCode => Object.hash(runtimeType, error, result);
 
   @JsonKey(ignore: true)
   @override

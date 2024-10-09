@@ -751,11 +751,11 @@ class __$$MutationFailedImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
     Object? result = null,
   }) {
     return _then(_$MutationFailedImpl<T>(
-      error: freezed == error
+      error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as OperationException,
@@ -787,13 +787,12 @@ class _$MutationFailedImpl<T> implements _MutationFailed<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MutationFailedImpl<T> &&
-            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.error, error) || other.error == error) &&
             (identical(other.result, result) || other.result == result));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(error), result);
+  int get hashCode => Object.hash(runtimeType, error, result);
 
   @JsonKey(ignore: true)
   @override
