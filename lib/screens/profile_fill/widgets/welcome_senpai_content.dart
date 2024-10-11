@@ -78,6 +78,7 @@ class WelcomeSenpaiContent extends StatelessWidget {
     return PrimaryButton(
       text: R.strings.fillProfileText,
       onPressed: () async {
+        print(bloc.user);
         await serverBloc.updateUserInfo(user: bloc.user);
       },
     );

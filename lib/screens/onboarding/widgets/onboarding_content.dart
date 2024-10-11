@@ -15,36 +15,37 @@ class OnboardingContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of<OnboardingBloc>(context);
-    return SafeArea(
-      child: Stack(
-        children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Container(
-              height: getSize(context).height * .4,
-              width: getSize(context).width,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage(
-                      PathConstants.onboardingBackground,
-                    ),
-                    fit: BoxFit.cover),
-              ),
+    return Stack(
+      children: [
+        Positioned(
+          bottom: 0,
+          left: 0,
+          child: Container(
+            height: getSize(context).height,
+            width: getSize(context).width,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(
+                    PathConstants.onboardingBackground,
+                  ),
+                  fit: BoxFit.cover),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: _createPageView(bloc.pageController, bloc),
-              ),
-              _createStatic(bloc),
-            ],
-          ),
-          _buildSkipButton(context),
-        ],
-      ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: _createPageView(bloc.pageController, bloc),
+            ),
+            _createStatic(bloc),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom,
+            )
+          ],
+        ),
+        _buildSkipButton(context),
+      ],
     );
   }
 
@@ -91,7 +92,7 @@ class OnboardingContent extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(20),
                       child: SvgPicture.asset(
-                        PathConstants.heart,
+                        PathConstants.arrowNext,
                         width: 40,
                         height: 40,
                         fit: BoxFit.contain,
@@ -110,34 +111,39 @@ class OnboardingContent extends StatelessWidget {
   }
 
   double _getPercent(int pageIndex) {
-    switch (pageIndex) {
-      case 0:
-        return 0.25;
-      case 1:
-        return 0.65;
-      case 2:
-        return 1;
-      default:
-        return 0;
-    }
+    return (pageIndex + 1) / DataConstants.onboardingTiles.length;
+    // switch (pageIndex) {
+    //   case 0:
+    //     return 0.25;
+    //   case 1:
+    //     return 0.65;
+    //   case 2:
+    //     return 1;
+    //   default:
+    //     return 0;
+    // }
   }
 
   Widget _buildSkipButton(BuildContext context) {
     final bloc = BlocProvider.of<OnboardingBloc>(context);
-    return SizedBox(
-      height: 40,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: $constants.insets.lg),
-        child: Align(
-          alignment: Alignment.centerRight,
-          child: TextButton(
-            child: Text(
-              R.strings.onboardingButtonText,
-              style: getTextTheme(context).displaySmall,
+    return Padding(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: SizedBox(
+        height: 40,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: $constants.insets.lg),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: TextButton(
+              child: Text(
+                R.strings.onboardingButtonText,
+                style: getTextTheme(context).displaySmall,
+              ),
+              onPressed: () {
+                bloc.add(PageChangedEvent(
+                    pageIndex: DataConstants.onboardingTiles.length - 1));
+              },
             ),
-            onPressed: () {
-              bloc.add(PageChangedEvent(pageIndex: 2));
-            },
           ),
         ),
       ),

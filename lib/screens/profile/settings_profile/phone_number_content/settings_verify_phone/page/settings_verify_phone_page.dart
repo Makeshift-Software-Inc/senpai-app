@@ -117,20 +117,20 @@ class SettingsVerifyPhonePage extends StatelessWidget {
             try {
               model = response["validatePhone"];
               String token = model["token"];
-              bool hasFilledProfile = model["profileFilled"];
+              // bool hasFilledProfile = model["profileFilled"];
               UserModel user = UserModel.fromJson(model["user"]);
-              final formBloc = BlocProvider.of<OTPFormBloc>(context);
-              formBloc.isProfileFilled = hasFilledProfile;
+              // final formBloc = BlocProvider.of<OTPFormBloc>(context);
+              // formBloc.isProfileFilled = hasFilledProfile;
 
               final storage = getIt<TokenStorage<AuthModel>>();
               storage.write(AuthModel(
                 token: token,
                 user: user,
-                isProfileFilled: hasFilledProfile,
+                // isProfileFilled: hasFilledProfile,
               ));
 
               settingsBloc.add(OnChangeIsVerifyPhone(isVerifyPhone: true));
-              context.router.pop();
+              context.router.maybePop();
             } catch (e) {
               logIt.error("Error accessing validatePhone from response: $e");
               model = null;

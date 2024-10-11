@@ -2,6 +2,7 @@ mutation updateUser($input: UpdateUserInput!) {
   updateUser(input: $input) {
     user {
       id
+      username
       phone
       role
       birthday

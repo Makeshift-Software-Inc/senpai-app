@@ -3,9 +3,12 @@ import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
 
 class OnboardingTile extends StatelessWidget {
-  final title, subTitle, imagePath;
-
-  const OnboardingTile({super.key, this.imagePath, this.title, this.subTitle});
+  const OnboardingTile({
+    super.key,
+    required this.imagePath,
+    required this.title,
+  });
+  final String title, imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -16,23 +19,26 @@ class OnboardingTile extends StatelessWidget {
           height: maxHeight,
           padding: EdgeInsets.symmetric(horizontal: $constants.insets.lg),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            // mainAxisAlignment: MainAxisAlignment.end,
             children: [
               _buildImage(),
-              SizedBox(
-                height: $constants.insets.md,
-              ),
+              // SizedBox(
+              //   height: $constants.insets.sm,
+              // ),
               Text(
                 title,
-                style: getTextTheme(context).displayMedium,
+                style: getTextTheme(context)
+                    .displayLarge
+                    ?.copyWith(fontSize: 28, height: 1.5),
+                textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: $constants.insets.sm,
+                height: $constants.insets.lg,
               ),
-              Text(
-                subTitle,
-                style: getTextTheme(context).displayLarge,
-              )
+              // Text(
+              //   subTitle,
+              //   style: getTextTheme(context).displayLarge,
+              // )
             ],
           ),
         );

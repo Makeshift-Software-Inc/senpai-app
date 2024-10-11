@@ -124,10 +124,12 @@ class VerifyPhotoProfileFillPage extends StatelessWidget {
                       AuthModel(
                         token: authModel.token,
                         user: authModel.user,
-                        isProfileFilled: true,
+                        // isProfileFilled: true,
                       ),
                     );
-                    context.router.replaceAll([HomeRoute()]);
+                    if (context.mounted) {
+                      context.router.replaceAll([HomeRoute()]);
+                    }
                   }
                 });
               });

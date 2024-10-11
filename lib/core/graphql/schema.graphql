@@ -2227,10 +2227,12 @@ type User {
   deviceInfos: [DeviceInfo!]
   displayCity: String
   displayState: String
+  email: String!
   encryptedPassword: String!
   events(page: Int!): [Event!]
   favoriteMusic: [FavoriteMusic!]
-  firstName: String!
+  firstName: String
+  fullName: String!
   gallery: Gallery
   gender: String
   hasLocationHidden: Boolean
@@ -2258,6 +2260,7 @@ type User {
   signInCount: Int!
   superLikeCount: Int
   updatedAt: ISO8601DateTime!
+  username: String!
   verified: Boolean!
   videoCallScore: Float
   videoMatches: [VideoMatch!]
@@ -2271,7 +2274,9 @@ input UserUpdateInput {
   bio: String
   birthday: ISO8601DateTime
   desiredGender: Int
+  email: String
   firstName: String
+  fullName: String
   gender: Int
   hasLocationHidden: Boolean
   isDisplayingActive: Boolean
@@ -2282,6 +2287,7 @@ input UserUpdateInput {
   school: String
   superLikeCount: Int
   userId: ID!
+  username: String
   verified: Boolean
 }
 
@@ -2305,7 +2311,6 @@ type ValidatePhonePayload {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
-  profileFilled: Boolean!
   token: String!
   user: User!
 }

@@ -8,6 +8,7 @@ class UpdateUserModel with _$UpdateUserModel {
   const factory UpdateUserModel({
     required String id,
     required String phone,
+    String? username,
     String? firstName,
     DateTime? birthday,
     int? gender,
@@ -23,6 +24,7 @@ class UpdateUserModel with _$UpdateUserModel {
   factory UpdateUserModel.initial() => const UpdateUserModel(
         id: '',
         phone: '',
+        username: '',
         firstName: '',
         birthday: null,
         gender: 0,

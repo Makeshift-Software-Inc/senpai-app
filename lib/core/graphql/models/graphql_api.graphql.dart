@@ -1039,7 +1039,7 @@ class FindVideoChatMatch$Mutation$FindVideoChatMatch$User$VideoMatches$Matchee
 
   late String id;
 
-  late String firstName;
+  String? firstName;
 
   @JsonKey(
       fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
@@ -1257,7 +1257,7 @@ class FindVideoChatMatch$Mutation$FindVideoChatMatch$User
 
   late String role;
 
-  late String firstName;
+  String? firstName;
 
   @JsonKey(
       fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
@@ -1729,7 +1729,7 @@ class LikeUser$Mutation$LikeUser$Match$Matchee extends JsonSerializable
 
   late String phone;
 
-  late String firstName;
+  String? firstName;
 
   late bool verified;
 
@@ -1798,7 +1798,7 @@ class LikeUser$Mutation$LikeUser$Match$User extends JsonSerializable
 
   late String phone;
 
-  late String firstName;
+  String? firstName;
 
   late bool verified;
 
@@ -2965,7 +2965,7 @@ class StartVideoMatchmaking$Mutation$StartVideoMatchmaking$User
 
   late String role;
 
-  late String firstName;
+  String? firstName;
 
   @JsonKey(
       fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
@@ -3280,7 +3280,7 @@ class StopVideoMatchmaking$Mutation$StopVideoMatchmaking$User
 
   late String role;
 
-  late String firstName;
+  String? firstName;
 
   @JsonKey(
       fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
@@ -3812,6 +3812,8 @@ class UpdateUser$Mutation$UpdateUser$User extends JsonSerializable
 
   late String id;
 
+  late String username;
+
   late String phone;
 
   late String role;
@@ -3842,6 +3844,7 @@ class UpdateUser$Mutation$UpdateUser$User extends JsonSerializable
   @override
   List<Object?> get props => [
         id,
+        username,
         phone,
         role,
         birthday,
@@ -3921,7 +3924,9 @@ class UserUpdateInput extends JsonSerializable with EquatableMixin {
     this.bio,
     this.birthday,
     this.desiredGender,
+    this.email,
     this.firstName,
+    this.fullName,
     this.gender,
     this.hasLocationHidden,
     this.isDisplayingActive,
@@ -3932,6 +3937,7 @@ class UserUpdateInput extends JsonSerializable with EquatableMixin {
     this.school,
     this.superLikeCount,
     required this.userId,
+    this.username,
     this.verified,
   });
 
@@ -3947,7 +3953,11 @@ class UserUpdateInput extends JsonSerializable with EquatableMixin {
 
   int? desiredGender;
 
+  String? email;
+
   String? firstName;
+
+  String? fullName;
 
   int? gender;
 
@@ -3969,6 +3979,8 @@ class UserUpdateInput extends JsonSerializable with EquatableMixin {
 
   late String userId;
 
+  String? username;
+
   bool? verified;
 
   @override
@@ -3976,7 +3988,9 @@ class UserUpdateInput extends JsonSerializable with EquatableMixin {
         bio,
         birthday,
         desiredGender,
+        email,
         firstName,
+        fullName,
         gender,
         hasLocationHidden,
         isDisplayingActive,
@@ -3987,6 +4001,7 @@ class UserUpdateInput extends JsonSerializable with EquatableMixin {
         school,
         superLikeCount,
         userId,
+        username,
         verified
       ];
 
@@ -4164,10 +4179,8 @@ class ValidatePhone$Mutation$ValidatePhone extends JsonSerializable
 
   late String token;
 
-  late bool profileFilled;
-
   @override
-  List<Object?> get props => [user, token, profileFilled];
+  List<Object?> get props => [user, token];
 
   @override
   Map<String, dynamic> toJson() =>
@@ -4432,7 +4445,7 @@ class FetchConversations$Query$FetchConversations$Match$User
 
   String? onlineStatus;
 
-  late String firstName;
+  String? firstName;
 
   FetchConversations$Query$FetchConversations$Match$User$Gallery? gallery;
 
@@ -4502,7 +4515,7 @@ class FetchConversations$Query$FetchConversations$Match$Matchee
 
   String? onlineStatus;
 
-  late String firstName;
+  String? firstName;
 
   FetchConversations$Query$FetchConversations$Match$Matchee$Gallery? gallery;
 
@@ -4999,7 +5012,7 @@ class FetchFeed$Query$FetchFeed extends JsonSerializable with EquatableMixin {
 
   late String phone;
 
-  late String firstName;
+  String? firstName;
 
   @JsonKey(
       fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
@@ -5356,7 +5369,7 @@ class FetchUser$Query$FetchUser extends JsonSerializable with EquatableMixin {
 
   late String role;
 
-  late String firstName;
+  String? firstName;
 
   @JsonKey(
       fromJson: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable,
@@ -9957,6 +9970,13 @@ final UPDATE_USER_MUTATION_DOCUMENT = DocumentNode(definitions: [
                 selectionSet: null,
               ),
               FieldNode(
+                name: NameNode(value: 'username'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
                 name: NameNode(value: 'phone'),
                 alias: null,
                 arguments: [],
@@ -10271,13 +10291,6 @@ final VALIDATE_PHONE_MUTATION_DOCUMENT = DocumentNode(definitions: [
           ),
           FieldNode(
             name: NameNode(value: 'token'),
-            alias: null,
-            arguments: [],
-            directives: [],
-            selectionSet: null,
-          ),
-          FieldNode(
-            name: NameNode(value: 'profileFilled'),
             alias: null,
             arguments: [],
             directives: [],

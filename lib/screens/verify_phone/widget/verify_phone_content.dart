@@ -36,7 +36,7 @@ class VerifyPhoneContent extends StatelessWidget {
                 children: [
                   SenpaiIconButton(
                     onPressed: () {
-                      context.router.pop();
+                      context.router.maybePop();
                     },
                     iconPath: PathConstants.backIcon,
                   )

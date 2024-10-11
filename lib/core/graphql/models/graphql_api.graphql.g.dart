@@ -740,7 +740,7 @@ FindVideoChatMatch$Mutation$FindVideoChatMatch$User$VideoMatches$Matchee
             Map<String, dynamic> json) =>
         FindVideoChatMatch$Mutation$FindVideoChatMatch$User$VideoMatches$Matchee()
           ..id = json['id'] as String
-          ..firstName = json['firstName'] as String
+          ..firstName = json['firstName'] as String?
           ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
               json['birthday'] as String?)
           ..gallery = json['gallery'] == null
@@ -908,7 +908,7 @@ FindVideoChatMatch$Mutation$FindVideoChatMatch$User
         FindVideoChatMatch$Mutation$FindVideoChatMatch$User()
           ..id = json['id'] as String
           ..role = json['role'] as String
-          ..firstName = json['firstName'] as String
+          ..firstName = json['firstName'] as String?
           ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
               json['birthday'] as String?)
           ..country = json['country'] as String?
@@ -1263,7 +1263,7 @@ LikeUser$Mutation$LikeUser$Match$Matchee
         LikeUser$Mutation$LikeUser$Match$Matchee()
           ..id = json['id'] as String
           ..phone = json['phone'] as String
-          ..firstName = json['firstName'] as String
+          ..firstName = json['firstName'] as String?
           ..verified = json['verified'] as bool
           ..gallery = json['gallery'] == null
               ? null
@@ -1319,7 +1319,7 @@ LikeUser$Mutation$LikeUser$Match$User
         LikeUser$Mutation$LikeUser$Match$User()
           ..id = json['id'] as String
           ..phone = json['phone'] as String
-          ..firstName = json['firstName'] as String
+          ..firstName = json['firstName'] as String?
           ..verified = json['verified'] as bool
           ..gallery = json['gallery'] == null
               ? null
@@ -2138,7 +2138,7 @@ StartVideoMatchmaking$Mutation$StartVideoMatchmaking$User
         StartVideoMatchmaking$Mutation$StartVideoMatchmaking$User()
           ..id = json['id'] as String
           ..role = json['role'] as String
-          ..firstName = json['firstName'] as String
+          ..firstName = json['firstName'] as String?
           ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
               json['birthday'] as String?)
           ..country = json['country'] as String?
@@ -2379,7 +2379,7 @@ StopVideoMatchmaking$Mutation$StopVideoMatchmaking$User
         StopVideoMatchmaking$Mutation$StopVideoMatchmaking$User()
           ..id = json['id'] as String
           ..role = json['role'] as String
-          ..firstName = json['firstName'] as String
+          ..firstName = json['firstName'] as String?
           ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
               json['birthday'] as String?)
           ..country = json['country'] as String?
@@ -2754,6 +2754,7 @@ UpdateUser$Mutation$UpdateUser$User
     _$UpdateUser$Mutation$UpdateUser$UserFromJson(Map<String, dynamic> json) =>
         UpdateUser$Mutation$UpdateUser$User()
           ..id = json['id'] as String
+          ..username = json['username'] as String
           ..phone = json['phone'] as String
           ..role = json['role'] as String
           ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
@@ -2773,6 +2774,7 @@ Map<String, dynamic> _$UpdateUser$Mutation$UpdateUser$UserToJson(
         UpdateUser$Mutation$UpdateUser$User instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'username': instance.username,
       'phone': instance.phone,
       'role': instance.role,
       'birthday': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
@@ -2831,7 +2833,9 @@ UserUpdateInput _$UserUpdateInputFromJson(Map<String, dynamic> json) =>
       birthday: fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
           json['birthday'] as String?),
       desiredGender: (json['desiredGender'] as num?)?.toInt(),
+      email: json['email'] as String?,
       firstName: json['firstName'] as String?,
+      fullName: json['fullName'] as String?,
       gender: (json['gender'] as num?)?.toInt(),
       hasLocationHidden: json['hasLocationHidden'] as bool?,
       isDisplayingActive: json['isDisplayingActive'] as bool?,
@@ -2842,6 +2846,7 @@ UserUpdateInput _$UserUpdateInputFromJson(Map<String, dynamic> json) =>
       school: json['school'] as String?,
       superLikeCount: (json['superLikeCount'] as num?)?.toInt(),
       userId: json['userId'] as String,
+      username: json['username'] as String?,
       verified: json['verified'] as bool?,
     );
 
@@ -2851,7 +2856,9 @@ Map<String, dynamic> _$UserUpdateInputToJson(UserUpdateInput instance) =>
       'birthday': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
           instance.birthday),
       'desiredGender': instance.desiredGender,
+      'email': instance.email,
       'firstName': instance.firstName,
+      'fullName': instance.fullName,
       'gender': instance.gender,
       'hasLocationHidden': instance.hasLocationHidden,
       'isDisplayingActive': instance.isDisplayingActive,
@@ -2862,6 +2869,7 @@ Map<String, dynamic> _$UserUpdateInputToJson(UserUpdateInput instance) =>
       'school': instance.school,
       'superLikeCount': instance.superLikeCount,
       'userId': instance.userId,
+      'username': instance.username,
       'verified': instance.verified,
     };
 
@@ -2982,15 +2990,13 @@ ValidatePhone$Mutation$ValidatePhone
         ValidatePhone$Mutation$ValidatePhone()
           ..user = ValidatePhone$Mutation$ValidatePhone$User.fromJson(
               json['user'] as Map<String, dynamic>)
-          ..token = json['token'] as String
-          ..profileFilled = json['profileFilled'] as bool;
+          ..token = json['token'] as String;
 
 Map<String, dynamic> _$ValidatePhone$Mutation$ValidatePhoneToJson(
         ValidatePhone$Mutation$ValidatePhone instance) =>
     <String, dynamic>{
       'user': instance.user.toJson(),
       'token': instance.token,
-      'profileFilled': instance.profileFilled,
     };
 
 ValidatePhone$Mutation _$ValidatePhone$MutationFromJson(
@@ -3164,7 +3170,7 @@ FetchConversations$Query$FetchConversations$Match$User
         FetchConversations$Query$FetchConversations$Match$User()
           ..id = json['id'] as String
           ..onlineStatus = json['onlineStatus'] as String?
-          ..firstName = json['firstName'] as String
+          ..firstName = json['firstName'] as String?
           ..gallery = json['gallery'] == null
               ? null
               : FetchConversations$Query$FetchConversations$Match$User$Gallery
@@ -3220,7 +3226,7 @@ FetchConversations$Query$FetchConversations$Match$Matchee
         FetchConversations$Query$FetchConversations$Match$Matchee()
           ..id = json['id'] as String
           ..onlineStatus = json['onlineStatus'] as String?
-          ..firstName = json['firstName'] as String
+          ..firstName = json['firstName'] as String?
           ..gallery = json['gallery'] == null
               ? null
               : FetchConversations$Query$FetchConversations$Match$Matchee$Gallery
@@ -3597,7 +3603,7 @@ FetchFeed$Query$FetchFeed _$FetchFeed$Query$FetchFeedFromJson(
     FetchFeed$Query$FetchFeed()
       ..id = json['id'] as String
       ..phone = json['phone'] as String
-      ..firstName = json['firstName'] as String
+      ..firstName = json['firstName'] as String?
       ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
           json['birthday'] as String?)
       ..premium = json['premium'] as bool
@@ -3850,7 +3856,7 @@ FetchUser$Query$FetchUser _$FetchUser$Query$FetchUserFromJson(
     FetchUser$Query$FetchUser()
       ..id = json['id'] as String
       ..role = json['role'] as String
-      ..firstName = json['firstName'] as String
+      ..firstName = json['firstName'] as String?
       ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
           json['birthday'] as String?)
       ..country = json['country'] as String?

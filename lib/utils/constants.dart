@@ -136,9 +136,11 @@ class _Palette {
   final emoteButtonEnd = const Color(0xFF1D80EE);
   final buyButtonStart = const Color(0xFFD9AD0F);
   final buyButtonEnd = const Color(0xFFEE811D);
-  final buttonBackground = const Color(0xB214161D);
+  final buttonBackground = const Color(0xFFff3500);
   final appBackground = const Color(0xFF14161D);
-  final progressBackground = const Color(0xFF1F2542);
+  final progressBackground = const Color(0xFF353535);
+  final progressStartColor = const Color(0xFFFBA430);
+  final progressEndColor = const Color(0xFFFF3500);
   final buttonBorder = const Color(0xFF363B4B);
 
   final loadingBackground = const Color(0x4414161D);

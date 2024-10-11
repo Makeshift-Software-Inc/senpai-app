@@ -35,15 +35,17 @@ class EntryPage extends StatelessWidget {
     final storage = getIt<TokenStorage<AuthModel>>();
     await storage.read().then((authModel) {
       if (authModel != null) {
-        if (authModel.isProfileFilled == true) {
-          // Assuming this method exists in your SignInBloc
-          bloc.signInExistingUser(authModel.token);
-        } else {
+        // if (authModel.isProfileFilled == true) {
+        //   // Assuming this method exists in your SignInBloc
+        //   bloc.signInExistingUser(authModel.token);
+        // } else {//
+        if (context.mounted) {
           context.router.push(ProfileFillRoute(
             id: authModel.user.id,
             phone: authModel.user.phone,
           ));
         }
+        // }
       }
     });
   }

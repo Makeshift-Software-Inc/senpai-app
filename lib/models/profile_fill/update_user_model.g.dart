@@ -11,6 +11,7 @@ _$UpdateUserModelImpl _$$UpdateUserModelImplFromJson(
     _$UpdateUserModelImpl(
       id: json['id'] as String,
       phone: json['phone'] as String,
+      username: json['username'] as String?,
       firstName: json['firstName'] as String?,
       birthday: json['birthday'] == null
           ? null
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$UpdateUserModelImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'phone': instance.phone,
+      'username': instance.username,
       'firstName': instance.firstName,
       'birthday': instance.birthday?.toIso8601String(),
       'gender': instance.gender,

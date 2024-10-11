@@ -6,7 +6,7 @@ part 'otp_form_state.dart';
 part 'otp_form_bloc.freezed.dart';
 
 class OTPFormBloc extends Bloc<OtpFormEvent, OtpFormState> {
-  bool isProfileFilled = false;
+  // bool isProfileFilled = false;
 
   OTPFormBloc()
       : super(

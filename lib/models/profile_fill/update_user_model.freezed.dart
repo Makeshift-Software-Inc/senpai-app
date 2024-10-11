@@ -22,6 +22,7 @@ UpdateUserModel _$UpdateUserModelFromJson(Map<String, dynamic> json) {
 mixin _$UpdateUserModel {
   String get id => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
   String? get firstName => throw _privateConstructorUsedError;
   DateTime? get birthday => throw _privateConstructorUsedError;
   int? get gender => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $UpdateUserModelCopyWith<$Res> {
   $Res call(
       {String id,
       String phone,
+      String? username,
       String? firstName,
       DateTime? birthday,
       int? gender,
@@ -75,6 +77,7 @@ class _$UpdateUserModelCopyWithImpl<$Res, $Val extends UpdateUserModel>
   $Res call({
     Object? id = null,
     Object? phone = null,
+    Object? username = freezed,
     Object? firstName = freezed,
     Object? birthday = freezed,
     Object? gender = freezed,
@@ -95,6 +98,10 @@ class _$UpdateUserModelCopyWithImpl<$Res, $Val extends UpdateUserModel>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -150,6 +157,7 @@ abstract class _$$UpdateUserModelImplCopyWith<$Res>
   $Res call(
       {String id,
       String phone,
+      String? username,
       String? firstName,
       DateTime? birthday,
       int? gender,
@@ -175,6 +183,7 @@ class __$$UpdateUserModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? phone = null,
+    Object? username = freezed,
     Object? firstName = freezed,
     Object? birthday = freezed,
     Object? gender = freezed,
@@ -195,6 +204,10 @@ class __$$UpdateUserModelImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
       firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -245,6 +258,7 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
   const _$UpdateUserModelImpl(
       {required this.id,
       required this.phone,
+      this.username,
       this.firstName,
       this.birthday,
       this.gender,
@@ -263,6 +277,8 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
   final String id;
   @override
   final String phone;
+  @override
+  final String? username;
   @override
   final String? firstName;
   @override
@@ -286,7 +302,7 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
 
   @override
   String toString() {
-    return 'UpdateUserModel(id: $id, phone: $phone, firstName: $firstName, birthday: $birthday, gender: $gender, desiredGender: $desiredGender, occupation: $occupation, school: $school, bio: $bio, hasLocationHidden: $hasLocationHidden, isDisplayingRecentlyActive: $isDisplayingRecentlyActive, isDisplayingActive: $isDisplayingActive)';
+    return 'UpdateUserModel(id: $id, phone: $phone, username: $username, firstName: $firstName, birthday: $birthday, gender: $gender, desiredGender: $desiredGender, occupation: $occupation, school: $school, bio: $bio, hasLocationHidden: $hasLocationHidden, isDisplayingRecentlyActive: $isDisplayingRecentlyActive, isDisplayingActive: $isDisplayingActive)';
   }
 
   @override
@@ -296,6 +312,8 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
             other is _$UpdateUserModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.birthday, birthday) ||
@@ -323,6 +341,7 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
       runtimeType,
       id,
       phone,
+      username,
       firstName,
       birthday,
       gender,
@@ -353,6 +372,7 @@ abstract class _UpdateUserModel implements UpdateUserModel {
   const factory _UpdateUserModel(
       {required final String id,
       required final String phone,
+      final String? username,
       final String? firstName,
       final DateTime? birthday,
       final int? gender,
@@ -371,6 +391,8 @@ abstract class _UpdateUserModel implements UpdateUserModel {
   String get id;
   @override
   String get phone;
+  @override
+  String? get username;
   @override
   String? get firstName;
   @override

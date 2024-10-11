@@ -3,11 +3,13 @@ class PathConstants {
   static const String onboarding1 = 'assets/images/onboarding/onboarding_1.png';
   static const String onboarding2 = 'assets/images/onboarding/onboarding_2.png';
   static const String onboarding3 = 'assets/images/onboarding/onboarding_3.png';
+  static const String onboarding4 = 'assets/images/onboarding/onboarding_4.png';
 
   static const String logo = 'assets/icons/senpai_logo.png';
   static const String launcher = 'assets/icons/senpai_s.png';
 
   static const String heart = 'assets/images/onboarding/heart.svg';
+  static const String arrowNext = 'assets/images/onboarding/next_arrow.svg';
   static const String onboardingBackground =
       'assets/images/onboarding/onboarding_bg.png';
 

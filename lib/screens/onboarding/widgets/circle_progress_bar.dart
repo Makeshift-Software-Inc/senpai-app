@@ -2,6 +2,7 @@ import 'dart:math' as Math;
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter/painting.dart';
+import 'package:senpai/utils/constants.dart';
 
 /// Draws a circular animated progress bar.
 class CircleProgressBar extends StatefulWidget {
@@ -125,12 +126,15 @@ class CircleProgressBarPainter extends CustomPainter {
     final shortestSide =
         Math.min(constrainedSize.width, constrainedSize.height);
     final foregroundPaint = Paint()
-      ..shader = const LinearGradient(
-          colors: [Color(0xFFDE0BC9), Color(0xFF1286F0)],
+      ..shader = LinearGradient(
+          colors: [
+            $constants.palette.progressStartColor,
+            $constants.palette.progressEndColor
+          ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          transform: GradientRotation(135.62 * Math.pi / 180),
-          stops: [0.1585, 0.8491]).createShader(Rect.fromCenter(
+          transform: const GradientRotation(135.62 * Math.pi / 180),
+          stops: const [0.1585, 0.8491]).createShader(Rect.fromCenter(
         center: center,
         width: shortestSide,
         height: shortestSide,
