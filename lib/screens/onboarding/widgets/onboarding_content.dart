@@ -8,6 +8,7 @@ import 'package:senpai/screens/onboarding/bloc/onboarding_bloc.dart';
 import 'package:senpai/screens/onboarding/widgets/circle_progress_bar.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingContent extends StatelessWidget {
   const OnboardingContent({super.key});
@@ -54,13 +55,32 @@ class OnboardingContent extends StatelessWidget {
 
   Widget _createPageView(
       BuildContext context, PageController controller, OnboardingBloc bloc) {
-    return PageView(
-      scrollDirection: Axis.horizontal,
-      controller: controller,
-      children: DataConstants.getOnboardingTiles(context),
-      onPageChanged: (index) {
-        bloc.add(PageSwipedEvent(index: index));
-      },
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: PageView(
+            scrollDirection: Axis.horizontal,
+            controller: controller,
+            children: DataConstants.getOnboardingTiles(context),
+            onPageChanged: (index) {
+              bloc.add(PageSwipedEvent(index: index));
+            },
+          ),
+        ),
+        SizedBox(height: getWidthSize(context, 0.085)),
+        SmoothPageIndicator(
+          controller: controller, // The PageController
+          count: DataConstants.getOnboardingTiles(context)
+              .length, // Number of pages
+          effect: const ExpandingDotsEffect(
+            activeDotColor: Colors.white, // Color of active dot
+            dotColor: Colors.grey, // Color of inactive dots
+            dotHeight: 12, // Size of dots
+            dotWidth: 12,
+          ),
+        ),
+      ],
     );
   }
 

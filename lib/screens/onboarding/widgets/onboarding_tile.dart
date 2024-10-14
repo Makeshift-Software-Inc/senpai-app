@@ -33,7 +33,7 @@ class OnboardingTile extends StatelessWidget {
                 Text(
                   title ?? "",
                   style: TextStyle(
-                    fontSize: getWidthSize(context, 0.064),
+                    fontSize: getWidthSize(context, 0.06),
                     fontWeight: FontWeight.w700,
                   ),
                   textAlign: TextAlign.center,
