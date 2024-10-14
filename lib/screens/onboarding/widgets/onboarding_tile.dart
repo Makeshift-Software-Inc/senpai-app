@@ -6,9 +6,12 @@ class OnboardingTile extends StatelessWidget {
   const OnboardingTile({
     super.key,
     required this.imagePath,
-    required this.title,
+    this.title,
+    this.titleWidget,
   });
-  final String title, imagePath;
+  final String? title;
+  final String imagePath;
+  final Widget? titleWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -25,16 +28,16 @@ class OnboardingTile extends StatelessWidget {
               // SizedBox(
               //   height: $constants.insets.sm,
               // ),
-              Text(
-                title,
-                style: getTextTheme(context)
-                    .displayLarge
-                    ?.copyWith(fontSize: 28, height: 1.5),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: $constants.insets.lg,
-              ),
+              if (titleWidget != null) titleWidget!,
+              if (title != null)
+                Text(
+                  title ?? "",
+                  style: TextStyle(
+                    fontSize: getWidthSize(context, 0.06),
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               // Text(
               //   subTitle,
               //   style: getTextTheme(context).displayLarge,

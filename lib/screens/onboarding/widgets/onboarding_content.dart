@@ -8,6 +8,7 @@ import 'package:senpai/screens/onboarding/bloc/onboarding_bloc.dart';
 import 'package:senpai/screens/onboarding/widgets/circle_progress_bar.dart';
 import 'package:senpai/utils/constants.dart';
 import 'package:senpai/utils/methods/utils.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingContent extends StatelessWidget {
   const OnboardingContent({super.key});
@@ -32,11 +33,33 @@ class OnboardingContent extends StatelessWidget {
             ),
           ),
         ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Container(
+            height: getWidthSize(
+                context, 1.0827), // Setting the height from the bottom
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0x00141414),
+                  Color(0xFF141414)
+                ], // Both 0% and 100% use #141414
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+          ),
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: MediaQuery.of(context).padding.top,
+            ),
             Expanded(
-              child: _createPageView(bloc.pageController, bloc),
+              child: _createPageView(context, bloc.pageController, bloc),
             ),
             _createStatic(bloc),
             SizedBox(
@@ -44,19 +67,39 @@ class OnboardingContent extends StatelessWidget {
             )
           ],
         ),
-        _buildSkipButton(context),
+        // _buildSkipButton(context),
       ],
     );
   }
 
-  Widget _createPageView(PageController controller, OnboardingBloc bloc) {
-    return PageView(
-      scrollDirection: Axis.horizontal,
-      controller: controller,
-      children: DataConstants.onboardingTiles,
-      onPageChanged: (index) {
-        bloc.add(PageSwipedEvent(index: index));
-      },
+  Widget _createPageView(
+      BuildContext context, PageController controller, OnboardingBloc bloc) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: PageView(
+            scrollDirection: Axis.horizontal,
+            controller: controller,
+            children: DataConstants.getOnboardingTiles(context),
+            onPageChanged: (index) {
+              bloc.add(PageSwipedEvent(index: index));
+            },
+          ),
+        ),
+        SizedBox(height: getWidthSize(context, 0.085)),
+        SmoothPageIndicator(
+          controller: controller, // The PageController
+          count: DataConstants.getOnboardingTiles(context)
+              .length, // Number of pages
+          effect: const ExpandingDotsEffect(
+            activeDotColor: Colors.white, // Color of active dot
+            dotColor: Colors.grey, // Color of inactive dots
+            dotHeight: 12, // Size of dots
+            dotWidth: 12,
+          ),
+        ),
+      ],
     );
   }
 
@@ -74,8 +117,8 @@ class OnboardingContent extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 SizedBox(
-                  width: 100,
-                  height: 100,
+                  width: getWidthSize(context, 0.2347),
+                  height: getWidthSize(context, 0.2347),
                   child: CircleProgressBar(
                     backgroundColor: $constants.palette.progressBackground,
                     value: percent,
@@ -93,8 +136,8 @@ class OnboardingContent extends StatelessWidget {
                       padding: const EdgeInsets.all(20),
                       child: SvgPicture.asset(
                         PathConstants.arrowNext,
-                        width: 40,
-                        height: 40,
+                        width: getWidthSize(context, 0.088),
+                        height: getWidthSize(context, 0.088),
                         fit: BoxFit.contain,
                         alignment: Alignment.center,
                       ),
@@ -111,7 +154,7 @@ class OnboardingContent extends StatelessWidget {
   }
 
   double _getPercent(int pageIndex) {
-    return (pageIndex + 1) / DataConstants.onboardingTiles.length;
+    return (pageIndex + 1) / 4;
     // switch (pageIndex) {
     //   case 0:
     //     return 0.25;
@@ -140,8 +183,7 @@ class OnboardingContent extends StatelessWidget {
                 style: getTextTheme(context).displaySmall,
               ),
               onPressed: () {
-                bloc.add(PageChangedEvent(
-                    pageIndex: DataConstants.onboardingTiles.length - 1));
+                bloc.add(PageChangedEvent(pageIndex: 3));
               },
             ),
           ),

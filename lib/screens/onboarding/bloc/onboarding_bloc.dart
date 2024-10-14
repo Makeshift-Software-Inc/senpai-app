@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path/path.dart';
 import 'package:senpai/data/data_constants.dart';
 
 part 'onboarding_event.dart';
@@ -14,8 +15,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
 
   OnboardingBloc() : super(OnboardingInitial()) {
     on<PageChangedEvent>((event, emit) {
-      if (pageIndex == DataConstants.onboardingTiles.length - 1 ||
-          event.pageIndex == DataConstants.onboardingTiles.length - 1) {
+      if (pageIndex == 3 || event.pageIndex == 3) {
         if (Platform.isIOS) {
           emit(CheckAppTrackingTransparencyState());
         } else {
