@@ -33,6 +33,25 @@ class OnboardingContent extends StatelessWidget {
             ),
           ),
         ),
+        Positioned(
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Container(
+            height: getWidthSize(
+                context, 1.0827), // Setting the height from the bottom
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0x00141414),
+                  Color(0xFF141414)
+                ], // Both 0% and 100% use #141414
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+          ),
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
