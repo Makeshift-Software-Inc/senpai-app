@@ -10,8 +10,7 @@ class ExistingUserGuard extends AutoRouteGuard {
   // A method to check if the app has been opened before.
   Future<bool> hasOpenedAppBefore() async {
     final prefs = await SharedPreferences.getInstance();
-    return false;
-    // return prefs.getBool('hasOpenedAppBefore') ?? false;
+    return prefs.getBool('hasOpenedAppBefore') ?? false;
   }
 
   // A method to mark the app as opened.
