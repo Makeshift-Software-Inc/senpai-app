@@ -10,11 +10,11 @@ class DataConstants {
       OnboardingTile(
         titleWidget: Text.rich(
           TextSpan(
-            text: 'Hey there! Welcome to\n', // Normal text
+            text: 'Hey there! Welcome to\n',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w700,
-              fontSize: getWidthSize(context, 0.064), // Using context here
+              fontSize: getWidthSize(context, 0.064),
             ),
             children: <TextSpan>[
               TextSpan(
@@ -22,7 +22,7 @@ class DataConstants {
                 style: TextStyle(
                   color: Colors.red,
                   fontWeight: FontWeight.w700,
-                  fontSize: getWidthSize(context, 0.064), // Using context here
+                  fontSize: getWidthSize(context, 0.064),
                 ),
               ),
               TextSpan(
@@ -30,7 +30,7 @@ class DataConstants {
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w700,
-                  fontSize: getWidthSize(context, 0.064), // Using context here
+                  fontSize: getWidthSize(context, 0.064),
                 ),
               ),
             ],

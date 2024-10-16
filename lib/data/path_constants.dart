@@ -16,6 +16,8 @@ class PathConstants {
   static const String backIcon = 'assets/icons/back.svg';
 
   static const String profileBg = 'assets/images/profile/lines_bg.png';
+  // Login & Sign up
+  static const String loginIcon = 'assets/icons/login.svg';
 
   // Profile
   static const String senpaiLogoIcon = 'assets/icons/senpai_s.svg';

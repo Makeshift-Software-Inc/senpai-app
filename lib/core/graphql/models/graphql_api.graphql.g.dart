@@ -2754,7 +2754,6 @@ UpdateUser$Mutation$UpdateUser$User
     _$UpdateUser$Mutation$UpdateUser$UserFromJson(Map<String, dynamic> json) =>
         UpdateUser$Mutation$UpdateUser$User()
           ..id = json['id'] as String
-          ..username = json['username'] as String
           ..phone = json['phone'] as String
           ..role = json['role'] as String
           ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
@@ -2774,7 +2773,6 @@ Map<String, dynamic> _$UpdateUser$Mutation$UpdateUser$UserToJson(
         UpdateUser$Mutation$UpdateUser$User instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'username': instance.username,
       'phone': instance.phone,
       'role': instance.role,
       'birthday': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(

@@ -14,10 +14,16 @@ Setup flutter sdk: https://docs.flutter.dev/get-started/install
 
 Command to generate files: 
 
-1. `dart run build_runner build --delete-conflicting-outputs`
-2. `/bin/zsh ./localization_update.sh` <- Command to upload new translation from 
-https://localise.biz/ or you can go to the file and run the script right from there
+1. Build runner
+```sh
+dart run build_runner build --delete-conflicting-outputs
+```
 
+2. Command to upload new translation from 
+https://localise.biz/ or you can go to the file and run the script right from there
+```sh
+/bin/zsh ./localization_update.sh
+```
 
 ## Adding UnityIntegration for iOS
 

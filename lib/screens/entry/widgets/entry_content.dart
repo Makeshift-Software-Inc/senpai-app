@@ -44,7 +44,7 @@ class EntryContent extends StatelessWidget {
                     PrimaryButton(
                         text: R.strings.signUp,
                         onPressed: () {
-                          context.router.push(SignUpRoute(isExistingUser: false));
+                          context.router.push(const SignUpRoute());
                         }),
                     SizedBox(
                       height: $constants.insets.lg,
@@ -52,7 +52,7 @@ class EntryContent extends StatelessWidget {
                     SecondaryButton(
                         text: R.strings.signIn,
                         onPressed: () {
-                          context.router.push(SignUpRoute(isExistingUser: true));
+                          context.router.push(const SignUpRoute());
                         }),
                     SizedBox(
                       height: $constants.insets.lg,

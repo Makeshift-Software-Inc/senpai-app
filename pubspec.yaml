@@ -127,6 +127,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   smooth_page_indicator: ^1.2.0+3
+  flutter_keyboard_visibility: ^6.0.0
 
 dev_dependencies:
   r_resources: ^1.0.1

@@ -24,13 +24,31 @@ class SenpaiPhoneInput extends StatefulWidget {
   });
 
   @override
-  _SenpaiPhoneInputState createState() => _SenpaiPhoneInputState();
+  State<SenpaiPhoneInput> createState() => _SenpaiPhoneInputState();
 }
 
 class _SenpaiPhoneInputState extends State<SenpaiPhoneInput> {
   final focusNode = FocusNode();
 
   PhoneNumber number = PhoneNumber(isoCode: $constants.specials.defaultCountry);
+  bool hasFocus = false;
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.addListener(() {
+      setState(() {
+        hasFocus = focusNode.hasFocus;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -42,6 +60,7 @@ class _SenpaiPhoneInputState extends State<SenpaiPhoneInput> {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
+                  color: $constants.palette.bgInput,
                   borderRadius: BorderRadius.circular($constants.corners.md),
                   shape: BoxShape.rectangle,
                   border: Border.all(
@@ -51,6 +70,16 @@ class _SenpaiPhoneInputState extends State<SenpaiPhoneInput> {
                               ? $constants.palette.pink
                               : $constants.palette.buttonBorder,
                       width: 1.0),
+                  boxShadow: hasFocus
+                      ? [
+                          BoxShadow(
+                            color: Colors.white.withOpacity(0.2),
+                            blurRadius: 8.0,
+                            spreadRadius: 1.0,
+                            offset: const Offset(0, 0),
+                          ),
+                        ]
+                      : [],
                   // Separator
                 ),
                 child: InternationalPhoneNumberInput(
@@ -80,6 +109,7 @@ class _SenpaiPhoneInputState extends State<SenpaiPhoneInput> {
                           BorderSide(color: $constants.palette.buttonBorder),
                     ),
                   ),
+                  spaceBetweenSelectorAndTextField: 0,
                 ),
               ),
             ),

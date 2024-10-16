@@ -15,9 +15,7 @@ import 'package:senpai/utils/methods/aliases.dart';
 
 @RoutePage()
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key, required this.isExistingUser});
-
-  final bool isExistingUser;
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +33,7 @@ class SignUpPage extends StatelessWidget {
         child: Scaffold(
           body: Stack(
             children: [
-              SignupContent(
-                isExistingUser: isExistingUser,
-              ),
+              const SignupContent(),
               _buildCreateUserListeners(),
               _buildSignInListeners(),
             ],

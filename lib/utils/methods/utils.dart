@@ -210,12 +210,12 @@ BoxDecoration profileBoxDecoration() {
   );
 }
 
-Color getCheckBoxColor(Set<MaterialState> states) {
-  const Set<MaterialState> interactiveStates = <MaterialState>{
-    MaterialState.selected,
+Color getCheckBoxColor(Set<WidgetState> states) {
+  const Set<WidgetState> interactiveStates = <WidgetState>{
+    WidgetState.selected,
   };
   if (states.any(interactiveStates.contains)) {
-    return $constants.palette.pink;
+    return $constants.palette.buttonBackground;
   }
   return $constants.palette.buttonBorder;
 }

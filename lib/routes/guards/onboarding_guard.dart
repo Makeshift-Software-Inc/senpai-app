@@ -29,7 +29,8 @@ class ExistingUserGuard extends AutoRouteGuard {
       resolver.next(true);
     } else {
       // If the app has been opened before, redirect to the EntryRoute.
-      await router.replaceAll([const EntryRoute()]);
+      // await router.replaceAll([const EntryRoute()]);
+      await router.replaceAll([const SignUpRoute()]);
     }
   }
 }
