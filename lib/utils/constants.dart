@@ -118,10 +118,15 @@ class _Palette {
   final pink = const Color(0xFFDE0BC9);
   final blue = const Color(0xFF1286F0);
   final blue2 = const Color(0xFF3559bd);
+  final bgLight = const Color(0xFF2B2B2B);
+  final bgButton = const Color(0x33ffffff);
+  final bgInput = const Color(0xff1e1e1e);
   final lightBlue = const Color(0xFF1A1D28);
   final darkBlue = const Color(0xFF0E1018);
   final grey = const Color(0xFFA9AFC2);
   final grey2 = const Color(0xFF98A1BB);
+  final grey3 = const Color(0xFFC1C1C1);
+  final grey4 = const Color(0xFFACACAC);
   final darkGrey = const Color(0xFF5B6277);
   final yellow = const Color(0xFFFFB200);
   final gold = const Color(0xFFE39F04);

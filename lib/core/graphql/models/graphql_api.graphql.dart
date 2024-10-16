@@ -3812,8 +3812,6 @@ class UpdateUser$Mutation$UpdateUser$User extends JsonSerializable
 
   late String id;
 
-  late String username;
-
   late String phone;
 
   late String role;
@@ -3844,7 +3842,6 @@ class UpdateUser$Mutation$UpdateUser$User extends JsonSerializable
   @override
   List<Object?> get props => [
         id,
-        username,
         phone,
         role,
         birthday,
@@ -9964,13 +9961,6 @@ final UPDATE_USER_MUTATION_DOCUMENT = DocumentNode(definitions: [
             selectionSet: SelectionSetNode(selections: [
               FieldNode(
                 name: NameNode(value: 'id'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'username'),
                 alias: null,
                 arguments: [],
                 directives: [],
