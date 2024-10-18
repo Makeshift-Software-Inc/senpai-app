@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:otp_pin_field/otp_pin_field.dart';
 import 'package:senpai/core/auth/blocs/resend_verification_code_bloc.dart';
 import 'package:senpai/core/widgets/icon_button.dart';
+import 'package:senpai/core/widgets/icon_rounded_button.dart';
 import 'package:senpai/core/widgets/primary_button.dart';
 import 'package:senpai/core/widgets/text_button.dart';
 import 'package:senpai/data/path_constants.dart';
@@ -21,65 +23,89 @@ class VerifyPhoneContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              SizedBox(
-                height: $constants.insets.xl,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SenpaiIconButton(
-                    onPressed: () {
-                      context.router.maybePop();
-                    },
-                    iconPath: PathConstants.backIcon,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: $constants.insets.lg,
-              ),
-              Text(
-                R.strings.verifyPhoneHeading,
-                style: getTextTheme(context)
-                    .headlineLarge
-                    ?.copyWith(color: $constants.palette.white),
-                textAlign: TextAlign.left,
-              ),
-              Text(
-                "${R.strings.verifyPhoneInstruction} $phone",
-                style: getTextTheme(context).labelMedium?.copyWith(
-                      color: $constants.palette.grey2,
-                    ),
-                textAlign: TextAlign.left,
-              ),
-              SizedBox(
-                height: $constants.insets.lg,
-              ),
-              _buildInputField(context),
-              SizedBox(
-                height: $constants.insets.sm,
-              ),
-              _buildResendAction(context),
-              SizedBox(
-                height: $constants.insets.lg,
-              ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: _buildSubmitButton(context),
+    return Container(
+      color: $constants.palette.bgLight,
+      child: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SizedBox(
+                  height: $constants.insets.xl,
                 ),
-              ),
-              SizedBox(
-                height: $constants.insets.sm,
-              ),
-            ]),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SenpaiIconRoundedButton(
+                      onPressed: () {
+                        context.router.maybePop();
+                      },
+                      iconPath: PathConstants.backIcon,
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: $constants.insets.sm,
+                ),
+                SvgPicture.asset(
+                  PathConstants.loginIcon,
+                  width: getWidthSize(context, 0.15),
+                  height: getWidthSize(context, 0.15),
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
+                ),
+                SizedBox(height: getWidthSize(context, 0.047)),
+                Text(
+                  "Enter Code Sent\nto Your Phone",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: getWidthSize(context, 0.064),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: getWidthSize(context, 0.032)),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: TextStyle(
+                      color: $constants.palette.grey3,
+                      fontWeight: FontWeight.w400,
+                      fontSize: getWidthSize(context, 0.037),
+                    ),
+                    children: [
+                      TextSpan(text: "${R.strings.verifyPhoneInstruction} "),
+                      TextSpan(
+                        text: phone,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: getWidthSize(context, 0.0853)),
+                _buildInputField(context),
+                SizedBox(
+                  height: $constants.insets.lg,
+                ),
+                _buildResendAction(context),
+                SizedBox(
+                  height: $constants.insets.lg,
+                ),
+                // Expanded(
+                //   child: Align(
+                //     alignment: Alignment.bottomCenter,
+                //     child: _buildSubmitButton(context),
+                //   ),
+                // ),
+                // SizedBox(
+                //   height: $constants.insets.sm,
+                // ),
+              ]),
+        ),
       ),
     );
   }
@@ -91,9 +117,8 @@ class VerifyPhoneContent extends StatelessWidget {
           currState.isError != prevState.isError,
       builder: (context, state) {
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _createError(context, state.isError),
             OtpPinField(
               autoFillEnable: false,
               textInputAction: TextInputAction.done,
@@ -109,17 +134,37 @@ class VerifyPhoneContent extends StatelessWidget {
               /// to decorate your Otp_Pin_Field
               otpPinFieldStyle: OtpPinFieldStyle(
                 /// border color for inactive/unfocused Otp_Pin_Field
-                defaultFieldBorderColor: state.isError
-                    ? $constants.palette.red
-                    : $constants.palette.buttonBorder,
+                activeFieldBorderColor: Colors.transparent,
+                defaultFieldBorderColor: Colors.transparent,
 
-                activeFieldBorderColor: state.isError
-                    ? $constants.palette.red
-                    : $constants.palette.buttonBorder,
+                activeFieldBoxShadow: [
+                  BoxShadow(
+                    color: state.isError
+                        ? $constants.palette.red.withOpacity(0.5)
+                        : Colors.white.withOpacity(0.6),
+                    blurRadius: 6,
+                    offset: const Offset(0, 0),
+                  ),
+                ],
+                defaultFieldBoxShadow: [
+                  if (state.isError)
+                    BoxShadow(
+                      color: $constants.palette.red.withOpacity(0.5),
+                      blurRadius: 6,
+                      offset: const Offset(0, 0),
+                    )
+                ],
 
-                textStyle: getTextTheme(context)
-                    .labelLarge!
-                    .copyWith(color: $constants.palette.white),
+                activeFieldBackgroundColor: $constants.palette.bgInput,
+                filledFieldBackgroundColor: $constants.palette.bgInput,
+                defaultFieldBackgroundColor: $constants.palette.bgInput,
+
+                textStyle: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  fontSize: getWidthSize(context, 0.053),
+                ),
+                fieldBorderRadius: getWidthSize(context, 0.032),
               ),
               maxLength: 6,
 
@@ -130,9 +175,12 @@ class VerifyPhoneContent extends StatelessWidget {
 
               /// to select cursor width
               mainAxisAlignment: MainAxisAlignment.start,
-              otpPinFieldDecoration:
-                  OtpPinFieldDecoration.underlinedPinBoxDecoration,
+              otpPinFieldDecoration: OtpPinFieldDecoration.custom,
             ),
+            SizedBox(
+              height: getWidthSize(context, 0.042),
+            ),
+            _createError(context, state.isError),
           ],
         );
       },
@@ -144,9 +192,11 @@ class VerifyPhoneContent extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 2),
       child: Text(
         isError ? R.strings.invalidCodeError : '',
-        style: getTextTheme(context)
-            .labelMedium
-            ?.copyWith(color: $constants.palette.red),
+        style: TextStyle(
+          color: $constants.palette.buttonBackground,
+          fontWeight: FontWeight.w500,
+          fontSize: getWidthSize(context, 0.032),
+        ),
       ),
     );
   }
@@ -159,7 +209,7 @@ class VerifyPhoneContent extends StatelessWidget {
           currState.isResendButtonActive != prevState.isResendButtonActive,
       builder: (context, state) {
         return Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (!state.isResendButtonActive)
               Countdown(
@@ -170,13 +220,15 @@ class VerifyPhoneContent extends StatelessWidget {
                   final int minutes = (totalSeconds ~/ 60) % 60;
                   final int seconds = totalSeconds % 60;
                   final formattedTime =
-                      '0$minutes:${seconds.toString().padLeft(2, '0')}';
+                      'Resend code in 0$minutes:${seconds.toString().padLeft(2, '0')}';
 
                   return Text(
                     formattedTime,
-                    style: getTextTheme(context)
-                        .labelMedium!
-                        .copyWith(color: $constants.palette.white),
+                    style: TextStyle(
+                      color: $constants.palette.grey5,
+                      fontWeight: FontWeight.w500,
+                      fontSize: getWidthSize(context, 0.037),
+                    ),
                   );
                 },
                 interval: const Duration(milliseconds: 100),
@@ -184,14 +236,24 @@ class VerifyPhoneContent extends StatelessWidget {
                   bloc.add(const OtpFormEvent.activateResend());
                 },
               ),
-            SenpaiTextButton(
-              text: R.strings.verifyCodeAction,
-              onPressed: () {
-                bloc.add(const OtpFormEvent.resend());
-                serviceBloc.resendCodeToPhoneNumber(phone);
-              },
-              enabled: state.isResendButtonActive,
-            )
+            if (state.isResendButtonActive)
+              Text(
+                "Code not received? ",
+                style: TextStyle(
+                  color: $constants.palette.grey5,
+                  fontWeight: FontWeight.w500,
+                  fontSize: getWidthSize(context, 0.037),
+                ),
+              ),
+            if (state.isResendButtonActive)
+              SenpaiTextButton(
+                text: "Resend",
+                onPressed: () {
+                  bloc.add(const OtpFormEvent.resend());
+                  serviceBloc.resendCodeToPhoneNumber(phone);
+                },
+                enabled: state.isResendButtonActive,
+              )
           ],
         );
       },

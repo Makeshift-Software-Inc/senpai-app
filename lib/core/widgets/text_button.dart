@@ -21,13 +21,15 @@ class SenpaiTextButton extends StatelessWidget {
     final enabledColor =
         $constants.palette.white; // Color when button is enabled
 
-    final textStyle = getTextTheme(context).labelMedium!.copyWith(
-          decoration: enabled ? TextDecoration.underline : TextDecoration.none,
-          color: enabled ? enabledColor : disabledColor,
-        );
+    final textStyle = TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.w500,
+      fontSize: getWidthSize(context, 0.037),
+      decoration: TextDecoration.underline,
+    );
 
-    return TextButton(
-      onPressed: enabled ? onPressed : null,
+    return InkWell(
+      onTap: enabled ? onPressed : null,
       child: Text(
         text,
         style: textStyle,

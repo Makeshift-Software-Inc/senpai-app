@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:senpai/l10n/resources.dart';
 import 'package:senpai/utils/methods/utils.dart';
@@ -7,6 +8,7 @@ import 'package:senpai/utils/methods/utils.dart';
 part 'sign_up_form_event.dart';
 part 'sign_up_form_state.dart';
 
+@injectable
 class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
   final phoneController = TextEditingController();
 
@@ -20,8 +22,7 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
         emit(ErrorState(message: '', isEnabled: false));
         emit(ValidState());
       } else {
-        emit(ErrorState(
-            message: R.strings.invalidPhoneError, isEnabled: true));
+        emit(ErrorState(message: R.strings.invalidPhoneError, isEnabled: true));
       }
       phoneNumber = event.phoneNumber;
     });
@@ -33,8 +34,7 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
         emit(LoadingState());
         emit(SignUpState());
       } else {
-        emit(ErrorState(
-            message: R.strings.invalidPhoneError, isEnabled: true));
+        emit(ErrorState(message: R.strings.invalidPhoneError, isEnabled: true));
       }
     });
 
