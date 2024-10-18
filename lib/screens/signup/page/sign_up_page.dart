@@ -12,6 +12,7 @@ import 'package:senpai/core/auth/blocs/create_user_bloc.dart';
 import 'package:senpai/screens/signup/bloc/sign_up_form/sign_up_form_bloc.dart';
 import 'package:senpai/screens/signup/widgets/sign_up_content.dart';
 import 'package:senpai/utils/methods/aliases.dart';
+import 'package:senpai/utils/methods/utils.dart';
 
 @RoutePage()
 class SignUpPage extends StatelessWidget {
@@ -27,72 +28,93 @@ class SignUpPage extends StatelessWidget {
         BlocProvider(
           create: (_) => getIt<ResendVerificationCodeBloc>(),
         ),
+        BlocProvider<SignUpFormBloc>(
+          create: (_) => getIt<SignUpFormBloc>(),
+        ),
       ],
-      child: BlocProvider<SignUpFormBloc>(
-        create: (context) => SignUpFormBloc(),
-        child: Scaffold(
-          body: Stack(
-            children: [
-              const SignupContent(),
-              _buildCreateUserListeners(),
-              _buildSignInListeners(),
-            ],
-          ),
+      child: Scaffold(
+        body: Stack(
+          children: [
+            const SignupContent(),
+            _buildCreateUserListeners(),
+            _buildSignInListeners(),
+          ],
         ),
       ),
     );
   }
 
   Widget _buildCreateUserListeners() {
-    return BlocListener<CreateUserBloc, MutationState>(
-      listener: (context, state) {
-        state.whenOrNull(
-          failed: (error, result) {
-            if (error.graphqlErrors.isNotEmpty) {
-              _showSnackBarError(
-                context,
-                R.strings.alreadyHasAccount,
-                isWarning: true,
+    return Builder(builder: (context) {
+      final formBloc = BlocProvider.of<SignUpFormBloc>(context);
+      final existingUserServiceBloc =
+          BlocProvider.of<ResendVerificationCodeBloc>(context);
+
+      return BlocListener<CreateUserBloc, MutationState>(
+        listener: (context, state) {
+          state.whenOrNull(
+            failed: (error, result) async {
+              print(error);
+              final phoneAlreadyTakenError = error.graphqlErrors.any(
+                (e) => e.message == 'Phone has already been taken',
               );
-            } else {
-              _showSnackBarError(context, R.strings.serverError);
-            }
-          },
-          succeeded: (data, result) {
-            final response = result.data;
-            if (response == null) {
-              logIt.wtf("A successful empty response just got recorded");
-              return;
-            }
-            dynamic model;
-            try {
-              model = response["createUser"]["user"];
-              if (model != null) {
-                String phone = model["phone"];
-                String id = model["id"];
-                context.router.push(VerifyPhoneRoute(phone: phone, id: id));
+
+              if (phoneAlreadyTakenError) {
+                if (isValidPhoneNumber(formBloc.phoneController.text)) {
+                  final String formattedPhone =
+                      formBloc.phoneNumber.phoneNumber!;
+                  await existingUserServiceBloc
+                      .resendCodeToPhoneNumber(formattedPhone);
+                }
+                return;
               }
-            } catch (e) {
-              logIt.error(
-                  "Error accessing createUser or user from response: $e");
-              model = null;
-            }
-            if (model == null) {
-              _showSnackBarError(context, R.strings.nullUser);
-              logIt.error("A user with error");
-            }
-          },
-        );
-      },
-      child: BlocBuilder<CreateUserBloc, MutationState>(
-        builder: (context, state) {
-          return state.maybeWhen<Widget>(
-            loading: () => const SenpaiLoading(),
-            orElse: () => const SizedBox.shrink(),
+
+              if (error.graphqlErrors.isNotEmpty) {
+                _showSnackBarError(
+                  context,
+                  R.strings.alreadyHasAccount,
+                  isWarning: true,
+                );
+              } else {
+                _showSnackBarError(context, R.strings.serverError);
+              }
+            },
+            succeeded: (data, result) {
+              final response = result.data;
+              if (response == null) {
+                logIt.wtf("A successful empty response just got recorded");
+                return;
+              }
+              dynamic model;
+              try {
+                model = response["createUser"]["user"];
+                if (model != null) {
+                  String phone = model["phone"];
+                  String id = model["id"];
+                  context.router.push(VerifyPhoneRoute(phone: phone, id: id));
+                }
+              } catch (e) {
+                logIt.error(
+                    "Error accessing createUser or user from response: $e");
+                model = null;
+              }
+              if (model == null) {
+                _showSnackBarError(context, R.strings.nullUser);
+                logIt.error("A user with error");
+              }
+            },
           );
         },
-      ),
-    );
+        child: BlocBuilder<CreateUserBloc, MutationState>(
+          builder: (context, state) {
+            return state.maybeWhen<Widget>(
+              loading: () => const SenpaiLoading(),
+              orElse: () => const SizedBox.shrink(),
+            );
+          },
+        ),
+      );
+    });
   }
 
   Widget _buildSignInListeners() {
@@ -100,6 +122,7 @@ class SignUpPage extends StatelessWidget {
       listener: (context, state) {
         state.whenOrNull(
           failed: (error, result) {
+            print(error);
             if (error.graphqlErrors.isNotEmpty) {
               _showSnackBarError(
                 context,

@@ -32,6 +32,9 @@ class _ImageResources {
   /// ![](/Volumes/Data/Work/Livia/Senpai/senpai-app/assets/images/onboarding/heart.svg)
   final heart = r'assets/images/onboarding/heart.svg';
 
+  /// ![](/Volumes/Data/Work/Livia/Senpai/senpai-app/assets/images/onboarding/next_arrow.svg)
+  final next_arrow = r'assets/images/onboarding/next_arrow.svg';
+
   /// ![](/Volumes/Data/Work/Livia/Senpai/senpai-app/assets/images/onboarding/onboarding_1.png)
   final onboarding_1 = r'assets/images/onboarding/onboarding_1.png';
 
@@ -40,6 +43,9 @@ class _ImageResources {
 
   /// ![](/Volumes/Data/Work/Livia/Senpai/senpai-app/assets/images/onboarding/onboarding_3.png)
   final onboarding_3 = r'assets/images/onboarding/onboarding_3.png';
+
+  /// ![](/Volumes/Data/Work/Livia/Senpai/senpai-app/assets/images/onboarding/onboarding_4.png)
+  final onboarding_4 = r'assets/images/onboarding/onboarding_4.png';
 
   /// ![](/Volumes/Data/Work/Livia/Senpai/senpai-app/assets/images/onboarding/onboarding_bg.png)
   final onboarding_bg = r'assets/images/onboarding/onboarding_bg.png';

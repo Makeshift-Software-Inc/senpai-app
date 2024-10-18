@@ -127,6 +127,7 @@ class _Palette {
   final grey2 = const Color(0xFF98A1BB);
   final grey3 = const Color(0xFFC1C1C1);
   final grey4 = const Color(0xFFACACAC);
+  final grey5 = const Color(0xFF8e8e8e);
   final darkGrey = const Color(0xFF5B6277);
   final yellow = const Color(0xFFFFB200);
   final gold = const Color(0xFFE39F04);

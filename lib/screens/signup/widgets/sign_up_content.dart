@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:senpai/core/auth/blocs/resend_verification_code_bloc.dart';
 import 'package:senpai/core/widgets/icon_rounded_button.dart';
 import 'package:senpai/core/widgets/phone_input.dart';
 import 'package:senpai/core/widgets/primary_button.dart';
@@ -51,7 +50,7 @@ class _SignupContentState extends State<SignupContent> {
                     ],
                   ),
                   SizedBox(
-                    height: $constants.insets.md,
+                    height: $constants.insets.sm,
                   ),
                   SvgPicture.asset(
                     PathConstants.loginIcon,
@@ -294,25 +293,19 @@ class _SignupContentState extends State<SignupContent> {
   Widget _buildSubmitButton(BuildContext context) {
     final formBloc = BlocProvider.of<SignUpFormBloc>(context);
     final serviceBloc = BlocProvider.of<CreateUserBloc>(context);
-    final existingUserServiceBloc =
-        BlocProvider.of<ResendVerificationCodeBloc>(context);
 
     return BlocBuilder<SignUpFormBloc, SignUpFormState>(
       builder: (context, state) {
         return PrimaryButton(
           text: R.strings.nextText,
           backgroundColor: $constants.palette.buttonBackground,
-          onPressed: () {
+          onPressed: () async {
             if (!formBloc.isAccepted) {
               return;
             }
             if (isValidPhoneNumber(formBloc.phoneController.text)) {
-              // final String formattedPhone = formBloc.phoneNumber.phoneNumber!;
-              // if (isExistingUser) {
-              //   existingUserServiceBloc.resendCodeToPhoneNumber(formattedPhone);
-              // } else {
-              //   serviceBloc.createUserWithPhoneNumber(formattedPhone);
-              // }
+              final String formattedPhone = formBloc.phoneNumber.phoneNumber!;
+              await serviceBloc.createUserWithPhoneNumber(formattedPhone);
             }
           },
         );
