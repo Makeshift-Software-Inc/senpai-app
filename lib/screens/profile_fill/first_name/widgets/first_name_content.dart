@@ -56,7 +56,7 @@ class FirstNameContent extends StatelessWidget {
       onTapBackButton: () {
         bloc.add(
           OnChangeStepEvent(
-            step: ProfileFillStep.welcome,
+            step: ProfileFillStep.userName,
           ),
         );
       },

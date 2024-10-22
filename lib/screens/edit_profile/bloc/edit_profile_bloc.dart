@@ -15,7 +15,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
   late UpdateUserModel updateUserModel = UpdateUserModel.initial();
   UserProfileModel userForPreview = UserProfileModel.initial();
 
-  TextEditingController firstNameController = TextEditingController();
+  TextEditingController fullNameController = TextEditingController();
   TextEditingController biographyController = TextEditingController();
 
   bool hideLocation = false;
@@ -29,17 +29,34 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       userForPreview = event.user;
       updateUserModel = event.user.toUpdateModel();
       hideLocation = event.user.hasLocationHidden == true;
-      firstNameController = TextEditingController(text: event.user.firstName);
+      fullNameController = TextEditingController(text: event.user.fullName);
       biographyController = TextEditingController(text: event.user.bio);
 
       emit(FetchSucssesfulState());
     });
 
-    on<OnFirstNameSaveEvent>((event, emit) {
+    // on<OnFirstNameSaveEvent>((event, emit) {
+    //   emit(LoadingEditProfileState());
+    //   if (event.firstName.isNotEmpty) {
+    //     updateUserModel = updateUserModel.copyWith(firstName: event.firstName);
+    //     userForPreview = userForPreview.copyWith(firstName: event.firstName);
+    //     emit(ValidState());
+    //   } else {
+    //     emit(
+    //       ErrorEditProfileNameState(
+    //         message: R.strings.invalidFirstNameError,
+    //       ),
+    //     );
+    //   }
+    // });
+
+    on<OnUsernameSaveEvent>((event, emit) {
       emit(LoadingEditProfileState());
-      if (event.firstName.isNotEmpty) {
-        updateUserModel = updateUserModel.copyWith(firstName: event.firstName);
-        userForPreview = userForPreview.copyWith(firstName: event.firstName);
+      if (event.username != null && event.username!.isNotEmpty) {
+        updateUserModel = updateUserModel.copyWith(
+            username: event.username, fullName: event.fullName);
+        userForPreview = userForPreview.copyWith(
+            username: event.username, fullName: event.fullName);
         emit(ValidState());
       } else {
         emit(

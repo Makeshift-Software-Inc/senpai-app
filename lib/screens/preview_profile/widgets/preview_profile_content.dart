@@ -113,7 +113,7 @@ class DesiredPreviewProfileContent extends StatelessWidget {
         SizedBox(height: $constants.insets.md),
         ActiveStatusWidget(activeStatus: bloc.user.onlineStatus),
         ProfileNameHeader(
-          name: bloc.user.firstName ?? '',
+          name: bloc.user.fullName ?? bloc.user.username ?? '',
           birthday: bloc.user.birthday,
           verified: bloc.user.verified,
           isCenter: false,

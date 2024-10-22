@@ -8,7 +8,9 @@ extension UserModelMapper on UserProfileModel {
     return UpdateUserModel(
       id: id,
       phone: phone,
-      firstName: firstName,
+      fullName: fullName,
+      username: username,
+      email: email,
       birthday: birthday,
       gender: genderFromServerString(gender),
       desiredGender: desiredGenderFromServerString(desiredGender),

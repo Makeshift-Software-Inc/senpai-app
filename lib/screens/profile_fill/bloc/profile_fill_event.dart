@@ -22,6 +22,19 @@ class OnFirstNameSaveEvent extends ProfileFillEvent {
   OnFirstNameSaveEvent({required this.firstName});
 }
 
+class OnUsernameSaveEvent extends ProfileFillEvent {
+  final String username;
+  final String? fullName;
+
+  OnUsernameSaveEvent({required this.username, this.fullName});
+}
+
+class OnEmailSaveEvent extends ProfileFillEvent {
+  final String email;
+
+  OnEmailSaveEvent({required this.email});
+}
+
 class OnBirthdaySaveEvent extends ProfileFillEvent {
   final DateTime? birthday;
 

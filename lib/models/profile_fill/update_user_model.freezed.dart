@@ -23,7 +23,8 @@ mixin _$UpdateUserModel {
   String get id => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
-  String? get firstName => throw _privateConstructorUsedError;
+  String? get fullName => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   DateTime? get birthday => throw _privateConstructorUsedError;
   int? get gender => throw _privateConstructorUsedError;
   int? get desiredGender => throw _privateConstructorUsedError;
@@ -50,7 +51,8 @@ abstract class $UpdateUserModelCopyWith<$Res> {
       {String id,
       String phone,
       String? username,
-      String? firstName,
+      String? fullName,
+      String? email,
       DateTime? birthday,
       int? gender,
       int? desiredGender,
@@ -78,7 +80,8 @@ class _$UpdateUserModelCopyWithImpl<$Res, $Val extends UpdateUserModel>
     Object? id = null,
     Object? phone = null,
     Object? username = freezed,
-    Object? firstName = freezed,
+    Object? fullName = freezed,
+    Object? email = freezed,
     Object? birthday = freezed,
     Object? gender = freezed,
     Object? desiredGender = freezed,
@@ -102,9 +105,13 @@ class _$UpdateUserModelCopyWithImpl<$Res, $Val extends UpdateUserModel>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
+      fullName: freezed == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       birthday: freezed == birthday
           ? _value.birthday
@@ -158,7 +165,8 @@ abstract class _$$UpdateUserModelImplCopyWith<$Res>
       {String id,
       String phone,
       String? username,
-      String? firstName,
+      String? fullName,
+      String? email,
       DateTime? birthday,
       int? gender,
       int? desiredGender,
@@ -184,7 +192,8 @@ class __$$UpdateUserModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? phone = null,
     Object? username = freezed,
-    Object? firstName = freezed,
+    Object? fullName = freezed,
+    Object? email = freezed,
     Object? birthday = freezed,
     Object? gender = freezed,
     Object? desiredGender = freezed,
@@ -208,9 +217,13 @@ class __$$UpdateUserModelImplCopyWithImpl<$Res>
           ? _value.username
           : username // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
+      fullName: freezed == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       birthday: freezed == birthday
           ? _value.birthday
@@ -259,7 +272,8 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
       {required this.id,
       required this.phone,
       this.username,
-      this.firstName,
+      this.fullName,
+      this.email,
       this.birthday,
       this.gender,
       this.desiredGender,
@@ -280,7 +294,9 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
   @override
   final String? username;
   @override
-  final String? firstName;
+  final String? fullName;
+  @override
+  final String? email;
   @override
   final DateTime? birthday;
   @override
@@ -302,7 +318,7 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
 
   @override
   String toString() {
-    return 'UpdateUserModel(id: $id, phone: $phone, username: $username, firstName: $firstName, birthday: $birthday, gender: $gender, desiredGender: $desiredGender, occupation: $occupation, school: $school, bio: $bio, hasLocationHidden: $hasLocationHidden, isDisplayingRecentlyActive: $isDisplayingRecentlyActive, isDisplayingActive: $isDisplayingActive)';
+    return 'UpdateUserModel(id: $id, phone: $phone, username: $username, fullName: $fullName, email: $email, birthday: $birthday, gender: $gender, desiredGender: $desiredGender, occupation: $occupation, school: $school, bio: $bio, hasLocationHidden: $hasLocationHidden, isDisplayingRecentlyActive: $isDisplayingRecentlyActive, isDisplayingActive: $isDisplayingActive)';
   }
 
   @override
@@ -314,8 +330,9 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.username, username) ||
                 other.username == username) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.birthday, birthday) ||
                 other.birthday == birthday) &&
             (identical(other.gender, gender) || other.gender == gender) &&
@@ -342,7 +359,8 @@ class _$UpdateUserModelImpl implements _UpdateUserModel {
       id,
       phone,
       username,
-      firstName,
+      fullName,
+      email,
       birthday,
       gender,
       desiredGender,
@@ -373,7 +391,8 @@ abstract class _UpdateUserModel implements UpdateUserModel {
       {required final String id,
       required final String phone,
       final String? username,
-      final String? firstName,
+      final String? fullName,
+      final String? email,
       final DateTime? birthday,
       final int? gender,
       final int? desiredGender,
@@ -394,7 +413,9 @@ abstract class _UpdateUserModel implements UpdateUserModel {
   @override
   String? get username;
   @override
-  String? get firstName;
+  String? get fullName;
+  @override
+  String? get email;
   @override
   DateTime? get birthday;
   @override

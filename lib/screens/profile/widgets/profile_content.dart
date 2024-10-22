@@ -61,7 +61,7 @@ class ProfileContent extends StatelessWidget {
                 avatar: isUserHasPhotos
                     ? bloc.user.gallery!.photos.first.url ?? ''
                     : '',
-                name: bloc.user.firstName ?? '',
+                name: bloc.user.fullName ?? bloc.user.username ?? '',
                 birthday: bloc.user.birthday,
                 verified: bloc.user.verified,
                 isAdmin: bloc.user.role == 'admin',

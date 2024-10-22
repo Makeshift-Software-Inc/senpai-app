@@ -9,10 +9,17 @@ class OnFetchUser extends EditProfileEvent {
   OnFetchUser({required this.user});
 }
 
-class OnFirstNameSaveEvent extends EditProfileEvent {
-  final String firstName;
+// class OnFirstNameSaveEvent extends EditProfileEvent {
+//   final String firstName;
+//
+//   OnFirstNameSaveEvent({required this.firstName});
+// }
 
-  OnFirstNameSaveEvent({required this.firstName});
+class OnUsernameSaveEvent extends EditProfileEvent {
+  final String? username;
+  final String? fullName;
+
+  OnUsernameSaveEvent({this.username, this.fullName});
 }
 
 class OnBiographySaveEvent extends EditProfileEvent {

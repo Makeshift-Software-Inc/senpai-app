@@ -58,7 +58,8 @@ class MatchUsersContent extends StatelessWidget {
 
   List<Widget> _buildHeaderLayer(BuildContext context) {
     final bloc = BlocProvider.of<MatchUsersBloc>(context);
-    final name = bloc.likeUserModel.match?.matchee?.firstName ?? '';
+    final name = bloc.likeUserModel.match?.matchee?.fullName ??
+        bloc.likeUserModel.match?.matchee?.username;
     return [
       Container(
         alignment: Alignment.centerRight,

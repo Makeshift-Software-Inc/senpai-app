@@ -14,7 +14,9 @@ part 'profile_fill_event.dart';
 part 'profile_fill_state.dart';
 
 enum ProfileFillStep {
-  welcome,
+  // welcome,
+  userName,
+  email,
   firstName,
   birthday,
   gender,
@@ -29,7 +31,7 @@ enum ProfileFillStep {
 }
 
 class ProfileFillBloc extends Bloc<ProfileFillEvent, ProfileFillState> {
-  ProfileFillStep step = ProfileFillStep.welcome;
+  ProfileFillStep step = ProfileFillStep.userName;
   UpdateUserModel user = UpdateUserModel.initial();
   List<UploadPhotoModel> uploadedPhotos = [];
   LocationUserModel? location;
@@ -51,9 +53,26 @@ class ProfileFillBloc extends Bloc<ProfileFillEvent, ProfileFillState> {
       emit(ChangedStepSucssesfulState());
     });
 
-    on<OnFirstNameSaveEvent>((event, emit) {
-      if (event.firstName.isNotEmpty) {
-        user = user.copyWith(firstName: event.firstName);
+    on<OnUsernameSaveEvent>((event, emit) {
+      if (event.username.isNotEmpty) {
+        user =
+            user.copyWith(username: event.username, fullName: event.fullName);
+        step = ProfileFillStep.email;
+        emit(LoadingProfileFillState());
+        emit(ChangedStepSucssesfulState());
+      } else {
+        emit(
+          ErrorProfileFillState(
+            message: R.strings.serverError,
+            isEnabled: true,
+          ),
+        );
+      }
+    });
+
+    on<OnEmailSaveEvent>((event, emit) {
+      if (event.email.isNotEmpty) {
+        user = user.copyWith(email: event.email);
         step = ProfileFillStep.birthday;
         emit(LoadingProfileFillState());
         emit(ChangedStepSucssesfulState());

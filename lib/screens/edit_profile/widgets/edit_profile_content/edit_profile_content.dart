@@ -124,9 +124,9 @@ class EditProfileContent extends StatelessWidget {
     final bloc = BlocProvider.of<EditProfileBloc>(context);
     return EditProfileInputWidget(
       placeholder: R.strings.nameTitle,
-      controller: bloc.firstNameController,
-      onTextChanged: (String firstName) {
-        bloc.add(OnFirstNameSaveEvent(firstName: firstName));
+      controller: bloc.fullNameController,
+      onTextChanged: (String fullName) {
+        bloc.add(OnUsernameSaveEvent(fullName: fullName));
       },
       errorText: R.strings.invalidFirstNameError,
       isError: state is ErrorEditProfileNameState,

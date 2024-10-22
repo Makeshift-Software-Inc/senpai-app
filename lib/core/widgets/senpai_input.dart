@@ -32,28 +32,58 @@ class SenpaiInput extends StatefulWidget {
 
 class _SenpaiInputState extends State<SenpaiInput> {
   final focusNode = FocusNode();
+  bool hasFocus = false;
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.addListener(() {
+      setState(() {
+        hasFocus = focusNode.hasFocus;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _createError(context),
         Row(
           children: [
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
+                  color: $constants.palette.bgInput,
                   borderRadius: BorderRadius.circular($constants.corners.md),
                   shape: BoxShape.rectangle,
-                  border: Border.all(
-                    color: widget.isError
-                        ? $constants.palette.red
-                        : widget.isValid
-                            ? $constants.palette.pink
-                            : $constants.palette.buttonBorder,
-                    width: 1.0,
-                  ),
+                  // border: Border.all(
+                  //   color: widget.isError
+                  //       ? $constants.palette.red
+                  //       : widget.isValid
+                  //           ? Colors.transparent
+                  //           : $constants.palette.buttonBorder,
+                  //   width: 1.0,
+                  // ),
+                  boxShadow: widget.isError
+                      ? [
+                          BoxShadow(
+                            color: $constants.palette.red.withOpacity(0.8),
+                            blurRadius: 8.0,
+                            spreadRadius: 1.0,
+                            offset: const Offset(0, 0),
+                          ),
+                        ]
+                      : hasFocus
+                          ? [
+                              BoxShadow(
+                                color: Colors.white.withOpacity(0.2),
+                                blurRadius: 8.0,
+                                spreadRadius: 1.0,
+                                offset: const Offset(0, 0),
+                              ),
+                            ]
+                          : [],
                 ),
                 child: TextField(
                   readOnly: widget.onTap != null,
@@ -76,6 +106,7 @@ class _SenpaiInputState extends State<SenpaiInput> {
             ),
           ],
         ),
+        if (widget.isError) _createError(context),
       ],
     );
   }
@@ -94,12 +125,25 @@ class _SenpaiInputState extends State<SenpaiInput> {
 
   Widget _createError(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 2),
-      child: Text(
-        widget.isError ? widget.errorText : '',
-        style: getTextTheme(context)
-            .labelMedium
-            ?.copyWith(color: $constants.palette.red),
+      padding: EdgeInsets.only(bottom: 2, top: getWidthSize(context, 0.044)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.error,
+            color: $constants.palette.red,
+            size: getWidthSize(context, 0.045),
+          ),
+          SizedBox(width: getWidthSize(context, 0.025)),
+          Text(
+            widget.isError ? widget.errorText : '',
+            style: TextStyle(
+              color: $constants.palette.red,
+              fontWeight: FontWeight.w400,
+              fontSize: getWidthSize(context, 0.032),
+            ),
+          ),
+        ],
       ),
     );
   }

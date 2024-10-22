@@ -11,7 +11,9 @@ class UserProfileModel with _$UserProfileModel {
   const factory UserProfileModel({
     required String id,
     required String phone,
-    String? firstName,
+    String? fullName,
+    String? username,
+    String? email,
     String? country,
     String? role,
     DateTime? birthday,
@@ -40,7 +42,9 @@ class UserProfileModel with _$UserProfileModel {
   factory UserProfileModel.initial() => const UserProfileModel(
         id: '',
         phone: '',
-        firstName: '',
+        fullName: '',
+        username: '',
+        email: '',
         role: '',
         country: '',
         birthday: null,

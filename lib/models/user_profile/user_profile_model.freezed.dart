@@ -22,7 +22,9 @@ UserProfileModel _$UserProfileModelFromJson(Map<String, dynamic> json) {
 mixin _$UserProfileModel {
   String get id => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
-  String? get firstName => throw _privateConstructorUsedError;
+  String? get fullName => throw _privateConstructorUsedError;
+  String? get username => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
   String? get role => throw _privateConstructorUsedError;
   DateTime? get birthday => throw _privateConstructorUsedError;
@@ -63,7 +65,9 @@ abstract class $UserProfileModelCopyWith<$Res> {
   $Res call(
       {String id,
       String phone,
-      String? firstName,
+      String? fullName,
+      String? username,
+      String? email,
       String? country,
       String? role,
       DateTime? birthday,
@@ -106,7 +110,9 @@ class _$UserProfileModelCopyWithImpl<$Res, $Val extends UserProfileModel>
   $Res call({
     Object? id = null,
     Object? phone = null,
-    Object? firstName = freezed,
+    Object? fullName = freezed,
+    Object? username = freezed,
+    Object? email = freezed,
     Object? country = freezed,
     Object? role = freezed,
     Object? birthday = freezed,
@@ -140,9 +146,17 @@ class _$UserProfileModelCopyWithImpl<$Res, $Val extends UserProfileModel>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
+      fullName: freezed == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       country: freezed == country
           ? _value.country
@@ -263,7 +277,9 @@ abstract class _$$UserProfileModelImplCopyWith<$Res>
   $Res call(
       {String id,
       String phone,
-      String? firstName,
+      String? fullName,
+      String? username,
+      String? email,
       String? country,
       String? role,
       DateTime? birthday,
@@ -305,7 +321,9 @@ class __$$UserProfileModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? phone = null,
-    Object? firstName = freezed,
+    Object? fullName = freezed,
+    Object? username = freezed,
+    Object? email = freezed,
     Object? country = freezed,
     Object? role = freezed,
     Object? birthday = freezed,
@@ -339,9 +357,17 @@ class __$$UserProfileModelImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      firstName: freezed == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
+      fullName: freezed == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String?,
       country: freezed == country
           ? _value.country
@@ -445,7 +471,9 @@ class _$UserProfileModelImpl implements _UserProfileModel {
   const _$UserProfileModelImpl(
       {required this.id,
       required this.phone,
-      this.firstName,
+      this.fullName,
+      this.username,
+      this.email,
       this.country,
       this.role,
       this.birthday,
@@ -480,7 +508,11 @@ class _$UserProfileModelImpl implements _UserProfileModel {
   @override
   final String phone;
   @override
-  final String? firstName;
+  final String? fullName;
+  @override
+  final String? username;
+  @override
+  final String? email;
   @override
   final String? country;
   @override
@@ -546,7 +578,7 @@ class _$UserProfileModelImpl implements _UserProfileModel {
 
   @override
   String toString() {
-    return 'UserProfileModel(id: $id, phone: $phone, firstName: $firstName, country: $country, role: $role, birthday: $birthday, gender: $gender, desiredGender: $desiredGender, verified: $verified, occupation: $occupation, school: $school, bio: $bio, displayCity: $displayCity, displayState: $displayState, animes: $animes, gallery: $gallery, lonlat: $lonlat, onlineStatus: $onlineStatus, premium: $premium, superLikeCount: $superLikeCount, favoriteMusic: $favoriteMusic, hasLocationHidden: $hasLocationHidden, milesAway: $milesAway, nextPaymentDate: $nextPaymentDate, isDisplayingRecentlyActive: $isDisplayingRecentlyActive, isDisplayingActive: $isDisplayingActive)';
+    return 'UserProfileModel(id: $id, phone: $phone, fullName: $fullName, username: $username, email: $email, country: $country, role: $role, birthday: $birthday, gender: $gender, desiredGender: $desiredGender, verified: $verified, occupation: $occupation, school: $school, bio: $bio, displayCity: $displayCity, displayState: $displayState, animes: $animes, gallery: $gallery, lonlat: $lonlat, onlineStatus: $onlineStatus, premium: $premium, superLikeCount: $superLikeCount, favoriteMusic: $favoriteMusic, hasLocationHidden: $hasLocationHidden, milesAway: $milesAway, nextPaymentDate: $nextPaymentDate, isDisplayingRecentlyActive: $isDisplayingRecentlyActive, isDisplayingActive: $isDisplayingActive)';
   }
 
   @override
@@ -556,8 +588,11 @@ class _$UserProfileModelImpl implements _UserProfileModel {
             other is _$UserProfileModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.country, country) || other.country == country) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.birthday, birthday) ||
@@ -605,7 +640,9 @@ class _$UserProfileModelImpl implements _UserProfileModel {
         runtimeType,
         id,
         phone,
-        firstName,
+        fullName,
+        username,
+        email,
         country,
         role,
         birthday,
@@ -650,7 +687,9 @@ abstract class _UserProfileModel implements UserProfileModel {
   const factory _UserProfileModel(
       {required final String id,
       required final String phone,
-      final String? firstName,
+      final String? fullName,
+      final String? username,
+      final String? email,
       final String? country,
       final String? role,
       final DateTime? birthday,
@@ -683,7 +722,11 @@ abstract class _UserProfileModel implements UserProfileModel {
   @override
   String get phone;
   @override
-  String? get firstName;
+  String? get fullName;
+  @override
+  String? get username;
+  @override
+  String? get email;
   @override
   String? get country;
   @override
