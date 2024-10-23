@@ -73,9 +73,10 @@ class ProfileFillBloc extends Bloc<ProfileFillEvent, ProfileFillState> {
     on<OnEmailSaveEvent>((event, emit) {
       if (event.email.isNotEmpty) {
         user = user.copyWith(email: event.email);
-        step = ProfileFillStep.birthday;
+        // step = ProfileFillStep.verify;
+
         emit(LoadingProfileFillState());
-        emit(ChangedStepSucssesfulState());
+        emit(ProfileFillingDoneState(user: user));
       } else {
         emit(
           ErrorProfileFillState(

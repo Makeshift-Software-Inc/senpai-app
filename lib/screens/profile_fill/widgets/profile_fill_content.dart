@@ -52,7 +52,10 @@ class ProfileFillContent extends StatelessWidget {
     final bloc = BlocProvider.of<ProfileFillBloc>(context);
 
     if (bloc.step == ProfileFillStep.userName) {
-      return UsernamePage(username: bloc.user.username);
+      return UsernamePage(
+        username: bloc.user.username,
+        fullName: bloc.user.fullName,
+      );
     } else if (bloc.step == ProfileFillStep.email) {
       return EmailPage(email: bloc.user.email);
     } else if (bloc.step == ProfileFillStep.birthday) {

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:senpai/core/user/blocs/update_user/update_user_bloc.dart';
 import 'package:senpai/core/widgets/icon_rounded_button.dart';
 
 import 'package:senpai/core/widgets/primary_button.dart';
@@ -34,8 +35,13 @@ class EmailContent extends StatelessWidget {
                     children: [
                       SenpaiIconRoundedButton(
                         onPressed: () {
-                          FocusScope.of(context).unfocus();
-                          context.router.maybePop();
+                          final bloc =
+                              BlocProvider.of<ProfileFillBloc>(context);
+                          bloc.add(
+                            OnChangeStepEvent(
+                              step: ProfileFillStep.userName,
+                            ),
+                          );
                         },
                         iconPath: PathConstants.backIcon,
                       )
@@ -140,11 +146,24 @@ class EmailContent extends StatelessWidget {
     final bloc = BlocProvider.of<EmailBloc>(context);
     final blocProfileFill = BlocProvider.of<ProfileFillBloc>(context);
 
-    return BlocListener<EmailBloc, EmailState>(
-      listenWhen: (_, currState) => currState is EmailSuccessfulState,
-      listener: (context, state) {
-        blocProfileFill.add(OnEmailSaveEvent(email: bloc.email));
-      },
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<EmailBloc, EmailState>(
+          listenWhen: (_, currState) => currState is EmailSuccessfulState,
+          listener: (context, state) {
+            blocProfileFill.add(OnEmailSaveEvent(email: bloc.email));
+          },
+        ),
+        BlocListener<ProfileFillBloc, ProfileFillState>(
+          listenWhen: (_, currState) => currState is ProfileFillingDoneState,
+          listener: (context, state) {
+            if (state is ProfileFillingDoneState) {
+              final serverBloc = BlocProvider.of<UpdateUserBloc>(context);
+              serverBloc.updateUserInfo(user: state.user);
+            }
+          },
+        )
+      ],
       child: PrimaryButton(
         text: R.strings.nextText,
         backgroundColor: $constants.palette.buttonBackground,

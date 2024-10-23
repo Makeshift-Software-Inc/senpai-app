@@ -16,3 +16,8 @@ class ErrorProfileFillState extends ProfileFillState {
 class LoadingProfileFillState extends ProfileFillState {}
 
 class ChangedStepSucssesfulState extends ProfileFillState {}
+
+class ProfileFillingDoneState extends ProfileFillState {
+  final UpdateUserModel user;
+  ProfileFillingDoneState({required this.user});
+}
