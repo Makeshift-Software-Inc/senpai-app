@@ -19,66 +19,66 @@ class EmailContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SenpaiIconRoundedButton(
-                        onPressed: () {
-                          final bloc =
-                              BlocProvider.of<ProfileFillBloc>(context);
-                          bloc.add(
-                            OnChangeStepEvent(
-                              step: ProfileFillStep.userName,
-                            ),
-                          );
-                        },
-                        iconPath: PathConstants.backIcon,
-                      )
-                    ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    SizedBox(width: $constants.insets.sm),
+                    SenpaiIconRoundedButton(
+                      onPressed: () {
+                        final bloc = BlocProvider.of<ProfileFillBloc>(context);
+                        bloc.add(
+                          OnChangeStepEvent(
+                            step: ProfileFillStep.userName,
+                          ),
+                        );
+                      },
+                      iconPath: PathConstants.backIcon,
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: $constants.insets.sm,
+                ),
+                SvgPicture.asset(
+                  PathConstants.loginIcon,
+                  width: getWidthSize(context, 0.15),
+                  height: getWidthSize(context, 0.15),
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
+                ),
+                SizedBox(height: getWidthSize(context, 0.047)),
+                Text(
+                  "Add Your Email\nto Get Out Updates",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: getWidthSize(context, 0.064),
                   ),
-                  SizedBox(
-                    height: $constants.insets.sm,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: getWidthSize(context, 0.032)),
+                Text(
+                  "Get various updates from us\njust for you anime lovers",
+                  style: TextStyle(
+                    color: $constants.palette.grey3,
+                    fontWeight: FontWeight.w400,
+                    fontSize: getWidthSize(context, 0.037),
                   ),
-                  SvgPicture.asset(
-                    PathConstants.loginIcon,
-                    width: getWidthSize(context, 0.15),
-                    height: getWidthSize(context, 0.15),
-                    fit: BoxFit.contain,
-                    alignment: Alignment.center,
-                  ),
-                  SizedBox(height: getWidthSize(context, 0.047)),
-                  Text(
-                    "Add Your Email\nto Get Out Updates",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: getWidthSize(context, 0.064),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: getWidthSize(context, 0.032)),
-                  Text(
-                    "Get various updates from us\njust for you anime lovers",
-                    style: TextStyle(
-                      color: $constants.palette.grey3,
-                      fontWeight: FontWeight.w400,
-                      fontSize: getWidthSize(context, 0.037),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: getWidthSize(context, 0.085)),
-                  Row(
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: getWidthSize(context, 0.085)),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: $constants.insets.sm),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -101,25 +101,28 @@ class EmailContent extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: getWidthSize(context, 0.022)),
-                  _buildEmailInput(context),
-                  SizedBox(height: getWidthSize(context, 0.042)),
-                ],
-              ),
+                ),
+                SizedBox(height: getWidthSize(context, 0.022)),
+                _buildEmailInput(context),
+                SizedBox(height: getWidthSize(context, 0.042)),
+              ],
             ),
           ),
-          SizedBox(
-            height: $constants.insets.sm,
-          ),
-          Align(
+        ),
+        SizedBox(
+          height: $constants.insets.sm,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
+          child: Align(
             alignment: Alignment.bottomCenter,
             child: _buildSubmitButton(context),
           ),
-          SizedBox(
-            height: $constants.insets.sm,
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: $constants.insets.sm,
+        ),
+      ],
     );
   }
 

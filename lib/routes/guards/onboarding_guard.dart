@@ -21,7 +21,7 @@ class ExistingUserGuard extends AutoRouteGuard {
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
-    resolver.next(true);
+    // resolver.next(true);
     final hasOpenedBefore = await hasOpenedAppBefore();
     if (!hasOpenedBefore) {
       // If the app hasn't been opened before, mark it as opened and proceed.

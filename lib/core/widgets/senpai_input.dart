@@ -49,62 +49,59 @@ class _SenpaiInputState extends State<SenpaiInput> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: $constants.palette.bgInput,
-                  borderRadius: BorderRadius.circular($constants.corners.md),
-                  shape: BoxShape.rectangle,
-                  // border: Border.all(
-                  //   color: widget.isError
-                  //       ? $constants.palette.red
-                  //       : widget.isValid
-                  //           ? Colors.transparent
-                  //           : $constants.palette.buttonBorder,
-                  //   width: 1.0,
-                  // ),
-                  boxShadow: widget.isError
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
+          child: Container(
+            decoration: BoxDecoration(
+              color: $constants.palette.bgInput,
+              borderRadius: BorderRadius.circular($constants.corners.md),
+              shape: BoxShape.rectangle,
+              // border: Border.all(
+              //   color: widget.isError
+              //       ? $constants.palette.red
+              //       : widget.isValid
+              //           ? Colors.transparent
+              //           : $constants.palette.buttonBorder,
+              //   width: 1.0,
+              // ),
+              boxShadow: widget.isError
+                  ? [
+                      BoxShadow(
+                        color: $constants.palette.red.withOpacity(0.8),
+                        blurRadius: 8.0,
+                        spreadRadius: 1.0,
+                        offset: const Offset(0, 0),
+                      ),
+                    ]
+                  : hasFocus
                       ? [
                           BoxShadow(
-                            color: $constants.palette.red.withOpacity(0.8),
+                            color: Colors.white.withOpacity(0.2),
                             blurRadius: 8.0,
                             spreadRadius: 1.0,
                             offset: const Offset(0, 0),
                           ),
                         ]
-                      : hasFocus
-                          ? [
-                              BoxShadow(
-                                color: Colors.white.withOpacity(0.2),
-                                blurRadius: 8.0,
-                                spreadRadius: 1.0,
-                                offset: const Offset(0, 0),
-                              ),
-                            ]
-                          : [],
-                ),
-                child: TextField(
-                  readOnly: widget.onTap != null,
-                  onTap: widget.onTap,
-                  onTapOutside: (_) {
-                    focusNode.unfocus();
-                  },
-                  onChanged: (String value) {
-                    widget.onTextChanged(value);
-                  },
-                  maxLines: widget.maxLines,
-                  focusNode: focusNode,
-                  decoration: _getDecoration(),
-                  controller: widget.controller,
-                  style: getTextTheme(context)
-                      .bodyMedium
-                      ?.copyWith(color: $constants.palette.white),
-                ),
-              ),
+                      : [],
             ),
-          ],
+            child: TextField(
+              readOnly: widget.onTap != null,
+              onTap: widget.onTap,
+              onTapOutside: (_) {
+                focusNode.unfocus();
+              },
+              onChanged: (String value) {
+                widget.onTextChanged(value);
+              },
+              maxLines: widget.maxLines,
+              focusNode: focusNode,
+              decoration: _getDecoration(),
+              controller: widget.controller,
+              style: getTextTheme(context)
+                  .bodyMedium
+                  ?.copyWith(color: $constants.palette.white),
+            ),
+          ),
         ),
         if (widget.isError) _createError(context),
       ],

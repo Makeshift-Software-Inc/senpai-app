@@ -18,61 +18,62 @@ class UsernameContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SenpaiIconRoundedButton(
-                        onPressed: () {
-                          FocusScope.of(context).unfocus();
-                          context.router.maybePop();
-                        },
-                        iconPath: PathConstants.backIcon,
-                      )
-                    ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    SizedBox(width: $constants.insets.sm),
+                    SenpaiIconRoundedButton(
+                      onPressed: () {
+                        FocusScope.of(context).unfocus();
+                        context.router.maybePop();
+                      },
+                      iconPath: PathConstants.backIcon,
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: $constants.insets.sm,
+                ),
+                SvgPicture.asset(
+                  PathConstants.loginIcon,
+                  width: getWidthSize(context, 0.15),
+                  height: getWidthSize(context, 0.15),
+                  fit: BoxFit.contain,
+                  alignment: Alignment.center,
+                ),
+                SizedBox(height: getWidthSize(context, 0.047)),
+                Text(
+                  "Forge Your Legendary\nUsername",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w700,
+                    fontSize: getWidthSize(context, 0.064),
                   ),
-                  SizedBox(
-                    height: $constants.insets.sm,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: getWidthSize(context, 0.032)),
+                Text(
+                  "Claim your identity and start your epic journey",
+                  style: TextStyle(
+                    color: $constants.palette.grey3,
+                    fontWeight: FontWeight.w400,
+                    fontSize: getWidthSize(context, 0.037),
                   ),
-                  SvgPicture.asset(
-                    PathConstants.loginIcon,
-                    width: getWidthSize(context, 0.15),
-                    height: getWidthSize(context, 0.15),
-                    fit: BoxFit.contain,
-                    alignment: Alignment.center,
-                  ),
-                  SizedBox(height: getWidthSize(context, 0.047)),
-                  Text(
-                    "Forge Your Legendary\nUsername",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: getWidthSize(context, 0.064),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: getWidthSize(context, 0.032)),
-                  Text(
-                    "Claim your identity and start your epic journey",
-                    style: TextStyle(
-                      color: $constants.palette.grey3,
-                      fontWeight: FontWeight.w400,
-                      fontSize: getWidthSize(context, 0.037),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: getWidthSize(context, 0.085)),
-                  Align(
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: getWidthSize(context, 0.085)),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: $constants.insets.sm),
+                  child: Align(
                     alignment: Alignment.topLeft,
                     child: Text(
                       "Username",
@@ -84,10 +85,14 @@ class UsernameContent extends StatelessWidget {
                       textAlign: TextAlign.left,
                     ),
                   ),
-                  SizedBox(height: getWidthSize(context, 0.022)),
-                  _buildUsernameInput(context),
-                  SizedBox(height: getWidthSize(context, 0.042)),
-                  Row(
+                ),
+                SizedBox(height: getWidthSize(context, 0.022)),
+                _buildUsernameInput(context),
+                SizedBox(height: getWidthSize(context, 0.042)),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: $constants.insets.sm),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
@@ -110,24 +115,27 @@ class UsernameContent extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: getWidthSize(context, 0.022)),
-                  _buildFullNameInput(context),
-                ],
-              ),
+                ),
+                SizedBox(height: getWidthSize(context, 0.022)),
+                _buildFullNameInput(context),
+              ],
             ),
           ),
-          SizedBox(
-            height: $constants.insets.sm,
-          ),
-          Align(
+        ),
+        SizedBox(
+          height: $constants.insets.sm,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: $constants.insets.sm),
+          child: Align(
             alignment: Alignment.bottomCenter,
             child: _buildSubmitButton(context),
           ),
-          SizedBox(
-            height: $constants.insets.sm,
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: $constants.insets.sm,
+        ),
+      ],
     );
   }
 
@@ -155,17 +163,20 @@ class UsernameContent extends StatelessWidget {
     final bloc = BlocProvider.of<UsernameBloc>(context);
     return BlocBuilder<UsernameBloc, UsernameState>(
       builder: (context, state) {
-        return SenpaiInput(
-          placeholder: "enter your full name",
-          controller: bloc.fullNameController,
-          onTextChanged: (String fullName) {
-            bloc.add(OnUsernameChangedEvent(fullName: fullName));
-          },
-          errorText: R.strings.serverError,
-          isError: state is ErrorState ? state.isEnabled : false,
-          isValid: state is ValidState
-              ? true
-              : bloc.fullNameController.text.isNotEmpty,
+        return Padding(
+          padding: EdgeInsets.only(bottom: $constants.insets.sm),
+          child: SenpaiInput(
+            placeholder: "enter your full name",
+            controller: bloc.fullNameController,
+            onTextChanged: (String fullName) {
+              bloc.add(OnUsernameChangedEvent(fullName: fullName));
+            },
+            errorText: R.strings.serverError,
+            isError: state is ErrorState ? state.isEnabled : false,
+            isValid: state is ValidState
+                ? true
+                : bloc.fullNameController.text.isNotEmpty,
+          ),
         );
       },
     );
