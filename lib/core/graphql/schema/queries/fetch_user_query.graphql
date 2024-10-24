@@ -2,7 +2,9 @@ query fetchUser($userId: ID!) {
   fetchUser(userId: $userId) {
     id
     role
-    firstName
+    fullName
+    username
+    email
     birthday
     country
     bio

@@ -1197,216 +1197,6 @@ Map<String, dynamic> _$GrantUserPremiumInputToJson(
       'userId': instance.userId,
     };
 
-LikeUser$Mutation$LikeUser$Like _$LikeUser$Mutation$LikeUser$LikeFromJson(
-        Map<String, dynamic> json) =>
-    LikeUser$Mutation$LikeUser$Like()
-      ..userId = (json['userId'] as num).toInt()
-      ..likeeId = (json['likeeId'] as num?)?.toInt()
-      ..likeType = json['likeType'] as String?;
-
-Map<String, dynamic> _$LikeUser$Mutation$LikeUser$LikeToJson(
-        LikeUser$Mutation$LikeUser$Like instance) =>
-    <String, dynamic>{
-      'userId': instance.userId,
-      'likeeId': instance.likeeId,
-      'likeType': instance.likeType,
-    };
-
-LikeUser$Mutation$LikeUser$Match$Conversation
-    _$LikeUser$Mutation$LikeUser$Match$ConversationFromJson(
-            Map<String, dynamic> json) =>
-        LikeUser$Mutation$LikeUser$Match$Conversation()
-          ..id = json['id'] as String;
-
-Map<String, dynamic> _$LikeUser$Mutation$LikeUser$Match$ConversationToJson(
-        LikeUser$Mutation$LikeUser$Match$Conversation instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-    };
-
-LikeUser$Mutation$LikeUser$Match$Matchee$Gallery$Photos
-    _$LikeUser$Mutation$LikeUser$Match$Matchee$Gallery$PhotosFromJson(
-            Map<String, dynamic> json) =>
-        LikeUser$Mutation$LikeUser$Match$Matchee$Gallery$Photos()
-          ..order = (json['order'] as num?)?.toInt()
-          ..url = json['url'] as String
-          ..id = json['id'] as String;
-
-Map<String, dynamic>
-    _$LikeUser$Mutation$LikeUser$Match$Matchee$Gallery$PhotosToJson(
-            LikeUser$Mutation$LikeUser$Match$Matchee$Gallery$Photos instance) =>
-        <String, dynamic>{
-          'order': instance.order,
-          'url': instance.url,
-          'id': instance.id,
-        };
-
-LikeUser$Mutation$LikeUser$Match$Matchee$Gallery
-    _$LikeUser$Mutation$LikeUser$Match$Matchee$GalleryFromJson(
-            Map<String, dynamic> json) =>
-        LikeUser$Mutation$LikeUser$Match$Matchee$Gallery()
-          ..photos = (json['photos'] as List<dynamic>?)
-              ?.map((e) =>
-                  LikeUser$Mutation$LikeUser$Match$Matchee$Gallery$Photos
-                      .fromJson(e as Map<String, dynamic>))
-              .toList();
-
-Map<String, dynamic> _$LikeUser$Mutation$LikeUser$Match$Matchee$GalleryToJson(
-        LikeUser$Mutation$LikeUser$Match$Matchee$Gallery instance) =>
-    <String, dynamic>{
-      'photos': instance.photos?.map((e) => e.toJson()).toList(),
-    };
-
-LikeUser$Mutation$LikeUser$Match$Matchee
-    _$LikeUser$Mutation$LikeUser$Match$MatcheeFromJson(
-            Map<String, dynamic> json) =>
-        LikeUser$Mutation$LikeUser$Match$Matchee()
-          ..id = json['id'] as String
-          ..phone = json['phone'] as String
-          ..firstName = json['firstName'] as String?
-          ..verified = json['verified'] as bool
-          ..gallery = json['gallery'] == null
-              ? null
-              : LikeUser$Mutation$LikeUser$Match$Matchee$Gallery.fromJson(
-                  json['gallery'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$LikeUser$Mutation$LikeUser$Match$MatcheeToJson(
-        LikeUser$Mutation$LikeUser$Match$Matchee instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'phone': instance.phone,
-      'firstName': instance.firstName,
-      'verified': instance.verified,
-      'gallery': instance.gallery?.toJson(),
-    };
-
-LikeUser$Mutation$LikeUser$Match$User$Gallery$Photos
-    _$LikeUser$Mutation$LikeUser$Match$User$Gallery$PhotosFromJson(
-            Map<String, dynamic> json) =>
-        LikeUser$Mutation$LikeUser$Match$User$Gallery$Photos()
-          ..order = (json['order'] as num?)?.toInt()
-          ..url = json['url'] as String
-          ..id = json['id'] as String;
-
-Map<String, dynamic>
-    _$LikeUser$Mutation$LikeUser$Match$User$Gallery$PhotosToJson(
-            LikeUser$Mutation$LikeUser$Match$User$Gallery$Photos instance) =>
-        <String, dynamic>{
-          'order': instance.order,
-          'url': instance.url,
-          'id': instance.id,
-        };
-
-LikeUser$Mutation$LikeUser$Match$User$Gallery
-    _$LikeUser$Mutation$LikeUser$Match$User$GalleryFromJson(
-            Map<String, dynamic> json) =>
-        LikeUser$Mutation$LikeUser$Match$User$Gallery()
-          ..photos = (json['photos'] as List<dynamic>?)
-              ?.map((e) =>
-                  LikeUser$Mutation$LikeUser$Match$User$Gallery$Photos.fromJson(
-                      e as Map<String, dynamic>))
-              .toList();
-
-Map<String, dynamic> _$LikeUser$Mutation$LikeUser$Match$User$GalleryToJson(
-        LikeUser$Mutation$LikeUser$Match$User$Gallery instance) =>
-    <String, dynamic>{
-      'photos': instance.photos?.map((e) => e.toJson()).toList(),
-    };
-
-LikeUser$Mutation$LikeUser$Match$User
-    _$LikeUser$Mutation$LikeUser$Match$UserFromJson(
-            Map<String, dynamic> json) =>
-        LikeUser$Mutation$LikeUser$Match$User()
-          ..id = json['id'] as String
-          ..phone = json['phone'] as String
-          ..firstName = json['firstName'] as String?
-          ..verified = json['verified'] as bool
-          ..gallery = json['gallery'] == null
-              ? null
-              : LikeUser$Mutation$LikeUser$Match$User$Gallery.fromJson(
-                  json['gallery'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$LikeUser$Mutation$LikeUser$Match$UserToJson(
-        LikeUser$Mutation$LikeUser$Match$User instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'phone': instance.phone,
-      'firstName': instance.firstName,
-      'verified': instance.verified,
-      'gallery': instance.gallery?.toJson(),
-    };
-
-LikeUser$Mutation$LikeUser$Match _$LikeUser$Mutation$LikeUser$MatchFromJson(
-        Map<String, dynamic> json) =>
-    LikeUser$Mutation$LikeUser$Match()
-      ..conversation = LikeUser$Mutation$LikeUser$Match$Conversation.fromJson(
-          json['conversation'] as Map<String, dynamic>)
-      ..matchee = LikeUser$Mutation$LikeUser$Match$Matchee.fromJson(
-          json['matchee'] as Map<String, dynamic>)
-      ..user = LikeUser$Mutation$LikeUser$Match$User.fromJson(
-          json['user'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$LikeUser$Mutation$LikeUser$MatchToJson(
-        LikeUser$Mutation$LikeUser$Match instance) =>
-    <String, dynamic>{
-      'conversation': instance.conversation.toJson(),
-      'matchee': instance.matchee.toJson(),
-      'user': instance.user.toJson(),
-    };
-
-LikeUser$Mutation$LikeUser _$LikeUser$Mutation$LikeUserFromJson(
-        Map<String, dynamic> json) =>
-    LikeUser$Mutation$LikeUser()
-      ..like = LikeUser$Mutation$LikeUser$Like.fromJson(
-          json['like'] as Map<String, dynamic>)
-      ..match = json['match'] == null
-          ? null
-          : LikeUser$Mutation$LikeUser$Match.fromJson(
-              json['match'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$LikeUser$Mutation$LikeUserToJson(
-        LikeUser$Mutation$LikeUser instance) =>
-    <String, dynamic>{
-      'like': instance.like.toJson(),
-      'match': instance.match?.toJson(),
-    };
-
-LikeUser$Mutation _$LikeUser$MutationFromJson(Map<String, dynamic> json) =>
-    LikeUser$Mutation()
-      ..likeUser = json['likeUser'] == null
-          ? null
-          : LikeUser$Mutation$LikeUser.fromJson(
-              json['likeUser'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$LikeUser$MutationToJson(LikeUser$Mutation instance) =>
-    <String, dynamic>{
-      'likeUser': instance.likeUser?.toJson(),
-    };
-
-LikeUserInput _$LikeUserInputFromJson(Map<String, dynamic> json) =>
-    LikeUserInput(
-      clientMutationId: json['clientMutationId'] as String?,
-      params: LikeInput.fromJson(json['params'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$LikeUserInputToJson(LikeUserInput instance) =>
-    <String, dynamic>{
-      'clientMutationId': instance.clientMutationId,
-      'params': instance.params.toJson(),
-    };
-
-LikeInput _$LikeInputFromJson(Map<String, dynamic> json) => LikeInput(
-      likeType: json['likeType'] as String,
-      likeeId: (json['likeeId'] as num).toInt(),
-      userId: (json['userId'] as num).toInt(),
-    );
-
-Map<String, dynamic> _$LikeInputToJson(LikeInput instance) => <String, dynamic>{
-      'likeType': instance.likeType,
-      'likeeId': instance.likeeId,
-      'userId': instance.userId,
-    };
-
 MarkAvatarAsDefault$Mutation$MarkAvatarDefault$Avatar
     _$MarkAvatarAsDefault$Mutation$MarkAvatarDefault$AvatarFromJson(
             Map<String, dynamic> json) =>
@@ -2572,56 +2362,6 @@ Map<String, dynamic> _$VerifyRequestInputToJson(VerifyRequestInput instance) =>
       'userId': instance.userId,
     };
 
-UndoLike$Mutation$UndoLike$UndidUser
-    _$UndoLike$Mutation$UndoLike$UndidUserFromJson(Map<String, dynamic> json) =>
-        UndoLike$Mutation$UndoLike$UndidUser()..id = json['id'] as String;
-
-Map<String, dynamic> _$UndoLike$Mutation$UndoLike$UndidUserToJson(
-        UndoLike$Mutation$UndoLike$UndidUser instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-    };
-
-UndoLike$Mutation$UndoLike _$UndoLike$Mutation$UndoLikeFromJson(
-        Map<String, dynamic> json) =>
-    UndoLike$Mutation$UndoLike()
-      ..status = json['status'] as String
-      ..undidUser = json['undidUser'] == null
-          ? null
-          : UndoLike$Mutation$UndoLike$UndidUser.fromJson(
-              json['undidUser'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$UndoLike$Mutation$UndoLikeToJson(
-        UndoLike$Mutation$UndoLike instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'undidUser': instance.undidUser?.toJson(),
-    };
-
-UndoLike$Mutation _$UndoLike$MutationFromJson(Map<String, dynamic> json) =>
-    UndoLike$Mutation()
-      ..undoLike = json['undoLike'] == null
-          ? null
-          : UndoLike$Mutation$UndoLike.fromJson(
-              json['undoLike'] as Map<String, dynamic>);
-
-Map<String, dynamic> _$UndoLike$MutationToJson(UndoLike$Mutation instance) =>
-    <String, dynamic>{
-      'undoLike': instance.undoLike?.toJson(),
-    };
-
-UndoLikeInput _$UndoLikeInputFromJson(Map<String, dynamic> json) =>
-    UndoLikeInput(
-      clientMutationId: json['clientMutationId'] as String?,
-      userId: json['userId'] as String,
-    );
-
-Map<String, dynamic> _$UndoLikeInputToJson(UndoLikeInput instance) =>
-    <String, dynamic>{
-      'clientMutationId': instance.clientMutationId,
-      'userId': instance.userId,
-    };
-
 UnmatchUser$Mutation$UnmatchUser$User
     _$UnmatchUser$Mutation$UnmatchUser$UserFromJson(
             Map<String, dynamic> json) =>
@@ -2754,6 +2494,9 @@ UpdateUser$Mutation$UpdateUser$User
     _$UpdateUser$Mutation$UpdateUser$UserFromJson(Map<String, dynamic> json) =>
         UpdateUser$Mutation$UpdateUser$User()
           ..id = json['id'] as String
+          ..username = json['username'] as String?
+          ..fullName = json['fullName'] as String?
+          ..email = json['email'] as String?
           ..phone = json['phone'] as String
           ..role = json['role'] as String
           ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
@@ -2773,6 +2516,9 @@ Map<String, dynamic> _$UpdateUser$Mutation$UpdateUser$UserToJson(
         UpdateUser$Mutation$UpdateUser$User instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'username': instance.username,
+      'fullName': instance.fullName,
+      'email': instance.email,
       'phone': instance.phone,
       'role': instance.role,
       'birthday': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
@@ -3854,7 +3600,9 @@ FetchUser$Query$FetchUser _$FetchUser$Query$FetchUserFromJson(
     FetchUser$Query$FetchUser()
       ..id = json['id'] as String
       ..role = json['role'] as String
-      ..firstName = json['firstName'] as String?
+      ..fullName = json['fullName'] as String?
+      ..username = json['username'] as String?
+      ..email = json['email'] as String?
       ..birthday = fromGraphQLISO8601DateTimeNullableToDartDateTimeNullable(
           json['birthday'] as String?)
       ..country = json['country'] as String?
@@ -3899,7 +3647,9 @@ Map<String, dynamic> _$FetchUser$Query$FetchUserToJson(
     <String, dynamic>{
       'id': instance.id,
       'role': instance.role,
-      'firstName': instance.firstName,
+      'fullName': instance.fullName,
+      'username': instance.username,
+      'email': instance.email,
       'birthday': fromDartDateTimeNullableToGraphQLISO8601DateTimeNullable(
           instance.birthday),
       'country': instance.country,
@@ -4155,16 +3905,6 @@ Map<String, dynamic> _$GrantUserPremiumArgumentsToJson(
       'input': instance.input.toJson(),
     };
 
-LikeUserArguments _$LikeUserArgumentsFromJson(Map<String, dynamic> json) =>
-    LikeUserArguments(
-      input: LikeUserInput.fromJson(json['input'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$LikeUserArgumentsToJson(LikeUserArguments instance) =>
-    <String, dynamic>{
-      'input': instance.input.toJson(),
-    };
-
 MarkAvatarAsDefaultArguments _$MarkAvatarAsDefaultArgumentsFromJson(
         Map<String, dynamic> json) =>
     MarkAvatarAsDefaultArguments(
@@ -4310,16 +4050,6 @@ SubmitVerifyRequestArguments _$SubmitVerifyRequestArgumentsFromJson(
 
 Map<String, dynamic> _$SubmitVerifyRequestArgumentsToJson(
         SubmitVerifyRequestArguments instance) =>
-    <String, dynamic>{
-      'input': instance.input.toJson(),
-    };
-
-UndoLikeArguments _$UndoLikeArgumentsFromJson(Map<String, dynamic> json) =>
-    UndoLikeArguments(
-      input: UndoLikeInput.fromJson(json['input'] as Map<String, dynamic>),
-    );
-
-Map<String, dynamic> _$UndoLikeArgumentsToJson(UndoLikeArguments instance) =>
     <String, dynamic>{
       'input': instance.input.toJson(),
     };
